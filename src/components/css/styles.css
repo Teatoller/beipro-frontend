@@ -1,0 +1,124 @@
+body {
+  background-color: whitesmoke;
+}
+
+header {
+  background-color: gray;
+  border-bottom: solid 4px lightgray;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: #0499ff;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: #6633ff;
+}
+
+.main-nav {
+  width: 100%;
+
+  background: gray;
+}
+.nav {
+  text-align: right;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.nav .name {
+  display: none;
+}
+.nav li {
+  padding: 5px 10px 10px 10px;
+}
+.nav a {
+  transition: all 0.5s;
+}
+.nav a:hover {
+  color: yellow;
+}
+
+form {
+  color: darkgrey;
+  margin: auto;
+  text-align: center;
+}
+
+.form-logo {
+  font-family: sans-serif;
+  font-size: 36px;
+}
+
+.create-account {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#main-div {
+  display: flex;
+  border: solid 1px lightgray;
+}
+
+#left {
+  flex: 0 0 65%;
+}
+
+#right {
+  flex: 1;
+}
+
+.btn-welcome {
+  color: white;
+  background-color: #4caf50;
+  border-radius: 4px;
+  border: 2px solid #4caf50;
+  padding: 12px 28px;
+}
+
+.btn-help {
+  color: white;
+  background-color: #008cba;
+  border-radius: 4px;
+  border: 2px solid #008cba;
+}
+
+input[type="text"] {
+  border-radius: 25px;
+  height: 25px;
+  margin: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  width: 45%;
+}
+
+.footer-login {
+  background-color: gray;
+  border-top: solid 4px lightgray;
+  border-bottom: solid 4px lightgray;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.footer-register {
+  background-color: gray;
+  border-top: solid 4px lightgray;
+  border-bottom: solid 4px lightgray;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
