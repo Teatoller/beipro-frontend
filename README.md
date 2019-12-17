@@ -1,10 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
 # beiPro
+
+## How to test the application
+
+1. Create a folder on your machine `mkdir myproject`
+2. `cd myproject`
+3. Run `https://github.com/Teatoller/beipro-frontend.git`
+4. cd `beipro-frontend`
+5. open **beipro-frontend** in your chosen editor. For **vscode** enter `code .` on terminal and press enter.
+6. `git checkout develop`
+7. Run `yarn install`
+ 
+8. Run `yarn start`  the app in the development mode to open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
