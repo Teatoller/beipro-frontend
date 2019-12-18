@@ -21,7 +21,7 @@ const Register = () => {
         <div id="main-div">
           <form id="left">
             <div>
-              <span classNameName="form-logo">Beipro</span>
+              <span className="form-logo">Beipro</span>
             </div>
             <div>
               <input type="text" placeholder="Firstname" />
