@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import banner from "../images/banner.jpg";
 import "./css/styles.css";
 
@@ -43,16 +43,11 @@ const Register = () => {
                 Register
               </button>
             </div>
-            <div>
-              <p>
-                Forgot
-                <Link to="/reset"> Password</Link>
-              </p>
-            </div>
+
             <div>
               <p>Already have an account?</p>
               <span>
-                <Link to="/">SignIn</Link>
+                <NavLink to="/">SignIn</NavLink>
               </span>
             </div>
           </form>
