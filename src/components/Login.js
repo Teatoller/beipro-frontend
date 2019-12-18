@@ -1,6 +1,8 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
+
 import banner from "../images/banner.jpg";
-import "./css/login.css";
+import "./css/styles.css";
 
 const Login = () => {
   return (
@@ -11,7 +13,7 @@ const Login = () => {
         <nav className="main-nav">
           <ul className="nav">
             <li>
-              <a href="#">Register</a>
+              <NavLink to="/register">Register</NavLink>
             </li>
           </ul>
         </nav>
@@ -36,13 +38,13 @@ const Login = () => {
             <div>
               <p>
                 Forgot
-                <a href="#"> Password</a>
+                <Link to="/reset"> Password</Link>
               </p>
             </div>
             <div>
               <p>Do not have an account?</p>
               <span className="create-account">
-                <a href="#">Create Account</a>
+                <Link to="/register">Create Account</Link>
               </span>
             </div>
           </form>
@@ -50,7 +52,7 @@ const Login = () => {
         </div>
       </main>
 
-      <footer className="footer">
+      <footer className="footer-login">
         <span>Beipro &copy;2018</span>
       </footer>
     </div>
