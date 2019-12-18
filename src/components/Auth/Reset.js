@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import banner from "../images/banner.jpg";
-import "./css/styles.css";
+import banner from "../../images/banner.jpg";
+import "../css/styles.css";
 
 const Reset = () => {
   return (
@@ -14,14 +14,11 @@ const Reset = () => {
             <li>
               <NavLink to="/">Login</NavLink>
             </li>
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
           </ul>
         </nav>
       </header>
       <main>
-        <div id="main-div">
+        <div id="main-div" className="ring">
           <form id="left">
             <div>
               <span className="form-logo">Beipro</span>
