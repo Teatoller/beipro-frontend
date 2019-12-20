@@ -1,28 +1,22 @@
 import React from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import banner from "../../images/banner.jpg";
 import "../css/styles.css";
 
 const Register = () => {
   return (
     <div>
-      <header>
-        <span className="form-logo">Beipro</span>
-
-        <nav className="main-nav">
-          <ul className="nav">
-            <li>
-              <NavLink to="/">Login</NavLink>
-            </li>
-          </ul>
-        </nav>
+      <header className="header">
+        <NavLink to="/landing" className="logo">
+          Beipro
+        </NavLink>
+        <div className="header-right">
+          <NavLink to="/">Login</NavLink>
+        </div>
       </header>
       <main>
         <div id="main-div" className="ring">
           <form id="left">
-            <div>
-              <span className="form-logo">Beipro</span>
-            </div>
             <div>
               <input type="text" placeholder="Firstname" />
             </div>
@@ -38,10 +32,10 @@ const Register = () => {
             <div>
               <input type="text" placeholder="Confirm Password" />
             </div>
-            <div>
-              <button className="btn-welcome" type="button">
+            <div className="login-btn">
+              <NavLink to="/" className="btn-welcome" type="submit">
                 Register
-              </button>
+              </NavLink>
             </div>
 
             <div>

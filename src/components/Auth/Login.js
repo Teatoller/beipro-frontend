@@ -6,16 +6,13 @@ import "../css/styles.css";
 const Login = () => {
   return (
     <div>
-      <header>
-        <span className="form-logo">Beipro</span>
-
-        <nav className="main-nav">
-          <ul className="nav">
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
-          </ul>
-        </nav>
+      <header className="header">
+        <NavLink to="/landing" className="logo">
+          Beipro
+        </NavLink>
+        <div className="header-right">
+          <NavLink to="/register">Register</NavLink>
+        </div>
       </header>
       <main>
         <div id="main-div" className="ring">
