@@ -64,7 +64,7 @@ form {
 
 #main-div {
   display: flex;
-  border: solid 1px lightgray;
+  /* border: solid 1px rgb(192, 186, 186);  */
 }
 
 #left {
@@ -75,6 +75,10 @@ form {
   flex: 1;
 }
 
+.ring {
+  border: solid 1px rgb(192, 186, 186); /*add to div's with #main-div*/
+}
+
 .btn-welcome {
   color: white;
   background-color: #4caf50;
@@ -83,11 +87,8 @@ form {
   padding: 12px 28px;
 }
 
-.btn-help {
-  color: white;
-  background-color: #008cba;
-  border-radius: 4px;
-  border: 2px solid #008cba;
+.login-btn {
+  margin-top: 10px;
 }
 
 input[type="text"] {
@@ -122,4 +123,30 @@ input[type="text"] {
   bottom: 0;
   text-align: center;
   width: 100%;
+}
+
+/* main */
+
+.country-select {
+  position: relative;
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  background-color: lime;
+  display: inline;
+  margin: 8px;
+}
+.location-select {
+  position: relative;
+  font-size: 16px;
+  padding: 2px 5px;
+  background-color: lime;
+  display: inline;
+
+}
+
+
+.bei-welcome {
+  color: darkgrey;
+  margin-top: 180px;
+  text-align: center;
 }
