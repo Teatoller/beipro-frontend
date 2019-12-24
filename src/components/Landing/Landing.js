@@ -6,18 +6,40 @@ import Nav from "./Nav";
 import Kisumu from "./Kisumu";
 
 class Landing extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      routes: [
+        `${props.match.url}/welcome`,
+        `${props.match.url}/Nairobi`,
+        `${props.match.url}/Kisumu`
+      ]
+    };
+  }
+
+  renderRoute = (RouteComponent, url) => (
+    <Route
+      path={url}
+      component={newProps => (
+        <RouteComponent {...{ ...this.props, match: newProps.match }} />
+      )}
+    />
+  );
+
   render() {
+    const { routes } = this.state;
     return (
-      <Route>
+      <div>
+
         <React.Fragment>
           <Nav />
           <Switch>
-            <Route exact path="/welcome" component={Welcome} />
-            <Route path="/nairobi" component={Nairobi} />
-            <Route path="/kisumu" component={Kisumu} />
+            {this.renderRoute(Welcome, routes[0])}
+            {this.renderRoute(Nairobi, routes[1])}
+            {this.renderRoute(Kisumu, routes[2])}
           </Switch>
         </React.Fragment>
-      </Route>
+      </div>
     );
   }
 }

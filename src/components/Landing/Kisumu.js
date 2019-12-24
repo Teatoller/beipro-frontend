@@ -7,6 +7,7 @@ const Kisumu = () => {
       <main>
         <div className="price-list">
           <table>
+            <thead>
             <tr>
               <th>#</th>
               <th>Company</th>
@@ -17,6 +18,8 @@ const Kisumu = () => {
               <th>Fuel Oil</th>
               <th>Lpg</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
               <td>1</td>
               <td>Vivo Energy</td>
@@ -47,6 +50,7 @@ const Kisumu = () => {
               <td>100.00</td>
               <td>100.00</td>
             </tr>
+            </tbody>
           </table>
         </div>
       </main>

@@ -16,9 +16,9 @@ const Nav = () => {
         </div>
       </header>
       <div>
-        <NavLink className="land-links" to="/welcome">Welcome</NavLink>
-        <NavLink className="land-links" to="/nairobi">Nairobi</NavLink>
-        <NavLink className="land-links" to="/kisumu">Kisumu</NavLink>
+        <NavLink className="land-links" to="/landing/welcome">Welcome</NavLink>
+        <NavLink className="land-links" to="/landing/nairobi">Nairobi</NavLink>
+        <NavLink className="land-links" to="/landing/kisumu">Kisumu</NavLink>
       </div>
     </div>
   );
