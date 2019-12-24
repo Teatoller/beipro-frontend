@@ -6,16 +6,15 @@ import "../css/styles.css";
 const Reset = () => {
   return (
     <div>
-      <header>
-        <span className="form-logo">Beipro</span>
-
-        <nav className="main-nav">
-          <ul className="nav">
-            <li>
-              <NavLink to="/">Login</NavLink>
-            </li>
-          </ul>
-        </nav>
+      <header className="header">
+        <NavLink to="/landing" className="logo">
+          Beipro
+        </NavLink>
+        <div className="header-right">
+          <NavLink className="active" to="/">
+            Login
+          </NavLink>
+        </div>
       </header>
       <main>
         <div id="main-div" className="ring">
