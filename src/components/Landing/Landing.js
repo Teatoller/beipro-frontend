@@ -20,9 +20,7 @@ class Landing extends PureComponent {
   renderRoute = (RouteComponent, url) => (
     <Route
       path={url}
-      component={newProps => (
-        <RouteComponent {...{ ...this.props, match: newProps.match }} />
-      )}
+      component={newProps => <RouteComponent {...{ ...this.props, match: newProps.match }} />}
     />
   );
 
@@ -30,7 +28,6 @@ class Landing extends PureComponent {
     const { routes } = this.state;
     return (
       <div>
-
         <React.Fragment>
           <Nav />
           <Switch>
