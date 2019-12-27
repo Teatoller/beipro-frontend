@@ -27,7 +27,7 @@ const Login = () => {
               <input type="text" placeholder="Password" />
             </div>
             <div className="login-btn">
-              <NavLink to="/landing" className="btn-welcome" type="submit">
+              <NavLink to="/landing/welcome" className="btn-welcome" type="submit">
                 Login
               </NavLink>
             </div>

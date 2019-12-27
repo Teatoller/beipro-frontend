@@ -1,19 +1,14 @@
 import React, { PureComponent } from "react";
 import { Switch, Route } from "react-router-dom";
 import Welcome from "./Welcome";
-import Nairobi from "./Nairobi";
+import Depots from "./Depots";
 import Nav from "./Nav";
-import Kisumu from "./Kisumu";
 
 class Landing extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      routes: [
-        `${props.match.url}/welcome`,
-        `${props.match.url}/Nairobi`,
-        `${props.match.url}/Kisumu`
-      ]
+      routes: [`${props.match.url}/welcome`, `${props.match.url}/depots`]
     };
   }
 
@@ -32,8 +27,7 @@ class Landing extends PureComponent {
           <Nav />
           <Switch>
             {this.renderRoute(Welcome, routes[0])}
-            {this.renderRoute(Nairobi, routes[1])}
-            {this.renderRoute(Kisumu, routes[2])}
+            {this.renderRoute(Depots, routes[1])}
           </Switch>
         </React.Fragment>
       </div>
