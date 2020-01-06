@@ -13,27 +13,6 @@ export const register = newUser => {
     });
 };
 
-export const login = user => {
-  return axios
-    .post(
-      "/login",
-      {
-        email: user.email,
-        password: user.password
-      },
-      {
-        headers: { "Content-Type": "application/json" }
-      }
-    )
-    .then(res => {
-      localStorage.setItem("usertoken", res.data.token);
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
 export const getProfile = () => {
   return axios
     .post("/profile", {

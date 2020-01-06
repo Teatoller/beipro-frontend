@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import axios from "../../axios";
+import Nav from "./Nav";
 import "../css/styles.css";
 
 class Depots extends PureComponent {
@@ -71,6 +72,7 @@ class Depots extends PureComponent {
     return (
       <div>
         <main>
+          <Nav />
           <span style={loading ? null : loadingStyle}>loading...</span>
           <div className="selector">
             <span>
