@@ -16,7 +16,7 @@ const Nav = () => {
         </div>
       </header>
       <div>
-        <NavLink className="land-links" to="/landing/depots">
+        <NavLink className="land-links" to="/depots">
           Depot prices
         </NavLink>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/styles.css";
+import Nav from "./Nav";
 
 const Welcome = () => {
   return (
@@ -41,6 +42,7 @@ const Welcome = () => {
             </div>
           </div> */}
         </div>
+        <Nav />
 
         <section className="bei-welcome">
           <h2>Welcome to Beipro!</h2>
