@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import cookie from "js-cookie";
 import axios from "../../axios";
-import * as AuthActionCreators from "../../redux/actionCreators/authActions";
-import Error from "../Error";
+import { setLogin } from "../../redux/actionCreators/authActions";
 import banner from "../../images/banner.jpg";
 import "../css/styles.css";
 
@@ -24,7 +23,7 @@ class Login extends PureComponent {
 
   onSubmit = e => {
     const { email, password } = this.state;
-    const { history, setLogin } = this.props;
+    const { history } = this.props;
     e.preventDefault();
     const data = { email, password };
 
@@ -43,12 +42,6 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { errors } = this.state;
-
-    const { dispatch , user} = this.props;
-
-    const setLogin = bindActionCreators(AuthActionCreators.setLogin, dispatch);
-
     return (
       <div>
         <header className="header">
@@ -61,7 +54,7 @@ class Login extends PureComponent {
         </header>
         <main>
           <div id="main-div" className="ring">
-            <form noValidate onSubmit={this.onSubmit} id="left">
+            <form noValidate id="left">
               <div>
                 <span className="form-logo">Beipro</span>
               </div>
@@ -92,7 +85,7 @@ class Login extends PureComponent {
                 />
               </div>
               <div className="login-btn">
-                <button className="btn-welcome" type="submit">
+                <button className="btn-welcome" type="submit" onClick={this.onSubmit}>
                   Login
                 </button>
               </div>
@@ -122,13 +115,15 @@ class Login extends PureComponent {
 }
 Login.propTypes = {
   history: PropTypes.shape().isRequired,
-  setLogin: PropTypes.shape().isRequired
+  setLogin: PropTypes.any.isRequired
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setLogin: user => dispatch({ type: "SET_LOGIN", payload: user })
-  };
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      setLogin
+    },
+    dispatch
+  );
 
 export default connect(null, mapDispatchToProps)(Login);
