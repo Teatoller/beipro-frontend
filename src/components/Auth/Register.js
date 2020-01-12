@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { register } from "./userInstance";
+import { register } from "../../services/userInstance";
 import banner from "../../images/banner.jpg";
 import "../css/styles.css";
 
