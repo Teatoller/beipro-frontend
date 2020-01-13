@@ -30,8 +30,8 @@ class Login extends PureComponent {
     axios
       .post(`/login`, data)
       .then(res => {
+        localStorage.setItem('token', res.data.access_token);
         cookie.set("token", res.data.access_token);
-        setLogin(res.data.user);
         history.push("/welcome");
       })
       .catch(err => this.setState({ errors: err.response.data.errors }));
@@ -115,7 +115,6 @@ class Login extends PureComponent {
 }
 Login.propTypes = {
   history: PropTypes.shape().isRequired,
-  setLogin: PropTypes.any.isRequired
 };
 
 const mapDispatchToProps = dispatch =>

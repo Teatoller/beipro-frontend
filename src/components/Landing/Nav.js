@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/styles.css";
+import Dropdown from "../Menu/Dropdown";
 
 const Nav = () => {
   return (
@@ -9,16 +10,17 @@ const Nav = () => {
         <NavLink to="/landing" className="logo">
           Beipro
         </NavLink>
-        <div className="header-right">
+        {/* <div className="header-right">
           <NavLink className="active" to="/">
             Logout
           </NavLink>
-        </div>
+        </div> */}
       </header>
       <div>
-        <NavLink className="land-links" to="/depots">
+        {/* <NavLink className="land-links" to="/depots">
           Depot prices
-        </NavLink>
+        </NavLink> */}
+        <Dropdown />
       </div>
     </div>
   );
