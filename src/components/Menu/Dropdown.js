@@ -46,6 +46,9 @@ class Dropdown extends React.Component {
               </NavLink>
             </li>
             <li>
+              <a href="/fadmin">Front Office Admin</a>
+            </li>
+            <li>
               <a href="/profile">Profile</a>
             </li>
             <li>

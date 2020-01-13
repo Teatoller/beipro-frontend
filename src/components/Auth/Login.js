@@ -31,10 +31,11 @@ class Login extends PureComponent {
       .post(`/login`, data)
       .then(res => {
         localStorage.setItem('token', res.data.access_token);
+        localStorage.setItem("email", res.data.user.email);
         cookie.set("token", res.data.access_token);
         history.push("/welcome");
       })
-      .catch(err => this.setState({ errors: err.response.data.errors }));
+      .catch(err => this.setState({ errors: err.response.res.data.errors }));
   };
 
   onChange(e) {
