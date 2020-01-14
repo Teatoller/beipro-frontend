@@ -45,67 +45,72 @@ class Login extends PureComponent {
     return (
       <div>
         <header className="header">
-          <NavLink to="/landing" className="logo">
+          <NavLink to="/" className="logo">
             Beipro
           </NavLink>
           <div className="header-right">
             <NavLink to="/register">Register</NavLink>
           </div>
         </header>
-        <main>
-          <div id="main-div" className="ring">
-            <form noValidate id="left">
-              <div>
-                <span className="form-logo">Beipro</span>
+        <div className="container">
+          <div>
+            <div className="row">
+              <div className="col-7 p-2">
+                <div className="text-center">
+                  <p className="text-secondary">Please log in</p>
+                </div>
+                <form>
+                  <div className="form-group">
+                    <label html-for="email">Email address</label>
+                    <input type="email"
+                      name="email"
+                      value={this.email}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div className="form-group mb-3">
+                    <label html-for="exampleInputPassword1">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Enter Password"
+                      value={this.password}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="exampleInputPassword1"
+                    />
+                  </div>
+                  <div className="text-right mb-3">
+                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Login</button>
+                  </div>
+                </form>
+                <div className="row">
+                  <div className="col-6 text-left">
+                    <p>
+                      Forgot
+                  <NavLink to="/reset"> Password</NavLink> ?
+                    </p>
+                  </div>
+                  <div className="col-6 text-right">
+                    <p>Do not have an account?</p>
+                    <span className="create-account">
+                      <NavLink to="/register">Register</NavLink>
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3>Please log in</h3>
-              {/* <Error
-                error={
-                  errors.result ? errors.result : null
-                }
-              /> */}
-              <div>
-                {/* <Error error={errors.email ? errors.email : null} /> */}
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter Email"
-                  value={this.email}
-                  onChange={this.onChange}
-                />
+              <div className="col-5">
+                <div className="m-2">
+                  <img src={banner} alt="technology" />
+                </div>
               </div>
-              <div>
-                {/* <Error error={errors.password ? errors.password : null} /> */}
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Enter Password"
-                  value={this.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="login-btn">
-                <button className="btn-welcome" type="submit" onClick={this.onSubmit}>
-                  Login
-                </button>
-              </div>
-              <div>
-                <p>
-                  Forgot
-                  <NavLink to="/reset"> Password</NavLink>
-                </p>
-              </div>
-              <div>
-                <p>Do not have an account?</p>
-                <span className="create-account">
-                  <NavLink to="/register">Create Account</NavLink>
-                </span>
-              </div>
-            </form>
-            <img id="right" src={banner} alt="technology" />
+            </div>
           </div>
-        </main>
-
+        </div>
         <footer className="footer-login">
           <span>Beipro &copy;2018</span>
         </footer>

@@ -37,13 +37,6 @@ body {
   float: right;
 }
 
-form {
-  color: darkgrey;
-  margin: auto;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .form-logo {
   font-family: sans-serif;
   font-size: 36px;
@@ -54,42 +47,22 @@ form {
   margin-top: 10px;
 }
 
-#main-div {
-  display: flex;
-  /* border: solid 1px rgb(192, 186, 186);  */
-}
-
-#left {
-  flex: 0 0 65%;
-}
-
-#right {
-  flex: 1;
-}
-
 .ring {
   border: solid 1px rgb(192, 186, 186); /*add to div's with #main-div*/
-}
-
-.btn-welcome {
-  color: white;
-  background-color: #4caf50;
-  border-radius: 4px;
-  border: 2px solid #4caf50;
-  padding: 12px 28px;
 }
 
 .login-btn {
   margin-top: 10px;
 }
-
-input[type="text"] {
-  border-radius: 25px;
+.form-input {
+  outline: none;
+  border-radius: 5px;
   height: 25px;
   margin: 8px;
   padding: 8px 12px;
-  text-align: center;
-  width: 45%;
+  width: 100%;
+  border: none;
+  font-size: medium;
 }
 
 .footer-login {
@@ -257,17 +230,6 @@ input {
 
   #left {
     /* flex: 0 0 65%; */
-    float: none;
-    width: 100%;
-  }
-
-  #right {
-    flex: 1;
-    float: none;
-    width: 100%;
-  }
-
-  .ring {
     float: none;
     width: 100%;
   }
