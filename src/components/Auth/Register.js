@@ -38,7 +38,7 @@ class Register extends PureComponent {
       password_confirmation
     };
     register(newUser).then(response => {
-      history.push(`/`);
+      if (response) history.push(`/`);
     });
   }
 
@@ -87,7 +87,6 @@ class Register extends PureComponent {
                     id="email"
                     aria-describedby="emailHelp"
                     placeholder="Enter email" />
-                  <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                   <label html-for="password">Password</label>
@@ -102,7 +101,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label html-for="passwordConfirm">PasswordConfirm</label>
+                  <label html-for="passwordConfirm">confirm password</label>
                   <input
                     type="password"
                     name="password_confirmation"
