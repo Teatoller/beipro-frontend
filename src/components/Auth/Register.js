@@ -38,7 +38,7 @@ class Register extends PureComponent {
       password_confirmation
     };
     register(newUser).then(response => {
-      history.push(`/`);
+      if (response) history.push(`/`);
     });
   }
 
@@ -46,78 +46,92 @@ class Register extends PureComponent {
     return (
       <div>
         <header className="header">
-          <NavLink to="/landing" className="logo">
+          <NavLink to="/" className="logo">
             Beipro
           </NavLink>
           <div className="header-right">
             <NavLink to="/">Login</NavLink>
           </div>
         </header>
-        <main>
-          <div id="main-div" className="ring">
-            <form noValidate onSubmit={this.onSubmit} id="left">
-              <div>
-                <input
-                  type="text"
-                  name="firstname"
-                  placeholder="Enter firstname"
-                  value={this.firstname}
-                  onChange={this.onChange}
-                />
+        <div className="container">
+          <div className="row">
+            <div className="col-7">
+              <form>
+                <div className="form-group">
+                  <label html-for="firstname">First Name</label>
+                  <input type="text"
+                    name="firstname"
+                    value={this.firstname}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="firstname"
+                    placeholder="Enter firstname" />
+                </div>
+                <div className="form-group">
+                  <label html-for="firstname">First Name</label>
+                  <input type="text"
+                    name="lastname"
+                    value={this.lastname}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="firstname"
+                    placeholder="Enter lastname" />
+                </div>
+                <div className="form-group">
+                  <label html-for="email">Email address</label>
+                  <input type="email"
+                    name="email"
+                    value={this.email}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email" />
+                </div>
+                <div className="form-group">
+                  <label html-for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter Password"
+                    value={this.password}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="password"
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label html-for="passwordConfirm">confirm password</label>
+                  <input
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirm Password"
+                    value={this.password_confirmation}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="passwordConfirm"
+                  />
+                </div>
+                <div className="text-right mb-3">
+                  <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Register</button>
+                </div>
+              </form>
+              <div className="row">
+                <div className="col text-right">
+                  <p>Have an account?</p>
+                  <span className="create-account">
+                    <NavLink to="/">Login</NavLink>
+                  </span>
+                </div>
               </div>
-              <div>
-                <input
-                  type="text"
-                  name="lastname"
-                  placeholder="Enter lastname"
-                  value={this.lastname}
-                  onChange={this.onChange}
-                />
+            </div>
+            <div className="col-5">
+              <div className="m-2">
+                <img src={banner} alt="technology" />
               </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter Email"
-                  value={this.email}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Enter Password"
-                  value={this.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  name="password_confirmation"
-                  placeholder="Confirm Password"
-                  value={this.password_confirmation}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="login-btn">
-                <button className="btn-welcome" type="submit">
-                  Register
-                </button>
-              </div>
-
-              <div>
-                <p>Already have an account?</p>
-                <span>
-                  <NavLink to="/">SignIn</NavLink>
-                </span>
-              </div>
-            </form>
-            <img id="right" src={banner} alt="technology" />
+            </div>
           </div>
-        </main>
-
+        </div>
         <footer className="footer-register">
           <span>Beipro &copy;2018</span>
         </footer>

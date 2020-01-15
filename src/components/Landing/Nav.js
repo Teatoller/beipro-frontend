@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <div>
       <header className="header">
-        <NavLink to="/landing" className="logo">
+        <NavLink to="/" className="logo">
           Beipro
         </NavLink>
         {/* <div className="header-right">
