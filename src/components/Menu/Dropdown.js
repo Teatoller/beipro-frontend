@@ -37,13 +37,15 @@ class Dropdown extends React.Component {
           My Menu
           {" "}
         </div>
-
         {displayMenu ? (
           <ul>
             <li>
               <NavLink className="active" to="/depots">
                 Depot Prices
               </NavLink>
+            </li>
+            <li>
+              <a href="/admin">Company Admin</a>
             </li>
             <li>
               <a href="/fadmin">Front Office Admin</a>
