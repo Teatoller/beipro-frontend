@@ -1,19 +1,101 @@
 import React from "react";
-import "../css/styles.css";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "../../axios";
+import Can from "../Can";
+import "../css/styles.css";
 
 class Dropdown extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      displayMenu: false
+      displayMenu: false,
+      role:'',
+      roleAdmin: ''
     };
 
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
   }
 
+  componentDidMount() {
+      this.getAdminRole();
+      this.getFrontAdminRole();
+  }
+
+  
+
+  // Get admin role
+
+  getAdminRole = () => {
+    try {
+      axios.get(`/combineadmins`, {}).then(response => {
+        const adminsRoledata = response.data;
+
+        const loggedUserEmail = localStorage.getItem("email");
+
+        // Array with object containing details of the logged user
+
+        const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
+
+        // Object containing detail of logged user
+        const userObj = userArray[0];
+
+        // Key
+        function adminRolekey() {
+          if (userObj) {
+            const adminRole = userObj.role;
+
+            return adminRole;
+          }
+        }
+
+        const rolekey = adminRolekey();
+
+        this.setState({ roleAdmin: rolekey });
+        localStorage.setItem("roleAdmin", rolekey);
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  // Get Front Admin role
+
+  getFrontAdminRole = () => {
+    try {
+      axios.get(`/frontadmins`, {}).then(response => {
+        const adminsRoledata = response.data;
+
+        const loggedUserEmail = localStorage.getItem("email");
+
+        // Array with object containing details of the logged user
+
+        const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
+
+        // Object containing detail of logged user
+        const userObj = userArray[0];
+
+        // Key
+        function fadminRolekey() {
+          if (userObj) {
+            const adminRole = userObj.role;
+
+            return adminRole;
+          }
+        }
+
+        const rolekey = fadminRolekey();
+
+        this.setState({ role: rolekey });
+        localStorage.setItem("role", rolekey);
+
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
+  
   showDropdownMenu(event) {
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
@@ -27,15 +109,15 @@ class Dropdown extends React.Component {
     });
   }
 
+
   render() {
-    const { displayMenu } = this.state;
+    const { displayMenu, role, roleAdmin } = this.state;
 
     return (
       <div className="dropdown" style={{ width: "200px" }}>
         <div className="button" onClick={this.showDropdownMenu}>
           {" "}
-          My Menu
-          {" "}
+          My Menu{" "}
         </div>
         {displayMenu ? (
           <ul>
@@ -44,12 +126,26 @@ class Dropdown extends React.Component {
                 Depot Prices
               </NavLink>
             </li>
-            <li>
-              <a href="/admin">Company Admin</a>
-            </li>
-            <li>
-              <a href="/fadmin">Front Office Admin</a>
-            </li>
+            <Can
+              role={roleAdmin}
+              perform="company-admin:list"
+              yes={() => (
+                <li>
+                  <a href="/admin">Company Admin</a>
+                </li>
+              )}
+              // no={() => <span></span>}
+            />
+            <Can
+              role={role}
+              perform="front-admin:list"
+              yes={() => (
+                <li>
+                  <a href="/fadmin">Front Office Admin</a>
+                </li>
+              )}
+              // no={() => <span></span>}
+            />
             <li>
               <a href="/profile">Profile</a>
             </li>
