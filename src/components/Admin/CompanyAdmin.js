@@ -15,7 +15,8 @@ class CompanyAdmin extends Component {
       staff_id: "",
       email: "",
       role: "",
-      location_code: ""
+      location_code: "",
+      fadmins: []
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,6 +24,7 @@ class CompanyAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
+    this.getFrontAdminsData();
   }
 
   onChange(e) {
@@ -42,15 +44,16 @@ class CompanyAdmin extends Component {
       location_code
     } = this.state;
     e.preventDefault();
-    const data = { 
-      admin_id, 
-      front_office_id, 
-      firstname, 
-      lastname, 
-      staff_id, 
-      email, 
-      role, 
-      location_code };
+    const data = {
+      admin_id,
+      front_office_id,
+      firstname,
+      lastname,
+      staff_id,
+      email,
+      role,
+      location_code
+    };
 
     axios.post(`/companyadmins`, data).then(
       response => {},
@@ -98,6 +101,25 @@ class CompanyAdmin extends Component {
         const lockey = parseInt(adminkey(), 10);
 
         this.setState({ admin_id: lockey });
+        localStorage.setItem("admin_id", lockey);
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getFrontAdminsData = () => {
+    try {
+      axios.get(`/companyadmins`, {}).then(response => {
+        const frontadminData = response.data;
+
+        const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
+
+        // Array with object containing details of the logged user
+
+        const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+
+        this.setState({ fadmins: adminsArray });
       });
     } catch (error) {
       throw error;
@@ -106,7 +128,23 @@ class CompanyAdmin extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admin_id } = this.state;
+    const { admin_id, fadmins } = this.state;
+
+    const companyStaff = fadmins.map((item, index) => {
+      return (
+        <tr key={item.index}>
+          <td>{index + 1}</td>
+          <td>{item.front_office_id}</td>
+          <td>{item.firstname}</td>
+          <td>{item.staff_id}</td>
+          <td>{item.email}</td>
+          <td>{item.role}</td>
+          <td>{item.location_code}</td>
+          <td type="submit">Edit</td>
+          <td type="submit">Delete</td>
+        </tr>
+      );
+    });
 
     return (
       <div>
@@ -234,7 +272,23 @@ class CompanyAdmin extends Component {
               </form>
             </div>
             <div id="right">
-              <h3>---</h3>
+              <h3>Staff details</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Front-office-id</th>
+                    <th>Firstname</th>
+                    <th>Staff_id</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Location</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>{companyStaff}</tbody>
+              </table>
             </div>
           </div>
         </main>
