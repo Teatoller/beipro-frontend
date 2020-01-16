@@ -41,7 +41,7 @@ class Profile extends Component {
         <Nav />
         <div>
           <div>
-            <h1>Profile</h1>
+            <h6>Profile</h6>
           </div>
           <table>
             <tbody>
