@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "../../axios";
 import Can from "../Can";
 import "../css/styles.css";
+import Logout from "../Auth/Logout";
 
 class Dropdown extends React.Component {
   constructor() {
@@ -10,8 +11,8 @@ class Dropdown extends React.Component {
 
     this.state = {
       displayMenu: false,
-      role:'',
-      roleAdmin: ''
+      role: "",
+      roleAdmin: ""
     };
 
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
@@ -19,11 +20,9 @@ class Dropdown extends React.Component {
   }
 
   componentDidMount() {
-      this.getAdminRole();
-      this.getFrontAdminRole();
+    this.getAdminRole();
+    this.getFrontAdminRole();
   }
-
-  
 
   // Get admin role
 
@@ -89,13 +88,12 @@ class Dropdown extends React.Component {
 
         this.setState({ role: rolekey });
         localStorage.setItem("role", rolekey);
-
       });
     } catch (error) {
       throw error;
     }
   };
-  
+
   showDropdownMenu(event) {
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
@@ -108,7 +106,6 @@ class Dropdown extends React.Component {
       document.removeEventListener("click", this.hideDropdownMenu);
     });
   }
-
 
   render() {
     const { displayMenu, role, roleAdmin } = this.state;
@@ -134,7 +131,6 @@ class Dropdown extends React.Component {
                   <a href="/admin">Company Admin</a>
                 </li>
               )}
-              // no={() => <span></span>}
             />
             <Can
               role={role}
@@ -144,14 +140,14 @@ class Dropdown extends React.Component {
                   <a href="/fadmin">Front Office Admin</a>
                 </li>
               )}
-              // no={() => <span></span>}
             />
             <li>
               <a href="/profile">Profile</a>
             </li>
-            <li>
-              <NavLink to="/">Log Out</NavLink>
-            </li>
+            {/* <li> */}
+            {/* <NavLink to="/">Logout</NavLink> */}
+            {/* <Logout /> */}
+            {/* </li> */}
           </ul>
         ) : null}
       </div>

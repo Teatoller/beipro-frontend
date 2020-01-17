@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "../../axios";
 import "../css/styles.css";
-import Dropdown from "../Menu/Dropdown";
+import Nav from "../Landing/Nav";
 
 class FrontAdmin extends Component {
   constructor(props) {
@@ -21,6 +21,14 @@ class FrontAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
+    // this.priceData = setInterval(() => 
+    this.getCurrentPriceData()
+    // , 1000)
+    ;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.priceData);
   }
 
   onChange(e) {
@@ -79,6 +87,49 @@ class FrontAdmin extends Component {
         const lockey = parseInt(frontkey(), 10);
 
         this.setState({ front_office_id: lockey });
+        localStorage.setItem("front_office_id", lockey);
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  // Display current price as placeholder value
+
+  getCurrentPriceData = () => {
+    // eslint-disable-next-line camelcase
+    // const {front_office_id} = this.state;
+
+    try {
+      axios.get(`/currentprices`, {}).then(response => {
+        const currentPriceData = response.data;
+        const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
+
+        // Array with object containing details of the front office current prices
+
+        const priceArray = currentPriceData.filter(
+          object => object.front_office_id === frontOfficeId
+        );
+
+        // sort prices in reverse to get the latest price
+
+        const latestprices = [];
+
+        const sortbyid = priceArray.sort((c1, c2) => (c1.id > c2.id ? 1 : -1)).pop();
+
+        latestprices.push(sortbyid);
+
+        // Object containing detail of front office latest current price
+        const priceObj = latestprices[0];
+
+        this.setState({
+          diesel: priceObj.diesel,
+          petrol: priceObj.petrol,
+          kerosene: priceObj.kerosene,
+          ido: priceObj.ido,
+          fo: priceObj.fo,
+          lpg: priceObj.lpg
+        });
       });
     } catch (error) {
       throw error;
@@ -87,27 +138,17 @@ class FrontAdmin extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { front_office_id } = this.state;
+    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg } = this.state;
 
     return (
       <div>
-        <header className="header">
-          <a href="/landing" className="logo">
-            Beipro
-          </a>
-          <div className="header-right">
-            <a href="#about">Logout</a>
-          </div>
-        </header>
+        <Nav />
         <main>
           <div id="main-div">
-            <Dropdown />
             <div id="left">
-              <h3>Front Office Admin</h3>
-
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset disabled className="front-fieldset">
-                  <legend>Front Office</legend>
+                  <legend>Front Office Admin</legend>
                   <div className="form-ex ample">
                     <label htmlFor="front_office_id">
                       Office Id:
@@ -128,13 +169,26 @@ class FrontAdmin extends Component {
                   <div className="form-example">
                     <label htmlFor="diesel">
                       Diesel:
-                      <input type="decimal" name="diesel" id="diesel" onChange={this.onChange} />
+                      <input
+                        style={{ color: "red" }}
+                        type="decimal"
+                        name="diesel"
+                        id="diesel"
+                        placeholder={diesel}
+                        onChange={this.onChange}
+                      />
                     </label>
                   </div>
                   <div className="form-example">
                     <label htmlFor="petrol">
                       Petrol:
-                      <input type="decimal" name="petrol" id="petrol" onChange={this.onChange} />
+                      <input
+                        type="decimal"
+                        name="petrol"
+                        id="petrol"
+                        placeholder={petrol}
+                        onChange={this.onChange}
+                      />
                     </label>
                   </div>
                   <div className="form-example">
@@ -144,6 +198,7 @@ class FrontAdmin extends Component {
                         type="decimal"
                         name="kerosene"
                         id="kerosene"
+                        placeholder={kerosene}
                         onChange={this.onChange}
                       />
                     </label>
@@ -151,19 +206,37 @@ class FrontAdmin extends Component {
                   <div className="form-example">
                     <label htmlFor="ido">
                       Ido:
-                      <input type="decimal" name="ido" id="ido" onChange={this.onChange} />
+                      <input
+                        type="decimal"
+                        name="ido"
+                        id="ido"
+                        placeholder={ido}
+                        onChange={this.onChange}
+                      />
                     </label>
                   </div>
                   <div className="form-example">
                     <label htmlFor="fuel oil">
                       Fuel Oil:
-                      <input type="decimal" name="fo" id="fuel oil" onChange={this.onChange} />
+                      <input
+                        type="decimal"
+                        name="fo"
+                        id="fuel oil"
+                        placeholder={fo}
+                        onChange={this.onChange}
+                      />
                     </label>
                   </div>
                   <div className="form-example">
                     <label htmlFor="lpg">
                       Lpg:
-                      <input type="decimal" name="lpg" id="lpg" onChange={this.onChange} />
+                      <input
+                        type="decimal"
+                        name="lpg"
+                        id="lpg"
+                        placeholder={lpg}
+                        onChange={this.onChange}
+                      />
                     </label>
                   </div>
                   <div>

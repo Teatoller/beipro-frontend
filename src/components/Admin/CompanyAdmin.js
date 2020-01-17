@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import axios from "../../axios";
 import "../css/styles.css";
-import Dropdown from "../Menu/Dropdown";
+import Nav from "../Landing/Nav";
 
 class CompanyAdmin extends Component {
   constructor(props) {
@@ -24,7 +24,14 @@ class CompanyAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    this.getFrontAdminsData();
+    // this.adminData = setInterval(() => 
+    this.getFrontAdminsData()
+    // , 1000)
+    ;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.adminData);
   }
 
   onChange(e) {
@@ -126,6 +133,16 @@ class CompanyAdmin extends Component {
     }
   };
 
+  handleEditClick = e => {
+    e.preventDefault();
+    console.log("testing edit!!!");
+  };
+
+  handleDeleteClick = e => {
+    e.preventDefault();
+    console.log("testing delete!!!");
+  };
+
   render() {
     // eslint-disable-next-line camelcase
     const { admin_id, fadmins } = this.state;
@@ -141,10 +158,14 @@ class CompanyAdmin extends Component {
           <td>{item.role}</td>
           <td>{item.location_code}</td>
           <td>
-            <button type="submit">Edit</button>
+            <button className="btn btn-sm btn-success" type="submit" onClick={this.handleEditClick}>
+              Edit
+            </button>
           </td>
           <td>
-            <button type="submit">Delete</button>
+            <button className="btn btn-sm btn-danger" type="submit" onClick={this.handleDeleteClick}>
+              Delete
+            </button>
           </td>
         </tr>
       );
@@ -152,17 +173,9 @@ class CompanyAdmin extends Component {
 
     return (
       <div>
-        <header className="header">
-          <a href="/landing" className="logo">
-            Beipro
-          </a>
-          <div className="header-right">
-            <a href="#about">Logout</a>
-          </div>
-        </header>
+        <Nav />
         <main>
           <div id="main-div">
-            <Dropdown />
             <div id="left">
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset disabled className="front-fieldset">

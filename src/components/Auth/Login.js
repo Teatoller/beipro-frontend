@@ -35,7 +35,8 @@ class Login extends PureComponent {
         cookie.set("token", res.data.access_token);
         history.push("/welcome");
       })
-      .catch(err => this.setState({ errors: err.response.res.data.errors }));
+      // .catch(err => this.setState({ errors: err.response.res.data.errors }));
+      .catch(err => console.log("login",err));
   };
 
   onChange(e) {
