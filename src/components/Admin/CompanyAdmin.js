@@ -140,8 +140,12 @@ class CompanyAdmin extends Component {
           <td>{item.email}</td>
           <td>{item.role}</td>
           <td>{item.location_code}</td>
-          <td type="submit">Edit</td>
-          <td type="submit">Delete</td>
+          <td>
+            <button type="submit">Edit</button>
+          </td>
+          <td>
+            <button type="submit">Delete</button>
+          </td>
         </tr>
       );
     });
@@ -283,7 +287,7 @@ class CompanyAdmin extends Component {
                     <th>Email</th>
                     <th>Role</th>
                     <th>Location</th>
-                    <th>Edit</th>
+                    <th>Action</th>
                     <th>Remove</th>
                   </tr>
                 </thead>
