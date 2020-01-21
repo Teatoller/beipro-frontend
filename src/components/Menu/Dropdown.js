@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "../../axios";
 import Can from "../Can";
 import "../css/styles.css";
-import Logout from "../Auth/Logout";
 
 class Dropdown extends React.Component {
   constructor() {

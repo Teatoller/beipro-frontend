@@ -9,6 +9,7 @@ import FrontAdmin from "./components/Admin/FrontAdmin"
 import Depots from "./components/Landing/Depots"
 import Profile from "./components/Auth/Profile";
 import CompanyAdmin from "./components/Admin/CompanyAdmin";
+import CompanyAdminEdit from "./components/Admin/CompanyAdminEdit";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/reset" component={Reset} />
             <Route path="/welcome" component={Welcome} />
             <Route exact path="/admin" component={CompanyAdmin} />
+            <Route exact path="/adminedit" component={CompanyAdminEdit} />
             <Route exact path="/fadmin" component={FrontAdmin} />
             <Route exact path="/depots" component={Depots} />
           </Switch>
