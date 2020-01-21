@@ -8,9 +8,9 @@ export const setLogin = user => {
 };
 
 
-export const setLogout = (LLL) => {
+export const setLogout = () => {
   return {
     type: AuthActionTypes.SET_LOGOUT,
-    payload: LLL
+    payload: {}
   };
 };
