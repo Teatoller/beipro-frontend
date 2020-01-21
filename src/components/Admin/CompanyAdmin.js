@@ -18,20 +18,18 @@ class CompanyAdmin extends Component {
       location_code: "",
       fadmins: []
     };
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
     this.getOfficeData();
-    // this.adminData = setInterval(() => 
-    this.getFrontAdminsData()
-    // , 1000)
-    ;
+    this.adminData = setTimeout(() => this.getFrontAdminsData(), 300);
   }
 
   componentWillUnmount() {
-    clearInterval(this.adminData);
+    clearTimeout(this.adminData);
   }
 
   onChange(e) {
@@ -62,8 +60,10 @@ class CompanyAdmin extends Component {
       location_code
     };
 
+
     axios.post(`/companyadmins`, data).then(
-      response => {},
+      response => {
+      },
       error => {
         console.log(error);
       }
@@ -134,13 +134,37 @@ class CompanyAdmin extends Component {
   };
 
   handleEditClick = e => {
+    const { history } = this.props;
+
     e.preventDefault();
-    console.log("testing edit!!!");
+    const attribute = e.currentTarget;
+    const fadminid = attribute.getAttribute("fadminid");
+    localStorage.setItem("fadminid", fadminid);
+
+    history.push("/adminedit");
   };
 
+  // Select front admin record to delete
+
   handleDeleteClick = e => {
+    const { history } = this.props;
     e.preventDefault();
-    console.log("testing delete!!!");
+    const attribute = e.currentTarget;
+    const fadminid = attribute.getAttribute("fadminid");
+    localStorage.setItem("fadminid", fadminid);
+
+    // Delete selected front admin record
+
+    axios.delete(`/companyadmins/${fadminid}`, {}).then(
+      response => {
+        history.push("/admin");
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    
+
   };
 
   render() {
@@ -153,17 +177,29 @@ class CompanyAdmin extends Component {
           <td>{index + 1}</td>
           <td>{item.front_office_id}</td>
           <td>{item.firstname}</td>
+          {/* <td>{item.lastname}</td> */}
           <td>{item.staff_id}</td>
           <td>{item.email}</td>
           <td>{item.role}</td>
+          {/* <td>{item.id}</td> */}
           <td>{item.location_code}</td>
           <td>
-            <button className="btn btn-sm btn-success" type="submit" onClick={this.handleEditClick}>
+            <button
+              className="btn btn-sm btn-success"
+              type="button"
+              fadminid={item.id}
+              onClick={this.handleEditClick}
+            >
               Edit
             </button>
           </td>
           <td>
-            <button className="btn btn-sm btn-danger" type="submit" onClick={this.handleDeleteClick}>
+            <button
+              className="btn btn-sm btn-danger"
+              type="button"
+              fadminid={item.id}
+              onClick={this.handleDeleteClick}
+            >
               Delete
             </button>
           </td>
@@ -271,7 +307,7 @@ class CompanyAdmin extends Component {
                   </div>
                   <div>
                     <label htmlFor="location_code">
-                      Location Code:
+                      Location:
                       <input
                         type="text"
                         name="location_code"
@@ -296,6 +332,7 @@ class CompanyAdmin extends Component {
                     <th>#</th>
                     <th>Front-office-id</th>
                     <th>Firstname</th>
+                    {/* <th>Lastname</th> */}
                     <th>Staff_id</th>
                     <th>Email</th>
                     <th>Role</th>

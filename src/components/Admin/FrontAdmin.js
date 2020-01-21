@@ -21,14 +21,11 @@ class FrontAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    // this.priceData = setInterval(() => 
-    this.getCurrentPriceData()
-    // , 1000)
-    ;
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 300);
   }
 
   componentWillUnmount() {
-    clearInterval(this.priceData);
+    clearTimeout(this.priceData);
   }
 
   onChange(e) {
