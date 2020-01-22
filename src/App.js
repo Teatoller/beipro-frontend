@@ -10,6 +10,7 @@ import Depots from "./components/Landing/Depots"
 import Profile from "./components/Auth/Profile";
 import CompanyAdmin from "./components/Admin/CompanyAdmin";
 import CompanyAdminEdit from "./components/Admin/CompanyAdminEdit";
+import FrontAdminEdit from "./components/Admin/FrontAdminEdit";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/admin" component={CompanyAdmin} />
             <Route exact path="/adminedit" component={CompanyAdminEdit} />
             <Route exact path="/fadmin" component={FrontAdmin} />
+            <Route exact path="/fadminedit" component={FrontAdminEdit} />
             <Route exact path="/depots" component={Depots} />
           </Switch>
         </div>
