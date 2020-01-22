@@ -13,7 +13,8 @@ class FrontAdmin extends Component {
       kerosene: "",
       fo: "",
       ido: "",
-      lpg: ""
+      lpg: "",
+      latestprices: []
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -120,6 +121,7 @@ class FrontAdmin extends Component {
         const priceObj = latestprices[0];
 
         this.setState({
+          latestprices,
           diesel: priceObj.diesel,
           petrol: priceObj.petrol,
           kerosene: priceObj.kerosene,
@@ -133,9 +135,78 @@ class FrontAdmin extends Component {
     }
   };
 
+  // Select current price record to edit
+
+  handleEditClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+    const attribute = e.currentTarget;
+    const priceid = attribute.getAttribute("priceid");
+    localStorage.setItem("priceid", priceid);
+
+    history.push("/fadminedit");
+  };
+
+  // Select current price record to delete
+
+  handleDeleteClick = e => {
+    const { history } = this.props;
+    e.preventDefault();
+    const attribute = e.currentTarget;
+    const priceid = attribute.getAttribute("priceid");
+    localStorage.setItem("priceid", priceid);
+
+    // Delete selected current price record
+
+    axios.delete(`/currentprices/${priceid}`, {}).then(
+      response => {
+        history.push("/fadmin");
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  };
+
   render() {
     // eslint-disable-next-line camelcase
-    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg } = this.state;
+    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg, latestprices } = this.state;
+
+    const currentPrice = latestprices.map((item, index) => {
+      return (
+        <tr key={item.index}>
+          <td>{index + 1}</td>
+          {/* <td>{item.front_office_id}</td> */}
+          <td>{item.diesel}</td>
+          <td>{item.petrol}</td>
+          <td>{item.kerosene}</td>
+          <td>{item.ido}</td>
+          <td>{item.fo}</td>
+          <td>{item.lpg}</td>
+          <td>
+            <button
+              className="btn btn-sm btn-success"
+              type="button"
+              priceid={item.id}
+              onClick={this.handleEditClick}
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              className="btn btn-sm btn-danger"
+              type="button"
+              priceid={item.id}
+              onClick={this.handleDeleteClick}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    });
 
     return (
       <div>
@@ -238,13 +309,29 @@ class FrontAdmin extends Component {
                   </div>
                   <div>
                     <input type="submit" value="Add" />
-                    {/* <input type="submit" value="Edit" /> */}
                   </div>
                 </fieldset>
               </form>
             </div>
             <div id="right">
-              <h3>---</h3>
+              <h6>Current Price</h6>
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    {/* <th>Front-office-id</th> */}
+                    <th>Diesel</th>
+                    <th>Petrol</th>
+                    <th>Kerosene</th>
+                    <th>Ido</th>
+                    <th>Fuel Oil</th>
+                    <th>Lpg</th>
+                    <th>Action</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>{currentPrice}</tbody>
+              </table>
             </div>
           </div>
         </main>
