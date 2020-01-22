@@ -11,4 +11,15 @@ export const register = newUser => {
     });
 };
 
-
+export const reset = email => {
+  return axios
+    .post("/create", {email}, {
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => {
+      console.log("create...", res)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

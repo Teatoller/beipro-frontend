@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import Reset from "./components/Auth/Reset";
+import ResetRequest from "./components/Auth/ResetRequest";
 import Welcome from "./components/Landing/Welcome";
 import FrontAdmin from "./components/Admin/FrontAdmin"
 import Depots from "./components/Landing/Depots"
@@ -11,6 +11,7 @@ import Profile from "./components/Auth/Profile";
 import CompanyAdmin from "./components/Admin/CompanyAdmin";
 import CompanyAdminEdit from "./components/Admin/CompanyAdminEdit";
 import FrontAdminEdit from "./components/Admin/FrontAdminEdit";
+import Reset from "./components/Auth/Reset";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/resetrequest" component={ResetRequest} />
             <Route exact path="/reset" component={Reset} />
             <Route path="/welcome" component={Welcome} />
             <Route exact path="/admin" component={CompanyAdmin} />
