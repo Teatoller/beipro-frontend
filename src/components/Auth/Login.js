@@ -30,13 +30,12 @@ class Login extends PureComponent {
     axios
       .post(`/login`, data)
       .then(res => {
-        localStorage.setItem('token', res.data.access_token);
+        localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("email", res.data.user.email);
         cookie.set("token", res.data.access_token);
         history.push("/welcome");
       })
-      // .catch(err => this.setState({ errors: err.response.res.data.errors }));
-      .catch(err => console.log("login",err));
+      .catch(err => console.log("login", err));
   };
 
   onChange(e) {
@@ -64,14 +63,16 @@ class Login extends PureComponent {
                 <form>
                   <div className="form-group">
                     <label html-for="email">Email address</label>
-                    <input type="email"
+                    <input
+                      type="email"
                       name="email"
                       value={this.email}
                       onChange={this.onChange}
                       className="form-control"
                       id="email"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email" />
+                      placeholder="Enter email"
+                    />
                   </div>
                   <div className="form-group mb-3">
                     <label html-for="exampleInputPassword1">Password</label>
@@ -86,14 +87,17 @@ class Login extends PureComponent {
                     />
                   </div>
                   <div className="text-right mb-3">
-                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Login</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
+                      Login
+                    </button>
                   </div>
                 </form>
                 <div className="row">
                   <div className="col-6 text-left">
                     <p>
                       Forgot
-                  <NavLink to="/reset"> Password</NavLink> ?
+                      <NavLink to="/resetrequest"> Password</NavLink> 
+                      ?
                     </p>
                   </div>
                   <div className="col-6 text-right">
@@ -120,7 +124,7 @@ class Login extends PureComponent {
   }
 }
 Login.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 const mapDispatchToProps = dispatch =>
