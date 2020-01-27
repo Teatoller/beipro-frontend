@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import cookie from "js-cookie";
 import axios from "../../axios";
 import { setLogout } from "../../redux/actionCreators/authActions";
 
@@ -27,7 +26,6 @@ class Logout extends Component {
       .then(res => {
         const data = res.data;
         localStorage.clear();
-        cookie.remove("token", res.data.access_token);
         this.setState({ navigate: true });
       })
       .catch(err => console.log("this...",err));

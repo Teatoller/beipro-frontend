@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { register } from "../../services/userInstance";
+import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import "../css/styles.css";
 
@@ -37,9 +37,17 @@ class Register extends PureComponent {
       password,
       password_confirmation
     };
-    register(newUser).then(response => {
-      if (response) history.push(`/`);
-    });
+
+    axios
+      .post("/register", newUser, {
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(response => {
+        if (response) history.push(`/`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -59,34 +67,40 @@ class Register extends PureComponent {
               <form>
                 <div className="form-group">
                   <label html-for="firstname">First Name</label>
-                  <input type="text"
+                  <input
+                    type="text"
                     name="firstname"
                     value={this.firstname}
                     onChange={this.onChange}
                     className="form-control"
                     id="firstname"
-                    placeholder="Enter firstname" />
+                    placeholder="Enter firstname"
+                  />
                 </div>
                 <div className="form-group">
                   <label html-for="firstname">First Name</label>
-                  <input type="text"
+                  <input
+                    type="text"
                     name="lastname"
                     value={this.lastname}
                     onChange={this.onChange}
                     className="form-control"
                     id="firstname"
-                    placeholder="Enter lastname" />
+                    placeholder="Enter lastname"
+                  />
                 </div>
                 <div className="form-group">
                   <label html-for="email">Email address</label>
-                  <input type="email"
+                  <input
+                    type="email"
                     name="email"
                     value={this.email}
                     onChange={this.onChange}
                     className="form-control"
                     id="email"
                     aria-describedby="emailHelp"
-                    placeholder="Enter email" />
+                    placeholder="Enter email"
+                  />
                 </div>
                 <div className="form-group">
                   <label html-for="password">Password</label>
@@ -113,7 +127,9 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Register</button>
+                  <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
+                    Register
+                  </button>
                 </div>
               </form>
               <div className="row">
