@@ -3,7 +3,6 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import cookie from "js-cookie";
 import axios from "../../axios";
 import { setLogin } from "../../redux/actionCreators/authActions";
 import banner from "../../images/banner.jpg";
@@ -15,7 +14,6 @@ class Login extends PureComponent {
     this.state = {
       email: "",
       password: "",
-      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -31,11 +29,12 @@ class Login extends PureComponent {
       .post(`/login`, data)
       .then(res => {
         localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("email", res.data.user.email);
-        cookie.set("token", res.data.access_token);
-        history.push("/welcome");
+        localStorage.setItem("email", res.config.data.email);
+        if (res) {
+          history.push("/welcome");
+        }
       })
-      .catch(err => console.log("login", err));
+      .catch(err => console.log(err));
   };
 
   onChange(e) {
@@ -96,8 +95,7 @@ class Login extends PureComponent {
                   <div className="col-6 text-left">
                     <p>
                       Forgot
-                      <NavLink to="/resetrequest"> Password</NavLink> 
-                      ?
+                      <NavLink to="/resetrequest"> Password</NavLink>?
                     </p>
                   </div>
                   <div className="col-6 text-right">
