@@ -43,14 +43,14 @@ class FrontAdminEdit extends PureComponent {
     const priceid = localStorage.getItem("priceid");
     const { history } = this.props;
 
-    axios.patch(`/currentprices/${priceid}`, data).then(
-      response => {
+    axios
+      .patch(`/currentprices/${priceid}`, data)
+      .then(response => {
         history.push("/fadmin");
-      },
-      error => {
+      })
+      .catch(error => {
         console.log(error);
-      }
-    );
+      });
   };
 
   /**

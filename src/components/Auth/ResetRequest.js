@@ -10,7 +10,9 @@ class ResetRequest extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      email: ""
+      email: "",
+      message: {},
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -30,14 +32,26 @@ class ResetRequest extends PureComponent {
     axios
       .post("/create", { email })
       .then(res => {
+        console.log("reset alerts!!!", res);
+        const message = res.data;
+        console.log("reset alert message...", message);
+        this.setState({
+          message
+        });
+
         if (res) history.push(`/reset`);
       })
       .catch(err => {
         console.log(err);
+        this.setState({ errors: err.res.request.response });
+        const { errors } = this.state;
+        console.log("errors..>>>", errors);
       });
   }
 
   render() {
+    const { message } = this.state;
+    console.log("resetrequest msg...", message);
     return (
       <div>
         <header className="header">

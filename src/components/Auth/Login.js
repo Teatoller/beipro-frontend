@@ -14,6 +14,7 @@ class Login extends PureComponent {
     this.state = {
       email: "",
       password: "",
+      message: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -28,13 +29,20 @@ class Login extends PureComponent {
     axios
       .post(`/login`, data)
       .then(res => {
+        console.log("this...alerts!!!", res);
+        const msg = res.data;
+        this.setState({
+          message: msg.message
+        });
         localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("email", res.config.data.email);
+        localStorage.setItem("email", res.data.email);
         if (res) {
           history.push("/welcome");
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   onChange(e) {
@@ -42,6 +50,8 @@ class Login extends PureComponent {
   }
 
   render() {
+    const { message } = this.state;
+    console.log("login msg...", message);
     return (
       <div>
         <header className="header">

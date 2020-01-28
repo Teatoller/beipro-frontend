@@ -14,7 +14,9 @@ class FrontAdmin extends Component {
       fo: "",
       ido: "",
       lpg: "",
-      latestprices: []
+      latestprices: [],
+      message: {},
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -39,12 +41,22 @@ class FrontAdmin extends Component {
     e.preventDefault();
     const data = { front_office_id, diesel, petrol, kerosene, fo, ido, lpg };
 
-    axios.post(`/currentprices`, data).then(
-      response => {},
-      error => {
+    axios
+      .post(`/currentprices`, data)
+      .then(response => {
+        console.log("price alerts!!!", response);
+        const message = response.data;
+        console.log("price alert message...", message);
+        this.setState({
+          message
+        });
+      })
+      .catch(error => {
         console.log(error);
-      }
-    );
+        this.setState({ errors: error.response.request.response });
+        const { errors } = this.state;
+        console.log("errors..>>>", errors);
+      });
   };
 
   /**
@@ -159,19 +171,22 @@ class FrontAdmin extends Component {
 
     // Delete selected current price record
 
-    axios.delete(`/currentprices/${priceid}`, {}).then(
-      response => {
+    axios
+      .delete(`/currentprices/${priceid}`, {})
+      .then(response => {
         history.push("/fadmin");
-      },
-      error => {
+      })
+      .catch(error => {
         console.log(error);
-      }
-    );
+      });
   };
 
   render() {
     // eslint-disable-next-line camelcase
     const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg, latestprices } = this.state;
+
+    const { message } = this.state;
+    console.log("msg...", message);
 
     const currentPrice = latestprices.map((item, index) => {
       return (
