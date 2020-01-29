@@ -19,19 +19,19 @@ class Profile extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.post(`/profile`, {}, config).then(
-      res => {
+    axios
+      .post(`/profile`, {}, config)
+      .then(res => {
         const data = res.data;
         this.setState({
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email
         });
-      },
-      error => {
+      })
+      .catch(error => {
         console.log(error);
-      }
-    );
+      });
   }
 
   render() {

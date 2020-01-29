@@ -13,7 +13,9 @@ class Register extends PureComponent {
       lastname: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      message: {},
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -43,14 +45,42 @@ class Register extends PureComponent {
         headers: { "Content-Type": "application/json" }
       })
       .then(response => {
-        if (response) history.push(`/`);
+        // console.log("alerts!!!", response);
+        const message = response.data;
+        // console.log("alert essage...", message);
+        this.setState({
+          message
+        });
+        if (response) {
+          setTimeout(() => history.push(`/`), 10);
+          // history.push(`/`);
+        }
       })
       .catch(err => {
-        console.log(err);
+        this.setState({ errors: err.response.request.response });
+        const { errors } = this.state;
+        console.log("errors..>>>", errors);
+        const data = Object.getOwnPropertyDescriptors(errors);
+
+        console.log("this...", data);
+
+        // console.log("this...",data.message.value);
+
+        // const descriptor1 = Object.getOwnPropertyDescriptor(data.message.value, "firstname");
+        // const descriptor2 = Object.getOwnPropertyDescriptor(data.message.value, "lastname");
+        // const descriptor3 = Object.getOwnPropertyDescriptor(data.message.value, "email");
+        // const descriptor4 = Object.getOwnPropertyDescriptor(data.message.value, "password");
+
+        // console.log(descriptor1.value[0]);
+        // console.log(descriptor2.value[0]);
+        // console.log(descriptor3.value[0]);
+        // console.log(descriptor4.value[0]);
       });
   }
 
   render() {
+    const { message } = this.state;
+    console.log("register msg...", message);
     return (
       <div>
         <header className="header">
@@ -64,6 +94,9 @@ class Register extends PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-7">
+              {/* <div className="alert alert-success" role="alert">
+                {this.message}
+              </div> */}
               <form>
                 <div className="form-group">
                   <label html-for="firstname">First Name</label>
@@ -78,14 +111,14 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="firstname">First Name</label>
+                  <label html-for="lastname">First Name</label>
                   <input
                     type="text"
                     name="lastname"
                     value={this.lastname}
                     onChange={this.onChange}
                     className="form-control"
-                    id="firstname"
+                    id="lastname"
                     placeholder="Enter lastname"
                   />
                 </div>
@@ -115,7 +148,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label html-for="passwordConfirm">confirm password</label>
+                  <label html-for="passwordConfirm">Confirm password</label>
                   <input
                     type="password"
                     name="password_confirmation"

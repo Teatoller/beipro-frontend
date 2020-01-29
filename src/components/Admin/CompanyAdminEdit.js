@@ -67,14 +67,14 @@ class CompanyAdminEdit extends PureComponent {
     const fadminid = localStorage.getItem("fadminid");
     const { history } = this.props;
 
-    axios.patch(`/companyadmins/${fadminid}`, data).then(
-      response => {
-        history.push("/admin")
-      },
-      error => {
+    axios
+      .patch(`/companyadmins/${fadminid}`, data)
+      .then(response => {
+        history.push("/admin");
+      })
+      .catch(error => {
         console.log(error);
-      }
-    );
+      });
   };
 
   /**
@@ -305,10 +305,7 @@ class CompanyAdminEdit extends PureComponent {
                     </label>
                   </div>
                   <div>
-                    <input 
-                    type="submit" 
-                    value="Edit" 
-                    />
+                    <input type="submit" value="Edit" />
                   </div>
                 </fieldset>
               </form>

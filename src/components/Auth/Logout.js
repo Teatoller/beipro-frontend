@@ -6,12 +6,13 @@ import axios from "../../axios";
 import { setLogout } from "../../redux/actionCreators/authActions";
 
 class Logout extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-        navigate: false
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      navigate: false,
+      errors: {}
+    };
+  }
 
   handleLogout = e => {
     e.preventDefault();
@@ -24,19 +25,31 @@ class Logout extends Component {
     axios
       .get(`/logout`, config)
       .then(res => {
-        const data = res.data;
+        // console.log("alerts!!!", res);
+        const message = res.data;
+        // console.log("alert message...", message);
         localStorage.clear();
-        this.setState({ navigate: true });
+        this.setState({ 
+          navigate: true,
+          message 
+        });
       })
-      .catch(err => console.log("this...",err));
+      .catch(err => {
+        console.log("this...", err);
+        this.setState({errors: err.res.request.response});
+        
+      });
   };
 
   render() {
-      const {navigate} = this.state;
+    const { navigate, message, errors } = this.state;
 
-      if(navigate){
-          return <Redirect to="/" />
-      }
+    console.log("logout msg...", message);
+    console.log("logout errors..>>>", errors);
+
+    if (navigate) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <NavLink to="/" className="active" onClick={this.handleLogout}>

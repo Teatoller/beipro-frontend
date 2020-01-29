@@ -12,7 +12,9 @@ class Reset extends PureComponent {
       email: "",
       password: "",
       password_confirmation: "",
-      token: ""
+      token: "",
+      message: {},
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,14 +47,25 @@ class Reset extends PureComponent {
     axios
       .post("/reset", user, config)
       .then(res => {
+        console.log("reset alerts!!!", res);
+        const message = res.data;
+        console.log("reset alert message...", message);
+        this.setState({
+          message
+        });
         if (res) history.push(`/`);
       })
       .catch(err => {
         console.log(err);
+        this.setState({ errors: err.res.request.response });
+        const { errors } = this.state;
+        console.log("errors..>>>", errors);
       });
   }
 
   render() {
+    const { message } = this.state;
+    console.log("reset msg...", message);
     return (
       <div>
         <header className="header">
@@ -114,12 +127,14 @@ class Reset extends PureComponent {
                       id="token"
                       placeholder="Enter token"
                     />
-                    <span>example fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</span>
+                    <span>
+                      example fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV
+                    </span>
                   </div>
                 </div>
                 <div className="text-right mb-3">
                   <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
-                  Reset Password
+                    Reset Password
                   </button>
                 </div>
               </form>

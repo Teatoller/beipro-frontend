@@ -16,7 +16,9 @@ class CompanyAdmin extends Component {
       email: "",
       role: "",
       location_code: "",
-      fadmins: []
+      fadmins: [],
+      message: {},
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
@@ -60,14 +62,28 @@ class CompanyAdmin extends Component {
       location_code
     };
 
+    const { history } = this.props;
 
-    axios.post(`/companyadmins`, data).then(
-      response => {
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    axios
+      .post(`/companyadmins`, data)
+      .then(response => {
+        console.log(".....add frntadmin", response);
+        const message = response.data;
+        console.log("alert message...", message);
+        this.setState({
+          message
+        });
+
+        if (response) {
+          setTimeout(() => history.push(`/admin`), 50);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({ errors: err.response.request.response });
+        const { errors } = this.state;
+        console.log("fadmin errors..>>>", errors);
+      });
   };
 
   /**
@@ -163,8 +179,6 @@ class CompanyAdmin extends Component {
         console.log(error);
       }
     );
-    
-
   };
 
   render() {
@@ -174,14 +188,13 @@ class CompanyAdmin extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.index}>
-          <td>{index + 1}</td>
+          <td scope="row">{index + 1}</td>
           <td>{item.front_office_id}</td>
           <td>{item.firstname}</td>
-          {/* <td>{item.lastname}</td> */}
+          <td>{item.lastname}</td>
           <td>{item.staff_id}</td>
           <td>{item.email}</td>
           <td>{item.role}</td>
-          {/* <td>{item.id}</td> */}
           <td>{item.location_code}</td>
           <td>
             <button
@@ -319,30 +332,31 @@ class CompanyAdmin extends Component {
                   </div>
                   <div>
                     <input type="submit" value="Add" />
-                    {/* <input type="submit" value="Edit" /> */}
                   </div>
                 </fieldset>
               </form>
             </div>
             <div id="right">
-              <h3>Staff details</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Front-office-id</th>
-                    <th>Firstname</th>
-                    {/* <th>Lastname</th> */}
-                    <th>Staff_id</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Location</th>
-                    <th>Action</th>
-                    <th>Remove</th>
-                  </tr>
-                </thead>
-                <tbody>{companyStaff}</tbody>
-              </table>
+              <h6>Staff details</h6>
+              <div className="table-responsive">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Office-id</th>
+                      <th scope="col">Firstname</th>
+                      <th scope="col">Lastname</th>
+                      <th scope="col">Staff_id</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Action</th>
+                      <th scope="col">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>{companyStaff}</tbody>
+                </table>
+              </div>
             </div>
           </div>
         </main>
