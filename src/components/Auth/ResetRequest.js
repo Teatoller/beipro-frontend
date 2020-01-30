@@ -12,7 +12,6 @@ class ResetRequest extends PureComponent {
     this.state = {
       email: "",
       message: {},
-      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -43,9 +42,6 @@ class ResetRequest extends PureComponent {
       })
       .catch(err => {
         console.log(err);
-        this.setState({ errors: err.res.request.response });
-        const { errors } = this.state;
-        console.log("errors..>>>", errors);
       });
   }
 
