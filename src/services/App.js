@@ -1,6 +1,6 @@
-import React, { Component} from 'react';
-import PropTypes from 'prop-types'
-import Header from '../common/Header';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Header from "../common/Header";
 
 // The parent component renders the Header component and component(s) in the
 // route the user navigates to.

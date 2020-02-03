@@ -14,8 +14,8 @@ class Register extends PureComponent {
       email: "",
       password: "",
       password_confirmation: "",
-      message: {},
-      errors: {}
+      alertMessage: "",
+      errors: ''
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,32 +45,25 @@ class Register extends PureComponent {
         headers: { "Content-Type": "application/json" }
       })
       .then(response => {
-        // console.log("alerts!!!", response);
         const message = response.data;
-        // console.log("alert essage...", message);
         this.setState({
-          message
+          alertMessage: message
         });
         if (response) {
-          setTimeout(() => history.push(`/`), 10);
-          // history.push(`/`);
+          setTimeout(() => history.push(`/`), 50);
         }
       })
       .catch(err => {
         this.setState({ errors: err.response.request.response });
         const { errors } = this.state;
         console.log("errors..>>>", errors);
-        const data = Object.getOwnPropertyDescriptors(errors);
-
-        console.log("this...", data);
-
+        // const data = Object.getOwnPropertyDescriptors(errors);
+        // console.log("this...", data);
         // console.log("this...",data.message.value);
-
         // const descriptor1 = Object.getOwnPropertyDescriptor(data.message.value, "firstname");
         // const descriptor2 = Object.getOwnPropertyDescriptor(data.message.value, "lastname");
         // const descriptor3 = Object.getOwnPropertyDescriptor(data.message.value, "email");
         // const descriptor4 = Object.getOwnPropertyDescriptor(data.message.value, "password");
-
         // console.log(descriptor1.value[0]);
         // console.log(descriptor2.value[0]);
         // console.log(descriptor3.value[0]);
@@ -79,8 +72,21 @@ class Register extends PureComponent {
   }
 
   render() {
-    const { message } = this.state;
-    console.log("register msg...", message);
+    const { alertMessage, errors } = this.state;
+
+    const alertStyle = {
+      fontStyle: "italic",
+      color: "green"
+    };
+
+    console.log("register errors..!!>>>", errors);
+
+    // const data = Object.getOwnPropertyDescriptors(errors);
+    // eslint-disable-next-line dot-notation
+    
+    console.log("register errors..2>>>", errors[0]);
+
+
     return (
       <div>
         <header className="header">
@@ -94,9 +100,11 @@ class Register extends PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-7">
-              {/* <div className="alert alert-success" role="alert">
-                {this.message}
-              </div> */}
+
+              <span style={alertMessage ? alertStyle : null}>
+                {alertMessage ? alertMessage.message : null}
+              </span>
+
               <form>
                 <div className="form-group">
                   <label html-for="firstname">First Name</label>

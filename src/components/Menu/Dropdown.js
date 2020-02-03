@@ -143,10 +143,6 @@ class Dropdown extends React.Component {
             <li>
               <a href="/profile">Profile</a>
             </li>
-            {/* <li> */}
-            {/* <NavLink to="/">Logout</NavLink> */}
-            {/* <Logout /> */}
-            {/* </li> */}
           </ul>
         ) : null}
       </div>

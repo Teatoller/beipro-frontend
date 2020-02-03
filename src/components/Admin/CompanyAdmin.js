@@ -188,7 +188,7 @@ class CompanyAdmin extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.index}>
-          <td scope="row">{index + 1}</td>
+          <td>{index + 1}</td>
           <td>{item.front_office_id}</td>
           <td>{item.firstname}</td>
           <td>{item.lastname}</td>
@@ -226,112 +226,135 @@ class CompanyAdmin extends Component {
         <main>
           <div id="main-div">
             <div id="left">
+              <h6>Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>
-                <fieldset disabled className="front-fieldset">
-                  <legend>Company Admin</legend>
-                  <div className="form-ex ample">
-                    <label htmlFor="admin_id">
-                      Admin Id:
-                      <input
-                        type="decimal"
-                        name="admin_id"
-                        id="admin_id"
-                        style={{ color: "red" }}
-                        // eslint-disable-next-line camelcase
-                        value={admin_id}
-                      />
-                    </label>
-                  </div>
-                </fieldset>
-
                 <fieldset className="front-fieldset">
-                  <legend>Front Admin Details</legend>
-                  <div>
-                    <label htmlFor="front_office_id">
+                  <fieldset disabled className="admin-fieldset">
+                    <div className="form-group row">
+                      <label
+                        htmlFor="adminId"
+                        className="col-sm-2 col-form-label col-form-label-sm"
+                      >
+                        Admin:
+                      </label>
+                      <div className="col-sm-10">
+                        <input
+                          type="decimal"
+                          name="admin_id"
+                          id="adminId"
+                          className="form-control"
+                          placeholder="Disabled input"
+                          // eslint-disable-next-line camelcase
+                          value={admin_id}
+                        />
+                      </div>
+                    </div>
+                  </fieldset>
+                  <h6>Front Admin Details</h6>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="frontOfficeId"
+                      className="col-sm-2 col-form-label col-form-label-sm"
+                    >
                       Front Office Id:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="front_office_id"
-                        id="front_office_id"
+                        className="form-control form-control-sm"
+                        id="frontOfficeId"
                         placeholder="Enter Front-office-id"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="firstname">
+                    </div>
+
+                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
                       Firstname:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="text"
                         name="firstname"
+                        className="form-control form-control-sm"
                         id="firstname"
                         placeholder="Enter Front-admin Firstname"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="lastname">
+                    </div>
+
+                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
                       Lastname:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="text"
                         name="lastname"
+                        className="form-control form-control-sm"
                         id="lastname"
                         placeholder="Enter Front-admin Lastname"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="email">
+                    </div>
+
+                    <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
                       Email:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="email"
                         name="email"
+                        className="form-control form-control-sm"
                         id="email"
                         placeholder="Enter Front-admin Email"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="role">
+                    </div>
+
+                    <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
                       Role:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="text"
                         name="role"
+                        className="form-control form-control-sm"
                         id="role"
-                        placeholder="Enter Role as staff"
+                        placeholder="Enter role as staff"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="staff_id">
+                    </div>
+
+                    <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
                       Staff Id:
+                    </label>
+                    <div className="col-sm-10">
                       <input
-                        type="decimal"
+                        type="text"
                         name="staff_id"
-                        id="staff_id"
-                        placeholder="Enter Front-admin Staff-id"
+                        className="form-control form-control-sm"
+                        id="staffId"
+                        placeholder="Enter Front-admin Staff Id"
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor="location_code">
+                    </div>
+
+                    <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
                       Location:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="text"
                         name="location_code"
-                        id="location_code"
-                        placeholder="Enter Front-office location-code"
+                        className="form-control form-control-sm"
+                        id="location"
+                        placeholder="Enter Front-office location"
                         onChange={this.onChange}
                       />
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <input type="submit" value="Add" />
+                    <input className="btn btn-sm btn-success" type="submit" value="Add" />
                   </div>
                 </fieldset>
               </form>
