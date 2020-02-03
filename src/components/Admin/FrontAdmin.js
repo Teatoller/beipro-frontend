@@ -24,7 +24,7 @@ class FrontAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 300);
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 100);
   }
 
   componentWillUnmount() {
@@ -132,6 +132,8 @@ class FrontAdmin extends Component {
         // Object containing detail of front office latest current price
         const priceObj = latestprices[0];
 
+        console.log("this...", priceObj);
+
         this.setState({
           latestprices,
           diesel: priceObj.diesel,
@@ -229,42 +231,50 @@ class FrontAdmin extends Component {
         <main>
           <div id="main-div">
             <div id="left">
+              <h6>Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>
-                <fieldset disabled className="front-fieldset">
-                  <legend>Front Office Admin</legend>
-                  <div className="form-ex ample">
-                    <label htmlFor="front_office_id">
-                      Office Id:
-                      <input
-                        type="decimal"
-                        name="front_office_id"
-                        id="front_office_id"
-                        style={{ color: "red" }}
-                        // eslint-disable-next-line camelcase
-                        value={front_office_id}
-                      />
-                    </label>
-                  </div>
-                </fieldset>
-
                 <fieldset className="front-fieldset">
-                  <legend>Product Price Input</legend>
-                  <div className="form-example">
-                    <label htmlFor="diesel">
+                  <fieldset disabled className="admin-fieldset">
+                    <div className="form-group row">
+                      <label
+                        htmlFor="frontOfficeId"
+                        className="col-sm-2 col-form-label col-form-label-sm"
+                      >
+                        Office Id:
+                      </label>
+                      <div className="col-sm-10">
+                        <input
+                          type="decimal"
+                          name="front_office_id"
+                          id="frontOfficeId"
+                          className="form-control"
+                          placeholder="Disabled input"
+                          // eslint-disable-next-line camelcase
+                          value={front_office_id}
+                        />
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <h6>Price Input</h6>
+                  <div className="form-group row">
+                    <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
                       Diesel:
+                    </label>
+                    <div className="col-sm-10">
                       <input
-                        style={{ color: "red" }}
                         type="decimal"
                         name="diesel"
                         id="diesel"
                         placeholder={diesel}
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div className="form-example">
-                    <label htmlFor="petrol">
+                    </div>
+
+                    <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
                       Petrol:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="petrol"
@@ -272,11 +282,12 @@ class FrontAdmin extends Component {
                         placeholder={petrol}
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div className="form-example">
-                    <label htmlFor="kerosene">
+                    </div>
+
+                    <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
                       Kerosene:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="kerosene"
@@ -284,11 +295,12 @@ class FrontAdmin extends Component {
                         placeholder={kerosene}
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div className="form-example">
-                    <label htmlFor="ido">
+                    </div>
+
+                    <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
                       Ido:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="ido"
@@ -296,23 +308,25 @@ class FrontAdmin extends Component {
                         placeholder={ido}
                         onChange={this.onChange}
                       />
-                    </label>
-                  </div>
-                  <div className="form-example">
-                    <label htmlFor="fuel oil">
+                    </div>
+
+                    <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
                       Fuel Oil:
+                    </label>
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="fo"
-                        id="fuel oil"
+                        id="fuelOil"
                         placeholder={fo}
                         onChange={this.onChange}
                       />
+                    </div>
+
+                    <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
+                      Bulk Lpg:
                     </label>
-                  </div>
-                  <div className="form-example">
-                    <label htmlFor="lpg">
-                      Lpg:
+                    <div className="col-sm-10">
                       <input
                         type="decimal"
                         name="lpg"
@@ -320,33 +334,35 @@ class FrontAdmin extends Component {
                         placeholder={lpg}
                         onChange={this.onChange}
                       />
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <input type="submit" value="Add" />
+                    <input className="btn btn-sm btn-success" type="submit" value="Add" />
                   </div>
                 </fieldset>
               </form>
             </div>
             <div id="right">
               <h6>Current Price</h6>
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    {/* <th>Front-office-id</th> */}
-                    <th>Diesel</th>
-                    <th>Petrol</th>
-                    <th>Kerosene</th>
-                    <th>Ido</th>
-                    <th>Fuel Oil</th>
-                    <th>Lpg</th>
-                    <th>Action</th>
-                    <th>Remove</th>
-                  </tr>
-                </thead>
-                <tbody>{currentPrice}</tbody>
-              </table>
+              <div className="table-responsive">
+                <table className="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      {/* <th>Front-office-id</th> */}
+                      <th scope="col">Diesel</th>
+                      <th scope="col">Petrol</th>
+                      <th scope="col">Kerosene</th>
+                      <th scope="col">Ido</th>
+                      <th scope="col">Fuel Oil</th>
+                      <th scope="col">Lpg</th>
+                      <th scope="col">Action</th>
+                      <th scope="col">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>{currentPrice}</tbody>
+                </table>
+              </div>
             </div>
           </div>
         </main>
