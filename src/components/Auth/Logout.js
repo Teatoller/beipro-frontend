@@ -25,9 +25,7 @@ class Logout extends Component {
     axios
       .get(`/logout`, config)
       .then(res => {
-        // console.log("alerts!!!", res);
         const message = res.data;
-        // console.log("alert message...", message);
         localStorage.clear();
         this.setState({ 
           navigate: true,

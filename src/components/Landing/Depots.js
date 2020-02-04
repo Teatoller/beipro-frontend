@@ -51,7 +51,7 @@ class Depots extends PureComponent {
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
       return (
-        <tr key={item.index}>
+        <tr key={item.id}>
           <td>{index + 1}</td>
           <td>{item.name}</td>
           <td>{item.diesel}</td>

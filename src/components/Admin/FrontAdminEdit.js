@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import axios from "../../axios";
 import "../css/styles.css";
 import Nav from "../Landing/Nav";
@@ -46,7 +49,9 @@ class FrontAdminEdit extends PureComponent {
     axios
       .patch(`/currentprices/${priceid}`, data)
       .then(response => {
-        history.push("/fadmin");
+        if (response) {
+          history.push("/fadmin");
+        }
       })
       .catch(error => {
         console.log(error);
@@ -157,7 +162,6 @@ class FrontAdminEdit extends PureComponent {
   handleDeleteClick = e => {
     const { history } = this.props;
     e.preventDefault();
-    console.log("testing delet...");
     const attribute = e.currentTarget;
     const priceid = attribute.getAttribute("fadminid");
     localStorage.setItem("fadminid", priceid);
@@ -166,7 +170,9 @@ class FrontAdminEdit extends PureComponent {
 
     axios.delete(`/currentprices/${priceid}`, {}).then(
       response => {
-        history.push("/fadmin");
+        if (response) {
+          history.push("/fadmin");
+        }
       },
       error => {
         console.log(error);
@@ -180,7 +186,7 @@ class FrontAdminEdit extends PureComponent {
 
     const currentPrice = latestprices.map((item, index) => {
       return (
-        <tr key={item.index}>
+        <tr key={item.id}>
           <td>{index + 1}</td>
           {/* <td>{item.front_office_id}</td> */}
           <td>{item.diesel}</td>
@@ -340,4 +346,7 @@ class FrontAdminEdit extends PureComponent {
     );
   }
 }
+FrontAdminEdit.propTypes = {
+  history: PropTypes.shape().isRequired
+};
 export default FrontAdminEdit;

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
@@ -29,7 +31,6 @@ class Login extends PureComponent {
     axios
       .post(`/login`, data)
       .then(res => {
-        console.log("this...alerts!!!", res);
         const msg = res.data;
         this.setState({
           message: msg.message
@@ -104,8 +105,8 @@ class Login extends PureComponent {
                 <div className="row">
                   <div className="col-6 text-left">
                     <p>
-                      Forgot
-                      <NavLink to="/resetrequest"> Password</NavLink>?
+                      Forgot?
+                      <NavLink to="/resetrequest"> Password</NavLink>
                     </p>
                   </div>
                   <div className="col-6 text-right">
