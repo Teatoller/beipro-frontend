@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import axios from "../../axios";
 import "../css/styles.css";
 import Nav from "../Landing/Nav";
@@ -67,9 +70,7 @@ class CompanyAdmin extends Component {
     axios
       .post(`/companyadmins`, data)
       .then(response => {
-        console.log(".....add frntadmin", response);
         const message = response.data;
-        console.log("alert message...", message);
         this.setState({
           message
         });
@@ -81,8 +82,7 @@ class CompanyAdmin extends Component {
       .catch(err => {
         console.log(err);
         this.setState({ errors: err.response.request.response });
-        const { errors } = this.state;
-        console.log("fadmin errors..>>>", errors);
+        // const { errors } = this.state;
       });
   };
 
@@ -173,7 +173,9 @@ class CompanyAdmin extends Component {
 
     axios.delete(`/companyadmins/${fadminid}`, {}).then(
       response => {
-        history.push("/admin");
+        if (response) {
+          history.push("/admin");
+        }
       },
       error => {
         console.log(error);
@@ -187,7 +189,7 @@ class CompanyAdmin extends Component {
 
     const companyStaff = fadmins.map((item, index) => {
       return (
-        <tr key={item.index}>
+        <tr key={item.id}>
           <td>{index + 1}</td>
           <td>{item.front_office_id}</td>
           <td>{item.firstname}</td>
@@ -391,4 +393,7 @@ class CompanyAdmin extends Component {
     );
   }
 }
+CompanyAdmin.propTypes = {
+  history: PropTypes.shape().isRequired
+};
 export default CompanyAdmin;

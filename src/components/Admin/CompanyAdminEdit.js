@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import axios from "../../axios";
 import "../css/styles.css";
 import Nav from "../Landing/Nav";
@@ -70,7 +73,9 @@ class CompanyAdminEdit extends PureComponent {
     axios
       .patch(`/companyadmins/${fadminid}`, data)
       .then(response => {
-        history.push("/admin");
+        if (response) {
+          history.push("/admin");
+        }
       })
       .catch(error => {
         console.log(error);
@@ -181,7 +186,7 @@ class CompanyAdminEdit extends PureComponent {
 
     const companyStaff = fadmins.map((item, index) => {
       return (
-        <tr key={item.index}>
+        <tr key={item.id}>
           <td>{index + 1}</td>
           <td>{item.front_office_id}</td>
           <td>{item.firstname}</td>
@@ -363,4 +368,7 @@ class CompanyAdminEdit extends PureComponent {
     );
   }
 }
+CompanyAdminEdit.propTypes = {
+  history: PropTypes.shape().isRequired
+};
 export default CompanyAdminEdit;

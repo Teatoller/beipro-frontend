@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
