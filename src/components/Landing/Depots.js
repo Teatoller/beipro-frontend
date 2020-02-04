@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import axios from "../../axios";
 import Nav from "./Nav";
-import "../css/styles.css";
+import "../css/depot.css";
 
 class Depots extends PureComponent {
   constructor(props) {
@@ -71,7 +71,7 @@ class Depots extends PureComponent {
 
     return (
       <div>
-        <main>
+        <main className="perimeter">
           <Nav />
           <span style={loading ? null : loadingStyle}>loading...</span>
           <div className="selector">
@@ -96,17 +96,17 @@ class Depots extends PureComponent {
           </div>
 
           <div className="price-list">
-            <table>
+            <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Company</th>
-                  <th>Diesel</th>
-                  <th>Petrol</th>
-                  <th>Kerosene</th>
-                  <th>Ido</th>
-                  <th>Fuel Oil</th>
-                  <th>Lpg</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Company</th>
+                  <th scope="col">Diesel</th>
+                  <th scope="col">Petrol</th>
+                  <th scope="col">Kerosene</th>
+                  <th scope="col">Ido</th>
+                  <th scope="col">Fuel Oil</th>
+                  <th scope="col">Bulk Lpg</th>
                 </tr>
               </thead>
               <tbody>
