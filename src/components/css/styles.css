@@ -298,6 +298,16 @@ li:hover {
   flex: 1;
 }
 
+img {
+  height: 320px;
+  object-position: 50% 50%;
+}
+
+.cover {
+  width: 480px;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
