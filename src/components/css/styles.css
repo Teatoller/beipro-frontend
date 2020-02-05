@@ -331,6 +331,16 @@ img {
     width: 100%;
   }
 
+  img {
+    float: none;
+    width: 100%;
+  }
+  
+  .cover {
+    float: none;
+    width: 100%;
+  }
+
   .footer-login {
     float: none;
     text-align: center;
