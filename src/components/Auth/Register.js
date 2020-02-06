@@ -121,7 +121,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="lastname">First Name</label>
+                  <label html-for="lastname">Last Name</label>
                   <input
                     type="text"
                     name="lastname"
