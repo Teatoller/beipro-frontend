@@ -3,8 +3,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
-import "../css/styles.css";
 import Nav from "../Landing/Nav";
+import Footer from "../Landing/Footer";
 
 class FrontAdmin extends Component {
   constructor(props) {
@@ -197,7 +197,7 @@ class FrontAdmin extends Component {
       return (
         <tr key={item.id}>
           <td>{index + 1}</td>
-          {/* <td>{item.front_office_id}</td> */}
+          <td>{item.front_office_id}</td>
           <td>{item.diesel}</td>
           <td>{item.petrol}</td>
           <td>{item.kerosene}</td>
@@ -231,9 +231,9 @@ class FrontAdmin extends Component {
     return (
       <div>
         <Nav />
-        <main>
-          <div id="main-div">
-            <div id="left">
+        <div className="container">
+          <div className="row">
+            <div className="col">
               <h6>Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
@@ -345,34 +345,30 @@ class FrontAdmin extends Component {
                 </fieldset>
               </form>
             </div>
-            <div id="right">
+
+            <div className="col">
               <h6>Current Price</h6>
-              <div className="table-responsive">
-                <table className="table table-sm">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      {/* <th>Front-office-id</th> */}
-                      <th scope="col">Diesel</th>
-                      <th scope="col">Petrol</th>
-                      <th scope="col">Kerosene</th>
-                      <th scope="col">Ido</th>
-                      <th scope="col">Fuel Oil</th>
-                      <th scope="col">Lpg</th>
-                      <th scope="col">Action</th>
-                      <th scope="col">Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody>{currentPrice}</tbody>
-                </table>
-              </div>
+              <table className="table table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Front-office-id</th>
+                    <th scope="col">Diesel</th>
+                    <th scope="col">Petrol</th>
+                    <th scope="col">Kerosene</th>
+                    <th scope="col">Ido</th>
+                    <th scope="col">Fuel Oil</th>
+                    <th scope="col">Lpg</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>{currentPrice}</tbody>
+              </table>
             </div>
           </div>
-        </main>
-
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        </div>
+        <Footer />
       </div>
     );
   }

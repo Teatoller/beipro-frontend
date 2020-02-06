@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
-import "../css/styles.css";
+import Footer from "../Landing/Footer";
 
 class Register extends PureComponent {
   constructor(props) {
@@ -17,7 +17,7 @@ class Register extends PureComponent {
       password: "",
       password_confirmation: "",
       alertMessage: "",
-      errors: ''
+      errors: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -85,9 +85,8 @@ class Register extends PureComponent {
 
     // const data = Object.getOwnPropertyDescriptors(errors);
     // eslint-disable-next-line dot-notation
-    
-    console.log("register errors..2>>>", errors[0]);
 
+    console.log("register errors..2>>>", errors[0]);
 
     return (
       <div>
@@ -102,7 +101,6 @@ class Register extends PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-7">
-
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}
               </span>
@@ -177,23 +175,27 @@ class Register extends PureComponent {
               </form>
               <div className="row">
                 <div className="col text-right">
-                  <p>Have an account?</p>
-                  <span className="create-account">
-                    <NavLink to="/">Login</NavLink>
-                  </span>
+                  <p>
+                    Have an account?{" "}
+                    <span className="create-account">
+                      <NavLink to="/">Login</NavLink>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
             <div className="col-5">
               <div className="m-2">
-                <img src={banner} alt="technology" />
+                <img
+                  className="img-fluid rounded mx-auto d-block img-thumbnail"
+                  src={banner}
+                  alt="technology"
+                />
               </div>
             </div>
           </div>
         </div>
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        <Footer />
       </div>
     );
   }

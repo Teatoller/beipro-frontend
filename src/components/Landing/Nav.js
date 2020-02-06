@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
-import "../css/styles.css";
 import Can from "../Can";
+import "../css/style.css";
 import Logout from "../Auth/Logout";
 
 class Nav extends PureComponent {
@@ -93,21 +93,31 @@ class Nav extends PureComponent {
   render() {
     const { role, roleAdmin } = this.state;
     return (
-      <div>
-        <header className="header">
-          <NavLink to="/welcome" className="logo">
-            Beipro
-          </NavLink>
-
-          <div className="header-right">
-            <NavLink className="menu" to="/depots">
-              Depots
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <NavLink className="logo" to="/welcome">
+          Beipro
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <NavLink className="nav-item nav-link active" to="/depots">
+              Depots<span className="sr-only">(current)</span>
             </NavLink>
             <Can
               role={roleAdmin}
               perform="company-admin:list"
               yes={() => (
-                <NavLink className="menu" to="/admin">
+                <NavLink className="nav-item nav-link" to="/admin">
                   Admin
                 </NavLink>
               )}
@@ -116,21 +126,23 @@ class Nav extends PureComponent {
               role={role}
               perform="front-admin:list"
               yes={() => (
-                <NavLink className="menu" to="/fadmin">
+                <NavLink className="nav-item nav-link" to="/fadmin">
                   Front-admin
                 </NavLink>
               )}
             />
-            <NavLink className="menu" to="/profile">
+            <NavLink className="nav-item nav-link" to="/profile">
               Profile
             </NavLink>
-            <NavLink className="menu" to="#">
+            <NavLink className="nav-item nav-link" to="#">
               <Logout />
             </NavLink>
-            {/* <Logout /> */}
+            <NavLink className="nav-item nav-link disabled" to="#" tabindex="-1" aria-disabled="true">
+              Disabled
+            </NavLink>
           </div>
-        </header>
-      </div>
+        </div>
+      </nav>
     );
   }
 }

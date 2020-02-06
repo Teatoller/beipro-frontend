@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import axios from "../../axios";
 import Nav from "./Nav";
 import "../css/depot.css";
+import Footer from "./Footer";
 
 class Depots extends PureComponent {
   constructor(props) {
@@ -66,12 +67,12 @@ class Depots extends PureComponent {
 
     const loadingStyle = {
       fontStyle: "italic",
-      color: "whitesmoke"
+      color: "white"
     };
 
     return (
       <div>
-        <main className="perimeter">
+        {/* <main className="perimeter"> */}
           <Nav />
           <span style={loading ? null : loadingStyle}>loading...</span>
           <div className="selector">
@@ -95,7 +96,7 @@ class Depots extends PureComponent {
             </select>
           </div>
 
-          <div className="price-list">
+          {/* <div className="price-list"> */}
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -123,12 +124,10 @@ class Depots extends PureComponent {
                 )}
               </tbody>
             </table>
-          </div>
-        </main>
+          {/* </div> */}
+        {/* </main> */}
 
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        <Footer />
       </div>
     );
   }
