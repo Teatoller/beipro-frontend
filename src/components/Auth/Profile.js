@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
-import "../css/styles.css";
+import Footer from "../Landing/Footer";
 
 class Profile extends Component {
   constructor(props) {
@@ -43,23 +43,24 @@ class Profile extends Component {
           <div>
             <h6>Profile</h6>
           </div>
-          <table>
+          <table className="table table-striped">
             <tbody>
               <tr>
-                <td>First name:</td>
+                <th scope="col">First name:</th>
                 <td>{firstname}</td>
               </tr>
               <tr>
-                <td>Last name</td>
+                <th scope="col">Last name</th>
                 <td>{lastname}</td>
               </tr>
               <tr>
-                <td>Email:</td>
+                <th scope="col">Email:</th>
                 <td>{email}</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <Footer />
       </div>
     );
   }
