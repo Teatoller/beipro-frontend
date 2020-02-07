@@ -27,15 +27,14 @@ class Logout extends Component {
       .then(res => {
         const message = res.data;
         localStorage.clear();
-        this.setState({ 
+        this.setState({
           navigate: true,
-          message 
+          message
         });
       })
       .catch(err => {
-        console.log("this...", err);
-        this.setState({errors: err.res.request.response});
-        
+        this.setState({ errors: err.res.request.response });
+        throw err;
       });
   };
 
