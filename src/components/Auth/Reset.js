@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
-import "../css/styles.css";
+import Footer from "../Landing/Footer";
 
 class Reset extends PureComponent {
   constructor(props) {
@@ -151,14 +151,12 @@ class Reset extends PureComponent {
             </div>
             <div className="col-5">
               <div className="m-2">
-                <img src={banner} alt="technology" />
+                <img className="img-fluid rounded mx-auto d-block img-thumbnail" src={banner} alt="technology" />
               </div>
             </div>
           </div>
         </div>
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        <Footer />
       </div>
     );
   }

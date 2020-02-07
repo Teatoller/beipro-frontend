@@ -3,17 +3,16 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-// import { reset } from "../../services/userInstance";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
-import "../css/styles.css";
+import Footer from "../Landing/Footer";
 
 class ResetRequest extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      message: {},
+      message: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -100,14 +99,12 @@ class ResetRequest extends PureComponent {
             </div>
             <div className="col-5">
               <div className="m-2">
-                <img src={banner} alt="technology" />
+                <img className="img-fluid rounded mx-auto d-block img-thumbnail" src={banner} alt="technology" />
               </div>
             </div>
           </div>
         </div>
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        <Footer />
       </div>
     );
   }

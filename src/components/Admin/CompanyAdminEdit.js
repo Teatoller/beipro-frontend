@@ -4,8 +4,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
-import "../css/styles.css";
 import Nav from "../Landing/Nav";
+import Footer from "../Landing/Footer";
 
 class CompanyAdminEdit extends PureComponent {
   constructor(props) {
@@ -202,9 +202,10 @@ class CompanyAdminEdit extends PureComponent {
     return (
       <div>
         <Nav />
-        <main>
-          <div id="main-div">
-            <div id="left">
+
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
               <h6>Edit Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
@@ -338,32 +339,27 @@ class CompanyAdminEdit extends PureComponent {
                 </fieldset>
               </form>
             </div>
-            <div id="right">
+            <div className="col-sm">
               <h6>Staff details</h6>
-              <div className="table-responsive">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Office-id</th>
-                      <th scope="col">Firstname</th>
-                      <th scope="col">Lastname</th>
-                      <th scope="col">Staff_id</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Role</th>
-                      <th scope="col">Location</th>
-                    </tr>
-                  </thead>
-                  <tbody>{companyStaff}</tbody>
-                </table>
-              </div>
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Office-id</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Staff_id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Location</th>
+                  </tr>
+                </thead>
+                <tbody>{companyStaff}</tbody>
+              </table>
             </div>
           </div>
-        </main>
-
-        <footer className="footer-register">
-          <span>Beipro &copy;2018</span>
-        </footer>
+        </div>
+        <Footer />
       </div>
     );
   }
