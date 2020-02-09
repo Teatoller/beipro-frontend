@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class Register extends PureComponent {
   constructor(props) {
@@ -17,7 +18,12 @@ class Register extends PureComponent {
       password: "",
       password_confirmation: "",
       alertMessage: "",
-      errors: ""
+      errors: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -52,24 +58,18 @@ class Register extends PureComponent {
           alertMessage: message
         });
         if (response) {
-          setTimeout(() => history.push(`/`), 50);
+          history.push(`/`);
         }
       })
       .catch(err => {
-        this.setState({ errors: err.response.request.response });
-        const { errors } = this.state;
-        console.log("errors..>>>", errors);
-        // const data = Object.getOwnPropertyDescriptors(errors);
-        // console.log("this...", data);
-        // console.log("this...",data.message.value);
-        // const descriptor1 = Object.getOwnPropertyDescriptor(data.message.value, "firstname");
-        // const descriptor2 = Object.getOwnPropertyDescriptor(data.message.value, "lastname");
-        // const descriptor3 = Object.getOwnPropertyDescriptor(data.message.value, "email");
-        // const descriptor4 = Object.getOwnPropertyDescriptor(data.message.value, "password");
-        // console.log(descriptor1.value[0]);
-        // console.log(descriptor2.value[0]);
-        // console.log(descriptor3.value[0]);
-        // console.log(descriptor4.value[0]);
+        this.setState({
+          errors: {
+            firstname: err.response.request.response,
+            lastname: err.response.request.response,
+            email: err.response.request.response,
+            password: err.response.request.response
+          }
+        });
       });
   }
 
@@ -81,12 +81,12 @@ class Register extends PureComponent {
       color: "green"
     };
 
-    console.log("register errors..!!>>>", errors);
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
 
-    // const data = Object.getOwnPropertyDescriptors(errors);
-    // eslint-disable-next-line dot-notation
-
-    console.log("register errors..2>>>", errors[0]);
+    console.log("register errors..!!>>>", errors.firstname.message);
 
     return (
       <div>
@@ -117,6 +117,9 @@ class Register extends PureComponent {
                     id="firstname"
                     placeholder="Enter firstname"
                   />
+                  {/* <span style={errors.firstname ? dangerStyle : null}>
+                    <Error error={errors.firstname ? errors.firstname : null} />
+                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="lastname">Last Name</label>
@@ -129,6 +132,9 @@ class Register extends PureComponent {
                     id="lastname"
                     placeholder="Enter lastname"
                   />
+                  {/* <span style={errors.lastname ? dangerStyle : null}>
+                    <Error error={errors.lastname ? errors.lastname : null} />
+                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="email">Email address</label>
@@ -142,6 +148,9 @@ class Register extends PureComponent {
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                   />
+                  {/* <span style={errors.email ? dangerStyle : null}>
+                    <Error error={errors.email ? errors.email : null} />
+                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="password">Password</label>
@@ -154,6 +163,9 @@ class Register extends PureComponent {
                     className="form-control"
                     id="password"
                   />
+                  {/* <span style={errors.password ? dangerStyle : null}>
+                    <Error error={errors.password ? errors.password : null} />
+                  </span> */}
                 </div>
                 <div className="form-group mb-3">
                   <label html-for="passwordConfirm">Confirm password</label>
@@ -166,6 +178,9 @@ class Register extends PureComponent {
                     className="form-control"
                     id="passwordConfirm"
                   />
+                  <span style={errors.password ? dangerStyle : null}>
+                    <Error error={errors.password ? errors.password : null} />
+                  </span>
                 </div>
                 <div className="text-right mb-3">
                   <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>

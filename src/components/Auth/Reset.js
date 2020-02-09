@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class Reset extends PureComponent {
   constructor(props) {
@@ -16,7 +17,11 @@ class Reset extends PureComponent {
       password_confirmation: "",
       token: "",
       message: {},
-      errors: {}
+      errors: {
+        email: "",
+        password: "",
+        token: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -48,26 +53,34 @@ class Reset extends PureComponent {
 
     axios
       .post("/reset", user, config)
-      .then(res => {
-        console.log("reset alerts!!!", res);
-        const message = res.data;
+      .then(response => {
+        console.log("reset alerts!!!", response);
+        const message = response.data;
         console.log("reset alert message...", message);
         this.setState({
           message
         });
-        if (res) history.push(`/`);
+        if (response) history.push(`/`);
       })
       .catch(err => {
-        console.log(err);
-        this.setState({ errors: err.res.request.response });
-        const { errors } = this.state;
-        console.log("errors..>>>", errors);
+        this.setState({
+          errors: {
+            email: err.response.request.response,
+            password: err.response.request.response,
+            token: err.response.request.response
+          }
+        });
       });
   }
 
   render() {
-    const { message } = this.state;
-    console.log("reset msg...", message);
+    const { errors } = this.state;
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
+
     return (
       <div>
         <header className="header">
@@ -129,8 +142,12 @@ class Reset extends PureComponent {
                       id="token"
                       placeholder="Enter token"
                     />
+                    <span style={errors.password ? dangerStyle : null}>
+                      <Error error={errors.password ? errors.password : null} />
+                    </span>
                     <span>
-                      example fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV
+                      example:{" "}
+                      <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
                     </span>
                   </div>
                 </div>
@@ -142,16 +159,22 @@ class Reset extends PureComponent {
               </form>
               <div className="row">
                 <div className="col text-right">
-                  <p>Have an account?</p>
-                  <span className="create-account">
-                    <NavLink to="/">Login</NavLink>
-                  </span>
+                  <p>
+                    Have an account?{" "}
+                    <span className="create-account">
+                      <NavLink to="/">Login</NavLink>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
             <div className="col-5">
               <div className="m-2">
-                <img className="img-fluid rounded mx-auto d-block img-thumbnail" src={banner} alt="technology" />
+                <img
+                  className="img-fluid rounded mx-auto d-block img-thumbnail"
+                  src={banner}
+                  alt="technology"
+                />
               </div>
             </div>
           </div>

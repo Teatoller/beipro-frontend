@@ -9,6 +9,7 @@ import axios from "../../axios";
 import { setLogin } from "../../redux/actionCreators/authActions";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class Login extends PureComponent {
   constructor(props) {
@@ -16,7 +17,11 @@ class Login extends PureComponent {
     this.state = {
       email: "",
       password: "",
-      message: {}
+      message: {},
+      errors: {
+        email: "",
+        password: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -43,6 +48,12 @@ class Login extends PureComponent {
       })
       .catch(err => {
         console.log(err);
+        this.setState({
+          errors: {
+            email: err.response.request.response,
+            password: err.response.request.response
+          }
+        });
       });
   };
 
@@ -51,8 +62,14 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { message } = this.state;
+    const { message, errors } = this.state;
     console.log("login msg...", message);
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
+
     return (
       <div>
         <header className="header">
@@ -95,6 +112,9 @@ class Login extends PureComponent {
                       className="form-control"
                       id="exampleInputPassword1"
                     />
+                    <span style={errors.password ? dangerStyle : null}>
+                      <Error error={errors.password ? errors.password : null} />
+                    </span>
                   </div>
                   <div className="text-right mb-3">
                     <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
@@ -119,7 +139,11 @@ class Login extends PureComponent {
               </div>
               <div className="col-5">
                 <div className="m-2">
-                  <img className="img-fluid rounded mx-auto d-block img-thumbnail" src={banner} alt="technology"  />
+                  <img
+                    className="img-fluid rounded mx-auto d-block img-thumbnail"
+                    src={banner}
+                    alt="technology"
+                  />
                 </div>
               </div>
             </div>

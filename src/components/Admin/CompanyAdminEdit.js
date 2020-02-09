@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class CompanyAdminEdit extends PureComponent {
   constructor(props) {
@@ -19,7 +20,16 @@ class CompanyAdminEdit extends PureComponent {
       email: "",
       role: "",
       location_code: "",
-      fadmins: []
+      fadmins: [],
+      errors: {
+        front_office_id: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        role: "",
+        staff_id: "",
+        location: ""
+      }
     };
 
     this.onChange = this.onChange.bind(this);
@@ -77,8 +87,18 @@ class CompanyAdminEdit extends PureComponent {
           history.push("/admin");
         }
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        this.setState({
+          errors: {
+            front_office_id: err.response.request.response,
+            firstname: err.response.request.response,
+            lastname: err.response.request.response,
+            email: err.response.request.response,
+            role: err.response.request.response,
+            staff_id: err.response.request.response,
+            location: err.response.request.response
+          }
+        });
       });
   };
 
@@ -181,7 +201,8 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code
+      location_code,
+      errors
     } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
@@ -198,6 +219,11 @@ class CompanyAdminEdit extends PureComponent {
         </tr>
       );
     });
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
 
     return (
       <div>
@@ -331,6 +357,9 @@ class CompanyAdminEdit extends PureComponent {
                         placeholder={location_code}
                         onChange={this.onChange}
                       />
+                      <span style={errors.email ? dangerStyle : null}>
+                        <Error error={errors.email ? errors.email : null} />
+                      </span>
                     </div>
                   </div>
                   <div>

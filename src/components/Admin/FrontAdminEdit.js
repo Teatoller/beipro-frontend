@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class FrontAdminEdit extends PureComponent {
   constructor(props) {
@@ -17,7 +18,16 @@ class FrontAdminEdit extends PureComponent {
       fo: "",
       ido: "",
       lpg: "",
-      latestprices: []
+      latestprices: [],
+      errors: {
+        front_office_id: "",
+        diesel: "",
+        petrol: "",
+        kerosene: "",
+        ido: "",
+        fo: "",
+        lpg: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -53,8 +63,18 @@ class FrontAdminEdit extends PureComponent {
           history.push("/fadmin");
         }
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        this.setState({
+          errors: {
+            front_office_id: err.response.request.response,
+            diesel: err.response.request.response,
+            petrol: err.response.request.response,
+            kerosene: err.response.request.response,
+            ido: err.response.request.response,
+            fo: err.response.request.response,
+            lpg: err.response.request.response
+          }
+        });
       });
   };
 
@@ -141,8 +161,18 @@ class FrontAdminEdit extends PureComponent {
           lpg: priceObj.lpg
         });
       });
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      this.setState({
+        errors: {
+          front_office_id: err.response.request.response,
+          diesel: err.response.request.response,
+          petrol: err.response.request.response,
+          kerosene: err.response.request.response,
+          ido: err.response.request.response,
+          fo: err.response.request.response,
+          lpg: err.response.request.response
+        }
+      });
     }
   };
 
@@ -175,14 +205,24 @@ class FrontAdminEdit extends PureComponent {
         }
       },
       error => {
-        console.log(error);
+        throw error;
       }
     );
   };
 
   render() {
     // eslint-disable-next-line camelcase
-    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg, latestprices } = this.state;
+    const {
+      front_office_id,
+      diesel,
+      petrol,
+      kerosene,
+      ido,
+      fo,
+      lpg,
+      latestprices,
+      errors
+    } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -198,6 +238,11 @@ class FrontAdminEdit extends PureComponent {
         </tr>
       );
     });
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
 
     return (
       <div>
@@ -309,6 +354,9 @@ class FrontAdminEdit extends PureComponent {
                         placeholder={lpg}
                         onChange={this.onChange}
                       />
+                      <span style={errors.diesel ? dangerStyle : null}>
+                        <Error error={errors.diesel ? errors.diesel : null} />
+                      </span>
                     </div>
                   </div>
                   <div>

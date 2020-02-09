@@ -6,13 +6,16 @@ import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class ResetRequest extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      message: {}
+      errors: {
+        email: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -32,23 +35,30 @@ class ResetRequest extends PureComponent {
     axios
       .post("/create", { email })
       .then(res => {
-        console.log("reset alerts!!!", res);
         const message = res.data;
-        console.log("reset alert message...", message);
         this.setState({
           message
         });
-
         if (res) history.push(`/reset`);
       })
       .catch(err => {
         console.log(err);
+        this.setState({
+          errors: {
+            email: err.response.request.response
+          }
+        });
       });
   }
 
   render() {
-    const { message } = this.state;
-    console.log("resetrequest msg...", message);
+    const { errors } = this.state;
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
+
     return (
       <div>
         <header className="header">
@@ -81,6 +91,9 @@ class ResetRequest extends PureComponent {
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                   />
+                  <span style={errors.email ? dangerStyle : null}>
+                    <Error error={errors.email ? errors.email : null} />
+                  </span>
                 </div>
                 <div className="text-right mb-3">
                   <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
@@ -99,7 +112,11 @@ class ResetRequest extends PureComponent {
             </div>
             <div className="col-5">
               <div className="m-2">
-                <img className="img-fluid rounded mx-auto d-block img-thumbnail" src={banner} alt="technology" />
+                <img
+                  className="img-fluid rounded mx-auto d-block img-thumbnail"
+                  src={banner}
+                  alt="technology"
+                />
               </div>
             </div>
           </div>
