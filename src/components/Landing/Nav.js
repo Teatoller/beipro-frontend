@@ -137,7 +137,7 @@ class Nav extends PureComponent {
             <NavLink className="nav-item nav-link" to="#">
               <Logout />
             </NavLink>
-            <NavLink className="nav-item nav-link disabled" to="#" tabindex="-1" aria-disabled="true">
+            <NavLink className="nav-item nav-link disabled" to="#" tabIndex="-1" aria-disabled="true">
               Disabled
             </NavLink>
           </div>

@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Error from "../Error";
 
 class CompanyAdmin extends Component {
   constructor(props) {
@@ -21,7 +22,15 @@ class CompanyAdmin extends Component {
       location_code: "",
       fadmins: [],
       message: {},
-      errors: {}
+      errors: {
+        front_office_id: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        role: "",
+        staff_id: "",
+        location: ""
+      }
     };
 
     this.onChange = this.onChange.bind(this);
@@ -80,9 +89,19 @@ class CompanyAdmin extends Component {
         }
       })
       .catch(err => {
-        console.log(err);
-        this.setState({ errors: err.response.request.response });
-        // const { errors } = this.state;
+        
+        this.setState({
+          errors: {
+            front_office_id: err.response.request.response,
+            firstname: err.response.request.response,
+            lastname: err.response.request.response,
+            email: err.response.request.response,
+            role: err.response.request.response,
+            staff_id: err.response.request.response,
+            location: err.response.request.response
+          }
+        });
+        throw(err);
       });
   };
 
@@ -185,7 +204,7 @@ class CompanyAdmin extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admin_id, fadmins } = this.state;
+    const { admin_id, fadmins, errors } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -221,6 +240,11 @@ class CompanyAdmin extends Component {
         </tr>
       );
     });
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
 
     return (
       <div>
@@ -328,9 +352,7 @@ class CompanyAdmin extends Component {
                       />
                     </div>
 
-                    <label htmlFor="staffId" 
-                    className="col-sm-2 col-form-label col-form-label-sm"
-                    >
+                    <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
                       Staff Id:
                     </label>
                     <div className="col-sm-10">
@@ -356,6 +378,9 @@ class CompanyAdmin extends Component {
                         placeholder="Enter Front-office location"
                         onChange={this.onChange}
                       />
+                      <span style={errors.email ? dangerStyle : null}>
+                        <Error error={errors.email ? errors.email : null} />
+                      </span>
                     </div>
                   </div>
                   <div>

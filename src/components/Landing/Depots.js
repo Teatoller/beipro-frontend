@@ -72,60 +72,63 @@ class Depots extends PureComponent {
 
     return (
       <div>
-        {/* <main className="perimeter"> */}
-          <Nav />
-          <span style={loading ? null : loadingStyle}>loading...</span>
-          <div className="selector">
-            <span>
-              Showing results for
-              {"\u00A0"}
-              {selectedLocation}
-              {"\u00A0"}
-            </span>
-            <select
-              style={{ color: "gray" }}
-              className="location-select"
-              onChange={this.handleChange}
-            >
-              {/* <option value=" ">--Select location--</option> */}
-              <option value="Nairobi">Nairobi</option>
-              <option value="Mombasa">Mombasa</option>
-              <option value="Nakuru">Nakuru</option>
-              <option value="Eldoret">Eldoret</option>
-              <option value="Kisumu">Kisumu</option>
-            </select>
-          </div>
+        <Nav />
 
-          {/* <div className="price-list"> */}
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Company</th>
-                  <th scope="col">Diesel</th>
-                  <th scope="col">Petrol</th>
-                  <th scope="col">Kerosene</th>
-                  <th scope="col">Ido</th>
-                  <th scope="col">Fuel Oil</th>
-                  <th scope="col">Bulk Lpg</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedLocationItems.length === 0 ? (
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              <span style={loading ? null : loadingStyle}>loading...</span>
+              <div className="selector">
+                <span>
+                  Showing results for
+                  {"\u00A0"}
+                  {selectedLocation}
+                  {"\u00A0"}
+                </span>
+                <select
+                  style={{ color: "gray" }}
+                  className="location-select"
+                  onChange={this.handleChange}
+                >
+                  {/* <option value=" ">--Select location--</option> */}
+                  <option value="Nairobi">Nairobi</option>
+                  <option value="Mombasa">Mombasa</option>
+                  <option value="Nakuru">Nakuru</option>
+                  <option value="Eldoret">Eldoret</option>
+                  <option value="Kisumu">Kisumu</option>
+                </select>
+              </div>
+
+              <table className="table table-striped">
+                <thead>
                   <tr>
-                    <td colSpan="8" style={{ color: "gray" }}>
-                      No items for
-                      {"\u00A0"}
-                      {selectedLocation}
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Diesel</th>
+                    <th scope="col">Petrol</th>
+                    <th scope="col">Kerosene</th>
+                    <th scope="col">Ido</th>
+                    <th scope="col">Fuel Oil</th>
+                    <th scope="col">Bulk Lpg</th>
                   </tr>
-                ) : (
-                  selectedLocationItems
-                )}
-              </tbody>
-            </table>
-          {/* </div> */}
-        {/* </main> */}
+                </thead>
+                <tbody>
+                  {selectedLocationItems.length === 0 ? (
+                    <tr>
+                      <td colSpan="8" style={{ color: "gray" }}>
+                        No items for
+                        {"\u00A0"}
+                        {selectedLocation}
+                      </td>
+                    </tr>
+                  ) : (
+                    selectedLocationItems
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
         <Footer />
       </div>
