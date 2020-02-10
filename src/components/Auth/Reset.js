@@ -54,9 +54,7 @@ class Reset extends PureComponent {
     axios
       .post("/reset", user, config)
       .then(response => {
-        console.log("reset alerts!!!", response);
         const message = response.data;
-        console.log("reset alert message...", message);
         this.setState({
           message
         });
@@ -91,7 +89,7 @@ class Reset extends PureComponent {
             <NavLink to="/">Login</NavLink>
           </div>
         </header>
-        <div className="container">
+        <div className="container" aria-label="Password Reset form">
           <div className="row">
             <div className="col-7">
               <form>
@@ -104,8 +102,10 @@ class Reset extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="email"
-                    aria-describedby="emailHelp"
                     placeholder="Enter email"
+                    aria-describedby="emailInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                 </div>
                 <div className="form-group">
@@ -118,6 +118,9 @@ class Reset extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="password"
+                    aria-describedby="passwordInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -130,6 +133,9 @@ class Reset extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="passwordConfirmation"
+                    aria-describedby="passwordConfirmationInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   <div className="form-group">
                     <label html-for="token">Token</label>
@@ -141,6 +147,9 @@ class Reset extends PureComponent {
                       className="form-control"
                       id="token"
                       placeholder="Enter token"
+                      aria-describedby="tokenInput"
+                      aria-required="true"
+                      aria-invalid="false"
                     />
                     <span style={errors.password ? dangerStyle : null}>
                       <Error error={errors.password ? errors.password : null} />

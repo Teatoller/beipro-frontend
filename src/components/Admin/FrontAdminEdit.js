@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
@@ -35,7 +36,7 @@ class FrontAdminEdit extends PureComponent {
 
   componentDidMount() {
     this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 300);
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 500);
   }
 
   componentWillUnmount() {
@@ -92,35 +93,32 @@ class FrontAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    try {
-      axios.get(`/frontadmins`, {}).then(response => {
-        const frontadminsdata = response.data;
-        const loggedUserEmail = localStorage.getItem("email");
+    axios.get(`/frontadmins`, {}).then(response => {
+      const frontadminsdata = response.data;
+      const loggedUserEmail = localStorage.getItem("email");
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
+      const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
 
-        // Object containing detail of logged user
-        const userObj = userArray[0];
+      // Object containing detail of logged user
+      const userObj = userArray[0];
 
-        // Key
-        function frontkey() {
-          if (userObj) {
-            const frontOfficeId = userObj.front_office_id;
+      // Key
+      // eslint-disable-next-line consistent-return
+      function frontkey() {
+        if (userObj) {
+          const frontOfficeId = userObj.front_office_id;
 
-            return frontOfficeId;
-          }
+          return frontOfficeId;
         }
+      }
 
-        const lockey = parseInt(frontkey(), 10);
+      const lockey = parseInt(frontkey(), 10);
 
-        this.setState({ front_office_id: lockey });
-        localStorage.setItem("front_office_id", lockey);
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ front_office_id: lockey });
+      localStorage.setItem("front_office_id", lockey);
+    });
   };
 
   // Display current price as placeholder value
@@ -271,6 +269,7 @@ class FrontAdminEdit extends PureComponent {
                           placeholder="Disabled input"
                           // eslint-disable-next-line camelcase
                           value={front_office_id}
+                          aria-describedby="forntOfficeIdInput"
                         />
                       </div>
                     </div>
@@ -288,6 +287,7 @@ class FrontAdminEdit extends PureComponent {
                         id="diesel"
                         placeholder={diesel}
                         onChange={this.onChange}
+                        aria-describedby="dieselPriceInput"
                       />
                     </div>
 
@@ -301,6 +301,7 @@ class FrontAdminEdit extends PureComponent {
                         id="petrol"
                         placeholder={petrol}
                         onChange={this.onChange}
+                        aria-describedby="petrolPriceInput"
                       />
                     </div>
 
@@ -314,6 +315,7 @@ class FrontAdminEdit extends PureComponent {
                         id="kerosene"
                         placeholder={kerosene}
                         onChange={this.onChange}
+                        aria-describedby="kerosenePriceInput"
                       />
                     </div>
 
@@ -327,6 +329,7 @@ class FrontAdminEdit extends PureComponent {
                         id="ido"
                         placeholder={ido}
                         onChange={this.onChange}
+                        aria-describedby="idoPriceInput"
                       />
                     </div>
 
@@ -340,6 +343,7 @@ class FrontAdminEdit extends PureComponent {
                         id="fuelOil"
                         placeholder={fo}
                         onChange={this.onChange}
+                        aria-describedby="fuelOilPriceInput"
                       />
                     </div>
 
@@ -353,6 +357,7 @@ class FrontAdminEdit extends PureComponent {
                         id="lpg"
                         placeholder={lpg}
                         onChange={this.onChange}
+                        aria-describedby="bulkLpgPriceInput"
                       />
                       <span style={errors.diesel ? dangerStyle : null}>
                         <Error error={errors.diesel ? errors.diesel : null} />

@@ -38,8 +38,8 @@ class CompanyAdminEdit extends PureComponent {
 
   componentDidMount() {
     this.getOfficeData();
-    this.adminData = setTimeout(() => this.getFrontAdminsData(), 300);
-    this.fadminData = setTimeout(() => this.getFrontAdminData(), 300);
+    this.adminData = setTimeout(() => this.getFrontAdminsData(), 500);
+    this.fadminData = setTimeout(() => this.getFrontAdminData(), 500);
   }
 
   componentWillUnmount() {
@@ -116,78 +116,67 @@ class CompanyAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    try {
-      axios.get(`/combineadmins`, {}).then(response => {
-        const adminsdata = response.data;
-        const loggedUserEmail = localStorage.getItem("email");
+    axios.get(`/combineadmins`, {}).then(response => {
+      const adminsdata = response.data;
+      const loggedUserEmail = localStorage.getItem("email");
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
+      const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
 
-        // Object containing detail of logged user
-        const userObj = userArray[0];
+      // Object containing detail of logged user
+      const userObj = userArray[0];
 
-        // Key
-        function adminkey() {
-          if (userObj) {
-            const adminId = userObj.id;
+      // Key
+      // eslint-disable-next-line consistent-return
+      function adminkey() {
+        if (userObj) {
+          const adminId = userObj.id;
 
-            return adminId;
-          }
+          return adminId;
         }
+      }
 
-        const lockey = parseInt(adminkey(), 10);
+      const lockey = parseInt(adminkey(), 10);
 
-        this.setState({ admin_id: lockey });
-        localStorage.setItem("admin_id", lockey);
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ admin_id: lockey });
+      localStorage.setItem("admin_id", lockey);
+    });
   };
 
   getFrontAdminsData = () => {
-    try {
-      axios.get(`/companyadmins`, {}).then(response => {
-        const frontadminData = response.data;
+    axios.get(`/companyadmins`, {}).then(response => {
+      const frontadminData = response.data;
 
-        const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
+      const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+      const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
 
-        this.setState({ fadmins: adminsArray });
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ fadmins: adminsArray });
+    });
   };
 
   // Get selected front admin detail and display in placeholder
 
   getFrontAdminData = () => {
     const fadminid = localStorage.getItem("fadminid");
-    try {
-      axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
-        const selectedFadminData = response.data;
+    axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
+      const selectedFadminData = response.data;
 
-        const adminObj = selectedFadminData[0];
+      const adminObj = selectedFadminData[0];
 
-        this.setState({
-          front_office_id: adminObj.front_office_id,
-          firstname: adminObj.firstname,
-          lastname: adminObj.lastname,
-          staff_id: adminObj.staff_id,
-          email: adminObj.email,
-          role: adminObj.role,
-          location_code: adminObj.location_code
-        });
+      this.setState({
+        front_office_id: adminObj.front_office_id,
+        firstname: adminObj.firstname,
+        lastname: adminObj.lastname,
+        staff_id: adminObj.staff_id,
+        email: adminObj.email,
+        role: adminObj.role,
+        location_code: adminObj.location_code
       });
-    } catch (error) {
-      throw error;
-    }
+    });
   };
 
   render() {
@@ -252,6 +241,7 @@ class CompanyAdminEdit extends PureComponent {
                           placeholder="Disabled input"
                           // eslint-disable-next-line camelcase
                           value={admin_id}
+                          aria-describedby="adminIdInput"
                         />
                       </div>
                     </div>
@@ -272,6 +262,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="frontOfficeId"
                         placeholder={front_office_id}
                         onChange={this.onChange}
+                        aria-describedby="forntOfficeIdInput"
                       />
                     </div>
 
@@ -286,6 +277,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="firstname"
                         placeholder={firstname}
                         onChange={this.onChange}
+                        aria-describedby="firstnameInput"
                       />
                     </div>
 
@@ -300,6 +292,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="lastname"
                         placeholder={lastname}
                         onChange={this.onChange}
+                        aria-describedby="lastnameInput"
                       />
                     </div>
 
@@ -314,6 +307,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="email"
                         placeholder={email}
                         onChange={this.onChange}
+                        aria-describedby="emailInput"
                       />
                     </div>
 
@@ -328,6 +322,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="role"
                         placeholder={role}
                         onChange={this.onChange}
+                        aria-describedby="roleInput"
                       />
                     </div>
 
@@ -342,6 +337,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="staffId"
                         placeholder={staff_id}
                         onChange={this.onChange}
+                        aria-describedby="staffIdInput"
                       />
                     </div>
 
@@ -356,6 +352,7 @@ class CompanyAdminEdit extends PureComponent {
                         id="location"
                         placeholder={location_code}
                         onChange={this.onChange}
+                        aria-describedby="locationInput"
                       />
                       <span style={errors.email ? dangerStyle : null}>
                         <Error error={errors.email ? errors.email : null} />

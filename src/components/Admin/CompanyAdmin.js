@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
-import Error from "../Error";
 
 class CompanyAdmin extends Component {
   constructor(props) {
@@ -20,17 +19,7 @@ class CompanyAdmin extends Component {
       email: "",
       role: "",
       location_code: "",
-      fadmins: [],
-      message: {},
-      errors: {
-        front_office_id: "",
-        firstname: "",
-        lastname: "",
-        email: "",
-        role: "",
-        staff_id: "",
-        location: ""
-      }
+      fadmins: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -39,7 +28,7 @@ class CompanyAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    this.adminData = setTimeout(() => this.getFrontAdminsData(), 300);
+    this.adminData = setTimeout(() => this.getFrontAdminsData(), 1500);
   }
 
   componentWillUnmount() {
@@ -79,29 +68,12 @@ class CompanyAdmin extends Component {
     axios
       .post(`/companyadmins`, data)
       .then(response => {
-        const message = response.data;
-        this.setState({
-          message
-        });
-
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
         }
       })
       .catch(err => {
-        
-        this.setState({
-          errors: {
-            front_office_id: err.response.request.response,
-            firstname: err.response.request.response,
-            lastname: err.response.request.response,
-            email: err.response.request.response,
-            role: err.response.request.response,
-            staff_id: err.response.request.response,
-            location: err.response.request.response
-          }
-        });
-        throw(err);
+        throw err;
       });
   };
 
@@ -119,53 +91,46 @@ class CompanyAdmin extends Component {
    */
 
   getOfficeData = () => {
-    try {
-      axios.get(`/combineadmins`, {}).then(response => {
-        const adminsdata = response.data;
-        const loggedUserEmail = localStorage.getItem("email");
+    axios.get(`/combineadmins`, {}).then(response => {
+      const adminsdata = response.data;
+      const loggedUserEmail = localStorage.getItem("email");
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
+      const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
 
-        // Object containing detail of logged user
-        const userObj = userArray[0];
+      // Object containing detail of logged user
+      const userObj = userArray[0];
 
-        // Key
-        function adminkey() {
-          if (userObj) {
-            const adminId = userObj.id;
+      // Key
+      // eslint-disable-next-line consistent-return
+      function adminkey() {
+        if (userObj) {
+          const adminId = userObj.id;
 
-            return adminId;
-          }
+          return adminId;
         }
+      }
 
-        const lockey = parseInt(adminkey(), 10);
+      const lockey = parseInt(adminkey(), 10);
 
-        this.setState({ admin_id: lockey });
-        localStorage.setItem("admin_id", lockey);
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ admin_id: lockey });
+      localStorage.setItem("admin_id", lockey);
+    });
   };
 
   getFrontAdminsData = () => {
-    try {
-      axios.get(`/companyadmins`, {}).then(response => {
-        const frontadminData = response.data;
+    axios.get(`/companyadmins`, {}).then(response => {
+      const frontadminData = response.data;
 
-        const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
+      const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+      const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
 
-        this.setState({ fadmins: adminsArray });
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ fadmins: adminsArray });
+    });
   };
 
   handleEditClick = e => {
@@ -177,6 +142,14 @@ class CompanyAdmin extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     history.push("/adminedit");
+  };
+
+  handleCreateClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/admincreate");
   };
 
   // Select front admin record to delete
@@ -197,14 +170,14 @@ class CompanyAdmin extends Component {
         }
       },
       error => {
-        console.log(error);
+        throw error;
       }
     );
   };
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admin_id, fadmins, errors } = this.state;
+    const { fadmins } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -241,155 +214,12 @@ class CompanyAdmin extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
 
         <div className="container">
           <div className="row">
-            <div className="col-sm">
-              <h6>Entry Pad</h6>
-              <form noValidate onSubmit={this.onSubmit}>
-                <fieldset className="front-fieldset">
-                  <fieldset disabled className="admin-fieldset">
-                    <div className="form-group row">
-                      <label
-                        htmlFor="adminId"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Admin:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="decimal"
-                          name="admin_id"
-                          id="adminId"
-                          className="form-control"
-                          placeholder="Disabled input"
-                          // eslint-disable-next-line camelcase
-                          value={admin_id}
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
-                  <h6>Front Admin Details</h6>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="frontOfficeId"
-                      className="col-sm-2 col-form-label col-form-label-sm"
-                    >
-                      Front Office Id:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="front_office_id"
-                        className="form-control form-control-sm"
-                        id="frontOfficeId"
-                        placeholder="Enter Front-office-id"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                      Firstname:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="firstname"
-                        className="form-control form-control-sm"
-                        id="firstname"
-                        placeholder="Enter Front-admin Firstname"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                      Lastname:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="lastname"
-                        className="form-control form-control-sm"
-                        id="lastname"
-                        placeholder="Enter Front-admin Lastname"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
-                      Email:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control form-control-sm"
-                        id="email"
-                        placeholder="Enter Front-admin Email"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
-                      Role:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="role"
-                        className="form-control form-control-sm"
-                        id="role"
-                        placeholder="Enter role as staff"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
-                      Staff Id:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="staff_id"
-                        className="form-control form-control-sm"
-                        id="staffId"
-                        placeholder="Enter Front-admin Staff Id"
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
-                      Location:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="location_code"
-                        className="form-control form-control-sm"
-                        id="location"
-                        placeholder="Enter Front-office location"
-                        onChange={this.onChange}
-                      />
-                      <span style={errors.email ? dangerStyle : null}>
-                        <Error error={errors.email ? errors.email : null} />
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <input className="btn btn-sm btn-success" type="submit" value="Add" />
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-
             <div className="col-sm">
               <h6>Staff details</h6>
               <table className="table table-striped">
@@ -411,7 +241,20 @@ class CompanyAdmin extends Component {
               </table>
             </div>
           </div>
+
+          <span>Click button to add a new Front Office Admin</span>
+
+          <div>
+            <button
+              className="btn btn-sm btn-success"
+              type="submit"
+              onClick={this.handleCreateClick}
+            >
+              Add
+            </button>
+          </div>
         </div>
+
         <Footer />
       </div>
     );

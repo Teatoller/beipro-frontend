@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
-import Error from "../Error";
 
 class FrontAdmin extends Component {
   constructor(props) {
@@ -19,16 +18,7 @@ class FrontAdmin extends Component {
       ido: "",
       lpg: "",
       latestprices: [],
-      message: {},
-      errors: {
-        front_office_id: "",
-        diesel: "",
-        petrol: "",
-        kerosene: "",
-        ido: "",
-        fo: "",
-        lpg: ""
-      }
+      message: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -36,7 +26,7 @@ class FrontAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 100);
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 1500);
   }
 
   componentWillUnmount() {
@@ -62,18 +52,7 @@ class FrontAdmin extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
-        this.setState({
-          errors: {
-            front_office_id: err.response.request.response,
-            diesel: err.response.request.response,
-            petrol: err.response.request.response,
-            kerosene: err.response.request.response,
-            ido: err.response.request.response,
-            fo: err.response.request.response,
-            lpg: err.response.request.response
-          }
-        });
+        throw err;
       });
   };
 
@@ -91,35 +70,32 @@ class FrontAdmin extends Component {
    */
 
   getOfficeData = () => {
-    try {
-      axios.get(`/frontadmins`, {}).then(response => {
-        const frontadminsdata = response.data;
-        const loggedUserEmail = localStorage.getItem("email");
+    axios.get(`/frontadmins`, {}).then(response => {
+      const frontadminsdata = response.data;
+      const loggedUserEmail = localStorage.getItem("email");
 
-        // Array with object containing details of the logged user
+      // Array with object containing details of the logged user
 
-        const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
+      const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
 
-        // Object containing detail of logged user
-        const userObj = userArray[0];
+      // Object containing detail of logged user
+      const userObj = userArray[0];
 
-        // Key
-        function frontkey() {
-          if (userObj) {
-            const frontOfficeId = userObj.front_office_id;
+      // Key
+      // eslint-disable-next-line consistent-return
+      function frontkey() {
+        if (userObj) {
+          const frontOfficeId = userObj.front_office_id;
 
-            return frontOfficeId;
-          }
+          return frontOfficeId;
         }
+      }
 
-        const lockey = parseInt(frontkey(), 10);
+      const lockey = parseInt(frontkey(), 10);
 
-        this.setState({ front_office_id: lockey });
-        localStorage.setItem("front_office_id", lockey);
-      });
-    } catch (error) {
-      throw error;
-    }
+      this.setState({ front_office_id: lockey });
+      localStorage.setItem("front_office_id", lockey);
+    });
   };
 
   // Display current price as placeholder value
@@ -128,54 +104,37 @@ class FrontAdmin extends Component {
     // eslint-disable-next-line camelcase
     // const {front_office_id} = this.state;
 
-    try {
-      axios.get(`/currentprices`, {}).then(response => {
-        const currentPriceData = response.data;
-        const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
+    axios.get(`/currentprices`, {}).then(response => {
+      const currentPriceData = response.data;
+      const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
-        // Array with object containing details of the front office current prices
+      // Array with object containing details of the front office current prices
 
-        const priceArray = currentPriceData.filter(
-          object => object.front_office_id === frontOfficeId
-        );
+      const priceArray = currentPriceData.filter(
+        object => object.front_office_id === frontOfficeId
+      );
 
-        // sort prices in reverse to get the latest price
+      // sort prices in reverse to get the latest price
 
-        const latestprices = [];
+      const latestprices = [];
 
-        const sortbyid = priceArray.sort((c1, c2) => (c1.id > c2.id ? 1 : -1)).pop();
+      const sortbyid = priceArray.sort((c1, c2) => (c1.id > c2.id ? 1 : -1)).pop();
 
-        latestprices.push(sortbyid);
+      latestprices.push(sortbyid);
 
-        // Object containing detail of front office latest current price
-        const priceObj = latestprices[0];
+      // Object containing detail of front office latest current price
+      const priceObj = latestprices[0];
 
-        console.log("this...", priceObj);
-
-        this.setState({
-          latestprices,
-          diesel: priceObj.diesel,
-          petrol: priceObj.petrol,
-          kerosene: priceObj.kerosene,
-          ido: priceObj.ido,
-          fo: priceObj.fo,
-          lpg: priceObj.lpg
-        });
-      });
-    } catch (err) {
-      // throw err;
       this.setState({
-        errors: {
-          front_office_id: err.response.request.response,
-          diesel: err.response.request.response,
-          petrol: err.response.request.response,
-          kerosene: err.response.request.response,
-          ido: err.response.request.response,
-          fo: err.response.request.response,
-          lpg: err.response.request.response
-        }
+        latestprices,
+        diesel: priceObj.diesel,
+        petrol: priceObj.petrol,
+        kerosene: priceObj.kerosene,
+        ido: priceObj.ido,
+        fo: priceObj.fo,
+        lpg: priceObj.lpg
       });
-    }
+    });
   };
 
   // Select current price record to edit
@@ -189,6 +148,14 @@ class FrontAdmin extends Component {
     localStorage.setItem("priceid", priceid);
 
     history.push("/fadminedit");
+  };
+
+  handleCreateClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/fadmincreate");
   };
 
   // Select current price record to delete
@@ -210,16 +177,13 @@ class FrontAdmin extends Component {
         }
       })
       .catch(error => {
-        console.log(error);
+        throw error;
       });
   };
 
   render() {
     // eslint-disable-next-line camelcase
-    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg, latestprices } = this.state;
-
-    const { message, errors } = this.state;
-    console.log("msg...", message);
+    const { latestprices } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -256,132 +220,11 @@ class FrontAdmin extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
         <div className="container">
           <div className="row">
-            <div className="col">
-              <h6>Entry Pad</h6>
-              <form noValidate onSubmit={this.onSubmit}>
-                <fieldset className="front-fieldset">
-                  <fieldset disabled className="admin-fieldset">
-                    <div className="form-group row">
-                      <label
-                        htmlFor="frontOfficeId"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Office Id:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="decimal"
-                          name="front_office_id"
-                          id="frontOfficeId"
-                          className="form-control"
-                          placeholder="Disabled input"
-                          // eslint-disable-next-line camelcase
-                          value={front_office_id}
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
-
-                  <h6>Price Input</h6>
-                  <div className="form-group row">
-                    <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
-                      Diesel:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="diesel"
-                        id="diesel"
-                        placeholder={diesel}
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
-                      Petrol:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="petrol"
-                        id="petrol"
-                        placeholder={petrol}
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
-                      Kerosene:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="kerosene"
-                        id="kerosene"
-                        placeholder={kerosene}
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
-                      Ido:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="ido"
-                        id="ido"
-                        placeholder={ido}
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
-                      Fuel Oil:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="fo"
-                        id="fuelOil"
-                        placeholder={fo}
-                        onChange={this.onChange}
-                      />
-                    </div>
-
-                    <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
-                      Bulk Lpg:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="lpg"
-                        id="lpg"
-                        placeholder={lpg}
-                        onChange={this.onChange}
-                      />
-                      <span style={errors.diesel ? dangerStyle : null}>
-                        <Error error={errors.diesel ? errors.diesel : null} />
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <input className="btn btn-sm btn-success" type="submit" value="Add" />
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-
             <div className="col">
               <h6>Current Price</h6>
               <table className="table table">
@@ -402,6 +245,16 @@ class FrontAdmin extends Component {
                 <tbody>{currentPrice}</tbody>
               </table>
             </div>
+          </div>
+          <span>Click button to add a new current price</span>
+          <div>
+            <button
+              className="btn btn-sm btn-success"
+              type="submit"
+              onClick={this.handleCreateClick}
+            >
+              Add
+            </button>
           </div>
         </div>
         <Footer />

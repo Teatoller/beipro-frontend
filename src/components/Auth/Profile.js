@@ -22,6 +22,7 @@ class Profile extends Component {
     axios
       .post(`/profile`, {}, config)
       .then(res => {
+        // eslint-disable-next-line prefer-destructuring
         const data = res.data;
         this.setState({
           firstname: data.firstname,
@@ -30,7 +31,7 @@ class Profile extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
+        throw(error);
       });
   }
 
