@@ -5,13 +5,15 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ResetRequest from "./components/Auth/ResetRequest";
 import Welcome from "./components/Landing/Welcome";
-import FrontAdmin from "./components/Admin/FrontAdmin"
-import Depots from "./components/Landing/Depots"
+import FrontAdmin from "./components/Admin/FrontAdmin";
+import Depots from "./components/Landing/Depots";
 import Profile from "./components/Auth/Profile";
 import CompanyAdmin from "./components/Admin/CompanyAdmin";
 import CompanyAdminEdit from "./components/Admin/CompanyAdminEdit";
 import FrontAdminEdit from "./components/Admin/FrontAdminEdit";
 import Reset from "./components/Auth/Reset";
+import CompanyAdminCreate from "./components/Admin/CompanyAdminCreate";
+import FrontAdminCreate from "./components/Admin/FrontAdminCreate";
 
 class App extends Component {
   render() {
@@ -27,8 +29,10 @@ class App extends Component {
             <Route path="/welcome" component={Welcome} />
             <Route exact path="/admin" component={CompanyAdmin} />
             <Route exact path="/adminedit" component={CompanyAdminEdit} />
+            <Route exact path="/admincreate" component={CompanyAdminCreate} />
             <Route exact path="/fadmin" component={FrontAdmin} />
             <Route exact path="/fadminedit" component={FrontAdminEdit} />
+            <Route exact path="/fadmincreate" component={FrontAdminCreate} />
             <Route exact path="/depots" component={Depots} />
           </Switch>
         </div>

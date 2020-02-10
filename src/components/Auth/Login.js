@@ -47,13 +47,14 @@ class Login extends PureComponent {
         }
       })
       .catch(err => {
-        console.log(err);
+        
         this.setState({
           errors: {
             email: err.response.request.response,
             password: err.response.request.response
           }
         });
+        throw(err);
       });
   };
 
@@ -62,8 +63,7 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { message, errors } = this.state;
-    console.log("login msg...", message);
+    const {errors } = this.state;
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -80,7 +80,7 @@ class Login extends PureComponent {
             <NavLink to="/register">Register</NavLink>
           </div>
         </header>
-        <div className="container">
+        <div className="container" aria-label="Login form">
           <div>
             <div className="row">
               <div className="col-7 p-2">
@@ -97,12 +97,13 @@ class Login extends PureComponent {
                       onChange={this.onChange}
                       className="form-control"
                       id="email"
-                      aria-describedby="emailHelp"
+                      aria-describedby="emailInput"
                       placeholder="Enter email"
+                      aria-required="true" aria-invalid="false"
                     />
                   </div>
                   <div className="form-group mb-3">
-                    <label html-for="exampleInputPassword1">Password</label>
+                    <label html-for="InputPassword">Password</label>
                     <input
                       type="password"
                       name="password"
@@ -110,7 +111,9 @@ class Login extends PureComponent {
                       value={this.password}
                       onChange={this.onChange}
                       className="form-control"
-                      id="exampleInputPassword1"
+                      id="InputPassword"
+                      aria-describedby="passwordInput"
+                      aria-required="true" aria-invalid="false"
                     />
                     <span style={errors.password ? dangerStyle : null}>
                       <Error error={errors.password ? errors.password : null} />

@@ -22,6 +22,7 @@ class Depots extends PureComponent {
     this.setState({ loading: true });
     try {
       axios.get(`/depotprices`, {}).then(response => {
+        // eslint-disable-next-line prefer-destructuring
         const data = response.data;
         this.setState({
           frontoffices: data,

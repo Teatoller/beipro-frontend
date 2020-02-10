@@ -86,8 +86,6 @@ class Register extends PureComponent {
       color: "red"
     };
 
-    console.log("register errors..!!>>>", errors.firstname.message);
-
     return (
       <div>
         <header className="header">
@@ -98,7 +96,7 @@ class Register extends PureComponent {
             <NavLink to="/">Login</NavLink>
           </div>
         </header>
-        <div className="container">
+        <div className="container" aria-label="Sign up form">
           <div className="row">
             <div className="col-7">
               <span style={alertMessage ? alertStyle : null}>
@@ -116,6 +114,9 @@ class Register extends PureComponent {
                     className="form-control"
                     id="firstname"
                     placeholder="Enter firstname"
+                    aria-describedby="firstnameInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   {/* <span style={errors.firstname ? dangerStyle : null}>
                     <Error error={errors.firstname ? errors.firstname : null} />
@@ -131,6 +132,9 @@ class Register extends PureComponent {
                     className="form-control"
                     id="lastname"
                     placeholder="Enter lastname"
+                    aria-describedby="lastnameInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   {/* <span style={errors.lastname ? dangerStyle : null}>
                     <Error error={errors.lastname ? errors.lastname : null} />
@@ -145,8 +149,10 @@ class Register extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="email"
-                    aria-describedby="emailHelp"
+                    aria-describedby="emailInput"
                     placeholder="Enter email"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   {/* <span style={errors.email ? dangerStyle : null}>
                     <Error error={errors.email ? errors.email : null} />
@@ -162,6 +168,9 @@ class Register extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="password"
+                    aria-describedby="passwordInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   {/* <span style={errors.password ? dangerStyle : null}>
                     <Error error={errors.password ? errors.password : null} />
@@ -177,6 +186,9 @@ class Register extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="passwordConfirm"
+                    aria-describedby="confirmPasswordInput"
+                    aria-required="true"
+                    aria-invalid="false"
                   />
                   <span style={errors.password ? dangerStyle : null}>
                     <Error error={errors.password ? errors.password : null} />

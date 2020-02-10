@@ -42,12 +42,12 @@ class ResetRequest extends PureComponent {
         if (res) history.push(`/reset`);
       })
       .catch(err => {
-        console.log(err);
         this.setState({
           errors: {
             email: err.response.request.response
           }
         });
+        throw err;
       });
   }
 
@@ -69,7 +69,7 @@ class ResetRequest extends PureComponent {
             <NavLink to="/">Login</NavLink>
           </div>
         </header>
-        <div className="container">
+        <div className="container" aria-label="Password reset request form">
           <div className="row">
             <div className="col-7">
               <div className="text-center">
@@ -88,7 +88,7 @@ class ResetRequest extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="email"
-                    aria-describedby="emailHelp"
+                    aria-describedby="emailInput"
                     placeholder="Enter email"
                   />
                   <span style={errors.email ? dangerStyle : null}>
