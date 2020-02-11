@@ -7,11 +7,13 @@ import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class ResetRequest extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       email: "",
       errors: {
         email: ""
@@ -35,9 +37,8 @@ class ResetRequest extends PureComponent {
     axios
       .post("/create", { email })
       .then(res => {
-        const message = res.data;
         this.setState({
-          message
+          loading: true
         });
         if (res) history.push(`/reset`);
       })
@@ -52,7 +53,7 @@ class ResetRequest extends PureComponent {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, loading } = this.state;
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -72,6 +73,7 @@ class ResetRequest extends PureComponent {
         <div className="container" aria-label="Password reset request form">
           <div className="row">
             <div className="col-7">
+              <span>{loading ? <Spinner /> : null}</span>
               <div className="text-center">
                 <p className="text-secondary">
                   Please enter your Email address below and we&apos;ll send you a link to reset your

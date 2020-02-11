@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Spinner from "../../spinner/Spinner";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       firstname: "",
       lastname: "",
       email: ""
@@ -27,20 +29,22 @@ class Profile extends Component {
         this.setState({
           firstname: data.firstname,
           lastname: data.lastname,
-          email: data.email
+          email: data.email,
+          loading: false
         });
       })
       .catch(error => {
-        throw(error);
+        throw error;
       });
   }
 
   render() {
-    const { firstname, lastname, email } = this.state;
+    const { firstname, lastname, email, loading } = this.state;
     return (
       <div>
         <Nav />
         <div>
+          <span>{loading ? <Spinner /> : null}</span>
           <div>
             <h6>Profile</h6>
           </div>
