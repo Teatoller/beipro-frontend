@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -5,11 +6,13 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       admin_id: "",
       front_office_id: "",
       firstname: "",
@@ -79,6 +82,7 @@ class CompanyAdminCreate extends Component {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
         }
+        this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({
@@ -133,7 +137,10 @@ class CompanyAdminCreate extends Component {
 
       const lockey = parseInt(adminkey(), 10);
 
-      this.setState({ admin_id: lockey });
+      this.setState({
+        admin_id: lockey,
+        loading: false
+      });
       localStorage.setItem("admin_id", lockey);
     });
   };
@@ -148,7 +155,10 @@ class CompanyAdminCreate extends Component {
 
       const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
 
-      this.setState({ fadmins: adminsArray });
+      this.setState({
+        fadmins: adminsArray,
+        loading: false
+      });
     });
   };
 
@@ -161,6 +171,7 @@ class CompanyAdminCreate extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     history.push("/adminedit");
+    this.setState({ loading: false });
   };
 
   handleCancelClick = e => {
@@ -169,6 +180,7 @@ class CompanyAdminCreate extends Component {
     e.preventDefault();
 
     history.push("/admin");
+    this.setState({ loading: false });
   };
 
   // Select front admin record to delete
@@ -187,6 +199,7 @@ class CompanyAdminCreate extends Component {
         if (response) {
           history.push("/admin");
         }
+        this.setState({ loading: false });
       },
       error => {
         throw error;
@@ -196,7 +209,7 @@ class CompanyAdminCreate extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admin_id, fadmins, errors } = this.state;
+    const { admin_id, fadmins, errors, loading } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -224,6 +237,7 @@ class CompanyAdminCreate extends Component {
 
         <div className="container" aria-label="Create company front admin form">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
               <h6>Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>

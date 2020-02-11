@@ -1,14 +1,17 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class FrontAdminCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       front_office_id: "",
       diesel: "",
       petrol: "",
@@ -58,6 +61,7 @@ class FrontAdminCreate extends Component {
         if (response) {
           setTimeout(() => history.push(`/fadmin`), 50);
         }
+        this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({
@@ -152,7 +156,8 @@ class FrontAdminCreate extends Component {
           kerosene: priceObj.kerosene,
           ido: priceObj.ido,
           fo: priceObj.fo,
-          lpg: priceObj.lpg
+          lpg: priceObj.lpg,
+          loading: false
         });
       });
     } catch (err) {
@@ -182,6 +187,7 @@ class FrontAdminCreate extends Component {
     localStorage.setItem("priceid", priceid);
 
     history.push("/fadminedit");
+    this.setState({ loading: false });
   };
 
   handleCancelClick = e => {
@@ -190,6 +196,7 @@ class FrontAdminCreate extends Component {
     e.preventDefault();
 
     history.push("/fadmin");
+    this.setState({ loading: false });
   };
 
   // Select current price record to delete
@@ -209,6 +216,7 @@ class FrontAdminCreate extends Component {
         if (response) {
           history.push("/fadmin");
         }
+        this.setState({ loading: false });
       })
       .catch(error => {
         throw error;
@@ -217,9 +225,18 @@ class FrontAdminCreate extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { front_office_id, diesel, petrol, kerosene, ido, fo, lpg, latestprices } = this.state;
-
-    const { errors } = this.state;
+    const {
+      front_office_id,
+      diesel,
+      petrol,
+      kerosene,
+      ido,
+      fo,
+      lpg,
+      latestprices,
+      errors,
+      loading
+    } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -246,6 +263,7 @@ class FrontAdminCreate extends Component {
         <Nav />
         <div className="container" aria-label="Create current price form">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
               <h6>Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>

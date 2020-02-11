@@ -6,11 +6,13 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Spinner from "../../spinner/Spinner";
 
 class CompanyAdmin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       admin_id: "",
       front_office_id: "",
       firstname: "",
@@ -71,6 +73,7 @@ class CompanyAdmin extends Component {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
         }
+        this.setState({ loading: false });
       })
       .catch(err => {
         throw err;
@@ -129,7 +132,10 @@ class CompanyAdmin extends Component {
 
       const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
 
-      this.setState({ fadmins: adminsArray });
+      this.setState({
+        fadmins: adminsArray,
+        loading: false
+      });
     });
   };
 
@@ -177,7 +183,7 @@ class CompanyAdmin extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { fadmins } = this.state;
+    const { fadmins, loading } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -220,6 +226,7 @@ class CompanyAdmin extends Component {
 
         <div className="container">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
               <h6>Staff details</h6>
               <table className="table table-striped">

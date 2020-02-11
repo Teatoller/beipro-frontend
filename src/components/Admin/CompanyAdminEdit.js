@@ -7,11 +7,13 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class CompanyAdminEdit extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       admin_id: "",
       front_office_id: "",
       firstname: "",
@@ -86,6 +88,7 @@ class CompanyAdminEdit extends PureComponent {
         if (response) {
           history.push("/admin");
         }
+        this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({
@@ -154,7 +157,10 @@ class CompanyAdminEdit extends PureComponent {
 
       const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
 
-      this.setState({ fadmins: adminsArray });
+      this.setState({
+        fadmins: adminsArray,
+        loading: false
+      });
     });
   };
 
@@ -174,7 +180,8 @@ class CompanyAdminEdit extends PureComponent {
         staff_id: adminObj.staff_id,
         email: adminObj.email,
         role: adminObj.role,
-        location_code: adminObj.location_code
+        location_code: adminObj.location_code,
+        loading: false
       });
     });
   };
@@ -191,7 +198,8 @@ class CompanyAdminEdit extends PureComponent {
       email,
       role,
       location_code,
-      errors
+      errors,
+      loading
     } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
@@ -220,6 +228,7 @@ class CompanyAdminEdit extends PureComponent {
 
         <div className="container">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
               <h6>Edit Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>
