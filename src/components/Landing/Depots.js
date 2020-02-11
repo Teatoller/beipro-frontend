@@ -3,6 +3,9 @@ import axios from "../../axios";
 import Nav from "./Nav";
 import "../css/depot.css";
 import Footer from "./Footer";
+import Spinner from "../../spinner/Spinner";
+// import UseSpinner from "../../spinner/UseSpinner";
+// import spinner from "../../spinner/Spinner";
 
 class Depots extends PureComponent {
   constructor(props) {
@@ -50,6 +53,7 @@ class Depots extends PureComponent {
 
   render() {
     const { selectedLocation, loading } = this.state;
+    // const {spinner, showSpinner, hideSpinner} = this.state;
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
       return (
@@ -66,11 +70,6 @@ class Depots extends PureComponent {
       );
     });
 
-    const loadingStyle = {
-      fontStyle: "italic",
-      color: "white"
-    };
-
     return (
       <div>
         <Nav />
@@ -78,7 +77,7 @@ class Depots extends PureComponent {
         <div className="container">
           <div className="row">
             <div className="col-sm">
-              <span style={loading ? null : loadingStyle}>loading...</span>
+              <span>{loading ? <Spinner /> : null}</span>
               <div className="selector">
                 <span>
                   Showing results for

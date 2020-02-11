@@ -5,11 +5,13 @@ import PropTypes from "prop-types";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
+import Spinner from "../../spinner/Spinner";
 
 class FrontAdmin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       front_office_id: "",
       diesel: "",
       petrol: "",
@@ -48,7 +50,8 @@ class FrontAdmin extends Component {
       .then(response => {
         const message = response.data;
         this.setState({
-          message
+          message,
+          loading: false
         });
       })
       .catch(err => {
@@ -132,7 +135,8 @@ class FrontAdmin extends Component {
         kerosene: priceObj.kerosene,
         ido: priceObj.ido,
         fo: priceObj.fo,
-        lpg: priceObj.lpg
+        lpg: priceObj.lpg,
+        loading: false
       });
     });
   };
@@ -148,6 +152,7 @@ class FrontAdmin extends Component {
     localStorage.setItem("priceid", priceid);
 
     history.push("/fadminedit");
+    this.setState({ loading: false });
   };
 
   handleCreateClick = e => {
@@ -156,6 +161,7 @@ class FrontAdmin extends Component {
     e.preventDefault();
 
     history.push("/fadmincreate");
+    this.setState({ loading: false });
   };
 
   // Select current price record to delete
@@ -175,6 +181,7 @@ class FrontAdmin extends Component {
         if (response) {
           history.push("/fadmin");
         }
+        this.setState({ loading: false });
       })
       .catch(error => {
         throw error;
@@ -183,7 +190,7 @@ class FrontAdmin extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { latestprices } = this.state;
+    const { latestprices, loading } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -225,6 +232,7 @@ class FrontAdmin extends Component {
         <Nav />
         <div className="container">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
               <h6>Current Price</h6>
               <table className="table table">

@@ -7,16 +7,17 @@ import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class Reset extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       email: "",
       password: "",
       password_confirmation: "",
       token: "",
-      message: {},
       errors: {
         email: "",
         password: "",
@@ -54,9 +55,8 @@ class Reset extends PureComponent {
     axios
       .post("/reset", user, config)
       .then(response => {
-        const message = response.data;
         this.setState({
-          message
+          loading: true
         });
         if (response) history.push(`/`);
       })
@@ -72,7 +72,7 @@ class Reset extends PureComponent {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, loading } = this.state;
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -92,6 +92,7 @@ class Reset extends PureComponent {
         <div className="container" aria-label="Password Reset form">
           <div className="row">
             <div className="col-7">
+              <span>{loading ? <Spinner /> : null}</span>
               <form>
                 <div className="form-group">
                   <label html-for="email">Email address</label>

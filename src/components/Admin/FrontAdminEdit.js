@@ -7,11 +7,13 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class FrontAdminEdit extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       front_office_id: "",
       diesel: "",
       petrol: "",
@@ -36,7 +38,7 @@ class FrontAdminEdit extends PureComponent {
 
   componentDidMount() {
     this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 500);
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 1500);
   }
 
   componentWillUnmount() {
@@ -63,6 +65,7 @@ class FrontAdminEdit extends PureComponent {
         if (response) {
           history.push("/fadmin");
         }
+        this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({
@@ -112,6 +115,7 @@ class FrontAdminEdit extends PureComponent {
 
           return frontOfficeId;
         }
+        this.setState({ loading: false });
       }
 
       const lockey = parseInt(frontkey(), 10);
@@ -156,7 +160,8 @@ class FrontAdminEdit extends PureComponent {
           kerosene: priceObj.kerosene,
           ido: priceObj.ido,
           fo: priceObj.fo,
-          lpg: priceObj.lpg
+          lpg: priceObj.lpg,
+          loading: false
         });
       });
     } catch (err) {
@@ -183,6 +188,7 @@ class FrontAdminEdit extends PureComponent {
     localStorage.setItem("fadminid", priceid);
 
     history.push("/fadminedit");
+    this.setState({ loading: false });
   };
 
   // Select front admin record to delete
@@ -201,6 +207,7 @@ class FrontAdminEdit extends PureComponent {
         if (response) {
           history.push("/fadmin");
         }
+        this.setState({ loading: false });
       },
       error => {
         throw error;
@@ -219,7 +226,8 @@ class FrontAdminEdit extends PureComponent {
       fo,
       lpg,
       latestprices,
-      errors
+      errors,
+      loading
     } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
@@ -248,6 +256,7 @@ class FrontAdminEdit extends PureComponent {
 
         <div className="container">
           <div className="row">
+            <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
               <h6>Edit Entry Pad</h6>
               <form noValidate onSubmit={this.onSubmit}>

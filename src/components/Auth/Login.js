@@ -10,14 +10,15 @@ import { setLogin } from "../../redux/actionCreators/authActions";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       email: "",
       password: "",
-      message: {},
       errors: {
         email: "",
         password: ""
@@ -36,9 +37,8 @@ class Login extends PureComponent {
     axios
       .post(`/login`, data)
       .then(res => {
-        const msg = res.data;
         this.setState({
-          message: msg.message
+          loading: true
         });
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("email", res.data.email);
@@ -47,14 +47,13 @@ class Login extends PureComponent {
         }
       })
       .catch(err => {
-        
         this.setState({
           errors: {
             email: err.response.request.response,
             password: err.response.request.response
           }
         });
-        throw(err);
+        throw err;
       });
   };
 
@@ -63,7 +62,7 @@ class Login extends PureComponent {
   }
 
   render() {
-    const {errors } = this.state;
+    const { errors, loading } = this.state;
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -84,6 +83,7 @@ class Login extends PureComponent {
           <div>
             <div className="row">
               <div className="col-7 p-2">
+                <span>{loading ? <Spinner /> : null}</span>
                 <div className="text-center">
                   <p className="text-secondary">Please log in</p>
                 </div>
@@ -99,7 +99,8 @@ class Login extends PureComponent {
                       id="email"
                       aria-describedby="emailInput"
                       placeholder="Enter email"
-                      aria-required="true" aria-invalid="false"
+                      aria-required="true"
+                      aria-invalid="false"
                     />
                   </div>
                   <div className="form-group mb-3">
@@ -113,7 +114,8 @@ class Login extends PureComponent {
                       className="form-control"
                       id="InputPassword"
                       aria-describedby="passwordInput"
-                      aria-required="true" aria-invalid="false"
+                      aria-required="true"
+                      aria-invalid="false"
                     />
                     <span style={errors.password ? dangerStyle : null}>
                       <Error error={errors.password ? errors.password : null} />

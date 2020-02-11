@@ -7,11 +7,13 @@ import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class Register extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       firstname: "",
       lastname: "",
       email: "",
@@ -55,7 +57,8 @@ class Register extends PureComponent {
       .then(response => {
         const message = response.data;
         this.setState({
-          alertMessage: message
+          alertMessage: message,
+          loading: true
         });
         if (response) {
           history.push(`/`);
@@ -74,7 +77,7 @@ class Register extends PureComponent {
   }
 
   render() {
-    const { alertMessage, errors } = this.state;
+    const { alertMessage, errors, loading } = this.state;
 
     const alertStyle = {
       fontStyle: "italic",
@@ -99,6 +102,7 @@ class Register extends PureComponent {
         <div className="container" aria-label="Sign up form">
           <div className="row">
             <div className="col-7">
+              <span>{loading ? <Spinner /> : null}</span>
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}
               </span>
