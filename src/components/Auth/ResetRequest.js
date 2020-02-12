@@ -91,7 +91,7 @@ class ResetRequest extends PureComponent {
                     className="form-control"
                     id="email"
                     aria-describedby="emailInput"
-                    placeholder="Enter email"
+                    placeholder="Enter Email"
                   />
                   <span style={errors.email ? dangerStyle : null}>
                     <Error error={errors.email ? errors.email : null} />

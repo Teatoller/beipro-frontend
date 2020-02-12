@@ -23,7 +23,7 @@ class UseSpinner extends Component {
     const spinner = loading ? <Spinner /> : <Spinner/>;
     return (
     <div>
-        {spinner}, {showSpinner}, {hideSpinner}
+        [{spinner}, {showSpinner}, {hideSpinner}]
     </div>
     );
   }

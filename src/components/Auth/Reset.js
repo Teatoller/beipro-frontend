@@ -103,7 +103,7 @@ class Reset extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="email"
-                    placeholder="Enter email"
+                    placeholder="Enter Email"
                     aria-describedby="emailInput"
                     aria-required="true"
                     aria-invalid="false"
@@ -147,7 +147,7 @@ class Reset extends PureComponent {
                       onChange={this.onChange}
                       className="form-control"
                       id="token"
-                      placeholder="Enter token"
+                      placeholder="Enter Token"
                       aria-describedby="tokenInput"
                       aria-required="true"
                       aria-invalid="false"

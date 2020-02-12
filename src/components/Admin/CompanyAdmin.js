@@ -188,15 +188,15 @@ class CompanyAdmin extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td>{index + 1}</td>
-          <td>{item.front_office_id}</td>
-          <td>{item.firstname}</td>
-          <td>{item.lastname}</td>
-          <td>{item.staff_id}</td>
-          <td>{item.email}</td>
-          <td>{item.role}</td>
-          <td>{item.location_code}</td>
-          <td>
+          <td className="fadmin">{index + 1}</td>
+          <td className="fadmin">{item.front_office_id}</td>
+          <td className="fadmin">{item.firstname}</td>
+          <td className="fadmin">{item.lastname}</td>
+          <td className="fadmin">{item.staff_id}</td>
+          <td className="fadmin">{item.email}</td>
+          <td className="fadmin">{item.role}</td>
+          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">
             <button
               className="btn btn-sm btn-success"
               type="button"
@@ -206,7 +206,7 @@ class CompanyAdmin extends Component {
               Edit
             </button>
           </td>
-          <td>
+          <td className="fadmin">
             <button
               className="btn btn-sm btn-danger"
               type="button"
