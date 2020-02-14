@@ -12,13 +12,15 @@ class Nav extends PureComponent {
 
     this.state = {
       role: "",
-      roleAdmin: ""
+      roleAdmin: "",
+      roleSadmin: ""
     };
   }
 
   componentDidMount() {
     this.getAdminRole();
     this.getFrontAdminRole();
+    this.getSuperAdminRole();
   }
 
   // Get admin role
@@ -83,8 +85,39 @@ class Nav extends PureComponent {
     });
   };
 
+  // Get Super Admin role
+
+  getSuperAdminRole = () => {
+    axios.get(`/superadmins`, {}).then(response => {
+      const adminsRoledata = response.data;
+
+      const loggedUserEmail = localStorage.getItem("email");
+
+      // Array with object containing details of the logged user
+
+      const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
+
+      // Object containing detail of logged user
+      const userObj = userArray[0];
+
+      // Key
+      function sadminRolekey() {
+        if (userObj) {
+          const adminRole = userObj.role;
+
+          return adminRole;
+        }
+      }
+
+      const rolekey = sadminRolekey();
+
+      this.setState({ roleSadmin: rolekey });
+      localStorage.setItem("roleSadmin", rolekey);
+    });
+  };
+
   render() {
-    const { role, roleAdmin } = this.state;
+    const { role, roleAdmin, roleSadmin } = this.state;
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="logo" to="/welcome">
@@ -124,19 +157,38 @@ class Nav extends PureComponent {
                 </NavLink>
               )}
             />
+            <Can
+              role={roleSadmin}
+              perform="admin:list"
+              yes={() => (
+                <NavLink className="nav-item nav-link" to="/sadmin">
+                  Admins
+                </NavLink>
+              )}
+            />
+            <Can
+              role={roleSadmin}
+              perform="company:list"
+              yes={() => (
+                <NavLink className="nav-item nav-link" to="/company">
+                  Companies
+                </NavLink>
+              )}
+            />
+            <Can
+              role={roleSadmin}
+              perform="front-office:list"
+              yes={() => (
+                <NavLink className="nav-item nav-link" to="/frontoffice">
+                  Front-offices
+                </NavLink>
+              )}
+            />
             <NavLink className="nav-item nav-link" to="/profile">
               Profile
             </NavLink>
             <NavLink className="nav-item nav-link" to="#">
               <Logout />
-            </NavLink>
-            <NavLink
-              className="nav-item nav-link disabled"
-              to="#"
-              tabIndex="-1"
-              aria-disabled="true"
-            >
-              Disabled
             </NavLink>
           </div>
         </div>

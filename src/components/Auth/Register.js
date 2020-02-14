@@ -117,7 +117,7 @@ class Register extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="firstname"
-                    placeholder="Enter firstname"
+                    placeholder="Enter Firstname"
                     aria-describedby="firstnameInput"
                     aria-required="true"
                     aria-invalid="false"
@@ -135,7 +135,7 @@ class Register extends PureComponent {
                     onChange={this.onChange}
                     className="form-control"
                     id="lastname"
-                    placeholder="Enter lastname"
+                    placeholder="Enter Lastname"
                     aria-describedby="lastnameInput"
                     aria-required="true"
                     aria-invalid="false"
@@ -154,7 +154,7 @@ class Register extends PureComponent {
                     className="form-control"
                     id="email"
                     aria-describedby="emailInput"
-                    placeholder="Enter email"
+                    placeholder="Enter Email"
                     aria-required="true"
                     aria-invalid="false"
                   />

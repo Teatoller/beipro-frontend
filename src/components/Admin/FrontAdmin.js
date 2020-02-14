@@ -20,7 +20,6 @@ class FrontAdmin extends Component {
       ido: "",
       lpg: "",
       latestprices: [],
-      message: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -28,7 +27,7 @@ class FrontAdmin extends Component {
 
   componentDidMount() {
     this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 1500);
+    this.priceData = setTimeout(() => this.getCurrentPriceData(), 1800);
   }
 
   componentWillUnmount() {
@@ -48,11 +47,11 @@ class FrontAdmin extends Component {
     axios
       .post(`/currentprices`, data)
       .then(response => {
-        const message = response.data;
-        this.setState({
-          message,
-          loading: false
-        });
+        if (response) {
+          this.setState({
+            loading: false
+          });
+        }
       })
       .catch(err => {
         throw err;
@@ -195,15 +194,15 @@ class FrontAdmin extends Component {
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td>{index + 1}</td>
-          <td>{item.front_office_id}</td>
-          <td>{item.diesel}</td>
-          <td>{item.petrol}</td>
-          <td>{item.kerosene}</td>
-          <td>{item.ido}</td>
-          <td>{item.fo}</td>
-          <td>{item.lpg}</td>
-          <td>
+          <td className="depot">{index + 1}</td>
+          <td className="depot">{item.front_office_id}</td>
+          <td className="depot">{item.diesel}</td>
+          <td className="depot">{item.petrol}</td>
+          <td className="depot">{item.kerosene}</td>
+          <td className="depot">{item.ido}</td>
+          <td className="depot">{item.fo}</td>
+          <td className="depot">{item.lpg}</td>
+          <td className="depot">
             <button
               className="btn btn-sm btn-success"
               type="button"
@@ -213,7 +212,7 @@ class FrontAdmin extends Component {
               Edit
             </button>
           </td>
-          <td>
+          <td className="depot">
             <button
               className="btn btn-sm btn-danger"
               type="button"
