@@ -14,6 +14,15 @@ import FrontAdminEdit from "./components/Admin/FrontAdminEdit";
 import Reset from "./components/Auth/Reset";
 import CompanyAdminCreate from "./components/Admin/CompanyAdminCreate";
 import FrontAdminCreate from "./components/Admin/FrontAdminCreate";
+import Admin from "./components/SuperAdmin/Admin/Admin";
+import AdminCreate from "./components/SuperAdmin/Admin/AdminCreate";
+import AdminEdit from "./components/SuperAdmin/Admin/AdminEdit";
+import Company from "./components/SuperAdmin/Company/Company";
+import CompanyCreate from "./components/SuperAdmin/Company/CompanyCreate";
+import CompanyEdit from "./components/SuperAdmin/Company/CompanyEdit";
+import FrontOffice from "./components/SuperAdmin/FrontOffice/FrontOffice";
+import FrontOfficeCreate from "./components/SuperAdmin/FrontOffice/FrontOfficeCreate";
+import FrontOfficeEdit from "./components/SuperAdmin/FrontOffice/FrontOfficeEdit";
 
 class App extends Component {
   render() {
@@ -33,6 +42,15 @@ class App extends Component {
             <Route exact path="/fadmin" component={FrontAdmin} />
             <Route exact path="/fadminedit" component={FrontAdminEdit} />
             <Route exact path="/fadmincreate" component={FrontAdminCreate} />
+            <Route exact path="/sadmin" component={Admin} />
+            <Route exact path="/sadmincreate" component={AdminCreate} />
+            <Route exact path="/sadminedit" component={AdminEdit} />
+            <Route exact path="/company" component={Company} />
+            <Route exact path="/companycreate" component={CompanyCreate} />
+            <Route exact path="/companyedit" component={CompanyEdit} />
+            <Route exact path="/frontoffice" component={FrontOffice} />
+            <Route exact path="/frontofficecreate" component={FrontOfficeCreate} />
+            <Route exact path="/frontofficeedit" component={FrontOfficeEdit} />
             <Route exact path="/depots" component={Depots} />
           </Switch>
         </div>

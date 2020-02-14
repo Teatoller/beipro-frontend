@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
@@ -65,7 +66,13 @@ class Login extends PureComponent {
     const { errors, loading } = this.state;
 
     const dangerStyle = {
-      fontStyle: "italic",
+      _fontStyle: "italic",
+      get fontStyle() {
+        return this._fontStyle;
+      },
+      set fontStyle(value) {
+        this._fontStyle = value;
+      },
       color: "red"
     };
 
@@ -98,7 +105,7 @@ class Login extends PureComponent {
                       className="form-control"
                       id="email"
                       aria-describedby="emailInput"
-                      placeholder="Enter email"
+                      placeholder="Enter Email"
                       aria-required="true"
                       aria-invalid="false"
                     />

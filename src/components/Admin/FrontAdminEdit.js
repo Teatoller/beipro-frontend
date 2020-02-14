@@ -233,14 +233,14 @@ class FrontAdminEdit extends PureComponent {
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td>{index + 1}</td>
-          <td>{item.front_office_id}</td>
-          <td>{item.diesel}</td>
-          <td>{item.petrol}</td>
-          <td>{item.kerosene}</td>
-          <td>{item.ido}</td>
-          <td>{item.fo}</td>
-          <td>{item.lpg}</td>
+          <td className="depot">{index + 1}</td>
+          <td className="depot">{item.front_office_id}</td>
+          <td className="depot">{item.diesel}</td>
+          <td className="depot">{item.petrol}</td>
+          <td className="depot">{item.kerosene}</td>
+          <td className="depot">{item.ido}</td>
+          <td className="depot">{item.fo}</td>
+          <td className="depot">{item.lpg}</td>
         </tr>
       );
     });

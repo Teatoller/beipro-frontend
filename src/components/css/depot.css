@@ -79,47 +79,247 @@ body {
 
 /* Table */
 
-table {
+table.depot {
   table-layout: fixed;
   width: 90%;
   border-collapse: collapse;
   margin: auto;
 }
 
-thead th:nth-child(1) {
+thead.depot th:nth-child(1) {
   width: 5%;
 }
 
-thead th:nth-child(2) {
+thead.depot th:nth-child(2) {
   width: 15%;
 }
 
-thead th:nth-child(3) {
+thead.depot th:nth-child(3) {
   width: 10%;
 }
 
-thead th:nth-child(4) {
+thead.depot th:nth-child(4) {
   width: 10%;
 }
 
-thead th:nth-child(5) {
+thead.depot th:nth-child(5) {
   width: 10%;
 }
 
-thead th:nth-child(6) {
+thead.depot th:nth-child(6) {
   width: 10%;
 }
 
-thead th:nth-child(7) {
+thead.depot th:nth-child(7) {
   width: 10%;
 }
 
-thead th:nth-child(8) {
+thead.depot th:nth-child(8) {
   width: 10%;
 }
 
-th,
-td {
+th.depot,
+td.depot {
+  /* background-color: #f1f1f1; */
+  /* color: #989898; */
+  padding: 4px;
+  text-align: center;
+  font-size: small;
+}
+
+/* Table Front Admin*/
+
+table.fadmin {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+thead.fadmin th:nth-child(1) {
+  width: 5%;
+}
+
+thead.fadmin th:nth-child(2) {
+  width: 15%;
+}
+
+thead.fadmin th:nth-child(3) {
+  width: 10%;
+}
+
+thead.fadmin th:nth-child(4) {
+  width: 10%;
+}
+
+thead.fadmin th:nth-child(5) {
+  width: 10%;
+}
+
+thead.fadmin th:nth-child(6) {
+  width: 10%;
+}
+
+thead.fadmin th:nth-child(7) {
+  width: 10%;
+}
+
+thead.fadmin th:nth-child(8) {
+  width: 10%;
+}
+
+th.fadmin,
+td.fadmin {
+  /* background-color: #f1f1f1; */
+  /* color: #989898; */
+  padding: 4px;
+  text-align: center;
+  font-size: small;
+}
+
+/* Table Admin*/
+
+table.admin {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+thead.admin th:nth-child(1) {
+  width: 5%;
+}
+
+thead.admin th:nth-child(2) {
+  width: 15%;
+}
+
+thead.admin th:nth-child(3) {
+  width: 10%;
+}
+
+thead.admin th:nth-child(4) {
+  width: 10%;
+}
+
+thead.admin th:nth-child(5) {
+  width: 10%;
+}
+
+thead.admin th:nth-child(6) {
+  width: 10%;
+}
+
+thead.admin th:nth-child(7) {
+  width: 10%;
+}
+
+thead.admin th:nth-child(8) {
+  width: 10%;
+}
+
+th.admin,
+td.admin {
+  /* background-color: #f1f1f1; */
+  /* color: #989898; */
+  padding: 4px;
+  text-align: center;
+  font-size: small;
+}
+
+/* Table Company*/
+
+table.company {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+thead.company th:nth-child(1) {
+  width: 5%;
+}
+
+thead.company th:nth-child(2) {
+  width: 15%;
+}
+
+thead.company th:nth-child(3) {
+  width: 10%;
+}
+
+thead.company th:nth-child(4) {
+  width: 10%;
+}
+
+thead.company th:nth-child(5) {
+  width: 10%;
+}
+
+thead.company th:nth-child(6) {
+  width: 10%;
+}
+
+thead.company th:nth-child(7) {
+  width: 10%;
+}
+
+thead.company th:nth-child(8) {
+  width: 10%;
+}
+
+th.company,
+td.company {
+  /* background-color: #f1f1f1; */
+  /* color: #989898; */
+  padding: 4px;
+  text-align: center;
+  font-size: small;
+}
+
+/* Table Front Offices*/
+
+table.foffices {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+thead.foffices th:nth-child(1) {
+  width: 5%;
+}
+
+thead.foffices th:nth-child(2) {
+  width: 15%;
+}
+
+thead.foffices th:nth-child(3) {
+  width: 10%;
+}
+
+thead.foffices th:nth-child(4) {
+  width: 10%;
+}
+
+thead.foffices th:nth-child(5) {
+  width: 10%;
+}
+
+thead.foffices th:nth-child(6) {
+  width: 10%;
+}
+
+thead.foffices th:nth-child(7) {
+  width: 10%;
+}
+
+thead.foffices th:nth-child(8) {
+  width: 10%;
+}
+
+th.foffices,
+td.foffices {
   /* background-color: #f1f1f1; */
   /* color: #989898; */
   padding: 4px;
@@ -194,28 +394,150 @@ div.form-example {
   /*
         Label the data
         */
-  td:nth-of-type(1):before {
+  td.depot:nth-of-type(1):before {
     content: "#";
   }
-  td:nth-of-type(2):before {
+  td.depot:nth-of-type(2):before {
     content: "Company";
   }
-  td:nth-of-type(3):before {
+  td.depot:nth-of-type(3):before {
     content: "Diesel";
   }
-  td:nth-of-type(4):before {
+  td.depot:nth-of-type(4):before {
     content: "Petrol";
   }
-  td:nth-of-type(5):before {
+  td.depot:nth-of-type(5):before {
     content: "Kerosene";
   }
-  td:nth-of-type(6):before {
+  td.depot:nth-of-type(6):before {
     content: "Ido";
   }
-  td:nth-of-type(7):before {
+  td.depot:nth-of-type(7):before {
     content: "Fuel Oil";
   }
-  td:nth-of-type(8):before {
+  td.depot:nth-of-type(8):before {
     content: "Lpg";
+  }
+  td.depot:nth-of-type(9):before {
+    content: "Action";
+  }
+  td.depot:nth-of-type(10):before {
+    content: "Remove";
+  }
+
+  /* front admin */
+  td.fadmin:nth-of-type(1):before {
+    content: "#";
+  }
+  td.fadmin:nth-of-type(2):before {
+    content: "Office-id";
+  }
+  td.fadmin:nth-of-type(3):before {
+    content: "Firstname";
+  }
+  td.fadmin:nth-of-type(4):before {
+    content: "LastName";
+  }
+  td.fadmin:nth-of-type(5):before {
+    content: "Staff-id";
+  }
+  td.fadmin:nth-of-type(6):before {
+    content: "Email";
+  }
+  td.fadmin:nth-of-type(7):before {
+    content: "Role";
+  }
+  td.fadmin:nth-of-type(8):before {
+    content: "Location";
+  }
+  td.fadmin:nth-of-type(9):before {
+    content: "Add";
+  }
+  td.fadmin:nth-of-type(10):before {
+    content: "Remove";
+  }
+
+  /* admin */
+  td.admin:nth-of-type(1):before {
+    content: "#";
+  }
+  td.admin:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.admin:nth-of-type(3):before {
+    content: "Firstname";
+  }
+  td.admin:nth-of-type(4):before {
+    content: "LastName";
+  }
+  td.admin:nth-of-type(5):before {
+    content: "Staff-id";
+  }
+  td.admin:nth-of-type(6):before {
+    content: "Email";
+  }
+  td.admin:nth-of-type(7):before {
+    content: "Role";
+  }
+  td.admin:nth-of-type(8):before {
+    content: "Add";
+  }
+  td.admin:nth-of-type(9):before {
+    content: "Remove";
+  }
+
+  /* company */
+  td.company:nth-of-type(1):before {
+    content: "#";
+  }
+  td.company:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.company:nth-of-type(3):before {
+    content: "Name";
+  }
+  td.company:nth-of-type(4):before {
+    content: "Logo";
+  }
+  td.company:nth-of-type(5):before {
+    content: "Description";
+  }
+  td.company:nth-of-type(6):before {
+    content: "Location";
+  }
+  td.company:nth-of-type(7):before {
+    content: "Country";
+  }
+  td.company:nth-of-type(8):before {
+    content: "Established";
+  }
+  td.company:nth-of-type(9):before {
+    content: "Add";
+  }
+  td.company:nth-of-type(10):before {
+    content: "Remove";
+  }
+
+  /* Front Offices */
+  td.foffices:nth-of-type(1):before {
+    content: "#";
+  }
+  td.foffices:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.foffices:nth-of-type(3):before {
+    content: "Name";
+  }
+  td.foffices:nth-of-type(4):before {
+    content: "Code";
+  }
+  td.foffices:nth-of-type(5):before {
+    content: "Location";
+  }
+  td.foffices:nth-of-type(6):before {
+    content: "Add";
+  }
+  td.foffices:nth-of-type(7):before {
+    content: "Remove";
   }
 }
