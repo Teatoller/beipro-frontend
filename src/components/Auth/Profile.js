@@ -11,7 +11,9 @@ class Profile extends Component {
       loading: true,
       firstname: "",
       lastname: "",
-      email: ""
+      email: "",
+      avatar: '',
+      avatarUrl: ''
     };
   }
 
@@ -30,6 +32,8 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
+          avatar: data.avatar,
+          avatarUrl: data.avatar_url,
           loading: false
         });
       })
@@ -39,7 +43,8 @@ class Profile extends Component {
   }
 
   render() {
-    const { firstname, lastname, email, loading } = this.state;
+    const { firstname, lastname, email, loading, avatar, avatarUrl } = this.state;
+
     return (
       <div>
         <Nav />
@@ -50,6 +55,11 @@ class Profile extends Component {
           </div>
           <table className="table table-striped">
             <tbody>
+            <tr>
+                <th scope="col">Avatar:</th>
+                <td><img src={avatar} alt="avatar" /></td>
+                <td><img src={avatarUrl} alt="avatarUrl" /></td>
+              </tr>
               <tr>
                 <th scope="col">First name:</th>
                 <td>{firstname}</td>
