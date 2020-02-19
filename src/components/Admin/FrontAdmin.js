@@ -13,12 +13,12 @@ class FrontAdmin extends Component {
     this.state = {
       loading: true,
       front_office_id: "",
-      diesel: "0.00",
-      petrol: "0.00",
-      kerosene: "0.00",
-      fo: "0.00",
-      ido: "0.00",
-      lpg: "0.00",
+      diesel: 0.00,
+      petrol: 0.00,
+      kerosene: 0.00,
+      fo: 0.00,
+      ido: 0.00,
+      lpg: 0.00,
       latestprices: []
     };
     this.onChange = this.onChange.bind(this);
