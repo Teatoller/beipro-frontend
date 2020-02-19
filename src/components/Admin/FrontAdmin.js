@@ -13,12 +13,12 @@ class FrontAdmin extends Component {
     this.state = {
       loading: true,
       front_office_id: "",
-      diesel: 0.00,
-      petrol: 0.00,
-      kerosene: 0.00,
-      fo: 0.00,
-      ido: 0.00,
-      lpg: 0.00,
+      diesel: "0.00",
+      petrol: "0.00",
+      kerosene: "0.00",
+      fo: "0.00",
+      ido: "0.00",
+      lpg: "0.00",
       latestprices: []
     };
     this.onChange = this.onChange.bind(this);
@@ -127,16 +127,31 @@ class FrontAdmin extends Component {
       // Object containing detail of front office latest current price
       const priceObj = latestprices[0];
 
-      this.setState({
-        latestprices,
-        diesel: priceObj.diesel,
-        petrol: priceObj.petrol,
-        kerosene: priceObj.kerosene,
-        ido: priceObj.ido,
-        fo: priceObj.fo,
-        lpg: priceObj.lpg,
-        loading: false
-      });
+      if(priceObj){
+        this.setState({
+          latestprices,
+          diesel: priceObj.diesel,
+          petrol: priceObj.petrol,
+          kerosene: priceObj.kerosene,
+          ido: priceObj.ido,
+          fo: priceObj.fo,
+          lpg: priceObj.lpg,
+          loading: false
+        });
+      } else {
+        this.setState({
+          latestprices,
+          diesel: 0,
+          petrol: 0,
+          kerosene: 0,
+          ido: 0,
+          fo: 0,
+          lpg: 0,
+          loading: false
+        });
+      }
+
+      
     });
   };
 
