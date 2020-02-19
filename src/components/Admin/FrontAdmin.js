@@ -127,31 +127,16 @@ class FrontAdmin extends Component {
       // Object containing detail of front office latest current price
       const priceObj = latestprices[0];
 
-      if(priceObj){
-        this.setState({
-          latestprices,
-          diesel: priceObj.diesel,
-          petrol: priceObj.petrol,
-          kerosene: priceObj.kerosene,
-          ido: priceObj.ido,
-          fo: priceObj.fo,
-          lpg: priceObj.lpg,
-          loading: false
-        });
-      } else {
-        this.setState({
-          latestprices,
-          diesel: 0,
-          petrol: 0,
-          kerosene: 0,
-          ido: 0,
-          fo: 0,
-          lpg: 0,
-          loading: false
-        });
-      }
-
-      
+      this.setState({
+        latestprices,
+        diesel: priceObj.diesel,
+        petrol: priceObj.petrol,
+        kerosene: priceObj.kerosene,
+        ido: priceObj.ido,
+        fo: priceObj.fo,
+        lpg: priceObj.lpg,
+        loading: false
+      });
     });
   };
 
