@@ -48,7 +48,8 @@ const rules = {
       "admin:get",
       "profile:getSelf",
       "welcome:visit",
-      "depots:visit"
+      "depots:visit",
+      "audit:list",
     ]
   }
 };
