@@ -184,6 +184,15 @@ class Nav extends PureComponent {
                 </NavLink>
               )}
             />
+            <Can
+              role={roleSadmin}
+              perform="audit:list"
+              yes={() => (
+                <NavLink className="nav-item nav-link" to="/audit">
+                  Audits
+                </NavLink>
+              )}
+            />
             <NavLink className="nav-item nav-link" to="/profile">
               Profile
             </NavLink>

@@ -78,7 +78,7 @@ class Depots extends PureComponent {
           <div className="row">
             <div className="col-sm">
               <span>{loading ? <Spinner /> : null}</span>
-              <div className="selector">
+              <div className="selector select-css">
                 <span>
                   Showing results for
                   {"\u00A0"}
@@ -87,7 +87,7 @@ class Depots extends PureComponent {
                 </span>
                 <select
                   style={{ color: "gray" }}
-                  className="location-select"
+                  className="location-select select-css"
                   onChange={this.handleChange}
                 >
                   {/* <option value=" ">--Select location--</option> */}
