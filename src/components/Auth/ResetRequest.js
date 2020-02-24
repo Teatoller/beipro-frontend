@@ -67,7 +67,7 @@ class ResetRequest extends PureComponent {
             Beipro
           </NavLink>
           <div className="header-right">
-            <NavLink to="/">Login</NavLink>
+            <NavLink to="/">Sign in</NavLink>
           </div>
         </header>
         <div className="container" aria-label="Password reset request form">
@@ -107,7 +107,7 @@ class ResetRequest extends PureComponent {
                 <div className="col text-right">
                   <p>Have an account?</p>
                   <span className="create-account">
-                    <NavLink to="/">Login</NavLink>
+                    <NavLink to="/">Sign in</NavLink>
                   </span>
                 </div>
               </div>
