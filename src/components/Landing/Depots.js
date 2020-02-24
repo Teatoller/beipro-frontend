@@ -4,8 +4,7 @@ import Nav from "./Nav";
 import "../css/depot.css";
 import Footer from "./Footer";
 import Spinner from "../../spinner/Spinner";
-// import UseSpinner from "../../spinner/UseSpinner";
-// import spinner from "../../spinner/Spinner";
+import Pagination from "../Pagination";
 
 class Depots extends PureComponent {
   constructor(props) {
@@ -13,7 +12,9 @@ class Depots extends PureComponent {
     this.state = {
       loading: false,
       frontoffices: [],
-      selectedLocation: "Nairobi"
+      selectedLocation: "Nairobi",
+      activePage: "1",
+      itemCountPerPage: "10"
     };
   }
 
@@ -53,7 +54,6 @@ class Depots extends PureComponent {
 
   render() {
     const { selectedLocation, loading } = this.state;
-    // const {spinner, showSpinner, hideSpinner} = this.state;
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
       return (
@@ -69,6 +69,20 @@ class Depots extends PureComponent {
         </tr>
       );
     });
+
+    const { activePage, itemCountPerPage } = this.state;
+    // Get current items
+    const indexOfLastItem = activePage * itemCountPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+    const currentItems = selectedLocationItems.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+
+    const paginate = pageNumber => {
+      this.setState({
+        activePage: pageNumber
+      });
+    };
 
     return (
       <div>
@@ -122,12 +136,17 @@ class Depots extends PureComponent {
                       </td>
                     </tr>
                   ) : (
-                    selectedLocationItems
+                    currentItems
                   )}
                 </tbody>
               </table>
             </div>
           </div>
+          <Pagination
+            itemCountPerPage={itemCountPerPage}
+            totalItems={selectedLocationItems.length}
+            paginate={paginate}
+          />
         </div>
 
         <Footer />
