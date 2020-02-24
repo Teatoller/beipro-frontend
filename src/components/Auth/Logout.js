@@ -41,9 +41,6 @@ class Logout extends Component {
   render() {
     const { navigate, message, errors } = this.state;
 
-    console.log("logout msg...", message);
-    console.log("logout errors..>>>", errors);
-
     if (navigate) {
       return <Redirect to="/" />;
     }

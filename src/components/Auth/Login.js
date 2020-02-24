@@ -83,7 +83,7 @@ class Login extends PureComponent {
             Beipro
           </NavLink>
           <div className="header-right">
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/register">Sign up</NavLink>
           </div>
         </header>
         <div className="container" aria-label="Login form">
@@ -130,7 +130,7 @@ class Login extends PureComponent {
                   </div>
                   <div className="text-right mb-3">
                     <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
-                      Login
+                      Sign in
                     </button>
                   </div>
                 </form>
@@ -144,7 +144,7 @@ class Login extends PureComponent {
                   <div className="col-6 text-right">
                     <p>Do not have an account?</p>
                     <span className="create-account">
-                      <NavLink to="/register">Register</NavLink>
+                      <NavLink to="/register">Sign up</NavLink>
                     </span>
                   </div>
                 </div>
