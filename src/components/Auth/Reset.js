@@ -86,7 +86,7 @@ class Reset extends PureComponent {
             Beipro
           </NavLink>
           <div className="header-right">
-            <NavLink to="/">Login</NavLink>
+            <NavLink to="/">Sign in</NavLink>
           </div>
         </header>
         <div className="container" aria-label="Password Reset form">
@@ -172,7 +172,7 @@ class Reset extends PureComponent {
                   <p>
                     Have an account?{" "}
                     <span className="create-account">
-                      <NavLink to="/">Login</NavLink>
+                      <NavLink to="/">Sign in</NavLink>
                     </span>
                   </p>
                 </div>

@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ResetRequest from "./components/Auth/ResetRequest";
@@ -25,36 +26,66 @@ import FrontOfficeEdit from "./components/SuperAdmin/FrontOffice/FrontOfficeEdit
 import Audit from "./components/SuperAdmin/Audit/Audit";
 import AuditView from "./components/SuperAdmin/Audit/AuditView";
 
+const checkAuth = () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return false;
+  }
+  return true;
+};
+
+// eslint-disable-next-line react/prop-types
+const AuthRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        checkAuth() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/"
+            }}
+          />
+        )
+      }
+    />
+  );
+};
+
 const BeiproRouter = () => {
   return (
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/profile" component={Profile} />
+        <AuthRoute exact path="/profile" component={Profile} />
         <Route exact path="/resetrequest" component={ResetRequest} />
         <Route exact path="/reset" component={Reset} />
-        <Route path="/welcome" component={Welcome} />
-        <Route exact path="/admin" component={CompanyAdmin} />
-        <Route exact path="/adminedit" component={CompanyAdminEdit} />
-        <Route exact path="/admincreate" component={CompanyAdminCreate} />
-        <Route exact path="/fadmin" component={FrontAdmin} />
-        <Route exact path="/fadminedit" component={FrontAdminEdit} />
-        <Route exact path="/fadmincreate" component={FrontAdminCreate} />
-        <Route exact path="/sadmin" component={Admin} />
-        <Route exact path="/sadmincreate" component={AdminCreate} />
-        <Route exact path="/sadminedit" component={AdminEdit} />
-        <Route exact path="/company" component={Company} />
-        <Route exact path="/companycreate" component={CompanyCreate} />
-        <Route exact path="/companyedit" component={CompanyEdit} />
-        <Route exact path="/frontoffice" component={FrontOffice} />
-        <Route exact path="/frontofficecreate" component={FrontOfficeCreate} />
-        <Route exact path="/frontofficeedit" component={FrontOfficeEdit} />
-        <Route exact path="/depots" component={Depots} />
-        <Route exact path="/audit" component={Audit} />
-        <Route exact path="/auditview" component={AuditView} />
+        <AuthRoute path="/welcome" component={Welcome} />
+        <AuthRoute exact path="/admin" component={CompanyAdmin} />
+        <AuthRoute exact path="/adminedit" component={CompanyAdminEdit} />
+        <AuthRoute exact path="/admincreate" component={CompanyAdminCreate} />
+        <AuthRoute exact path="/fadmin" component={FrontAdmin} />
+        <AuthRoute exact path="/fadminedit" component={FrontAdminEdit} />
+        <AuthRoute exact path="/fadmincreate" component={FrontAdminCreate} />
+        <AuthRoute exact path="/sadmin" component={Admin} />
+        <AuthRoute exact path="/sadmincreate" component={AdminCreate} />
+        <AuthRoute exact path="/sadminedit" component={AdminEdit} />
+        <AuthRoute exact path="/company" component={Company} />
+        <AuthRoute exact path="/companycreate" component={CompanyCreate} />
+        <AuthRoute exact path="/companyedit" component={CompanyEdit} />
+        <AuthRoute exact path="/frontoffice" component={FrontOffice} />
+        <AuthRoute exact path="/frontofficecreate" component={FrontOfficeCreate} />
+        <AuthRoute exact path="/frontofficeedit" component={FrontOfficeEdit} />
+        <AuthRoute exact path="/depots" component={Depots} />
+        <AuthRoute exact path="/audit" component={Audit} />
+        <AuthRoute exact path="/auditview" component={AuditView} />
       </Switch>
     </div>
   );
 };
+
 export default BeiproRouter;
