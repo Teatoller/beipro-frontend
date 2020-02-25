@@ -7,6 +7,7 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
+import Pagination from "../../Pagination";
 
 class FrontOfficeEdit extends Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class FrontOfficeEdit extends Component {
       code: "",
       location: "",
       frontoffices: [],
+      activePage: "1",
+      itemCountPerPage: "10",
       errors: {
         company_id: "",
         name: "",
@@ -172,6 +175,20 @@ class FrontOfficeEdit extends Component {
       );
     });
 
+    const { activePage, itemCountPerPage } = this.state;
+    // Get current items
+    const indexOfLastItem = activePage * itemCountPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+    const currentItems = frontOffice.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+
+    const paginate = pageNumber => {
+      this.setState({
+        activePage: pageNumber
+      });
+    };
+
     const dangerStyle = {
       fontStyle: "italic",
       color: "red"
@@ -293,10 +310,15 @@ class FrontOfficeEdit extends Component {
                     <th scope="col">Location</th>
                   </tr>
                 </thead>
-                <tbody>{frontOffice}</tbody>
+                <tbody>{currentItems}</tbody>
               </table>
             </div>
           </div>
+          <Pagination
+            itemCountPerPage={itemCountPerPage}
+            totalItems={frontOffice.length}
+            paginate={paginate}
+          />
         </div>
         <Footer />
       </div>
