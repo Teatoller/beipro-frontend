@@ -7,6 +7,7 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
+import Pagination from "../../Pagination";
 
 class CompanyCreate extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class CompanyCreate extends Component {
       country: "",
       established: "",
       companies: [],
+      activePage: "1",
+      itemCountPerPage: "10",
       errors: {
         name: "",
         logo: "",
@@ -164,6 +167,20 @@ class CompanyCreate extends Component {
         </tr>
       );
     });
+
+    const { activePage, itemCountPerPage } = this.state;
+    // Get current items
+    const indexOfLastItem = activePage * itemCountPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+    const currentItems = company.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+
+    const paginate = pageNumber => {
+      this.setState({
+        activePage: pageNumber
+      });
+    };
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -325,10 +342,15 @@ class CompanyCreate extends Component {
                     <th scope="col">Established</th>
                   </tr>
                 </thead>
-                <tbody>{company}</tbody>
+                <tbody>{currentItems}</tbody>
               </table>
             </div>
           </div>
+          <Pagination
+            itemCountPerPage={itemCountPerPage}
+            totalItems={company.length}
+            paginate={paginate}
+          />
         </div>
         <Footer />
       </div>
