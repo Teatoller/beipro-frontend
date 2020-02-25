@@ -6,6 +6,7 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
+import NewValue from "./NewValue";
 
 class AuditView extends Component {
   constructor(props) {
@@ -109,6 +110,11 @@ class AuditView extends Component {
       updated_at
     } = this.state;
 
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
+
     return (
       <div>
         <Nav />
@@ -151,7 +157,12 @@ class AuditView extends Component {
                   </tr>
                   <tr>
                     <td className="auditview">new_values</td>
-                    {/* <td className="auditview">{new_values}</td> */}
+                    {/* <td className="auditview"><NewValue newValues={new_values} /></td> */}
+                    {/* <td className="auditview">
+                      <span style={new_values.new_values ? dangerStyle : null}>
+                        <NewValue newValue={new_values.new_values ? new_values.new_values : null} />
+                      </span>
+                    </td> */}
                   </tr>
                   <tr>
                     <td className="auditview">url</td>
