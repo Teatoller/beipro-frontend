@@ -170,18 +170,8 @@ class CompanyAdmin extends Component {
     const fadminid = attribute.getAttribute("fadminid");
     localStorage.setItem("fadminid", fadminid);
 
-    // Delete selected front admin record
+    history.push("/admindelete");
 
-    axios.delete(`/companyadmins/${fadminid}`, {}).then(
-      response => {
-        if (response) {
-          history.push("/admin");
-        }
-      },
-      error => {
-        throw error;
-      }
-    );
   };
 
   render() {
@@ -201,7 +191,7 @@ class CompanyAdmin extends Component {
           <td className="fadmin">{item.location_code}</td>
           <td className="fadmin">
             <button
-              className="btn btn-sm btn-success"
+              className="btn btn-sm btn-primary"
               type="button"
               fadminid={item.id}
               onClick={this.handleEditClick}
@@ -211,7 +201,7 @@ class CompanyAdmin extends Component {
           </td>
           <td className="fadmin">
             <button
-              className="btn btn-sm btn-danger"
+              className="btn btn-sm btn-outline-danger"
               type="button"
               fadminid={item.id}
               onClick={this.handleDeleteClick}

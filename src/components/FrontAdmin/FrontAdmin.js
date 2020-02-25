@@ -172,19 +172,8 @@ class FrontAdmin extends Component {
     const priceid = attribute.getAttribute("priceid");
     localStorage.setItem("priceid", priceid);
 
-    // Delete selected current price record
+    history.push("/fadmindelete");
 
-    axios
-      .delete(`/currentprices/${priceid}`, {})
-      .then(response => {
-        if (response) {
-          history.push("/fadmin");
-        }
-        this.setState({ loading: false });
-      })
-      .catch(error => {
-        throw error;
-      });
   };
 
   render() {
@@ -204,7 +193,7 @@ class FrontAdmin extends Component {
           <td className="depot">{item.lpg}</td>
           <td className="depot">
             <button
-              className="btn btn-sm btn-success"
+              className="btn btn-sm btn-primary"
               type="button"
               priceid={item.id}
               onClick={this.handleEditClick}
@@ -214,7 +203,7 @@ class FrontAdmin extends Component {
           </td>
           <td className="depot">
             <button
-              className="btn btn-sm btn-danger"
+              className="btn btn-sm btn-outline-danger"
               type="button"
               priceid={item.id}
               onClick={this.handleDeleteClick}
