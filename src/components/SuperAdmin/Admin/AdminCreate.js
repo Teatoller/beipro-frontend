@@ -7,6 +7,7 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
+import Pagination from "../../Pagination";
 
 class AdminCreate extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class AdminCreate extends Component {
       email: "",
       role: "",
       admins: [],
+      activePage: "1",
+      itemCountPerPage: "10",
       errors: {
         company_id: "",
         firstname: "",
@@ -162,6 +165,20 @@ class AdminCreate extends Component {
         </tr>
       );
     });
+
+    const { activePage, itemCountPerPage } = this.state;
+    // Get current items
+    const indexOfLastItem = activePage * itemCountPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+    const currentItems = companyAdminStaff.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+
+    const paginate = pageNumber => {
+      this.setState({
+        activePage: pageNumber
+      });
+    };
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -319,10 +336,15 @@ class AdminCreate extends Component {
                     <th scope="col">Role</th>
                   </tr>
                 </thead>
-                <tbody>{companyAdminStaff}</tbody>
+                <tbody>{currentItems}</tbody>
               </table>
             </div>
           </div>
+          <Pagination
+            itemCountPerPage={itemCountPerPage}
+            totalItems={companyAdminStaff.length}
+            paginate={paginate}
+          />
         </div>
         <Footer />
       </div>
