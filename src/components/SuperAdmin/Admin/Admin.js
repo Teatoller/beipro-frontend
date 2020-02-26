@@ -58,19 +58,7 @@ class Admin extends Component {
     const attribute = e.currentTarget;
     const sadminid = attribute.getAttribute("sadminid");
     localStorage.setItem("sadminid", sadminid);
-
-    // Delete selected front admin record
-
-    axios.delete(`/admins/${sadminid}`, {}).then(
-      response => {
-        if (response) {
-          history.push("/sadmin");
-        }
-      },
-      error => {
-        throw error;
-      }
-    );
+    history.push("/sadmindelete");
   };
 
   render() {
@@ -89,7 +77,7 @@ class Admin extends Component {
           <td className="admin">{item.role}</td>
           <td className="admin">
             <button
-              className="btn btn-sm btn-success"
+              className="btn btn-sm btn-primary"
               type="button"
               sadminid={item.id}
               onClick={this.handleEditClick}
@@ -99,7 +87,7 @@ class Admin extends Component {
           </td>
           <td className="admin">
             <button
-              className="btn btn-sm btn-danger"
+              className="btn btn-sm btn-outline-danger"
               type="button"
               sadminid={item.id}
               onClick={this.handleDeleteClick}

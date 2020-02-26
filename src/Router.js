@@ -5,15 +5,16 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ResetRequest from "./components/Auth/ResetRequest";
 import Welcome from "./components/Landing/Welcome";
-import FrontAdmin from "./components/Admin/FrontAdmin";
+import FrontAdmin from "./components/FrontAdmin/FrontAdmin";
 import Depots from "./components/Landing/Depots";
 import Profile from "./components/Auth/Profile";
-import CompanyAdmin from "./components/Admin/CompanyAdmin";
-import CompanyAdminEdit from "./components/Admin/CompanyAdminEdit";
-import FrontAdminEdit from "./components/Admin/FrontAdminEdit";
+import CompanyAdmin from "./components/CompanyAdmin/CompanyAdmin";
+import CompanyAdminEdit from "./components/CompanyAdmin/CompanyAdminEdit";
+import CompanyAdminDelete from "./components/CompanyAdmin/CompanyAdminDelete";
+import FrontAdminEdit from "./components/FrontAdmin/FrontAdminEdit";
 import Reset from "./components/Auth/Reset";
-import CompanyAdminCreate from "./components/Admin/CompanyAdminCreate";
-import FrontAdminCreate from "./components/Admin/FrontAdminCreate";
+import CompanyAdminCreate from "./components/CompanyAdmin/CompanyAdminCreate";
+import FrontAdminCreate from "./components/FrontAdmin/FrontAdminCreate";
 import Admin from "./components/SuperAdmin/Admin/Admin";
 import AdminCreate from "./components/SuperAdmin/Admin/AdminCreate";
 import AdminEdit from "./components/SuperAdmin/Admin/AdminEdit";
@@ -25,6 +26,10 @@ import FrontOfficeCreate from "./components/SuperAdmin/FrontOffice/FrontOfficeCr
 import FrontOfficeEdit from "./components/SuperAdmin/FrontOffice/FrontOfficeEdit";
 import Audit from "./components/SuperAdmin/Audit/Audit";
 import AuditView from "./components/SuperAdmin/Audit/AuditView";
+import AdminDelete from "./components/SuperAdmin/Admin/AdminDelete";
+import CompanyDelete from "./components/SuperAdmin/Company/CompanyDelete";
+import FrontOfficeDelete from "./components/SuperAdmin/FrontOffice/FrontOfficeDelete";
+import FrontAdminDelete from "./components/FrontAdmin/FrontAdminDelete";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -68,18 +73,23 @@ const BeiproRouter = () => {
         <AuthRoute exact path="/admin" component={CompanyAdmin} />
         <AuthRoute exact path="/adminedit" component={CompanyAdminEdit} />
         <AuthRoute exact path="/admincreate" component={CompanyAdminCreate} />
+        <AuthRoute exact path="/admindelete" component={CompanyAdminDelete} />
         <AuthRoute exact path="/fadmin" component={FrontAdmin} />
         <AuthRoute exact path="/fadminedit" component={FrontAdminEdit} />
+        <AuthRoute exact path="/fadmindelete" component={FrontAdminDelete} />
         <AuthRoute exact path="/fadmincreate" component={FrontAdminCreate} />
         <AuthRoute exact path="/sadmin" component={Admin} />
         <AuthRoute exact path="/sadmincreate" component={AdminCreate} />
         <AuthRoute exact path="/sadminedit" component={AdminEdit} />
+        <AuthRoute exact path="/sadmindelete" component={AdminDelete} />
         <AuthRoute exact path="/company" component={Company} />
         <AuthRoute exact path="/companycreate" component={CompanyCreate} />
         <AuthRoute exact path="/companyedit" component={CompanyEdit} />
+        <AuthRoute exact path="/companydelete" component={CompanyDelete} />
         <AuthRoute exact path="/frontoffice" component={FrontOffice} />
         <AuthRoute exact path="/frontofficecreate" component={FrontOfficeCreate} />
         <AuthRoute exact path="/frontofficeedit" component={FrontOfficeEdit} />
+        <AuthRoute exact path="/frontofficedelete" component={FrontOfficeDelete} />
         <AuthRoute exact path="/depots" component={Depots} />
         <AuthRoute exact path="/audit" component={Audit} />
         <AuthRoute exact path="/auditview" component={AuditView} />

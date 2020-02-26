@@ -53,7 +53,7 @@ class Reset extends PureComponent {
     };
 
     axios
-      .post("/reset", user, config)
+      .post("/password/reset", user, config)
       .then(response => {
         this.setState({
           loading: true
