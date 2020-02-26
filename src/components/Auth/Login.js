@@ -36,7 +36,7 @@ class Login extends PureComponent {
     const data = { email, password };
 
     axios
-      .post(`/login`, data)
+      .post(`/auth/login`, data)
       .then(res => {
         this.setState({
           loading: true

@@ -35,7 +35,7 @@ class ResetRequest extends PureComponent {
     const { history } = this.props;
 
     axios
-      .post("/create", { email })
+      .post("/password/create", { email })
       .then(res => {
         this.setState({
           loading: true

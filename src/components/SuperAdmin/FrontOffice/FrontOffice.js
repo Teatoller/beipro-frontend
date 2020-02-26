@@ -59,22 +59,11 @@ class FrontOffice extends Component {
     const frontofficeId = attribute.getAttribute("frontofficeId");
     localStorage.setItem("frontofficeId", frontofficeId);
 
-    // Delete selected front office record
+    history.push("/frontofficedelete");
 
-    axios.delete(`/frontoffices/${frontofficeId}`, {}).then(
-      response => {
-        if (response) {
-          history.push("/frontoffice");
-        }
-      },
-      error => {
-        throw error;
-      }
-    );
   };
 
   render() {
-    // eslint-disable-next-line camelcase
     const { frontoffices, loading } = this.state;
 
     const frontOffice = frontoffices.map((item, index) => {
@@ -87,7 +76,7 @@ class FrontOffice extends Component {
           <td className="foffices">{item.location}</td>
           <td className="foffices">
             <button
-              className="btn btn-sm btn-success"
+              className="btn btn-sm btn-primary"
               type="button"
               frontofficeId={item.id}
               onClick={this.handleEditClick}
@@ -97,7 +86,7 @@ class FrontOffice extends Component {
           </td>
           <td className="foffices">
             <button
-              className="btn btn-sm btn-danger"
+              className="btn btn-sm btn-outline-danger"
               type="button"
               frontofficeId={item.id}
               onClick={this.handleDeleteClick}

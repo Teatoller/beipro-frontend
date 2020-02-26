@@ -157,12 +157,12 @@ class AuditView extends Component {
                   </tr>
                   <tr>
                     <td className="auditview">new_values</td>
-                    {/* <td className="auditview"><NewValue newValues={new_values} /></td> */}
-                    {/* <td className="auditview">
-                      <span style={new_values.new_values ? dangerStyle : null}>
-                        <NewValue newValue={new_values.new_values ? new_values.new_values : null} />
+                    {/* <td className="auditview"><NewValue newvalue={new_values} /></td> */}
+                    <td className="auditview">
+                      <span style={new_values ? dangerStyle : null}>
+                        <NewValue newvalue={new_values ? "Happy??" : null} />
                       </span>
-                    </td> */}
+                    </td>
                   </tr>
                   <tr>
                     <td className="auditview">url</td>
@@ -195,7 +195,7 @@ class AuditView extends Component {
           <div>
             <button
               type="button"
-              className="btn btn-sm btn-primary"
+              className="btn btn-sm btn-outline-info"
               onClick={this.handleCancelClick}
             >
               Back

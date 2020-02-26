@@ -59,22 +59,10 @@ class Company extends Component {
     const companyId = attribute.getAttribute("companyId");
     localStorage.setItem("companyId", companyId);
 
-    // Delete selected company record
-
-    axios.delete(`/companies/${companyId}`, {}).then(
-      response => {
-        if (response) {
-          history.push("/company");
-        }
-      },
-      error => {
-        throw error;
-      }
-    );
+    history.push("/companydelete");
   };
 
   render() {
-    // eslint-disable-next-line camelcase
     const { companies, loading } = this.state;
 
     const company = companies.map((item, index) => {
@@ -90,7 +78,7 @@ class Company extends Component {
           <td className="company">{item.established}</td>
           <td className="company">
             <button
-              className="btn btn-sm btn-success"
+              className="btn btn-sm btn-primary"
               type="button"
               companyId={item.id}
               onClick={this.handleEditClick}
@@ -100,7 +88,7 @@ class Company extends Component {
           </td>
           <td className="company">
             <button
-              className="btn btn-sm btn-danger"
+              className="btn btn-sm btn-outline-danger"
               type="button"
               companyId={item.id}
               onClick={this.handleDeleteClick}

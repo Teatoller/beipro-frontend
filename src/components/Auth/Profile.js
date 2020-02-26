@@ -22,7 +22,7 @@ class Profile extends Component {
       }
     };
     axios
-      .post(`/profile`, {}, config)
+      .get(`/auth/profile`, config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;
