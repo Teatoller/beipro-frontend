@@ -437,8 +437,6 @@ class CompanyAdminCreate extends Component {
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
                     <th scope="col">Location</th>
-                    {/* <th scope="col">Action</th> */}
-                    {/* <th scope="col">Remove</th> */}
                   </tr>
                 </thead>
                 <tbody>{currentItems}</tbody>

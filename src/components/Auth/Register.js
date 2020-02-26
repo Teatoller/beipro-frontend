@@ -122,9 +122,6 @@ class Register extends PureComponent {
                     aria-required="true"
                     aria-invalid="false"
                   />
-                  {/* <span style={errors.firstname ? dangerStyle : null}>
-                    <Error error={errors.firstname ? errors.firstname : null} />
-                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="lastname">Last Name</label>
@@ -140,9 +137,6 @@ class Register extends PureComponent {
                     aria-required="true"
                     aria-invalid="false"
                   />
-                  {/* <span style={errors.lastname ? dangerStyle : null}>
-                    <Error error={errors.lastname ? errors.lastname : null} />
-                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="email">Email address</label>
@@ -158,9 +152,6 @@ class Register extends PureComponent {
                     aria-required="true"
                     aria-invalid="false"
                   />
-                  {/* <span style={errors.email ? dangerStyle : null}>
-                    <Error error={errors.email ? errors.email : null} />
-                  </span> */}
                 </div>
                 <div className="form-group">
                   <label html-for="password">Password</label>
@@ -176,9 +167,6 @@ class Register extends PureComponent {
                     aria-required="true"
                     aria-invalid="false"
                   />
-                  {/* <span style={errors.password ? dangerStyle : null}>
-                    <Error error={errors.password ? errors.password : null} />
-                  </span> */}
                 </div>
                 <div className="form-group mb-3">
                   <label html-for="passwordConfirm">Confirm password</label>
