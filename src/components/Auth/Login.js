@@ -38,11 +38,12 @@ class Login extends PureComponent {
     axios
       .post(`/auth/login`, data)
       .then(res => {
+        
+        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("email", res.data.email);
         this.setState({
           loading: true
         });
-        localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("email", res.data.email);
         if (res) {
           history.push("/welcome");
         }

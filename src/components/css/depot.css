@@ -559,7 +559,7 @@ div.form-example {
     content: "Location";
   }
   td.fadmin:nth-of-type(9):before {
-    content: "Add";
+    content: "Action";
   }
   td.fadmin:nth-of-type(10):before {
     content: "Remove";
@@ -588,7 +588,7 @@ div.form-example {
     content: "Role";
   }
   td.admin:nth-of-type(8):before {
-    content: "Add";
+    content: "Action";
   }
   td.admin:nth-of-type(9):before {
     content: "Remove";
@@ -620,7 +620,7 @@ div.form-example {
     content: "Established";
   }
   td.company:nth-of-type(9):before {
-    content: "Add";
+    content: "Action";
   }
   td.company:nth-of-type(10):before {
     content: "Remove";
@@ -643,7 +643,7 @@ div.form-example {
     content: "Location";
   }
   td.foffices:nth-of-type(6):before {
-    content: "Add";
+    content: "Action";
   }
   td.foffices:nth-of-type(7):before {
     content: "Remove";

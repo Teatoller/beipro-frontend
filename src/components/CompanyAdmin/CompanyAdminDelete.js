@@ -7,7 +7,6 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
-import Pagination from "../Pagination";
 
 class CompanyAdminDelete extends Component {
   constructor(props) {
@@ -23,8 +22,6 @@ class CompanyAdminDelete extends Component {
       role: "",
       location_code: "",
       fadmins: [],
-      activePage: "1",
-      itemCountPerPage: "5"
     };
 
     this.onChange = this.onChange.bind(this);
