@@ -21,16 +21,17 @@
 }
 
 #footer {
-  background-color: #e9e9e9;
+  background-color: #f8f9f9;
   border-top: solid 2px lightgray;
   border-bottom: solid 2px lightgray;
   bottom: 0px;
+  color: gray;
   height: 20px;
   left: 0px;
   position: fixed;
   text-align: center;
   width: 100%;
-  outline: none
+  outline: none;
 }
 
 @media screen and (max-width: 500px) {
