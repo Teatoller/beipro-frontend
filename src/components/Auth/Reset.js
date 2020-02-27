@@ -81,21 +81,25 @@ class Reset extends PureComponent {
 
     return (
       <div>
-        <header className="header">
+        <nav className="header">
           <NavLink to="/" className="logo">
             Beipro
           </NavLink>
           <div className="header-right">
             <NavLink to="/">Sign in</NavLink>
           </div>
-        </header>
+        </nav>
         <div className="container" aria-label="Password Reset form">
           <div className="row">
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
+              <header className="text-center">
+                  <p className="text-secondary">Please enter details to reset password</p>
+                </header>
+              <main>
               <form>
                 <div className="form-group">
-                  <label html-for="email">Email address</label>
+                  <label htmlFor="email">Email address</label>
                   <input
                     type="email"
                     name="email"
@@ -110,7 +114,7 @@ class Reset extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     name="password"
@@ -125,7 +129,7 @@ class Reset extends PureComponent {
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label html-for="passwordConfirmation">confirm password</label>
+                  <label htmlFor="passwordConfirmation">confirm password</label>
                   <input
                     type="password"
                     name="password_confirmation"
@@ -139,7 +143,7 @@ class Reset extends PureComponent {
                     aria-invalid="false"
                   />
                   <div className="form-group">
-                    <label html-for="token">Token</label>
+                    <label htmlFor="token">Token</label>
                     <input
                       type="string"
                       name="token"
@@ -162,12 +166,13 @@ class Reset extends PureComponent {
                   </div>
                 </div>
                 <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
+                  <button type="submit" className="btn btn-primary btn-sm" onClick={this.onSubmit}>
                     Reset Password
                   </button>
                 </div>
               </form>
-              <div className="row">
+              </main>
+              <section className="row">
                 <div className="col text-right">
                   <p>
                     Have an account?{" "}
@@ -176,17 +181,17 @@ class Reset extends PureComponent {
                     </span>
                   </p>
                 </div>
-              </div>
+              </section>
             </div>
-            <div className="col-5">
+            <article className="col-5">
               <div className="m-2">
                 <img
                   className="img-fluid rounded mx-auto d-block img-thumbnail"
                   src={banner}
-                  alt="technology"
+                  alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>
-            </div>
+            </article>
           </div>
         </div>
         <Footer />

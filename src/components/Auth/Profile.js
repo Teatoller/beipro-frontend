@@ -11,9 +11,7 @@ class Profile extends Component {
       loading: true,
       firstname: "",
       lastname: "",
-      email: "",
-      avatar: "",
-      avatarUrl: ""
+      email: ""
     };
   }
 
@@ -32,8 +30,6 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
-          avatar: data.avatar,
-          avatarUrl: data.avatar_url,
           loading: false
         });
       })
@@ -43,7 +39,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { firstname, lastname, email, avatar, avatarUrl, loading } = this.state;
+    const { firstname, lastname, email, loading } = this.state;
 
     return (
       <div>
@@ -55,10 +51,7 @@ class Profile extends Component {
             <tbody>
               <tr>
                 <th scope="col">Profile</th>
-                {/* <td>{avatar}</td> */}
-                <td>
-                  <img src={avatarUrl} alt="avatar url" />
-                </td>
+                <td>...</td>
               </tr>
               <tr>
                 <th scope="col">First name:</th>

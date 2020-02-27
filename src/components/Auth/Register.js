@@ -91,25 +91,28 @@ class Register extends PureComponent {
 
     return (
       <div>
-        <header className="header">
+        <nav className="header">
           <NavLink to="/" className="logo">
             Beipro
           </NavLink>
           <div className="header-right">
             <NavLink to="/">Sign in</NavLink>
           </div>
-        </header>
+        </nav>
         <div className="container" aria-label="Sign up form">
           <div className="row">
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
+              <header className="text-center">
+                  <p className="text-secondary">Please sign up</p>
+                </header>
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}
               </span>
-
+              <main>
               <form>
                 <div className="form-group">
-                  <label html-for="firstname">First Name</label>
+                  <label htmlFor="firstname">First Name</label>
                   <input
                     type="text"
                     name="firstname"
@@ -124,7 +127,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="lastname">Last Name</label>
+                  <label htmlFor="lastname">Last Name</label>
                   <input
                     type="text"
                     name="lastname"
@@ -139,7 +142,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="email">Email address</label>
+                  <label htmlFor="email">Email address</label>
                   <input
                     type="email"
                     name="email"
@@ -154,7 +157,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label html-for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     name="password"
@@ -169,7 +172,7 @@ class Register extends PureComponent {
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label html-for="passwordConfirm">Confirm password</label>
+                  <label htmlFor="passwordConfirm">Confirm password</label>
                   <input
                     type="password"
                     name="password_confirmation"
@@ -187,12 +190,13 @@ class Register extends PureComponent {
                   </span>
                 </div>
                 <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
+                  <button type="submit" className="btn btn-primary btn-sm" onClick={this.onSubmit}>
                     Sign up
                   </button>
                 </div>
               </form>
-              <div className="row">
+              </main>
+              <section className="row">
                 <div className="col text-right">
                   <p>
                     Have an account?{" "}
@@ -201,17 +205,17 @@ class Register extends PureComponent {
                     </span>
                   </p>
                 </div>
-              </div>
+              </section>
             </div>
-            <div className="col-5">
+            <article className="col-5">
               <div className="m-2">
                 <img
                   className="img-fluid rounded mx-auto d-block img-thumbnail"
                   src={banner}
-                  alt="technology"
+                  alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>
-            </div>
+            </article>
           </div>
         </div>
         <Footer />

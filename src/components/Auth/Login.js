@@ -38,7 +38,6 @@ class Login extends PureComponent {
     axios
       .post(`/auth/login`, data)
       .then(res => {
-        
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("email", res.data.email);
         this.setState({
@@ -79,63 +78,69 @@ class Login extends PureComponent {
 
     return (
       <div>
-        <header className="header">
+        <nav className="header">
           <NavLink to="/" className="logo">
             Beipro
           </NavLink>
           <div className="header-right">
             <NavLink to="/register">Sign up</NavLink>
           </div>
-        </header>
+        </nav>
         <div className="container" aria-label="Login form">
           <div>
             <div className="row">
               <div className="col-7 p-2">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="text-center">
+                <header className="text-center">
                   <p className="text-secondary">Please sign in</p>
-                </div>
-                <form>
-                  <div className="form-group">
-                    <label html-for="email">Email address</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={this.email}
-                      onChange={this.onChange}
-                      className="form-control"
-                      id="email"
-                      aria-describedby="emailInput"
-                      placeholder="Enter Email"
-                      aria-required="true"
-                      aria-invalid="false"
-                    />
-                  </div>
-                  <div className="form-group mb-3">
-                    <label html-for="InputPassword">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Enter Password"
-                      value={this.password}
-                      onChange={this.onChange}
-                      className="form-control"
-                      id="InputPassword"
-                      aria-describedby="passwordInput"
-                      aria-required="true"
-                      aria-invalid="false"
-                    />
-                    <span style={errors.password ? dangerStyle : null}>
-                      <Error error={errors.password ? errors.password : null} />
-                    </span>
-                  </div>
-                  <div className="text-right mb-3">
-                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>
-                      Sign in
-                    </button>
-                  </div>
-                </form>
-                <div className="row">
+                </header>
+                <main>
+                  <form>
+                    <div className="form-group">
+                      <label htmlFor="email">Email address</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={this.email}
+                        onChange={this.onChange}
+                        className="form-control"
+                        id="email"
+                        aria-describedby="emailInput"
+                        placeholder="Enter Email"
+                        aria-required="true"
+                        aria-invalid="false"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label htmlFor="inputPassword">Password</label>
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter Password"
+                        value={this.password}
+                        onChange={this.onChange}
+                        className="form-control"
+                        id="inputPassword"
+                        aria-describedby="passwordInput"
+                        aria-required="true"
+                        aria-invalid="false"
+                      />
+                      <span style={errors.password ? dangerStyle : null}>
+                        <Error error={errors.password ? errors.password : null} />
+                      </span>
+                    </div>
+                    <div className="text-right mb-3">
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-sm"
+                        onClick={this.onSubmit}
+                      >
+                        Sign in
+                      </button>
+                    </div>
+                  </form>
+                </main>
+                <section className="row">
                   <div className="col-6 text-left">
                     <p>
                       Forgot?
@@ -148,17 +153,17 @@ class Login extends PureComponent {
                       <NavLink to="/register">Sign up</NavLink>
                     </span>
                   </div>
-                </div>
+                </section>
               </div>
-              <div className="col-5">
+              <article className="col-5">
                 <div className="m-2">
                   <img
                     className="img-fluid rounded mx-auto d-block img-thumbnail"
                     src={banner}
-                    alt="technology"
+                    alt="Petroleum storage tanks installation. Sets the theme for the web site"
                   />
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </div>

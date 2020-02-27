@@ -372,7 +372,7 @@ class CompanyEdit extends Component {
                     <th scope="col">Established</th>
                   </tr>
                 </thead>
-                <tbody>{company}</tbody>
+                <tbody>{currentItems}</tbody>
               </table>
             </div>
           </div>
