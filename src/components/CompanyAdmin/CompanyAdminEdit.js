@@ -248,6 +248,7 @@ class CompanyAdminEdit extends PureComponent {
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
               <h6>Edit Entry Pad</h6>
+              <main>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
                   <fieldset disabled className="admin-fieldset">
@@ -390,6 +391,7 @@ class CompanyAdminEdit extends PureComponent {
                   </div>
                 </fieldset>
               </form>
+              </main>
             </div>
             <div className="col-sm">
               <h6>Staff details</h6>

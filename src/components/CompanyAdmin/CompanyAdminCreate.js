@@ -257,6 +257,7 @@ class CompanyAdminCreate extends Component {
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
               <h6>Entry Pad</h6>
+              <main>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
                   <fieldset disabled className="admin-fieldset">
@@ -413,6 +414,7 @@ class CompanyAdminCreate extends Component {
                   </div>
                 </fieldset>
               </form>
+              </main>
               <div>
                 <button
                   type="button"

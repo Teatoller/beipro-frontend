@@ -112,6 +112,7 @@ class Depots extends PureComponent {
                   <option value="Kisumu">Kisumu</option>
                 </select>
               </div>
+              <main>
 
               <table className="table table-striped">
                 <thead>
@@ -140,6 +141,7 @@ class Depots extends PureComponent {
                   )}
                 </tbody>
               </table>
+              </main>
             </div>
           </div>
           <Pagination
