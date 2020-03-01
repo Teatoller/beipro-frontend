@@ -27,22 +27,6 @@ class AuditView extends Component {
       tags: "",
       created_at: "",
       updated_at: "",
-      errors: {
-        id: "",
-        user_type: "",
-        user_id: "",
-        event: "",
-        auditable_type: "",
-        auditable_id: "",
-        old_values: [],
-        new_values: "",
-        url: "",
-        ip_address: "",
-        user_agent: "",
-        tags: "",
-        created_at: "",
-        updated_at: ""
-      }
     };
   }
 
@@ -93,7 +77,6 @@ class AuditView extends Component {
   render() {
     const {
       loading,
-      errors,
       id,
       user_type,
       user_id,

@@ -9,8 +9,7 @@ class Logout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigate: false,
-      errors: {}
+      navigate: false
     };
   }
 
@@ -33,13 +32,12 @@ class Logout extends Component {
         });
       })
       .catch(err => {
-        this.setState({ errors: err.res.request.response });
         throw err;
       });
   };
 
   render() {
-    const { navigate, message, errors } = this.state;
+    const { navigate } = this.state;
 
     if (navigate) {
       return <Redirect to="/" />;
