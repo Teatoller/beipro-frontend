@@ -113,34 +113,33 @@ class Depots extends PureComponent {
                 </select>
               </div>
               <main>
-
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">Diesel</th>
-                    <th scope="col">Petrol</th>
-                    <th scope="col">Kerosene</th>
-                    <th scope="col">Ido</th>
-                    <th scope="col">Fuel Oil</th>
-                    <th scope="col">Bulk Lpg</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedLocationItems.length === 0 ? (
+                <table className="table table-striped">
+                  <thead>
                     <tr>
-                      <td colSpan="8" style={{ color: "gray" }}>
-                        No items for
-                        {"\u00A0"}
-                        {selectedLocation}
-                      </td>
+                      <th scope="col">#</th>
+                      <th scope="col">Company</th>
+                      <th scope="col">Diesel</th>
+                      <th scope="col">Petrol</th>
+                      <th scope="col">Kerosene</th>
+                      <th scope="col">Ido</th>
+                      <th scope="col">Fuel Oil</th>
+                      <th scope="col">Bulk Lpg</th>
                     </tr>
-                  ) : (
-                    currentItems
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {selectedLocationItems.length === 0 ? (
+                      <tr>
+                        <td colSpan="8">
+                          No items for
+                          {"\u00A0"}
+                          {selectedLocation}
+                        </td>
+                      </tr>
+                    ) : (
+                      currentItems
+                    )}
+                  </tbody>
+                </table>
               </main>
             </div>
           </div>
