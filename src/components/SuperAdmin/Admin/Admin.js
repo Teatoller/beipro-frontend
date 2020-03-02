@@ -143,7 +143,7 @@ class Admin extends Component {
 
           <span>Click button to add a new Admin</span>
 
-          <div>
+          <div className="btn-spacing">
             <button
               className="btn btn-sm btn-success"
               type="submit"
