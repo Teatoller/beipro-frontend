@@ -306,7 +306,6 @@ class FrontAdminCreate extends Component {
                         aria-describedby="dieselPriceInput"
                         aria-required="true"
                         aria-invalid="false"
-                        defaultValue={0}
                       />
                     </div>
 
