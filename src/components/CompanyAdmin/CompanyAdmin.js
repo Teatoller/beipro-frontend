@@ -165,6 +165,7 @@ class CompanyAdmin extends Component {
       // Object containing detail of logged user
       if (officesArray[0]) {
         localStorage.setItem("f1", officesArray[0].id);
+        localStorage.setItem("company", officesArray[0].name);
       }
       if (officesArray[1]) {
         localStorage.setItem("f2", officesArray[1].id);
@@ -185,6 +186,7 @@ class CompanyAdmin extends Component {
 
   render() {
     const { fadmins, loading } = this.state;
+    const company = localStorage.getItem("company");
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -243,7 +245,7 @@ class CompanyAdmin extends Component {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
-              <h6>Staff details</h6>
+              <h6>{company}:Staff details</h6>
               <table className="table table-striped">
                 <thead>
                   <tr>
