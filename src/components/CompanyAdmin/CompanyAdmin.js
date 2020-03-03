@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable camelcase */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
@@ -14,74 +11,22 @@ class CompanyAdmin extends Component {
     super(props);
     this.state = {
       loading: true,
-      admin_id: "",
-      front_office_id: "",
-      firstname: "",
-      lastname: "",
-      staff_id: "",
-      email: "",
-      role: "",
-      location_code: "",
       fadmins: [],
       activePage: "1",
       itemCountPerPage: "5"
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
     this.getOfficeData();
     this.adminData = setTimeout(() => this.getFrontAdminsData(), 1500);
+    this.getadminssData();
+    this.getFofficeData();
   }
 
   componentWillUnmount() {
     clearTimeout(this.adminData);
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  onSubmit = e => {
-    // eslint-disable-next-line camelcase
-    const {
-      admin_id,
-      front_office_id,
-      firstname,
-      lastname,
-      staff_id,
-      email,
-      role,
-      location_code
-    } = this.state;
-    e.preventDefault();
-    const data = {
-      admin_id,
-      front_office_id,
-      firstname,
-      lastname,
-      staff_id,
-      email,
-      role,
-      location_code
-    };
-
-    const { history } = this.props;
-
-    axios
-      .post(`/companyadmins`, data)
-      .then(response => {
-        if (response) {
-          setTimeout(() => history.push(`/admin`), 50);
-        }
-        this.setState({ loading: false });
-      })
-      .catch(err => {
-        throw err;
-      });
-  };
 
   /**
    * Pseudo code
@@ -120,7 +65,6 @@ class CompanyAdmin extends Component {
 
       const lockey = parseInt(adminkey(), 10);
 
-      this.setState({ admin_id: lockey });
       localStorage.setItem("admin_id", lockey);
     });
   };
@@ -171,11 +115,75 @@ class CompanyAdmin extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     history.push("/admindelete");
-
   };
 
+  // experiment
+
+  // phase 1 Establish the company id
+  getadminssData = () => {
+    axios.get(`/admins`, {}).then(response => {
+      const adminssData = response.data;
+      const loggedUserEmail = localStorage.getItem("email");
+
+      // Array with object containing details of the logged user
+
+      const userArray = adminssData.filter(object => object.email === loggedUserEmail);
+
+      // Object containing detail of logged user
+      const adminObj = userArray[0];
+
+      // Key
+      // eslint-disable-next-line consistent-return
+      function compkey() {
+        if (adminObj) {
+          const compId = adminObj.company_id;
+
+          return compId;
+        }
+      }
+
+      const companyId = parseInt(compkey(), 10);
+
+      localStorage.setItem("company_id", companyId);
+    });
+  };
+
+  // phase 2 Establish the company front offices id's
+
+  getFofficeData = () => {
+    axios.get(`/frontoffices`, {}).then(response => {
+      const fofficesData = response.data;
+
+      const AdminxCompanyId = localStorage.getItem("company_id");
+
+      const AdminCompanyId = parseInt(AdminxCompanyId, 10);
+
+      // Array with object containing details of the logged user
+
+      const officesArray = fofficesData.filter(object => object.company_id === AdminCompanyId);
+
+      // Object containing detail of logged user
+      if (officesArray[0]) {
+        localStorage.setItem("f1", officesArray[0].id);
+      }
+      if (officesArray[1]) {
+        localStorage.setItem("f2", officesArray[1].id);
+      }
+      if (officesArray[2]) {
+        localStorage.setItem("f3", officesArray[2].id);
+      }
+      if (officesArray[3]) {
+        localStorage.setItem("f4", officesArray[3].id);
+      }
+      if (officesArray[4]) {
+        localStorage.setItem("f5", officesArray[4].id);
+      }
+    });
+  };
+
+  // end experiment
+
   render() {
-    // eslint-disable-next-line camelcase
     const { fadmins, loading } = this.state;
 
     const companyStaff = fadmins.map((item, index) => {
@@ -258,7 +266,7 @@ class CompanyAdmin extends Component {
 
           <span>Click button to add a new Front Office Admin</span>
 
-          <div>
+          <div className="btn-spacing">
             <button
               className="btn btn-sm btn-success"
               type="submit"

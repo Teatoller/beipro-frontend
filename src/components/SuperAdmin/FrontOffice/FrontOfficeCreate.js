@@ -263,12 +263,12 @@ class FrontOfficeCreate extends Component {
                       </span>
                     </div>
                   </div>
-                  <div>
+                  <div className="btn-spacing">
                     <input className="btn btn-sm btn-success" type="submit" value="Create" />
                   </div>
                 </fieldset>
               </form>
-              <div>
+              <div className="btn-spacing">
                 <button
                   type="button"
                   className="btn btn-sm btn-primary"
