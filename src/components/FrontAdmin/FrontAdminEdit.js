@@ -266,13 +266,13 @@ class FrontAdminEdit extends PureComponent {
               </h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
-                  <fieldset disabled className="admin-fieldset">
+                  <fieldset disabled className="admin-fieldset hide">
                     <div className="form-group row">
                       <label
                         htmlFor="frontOfficeId"
                         className="col-sm-2 col-form-label col-form-label-sm"
                       >
-                        Office Id:
+                        Office-Id:
                       </label>
                       <div className="col-sm-10">
                         <input

@@ -273,7 +273,7 @@ class FrontAdminCreate extends Component {
               </h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
-                  <fieldset disabled className="admin-fieldset">
+                  <fieldset disabled className="admin-fieldset hide">
                     <div className="form-group row">
                       <label
                         htmlFor="frontOfficeId"
