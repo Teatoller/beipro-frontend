@@ -177,6 +177,8 @@ class FrontAdminDelete extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { latestprices, loading } = this.state;
+    const company = localStorage.getItem("name1");
+    const location = localStorage.getItem("location");
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -216,7 +218,9 @@ class FrontAdminDelete extends Component {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
-              <h6>Current Price</h6>
+              <h6>
+                Current Price: {company}-{location}
+              </h6>
               <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
               <table className="table table">
                 <thead>

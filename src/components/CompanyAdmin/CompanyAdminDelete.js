@@ -21,7 +21,7 @@ class CompanyAdminDelete extends Component {
       email: "",
       role: "",
       location_code: "",
-      fadmins: [],
+      fadmins: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -175,6 +175,7 @@ class CompanyAdminDelete extends Component {
 
   render() {
     const { fadmins, loading } = this.state;
+    const company = localStorage.getItem("company");
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -215,7 +216,7 @@ class CompanyAdminDelete extends Component {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
-              <h6>Staff details</h6>
+              <h6>{company}:Staff details</h6>
               <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
               <table className="table table-striped">
                 <thead>

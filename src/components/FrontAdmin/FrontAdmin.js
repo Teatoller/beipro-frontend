@@ -17,6 +17,7 @@ class FrontAdmin extends Component {
   componentDidMount() {
     this.getOfficeData();
     this.priceData = setTimeout(() => this.getCurrentPriceData(), 1800);
+    this.getFofficeData();
   }
 
   componentWillUnmount() {
@@ -127,8 +128,29 @@ class FrontAdmin extends Component {
     history.push("/fadmindelete");
   };
 
+  // phase 1 Establish the company front offices name and location
+
+  getFofficeData = () => {
+    const frontid = localStorage.getItem("front_office_id");
+    const frontId = parseInt(frontid, 10);
+    axios.get(`/frontoffices/${frontId}`, {}).then(response => {
+      const fofficesData = response.data;
+
+      const officesObj = fofficesData[0];
+
+      if (officesObj) {
+        localStorage.setItem("name1", officesObj.name);
+        localStorage.setItem("location", officesObj.location);
+      }
+    });
+  };
+
+  // end experiment
+
   render() {
     const { latestprices, loading } = this.state;
+    const company = localStorage.getItem("name1");
+    const location = localStorage.getItem("location");
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -172,7 +194,9 @@ class FrontAdmin extends Component {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
-              <h6>Current Price</h6>
+              <h6>
+                Current Price: {company}-{location}
+              </h6>
               <table className="table table">
                 <thead>
                   <tr>

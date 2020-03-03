@@ -230,6 +230,9 @@ class FrontAdminEdit extends PureComponent {
       loading
     } = this.state;
 
+    const company = localStorage.getItem("name1");
+    const location = localStorage.getItem("location");
+
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
@@ -258,7 +261,9 @@ class FrontAdminEdit extends PureComponent {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
-              <h6>Edit Entry Pad</h6>
+              <h6>
+                Edit Entry Pad: {company}-{location}
+              </h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
                   <fieldset disabled className="admin-fieldset">
