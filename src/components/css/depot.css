@@ -88,6 +88,10 @@ body {
   padding: 4px;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 /* Table */
 
 table.depot {
