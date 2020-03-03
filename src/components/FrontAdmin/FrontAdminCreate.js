@@ -306,6 +306,7 @@ class FrontAdminCreate extends Component {
                         aria-describedby="dieselPriceInput"
                         aria-required="true"
                         aria-invalid="false"
+                        defaultValue={0}
                       />
                     </div>
 
@@ -392,12 +393,12 @@ class FrontAdminCreate extends Component {
                       </span>
                     </div>
                   </div>
-                  <div>
+                  <div className="btn-spacing">
                     <input className="btn btn-sm btn-success" type="submit" value="Add" />
                   </div>
                 </fieldset>
               </form>
-              <div>
+              <div className="btn-spacing">
                 <button
                   type="button"
                   className="btn btn-sm btn-primary"

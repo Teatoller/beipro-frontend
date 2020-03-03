@@ -84,6 +84,9 @@ body {
   margin-top: 180px;
   text-align: center;
 }
+.btn-spacing {
+  padding: 4px;
+}
 
 /* Table */
 
