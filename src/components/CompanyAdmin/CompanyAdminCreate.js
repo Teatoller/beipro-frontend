@@ -233,6 +233,7 @@ class CompanyAdminCreate extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { admin_id, fadmins, errors, f1, f2, f3, f4, f5, loading } = this.state;
+    const company = localStorage.getItem("company");
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -276,7 +277,7 @@ class CompanyAdminCreate extends Component {
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col-sm">
-              <h6>Entry Pad</h6>
+              <h6>{company}:Entry Pad</h6>
               <main>
                 <form noValidate onSubmit={this.onSubmit}>
                   <fieldset className="front-fieldset">
