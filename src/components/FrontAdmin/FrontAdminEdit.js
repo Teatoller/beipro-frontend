@@ -373,7 +373,7 @@ class FrontAdminEdit extends PureComponent {
                       </span>
                     </div>
                   </div>
-                  <div>
+                  <div className="btn-spacing">
                     <input className="btn btn-sm btn-success" type="submit" value="Change" />
                   </div>
                 </fieldset>

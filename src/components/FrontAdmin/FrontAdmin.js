@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
@@ -12,17 +10,8 @@ class FrontAdmin extends Component {
     super(props);
     this.state = {
       loading: true,
-      front_office_id: "",
-      diesel: "0.00",
-      petrol: "0.00",
-      kerosene: "0.00",
-      fo: "0.00",
-      ido: "0.00",
-      lpg: "0.00",
       latestprices: []
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -33,30 +22,6 @@ class FrontAdmin extends Component {
   componentWillUnmount() {
     clearTimeout(this.priceData);
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  onSubmit = e => {
-    // eslint-disable-next-line camelcase
-    const { front_office_id, diesel, petrol, kerosene, fo, ido, lpg } = this.state;
-    e.preventDefault();
-    const data = { front_office_id, diesel, petrol, kerosene, fo, ido, lpg };
-
-    axios
-      .post(`/currentprices`, data)
-      .then(response => {
-        if (response) {
-          this.setState({
-            loading: false
-          });
-        }
-      })
-      .catch(err => {
-        throw err;
-      });
-  };
 
   /**
    * Pseudo code
@@ -95,7 +60,6 @@ class FrontAdmin extends Component {
 
       const lockey = parseInt(frontkey(), 10);
 
-      this.setState({ front_office_id: lockey });
       localStorage.setItem("front_office_id", lockey);
     });
   };
@@ -103,9 +67,6 @@ class FrontAdmin extends Component {
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    // eslint-disable-next-line camelcase
-    // const {front_office_id} = this.state;
-
     axios.get(`/currentprices`, {}).then(response => {
       const currentPriceData = response.data;
       const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
@@ -124,17 +85,8 @@ class FrontAdmin extends Component {
 
       latestprices.push(sortbyid);
 
-      // Object containing detail of front office latest current price
-      const priceObj = latestprices[0];
-
       this.setState({
         latestprices,
-        diesel: priceObj.diesel,
-        petrol: priceObj.petrol,
-        kerosene: priceObj.kerosene,
-        ido: priceObj.ido,
-        fo: priceObj.fo,
-        lpg: priceObj.lpg,
         loading: false
       });
     });
@@ -173,11 +125,9 @@ class FrontAdmin extends Component {
     localStorage.setItem("priceid", priceid);
 
     history.push("/fadmindelete");
-
   };
 
   render() {
-    // eslint-disable-next-line camelcase
     const { latestprices, loading } = this.state;
 
     const currentPrice = latestprices.map((item, index) => {
@@ -243,7 +193,7 @@ class FrontAdmin extends Component {
             </div>
           </div>
           <span>Click button to add a new current price</span>
-          <div>
+          <div className="btn-spacing">
             <button
               className="btn btn-sm btn-success"
               type="submit"

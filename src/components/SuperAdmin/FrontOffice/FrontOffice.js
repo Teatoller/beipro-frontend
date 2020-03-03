@@ -60,7 +60,6 @@ class FrontOffice extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     history.push("/frontofficedelete");
-
   };
 
   render() {
@@ -140,7 +139,7 @@ class FrontOffice extends Component {
 
           <span>Click button to add a new FrontOffice</span>
 
-          <div>
+          <div className="btn-spacing">
             <button
               className="btn btn-sm btn-success"
               type="submit"
