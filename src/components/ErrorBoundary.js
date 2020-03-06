@@ -20,7 +20,7 @@ class ErrorBoundary extends PureComponent {
     const { children } = this.props;
 
     if (hasError) {
-      return <h1>&quot;Error Message: Something went wrong&quot;</h1>;
+      return <h1 className="alert alert-danger">&quot;Error Message: Something went wrong&quot;</h1>;
     }
     return children;
   }

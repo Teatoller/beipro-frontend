@@ -62,6 +62,9 @@ class FrontAdmin extends Component {
       const lockey = parseInt(frontkey(), 10);
 
       localStorage.setItem("front_office_id", lockey);
+
+    }).catch(error => {
+      throw error;
     });
   };
 
@@ -90,6 +93,8 @@ class FrontAdmin extends Component {
         latestprices,
         loading: false
       });
+    }).catch(error => {
+      throw error;
     });
   };
 
