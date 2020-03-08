@@ -105,14 +105,13 @@ class Login extends PureComponent {
                         onChange={this.onChange}
                         className="form-control"
                         id="email"
-                        aria-describedby="emailInput"
+                        aria-describedby="email"
                         placeholder="Enter Email"
                         aria-required="true"
-                        aria-invalid="false"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label htmlFor="inputPassword">Password</label>
+                      <label htmlFor="password">Password</label>
                       <input
                         type="password"
                         name="password"
@@ -120,10 +119,9 @@ class Login extends PureComponent {
                         value={this.password}
                         onChange={this.onChange}
                         className="form-control"
-                        id="inputPassword"
-                        aria-describedby="passwordInput"
+                        id="password"
+                        aria-describedby="password"
                         aria-required="true"
-                        aria-invalid="false"
                       />
                       <span style={errors.password ? dangerStyle : null}>
                         <Error error={errors.password ? errors.password : null} />
