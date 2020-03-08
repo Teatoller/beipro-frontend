@@ -1,5 +1,6 @@
 body {
   background-color: #fff;
+  padding: 4px;
 }
 
 .header {
@@ -72,6 +73,13 @@ body {
 
 .hide {
   visibility: hidden;
+}
+
+.small-title {
+  font-weight: bold;
+}
+.size-petit {
+  font-size: 11px;
 }
 
 /* Table */
