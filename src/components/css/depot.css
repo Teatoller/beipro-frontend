@@ -37,22 +37,11 @@ body {
   float: right;
 }
 
-.form-logo {
-  font-family: sans-serif;
-  font-size: 36px;
-}
-
 .create-account {
   font-size: 14px;
   margin-top: 10px;
 }
 
-.country-select {
-  position: relative;
-  font-size: 16px;
-  padding: 2px 5px;
-  display: inline;
-}
 .location-select {
   position: relative;
   font-size: 16px;
@@ -70,13 +59,6 @@ body {
   margin: 0;
   border: 1px solid #aaa;
   border-radius: 0.5em;
-}
-
-.land-links {
-  position: relative;
-  font-size: 16px;
-  display: inline;
-  padding: 2px 5px;
 }
 
 .bei-welcome {
@@ -184,8 +166,6 @@ thead.fadmin th:nth-child(8) {
 
 th.fadmin,
 td.fadmin {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
@@ -234,8 +214,6 @@ thead.admin th:nth-child(8) {
 
 th.admin,
 td.admin {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
@@ -284,8 +262,6 @@ thead.company th:nth-child(8) {
 
 th.company,
 td.company {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
@@ -334,8 +310,6 @@ thead.foffices th:nth-child(8) {
 
 th.foffices,
 td.foffices {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
@@ -384,8 +358,6 @@ thead.audit th:nth-child(8) {
 
 th.audit,
 td.audit {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
@@ -434,23 +406,9 @@ thead.auditview th:nth-child(8) {
 
 th.auditview,
 td.auditview {
-  /* background-color: #f1f1f1; */
-  /* color: #989898; */
   padding: 4px;
   text-align: center;
   font-size: small;
-}
-
-.price-list {
-  margin-top: 25px;
-}
-
-form.form-example {
-  display: table;
-}
-
-div.form-example {
-  display: table-row;
 }
 
 @media screen and (max-width: 500px) {
