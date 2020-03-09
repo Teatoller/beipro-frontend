@@ -30,6 +30,8 @@ import AdminDelete from "./components/SuperAdmin/Admin/AdminDelete";
 import CompanyDelete from "./components/SuperAdmin/Company/CompanyDelete";
 import FrontOfficeDelete from "./components/SuperAdmin/FrontOffice/FrontOfficeDelete";
 import FrontAdminDelete from "./components/FrontAdmin/FrontAdminDelete";
+import Privacy from "./components/Auth/Privacy";
+import Terms from "./components/Auth/Terms";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -66,6 +68,8 @@ const BeiproRouter = () => {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/privacy-policy" component={Privacy} />
+        <Route exact path="/terms" component={Terms} />
         <AuthRoute exact path="/profile" component={Profile} />
         <Route exact path="/resetrequest" component={ResetRequest} />
         <Route exact path="/reset" component={Reset} />

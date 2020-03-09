@@ -89,7 +89,7 @@ class Depots extends PureComponent {
         <Nav />
 
         <div className="container">
-          <div className="row">
+          <div className="row" id="top">
             <div className="col-sm">
               <span>{loading ? <Spinner /> : null}</span>
               <div className="selector select-css">
@@ -149,6 +149,9 @@ class Depots extends PureComponent {
             paginate={paginate}
           />
         </div>
+        <p className="size-petit">
+          <a href="#top">Back to Top</a>
+        </p>
 
         <Footer />
       </div>
