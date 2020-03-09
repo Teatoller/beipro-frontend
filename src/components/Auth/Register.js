@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import axios from "../../axios";
 import banner from "../../images/banner.jpg";
 import Footer from "../Landing/Footer";
@@ -20,6 +20,7 @@ class Register extends PureComponent {
       password: "",
       password_confirmation: "",
       alertMessage: "",
+      checkbox: false,
       errors: {
         firstname: "",
         lastname: "",
@@ -77,7 +78,7 @@ class Register extends PureComponent {
   }
 
   render() {
-    const { alertMessage, errors, loading } = this.state;
+    const { alertMessage, errors, checkbox, loading } = this.state;
 
     const alertStyle = {
       fontStyle: "italic",
@@ -104,102 +105,121 @@ class Register extends PureComponent {
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                  <p className="text-secondary">Please sign up</p>
-                </header>
+                <p className="text-secondary">Please sign up</p>
+              </header>
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}
               </span>
               <main>
-              <form>
-                <div className="form-group">
-                  <label htmlFor="firstname">First Name</label>
-                  <input
-                    type="text"
-                    name="firstname"
-                    value={this.firstname}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="firstname"
-                    placeholder="Enter Firstname"
-                    aria-describedby="firstnameInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lastname">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastname"
-                    value={this.lastname}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="lastname"
-                    placeholder="Enter Lastname"
-                    aria-describedby="lastnameInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={this.email}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="email"
-                    aria-describedby="emailInput"
-                    placeholder="Enter Email"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter Password"
-                    value={this.password}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="password"
-                    aria-describedby="passwordInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <label htmlFor="passwordConfirm">Confirm password</label>
-                  <input
-                    type="password"
-                    name="password_confirmation"
-                    placeholder="Confirm Password"
-                    value={this.password_confirmation}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="passwordConfirm"
-                    aria-describedby="confirmPasswordInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                  <span style={errors.password ? dangerStyle : null}>
-                    <Error error={errors.password ? errors.password : null} />
-                  </span>
-                </div>
-                <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary btn-sm" onClick={this.onSubmit}>
-                    Sign up
-                  </button>
-                </div>
-              </form>
+                <form>
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name</label>
+                    <input
+                      type="text"
+                      name="firstname"
+                      value={this.firstname}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="firstname"
+                      placeholder="Enter Firstname"
+                      aria-describedby="firstnameInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastname">Last Name</label>
+                    <input
+                      type="text"
+                      name="lastname"
+                      value={this.lastname}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="lastname"
+                      placeholder="Enter Lastname"
+                      aria-describedby="lastnameInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={this.email}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="email"
+                      aria-describedby="emailInput"
+                      placeholder="Enter Email"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Enter Password"
+                      value={this.password}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="password"
+                      aria-describedby="passwordInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                  </div>
+                  <div className="form-group mb-3">
+                    <label htmlFor="passwordConfirm">Confirm password</label>
+                    <input
+                      type="password"
+                      name="password_confirmation"
+                      placeholder="Confirm Password"
+                      value={this.password_confirmation}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="passwordConfirm"
+                      aria-describedby="confirmPasswordInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                    <span style={errors.password ? dangerStyle : null}>
+                      <Error error={errors.password ? errors.password : null} />
+                    </span>
+                  </div>
+                  <span>Please indicate:</span>
+
+                  <div className="text-right mb-3">
+                  <span style={{color: "red"}}>&#42;</span>
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      value={this.checkbox}
+                      id="agree"
+                      onChange={this.onChange}
+                    />{" "}
+                    <span className="size-petit">I have read and agree to the
+                    <Link to="terms"> Terms & Conditions</Link> and{" "}
+                    <Link to="privacy-policy">Privacy Policy.</Link>{" "}</span>
+                    {checkbox === false ? null : (
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-sm"
+                        onClick={this.onSubmit}
+                      >
+                        Sign up
+                      </button>
+                    )}
+                  </div>
+                </form>
               </main>
               <section className="row">
                 <div className="col text-right">
                   <p>
-                    Have an account?{" "}
+                    Already have an account?{" "}
                     <span className="create-account">
                       <NavLink to="/">Sign in</NavLink>
                     </span>
