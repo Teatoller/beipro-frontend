@@ -30,6 +30,7 @@ class Register extends PureComponent {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleAlert = this.handleAlert.bind(this);
   }
 
   onChange(e) {
@@ -76,6 +77,14 @@ class Register extends PureComponent {
         });
       });
   }
+
+  handleAlert = e => {
+    e.preventDefault();
+    // eslint-disable-next-line no-alert
+    alert(
+      "Please indicate that you have read and agree to the Terms, Conditions and Privacy Policy"
+    );
+  };
 
   render() {
     const { alertMessage, errors, checkbox, loading } = this.state;
@@ -193,7 +202,7 @@ class Register extends PureComponent {
                   <span>Please indicate:</span>
 
                   <div className="text-right mb-3">
-                  <span style={{color: "red"}}>&#42;</span>
+                    <span style={{ color: "red" }}>&#42;</span>
                     <input
                       type="checkbox"
                       name="checkbox"
@@ -201,10 +210,20 @@ class Register extends PureComponent {
                       id="agree"
                       onChange={this.onChange}
                     />{" "}
-                    <span className="size-petit">I have read and agree to the
-                    <Link to="terms"> Terms & Conditions</Link> and{" "}
-                    <Link to="privacy-policy">Privacy Policy.</Link>{" "}</span>
-                    {checkbox === false ? null : (
+                    <span className="size-petit">
+                      I have read and agree to the
+                      <Link to="terms"> Terms & Conditions</Link> and{" "}
+                      <Link to="privacy-policy">Privacy Policy.</Link>{" "}
+                    </span>
+                    {checkbox === false ? (
+                      <button
+                        type="submit"
+                        className="btn btn-secondary btn-sm"
+                        onClick={this.handleAlert}
+                      >
+                        Sign up
+                      </button>
+                    ) : (
                       <button
                         type="submit"
                         className="btn btn-primary btn-sm"
