@@ -32,6 +32,8 @@ import FrontOfficeDelete from "./components/SuperAdmin/FrontOffice/FrontOfficeDe
 import FrontAdminDelete from "./components/FrontAdmin/FrontAdminDelete";
 import Privacy from "./components/Auth/Privacy";
 import Terms from "./components/Auth/Terms";
+import ProfileImage from "./components/Auth/ProfileImage";
+import ProfileImg from "./components/Auth/ProfileImg";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -71,6 +73,8 @@ const BeiproRouter = () => {
         <Route exact path="/privacy-policy" component={Privacy} />
         <Route exact path="/terms" component={Terms} />
         <AuthRoute exact path="/profile" component={Profile} />
+        <AuthRoute exact path="/profileimage" component={ProfileImage} />
+        <AuthRoute exact path="/profileimg" component={ProfileImg} />
         <Route exact path="/resetrequest" component={ResetRequest} />
         <Route exact path="/reset" component={Reset} />
         <AuthRoute path="/welcome" component={Welcome} />

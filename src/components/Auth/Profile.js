@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
@@ -11,14 +13,17 @@ class Profile extends Component {
       loading: true,
       firstname: "",
       lastname: "",
-      email: ""
+      email: "",
+      avatar: "",
+      avatarUrl: ""
     };
   }
 
   componentDidMount() {
     const config = {
       headers: {
-        Authorization: `Bearer ${localStorage.token}`
+        Authorization: `Bearer ${localStorage.token}`,
+        "content-type": "image/jpeg"
       }
     };
     axios
@@ -30,6 +35,8 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
+          avatar: data.avatar,
+          avatarUrl: data.avatar_url,
           loading: false
         });
       })
@@ -39,11 +46,13 @@ class Profile extends Component {
   }
 
   render() {
-    const { firstname, lastname, email, loading } = this.state;
+    const { firstname, lastname, email, avatar, avatarUrl, loading } = this.state;
 
     return (
       <div>
         <Nav />
+        {/* <Link to="profileimage" >Image Upload</Link> */}
+        <Link to="profileimg">Image Upload</Link>
         <div>
           <span>{loading ? <Spinner /> : null}</span>
 
@@ -51,7 +60,10 @@ class Profile extends Component {
             <tbody>
               <tr>
                 <th scope="col">Profile</th>
-                <td>...</td>
+                <td>
+                  <img src={avatarUrl} alt="Avatar" />
+                </td>
+                <td><img src={avatar} alt="avatar"/></td>
               </tr>
               <tr>
                 <th scope="col">First name:</th>
