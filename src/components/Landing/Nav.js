@@ -153,7 +153,7 @@ class Nav extends PureComponent {
               perform="front-admin:list"
               yes={() => (
                 <NavLink className="nav-item nav-link" to="/fadmin">
-                  Front-admin
+                  Staff
                 </NavLink>
               )}
             />

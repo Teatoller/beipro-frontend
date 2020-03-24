@@ -81,6 +81,9 @@ body {
 .size-petit {
   font-size: 11px;
 }
+.upload-btn {
+  margin: 2px;
+}
 
 /* Table */
 
