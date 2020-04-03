@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
+import profileholder from "../../images/profileholder.png";
 
 class Profile extends Component {
   constructor(props) {
@@ -11,7 +13,8 @@ class Profile extends Component {
       loading: true,
       firstname: "",
       lastname: "",
-      email: ""
+      email: "",
+      avatarUrl: profileholder
     };
   }
 
@@ -30,6 +33,7 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
+          avatarUrl: data.avatar_url,
           loading: false
         });
       })
@@ -39,26 +43,32 @@ class Profile extends Component {
   }
 
   render() {
-    const { firstname, lastname, email, loading } = this.state;
+    const { firstname, lastname, email, avatarUrl, loading } = this.state;
 
     return (
       <div>
         <Nav />
         <div>
           <span>{loading ? <Spinner /> : null}</span>
+          <h6>Profile</h6>
+
+          <div>
+            <img className="rounded-circle" src={avatarUrl} height="180" width="180" alt="Avatar" />
+          </div>
+          <small className="form-text text-muted">
+            <Link to="profileimg">Click to upload Image</Link>
+          </small>
+          <br />
+          <hr />
 
           <table className="table table-striped">
             <tbody>
-              <tr>
-                <th scope="col">Profile</th>
-                <td>...</td>
-              </tr>
               <tr>
                 <th scope="col">First name:</th>
                 <td>{firstname}</td>
               </tr>
               <tr>
-                <th scope="col">Last name</th>
+                <th scope="col">Last name:</th>
                 <td>{lastname}</td>
               </tr>
               <tr>
