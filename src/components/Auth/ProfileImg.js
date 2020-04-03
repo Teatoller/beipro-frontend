@@ -2,8 +2,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
+import Nav from "../Landing/Nav";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
+import profileholder from "../../images/profileholder.png";
 
 class ProfileImg extends React.Component {
   constructor(props) {
@@ -11,12 +13,12 @@ class ProfileImg extends React.Component {
     this.state = {
       file: null,
       loading: false,
+      imgholder: profileholder,
       errors: {
         file: ""
       }
     };
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
   onFormSubmit(e) {
@@ -51,14 +53,40 @@ class ProfileImg extends React.Component {
       });
   }
 
-  onChange(e) {
+  previewFile = e => {
+    const preview = document.querySelector("img");
+    const file = document.querySelector("input[type=file]").files[0];
+    const reader = new FileReader();
+
     this.setState({
       file: e.target.files[0]
     });
-  }
+
+    reader.addEventListener(
+      "load",
+      () => {
+        // convert image file to base64 string
+        preview.src = reader.result;
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/profile");
+    this.setState({ loading: false });
+  };
 
   render() {
-    const { errors, loading } = this.state;
+    const { errors, loading, imgholder } = this.state;
 
     const dangerStyle = {
       _fontStyle: "italic",
@@ -73,17 +101,40 @@ class ProfileImg extends React.Component {
 
     return (
       <div>
+        <div>
+          <Nav />
+        </div>
         <span>{loading ? <Spinner /> : null}</span>
         <form onSubmit={this.onFormSubmit}>
-          <h1>Profile Image Upload</h1>
-          <input type="file" name="avatar" onChange={this.onChange} />
+          <h6>Profile Image Upload</h6>
+          <img
+            className="rounded-circle"
+            src={imgholder}
+            height="180"
+            width="180"
+            alt="preview..."
+          />
+          <br />
+          <input type="file" name="avatar" onChange={e => this.previewFile(e)} />
           <small id="fileHelp" className="form-text text-muted">
             Please upload a valid image file. Size of image should not be more than 2MB.
           </small>
           <span style={errors.file ? dangerStyle : null}>
             <Error error={errors.file ? errors.file : null} />
           </span>
-          <button type="submit">Upload</button>
+          <div className="btn-spacing">
+            <button className="btn btn-sm btn-success upload-btn" type="submit">
+              Upload
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-sm btn-primary upload-btn"
+              onClick={this.handleCancelClick}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     );

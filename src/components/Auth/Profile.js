@@ -1,10 +1,10 @@
-/* eslint-disable camelcase */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
+import profileholder from "../../images/profileholder.png";
 
 class Profile extends Component {
   constructor(props) {
@@ -14,16 +14,14 @@ class Profile extends Component {
       firstname: "",
       lastname: "",
       email: "",
-      avatar: "",
-      avatarUrl: ""
+      avatarUrl: profileholder
     };
   }
 
   componentDidMount() {
     const config = {
       headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-        "content-type": "image/jpeg"
+        Authorization: `Bearer ${localStorage.token}`
       }
     };
     axios
@@ -35,7 +33,6 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
-          avatar: data.avatar,
           avatarUrl: data.avatar_url,
           loading: false
         });
@@ -46,31 +43,32 @@ class Profile extends Component {
   }
 
   render() {
-    const { firstname, lastname, email, avatar, avatarUrl, loading } = this.state;
+    const { firstname, lastname, email, avatarUrl, loading } = this.state;
 
     return (
       <div>
         <Nav />
-        {/* <Link to="profileimage" >Image Upload</Link> */}
-        <Link to="profileimg">Image Upload</Link>
         <div>
           <span>{loading ? <Spinner /> : null}</span>
+          <h6>Profile</h6>
+
+          <div>
+            <img className="rounded-circle" src={avatarUrl} height="180" width="180" alt="Avatar" />
+          </div>
+          <small className="form-text text-muted">
+            <Link to="profileimg">Click to upload Image</Link>
+          </small>
+          <br />
+          <hr />
 
           <table className="table table-striped">
             <tbody>
-              <tr>
-                <th scope="col">Profile</th>
-                <td>
-                  <img src={avatarUrl} alt="Avatar" />
-                </td>
-                <td><img src={avatar} alt="avatar"/></td>
-              </tr>
               <tr>
                 <th scope="col">First name:</th>
                 <td>{firstname}</td>
               </tr>
               <tr>
-                <th scope="col">Last name</th>
+                <th scope="col">Last name:</th>
                 <td>{lastname}</td>
               </tr>
               <tr>
