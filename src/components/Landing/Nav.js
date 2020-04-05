@@ -23,6 +23,7 @@ class Nav extends PureComponent {
     this.getAdminRole();
     this.getFrontAdminRole();
     this.getSuperAdminRole();
+    this.getImageUrl();
 
     const avatarExist = localStorage.getItem("avatarUrl");
 
@@ -128,6 +129,28 @@ class Nav extends PureComponent {
       this.setState({ roleSadmin: rolekey });
       localStorage.setItem("roleSadmin", rolekey);
     });
+  };
+
+  getImageUrl = () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios
+      .get(`/auth/profile`, config)
+      .then(res => {
+        // eslint-disable-next-line prefer-destructuring
+        const data = res.data;
+        localStorage.setItem("avatarUrl", res.data.avatar_url);
+        this.setState({
+          avatar: data.avatar,
+          avatarUrl: data.avatar_url
+        });
+      })
+      .catch(error => {
+        throw error;
+      });
   };
 
   render() {
