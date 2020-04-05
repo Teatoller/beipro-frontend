@@ -62,19 +62,13 @@ class Profile extends Component {
         <Nav />
         <div className="container profile-page">
           <span>{loading ? <Spinner /> : null}</span>
-          {/* <h6>Profile</h6> */}
-          {/* <div>
-            <img className="rounded-circle profile-img" src={avatar} alt="Avatar" />
-          </div>
-          <br/> */}
-
           <div>
             <img
               className="rounded-circle profile-img"
               src={avatarUrl}
               height="180"
               width="180"
-              alt="Avatar"
+              alt="avatar"
             />
           </div>
           <small className="form-text text-muted img-text">
