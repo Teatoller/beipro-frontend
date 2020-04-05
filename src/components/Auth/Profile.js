@@ -33,7 +33,6 @@ class Profile extends Component {
         const data = res.data;
         localStorage.setItem("firstname", res.data.firstname);
         localStorage.setItem("lastname", res.data.lastname);
-        localStorage.setItem("avatarUrl", res.data.avatar_url);
         this.setState({
           firstname: data.firstname,
           lastname: data.lastname,
