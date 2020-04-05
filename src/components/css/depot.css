@@ -84,6 +84,28 @@ body {
 .upload-btn {
   margin: 2px;
 }
+.profile-img {
+  border: #aaa solid 0.5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-top: 20px; */
+}
+
+.img-text {
+  text-align: center;
+}
+
+.profile-page {
+  width: 60%;
+  margin: auto;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
 
 /* Table */
 
@@ -432,6 +454,17 @@ td.auditview {
   .header-right {
     float: none;
     width: 100%;
+  }
+
+  .profile-page {
+    float: none;
+    width: 100%;
+  }
+  
+  .avatar {
+    float: right;
+    width: 15%;
+    position: relative;
   }
 
   /* Force table to not be like tables anymore */
