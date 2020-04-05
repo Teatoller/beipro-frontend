@@ -5,6 +5,7 @@ import axios from "../../axios";
 import Can from "../Can";
 import "../css/style.css";
 import Logout from "../Auth/Logout";
+import profileholder from "../../images/profileholder.png";
 
 class Nav extends PureComponent {
   constructor() {
@@ -13,7 +14,8 @@ class Nav extends PureComponent {
     this.state = {
       role: "",
       roleAdmin: "",
-      roleSadmin: ""
+      roleSadmin: "",
+      avatarUrl: ""
     };
   }
 
@@ -21,6 +23,18 @@ class Nav extends PureComponent {
     this.getAdminRole();
     this.getFrontAdminRole();
     this.getSuperAdminRole();
+
+    const avatarExist = localStorage.getItem("avatarUrl");
+
+    if (avatarExist) {
+      this.setState({
+        avatarUrl: localStorage.getItem("avatarUrl")
+      });
+    } else {
+      this.setState({
+        avatarUrl: profileholder
+      });
+    }
   }
 
   // Get admin role
@@ -117,7 +131,7 @@ class Nav extends PureComponent {
   };
 
   render() {
-    const { role, roleAdmin, roleSadmin } = this.state;
+    const { role, roleAdmin, roleSadmin, avatarUrl } = this.state;
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="logo" to="/welcome">
@@ -193,13 +207,18 @@ class Nav extends PureComponent {
                 </NavLink>
               )}
             />
-            <NavLink className="nav-item nav-link" to="/profile">
+            {/* <NavLink className="nav-item nav-link" to="/profile">
               Profile
-            </NavLink>
+            </NavLink> */}
             <NavLink className="nav-item nav-link" to="#">
               <Logout />
             </NavLink>
           </div>
+        </div>
+        <div>
+          <NavLink className="nav-item nav-link" to="/profile">
+            <img src={avatarUrl} className="d-inline-block align-top avatar" alt="avatar" />
+          </NavLink>
         </div>
       </nav>
     );

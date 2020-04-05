@@ -21,6 +21,20 @@ class ProfileImg extends React.Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const avatarExist = localStorage.getItem("avatarUrl");
+
+    if (avatarExist) {
+      this.setState({
+        imgholder: avatarExist
+      });
+    } else {
+      this.setState({
+        imgholder: profileholder
+      });
+    }
+  }
+
   onFormSubmit(e) {
     const { file } = this.state;
     const { history } = this.props;
