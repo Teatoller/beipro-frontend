@@ -7,7 +7,7 @@ const Welcome = () => {
     <div>
       <Nav />
       <section className="bei-welcome">
-        <h2>Welcome to Beipro!</h2>
+        <h2 className="fader" >Welcome to Beipro!</h2>
       </section>
       <Footer />
     </div>
