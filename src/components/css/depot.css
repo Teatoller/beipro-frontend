@@ -63,7 +63,7 @@ body {
 }
 
 .bei-welcome {
-  color: darkgrey;
+  color: #f8f9fa;
   margin-top: 180px;
   text-align: center;
 }
@@ -106,6 +106,16 @@ body {
   width: 30px;
   height: 30px;
 }
+
+.fader {
+  animation-name: example;
+  animation-duration: 15s;
+  }
+  
+  @keyframes example {
+  from {color:darkgrey;}
+  to {color:#fff;}
+  }
 
 /* Table */
 
