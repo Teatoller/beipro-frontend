@@ -173,7 +173,7 @@ class Nav extends PureComponent {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink className="nav-item nav-link active" to="/depots">
-              Depots<span className="sr-only">(current)</span>
+              Home<span className="sr-only">(current)</span>
             </NavLink>
             <Can
               role={roleAdmin}
@@ -229,9 +229,9 @@ class Nav extends PureComponent {
                 </NavLink>
               )}
             />
-            {/* <NavLink className="nav-item nav-link" to="/profile">
+            <NavLink className="nav-item nav-link" to="/profile">
               Profile
-            </NavLink> */}
+            </NavLink>
             <NavLink className="nav-item nav-link" to="#">
               <Logout />
             </NavLink>

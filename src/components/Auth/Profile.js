@@ -54,8 +54,17 @@ class Profile extends Component {
     history.push("/profileedit");
   };
 
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/depots");
+    this.setState({ loading: false });
+  };
+
   render() {
-    const { firstname, lastname, email, avatarUrl, avatar, loading } = this.state;
+    const { firstname, lastname, email, avatarUrl, loading } = this.state;
 
     return (
       <div>
@@ -96,8 +105,19 @@ class Profile extends Component {
             </tbody>
           </table>
           <div className="btn-spacing">
-            <button type="button" className="btn btn-sm btn-primary" onClick={this.handleEditClick}>
+            <button
+              type="button"
+              className="btn btn-sm btn-primary upload-btn"
+              onClick={this.handleEditClick}
+            >
               Edit
+            </button>
+            <button
+              type="button"
+              className="btn btn-sm btn-secondary upload-btn"
+              onClick={this.handleCancelClick}
+            >
+              Home
             </button>
           </div>
         </div>
