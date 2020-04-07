@@ -38,8 +38,6 @@ class AdminEdit extends Component {
   }
 
   componentDidMount() {
-    // this.getAdminsData();
-    // this.getAdminData();
     this.adminsData = setTimeout(() => this.getAdminsData(), 500);
     this.adminData = setTimeout(() => this.getAdminData(), 500);
   }
