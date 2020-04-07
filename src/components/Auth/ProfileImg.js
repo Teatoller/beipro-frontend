@@ -13,7 +13,7 @@ class ProfileImg extends React.Component {
     this.state = {
       file: null,
       loading: false,
-      imgholder: profileholder,
+      imgholder: "",
       errors: {
         file: ""
       }
@@ -68,6 +68,7 @@ class ProfileImg extends React.Component {
   }
 
   previewFile = e => {
+    e.preventDefault();
     const preview = document.querySelector("img");
     const file = document.querySelector("input[type=file]").files[0];
     const reader = new FileReader();
@@ -118,38 +119,40 @@ class ProfileImg extends React.Component {
         <div>
           <Nav />
         </div>
-        <span>{loading ? <Spinner /> : null}</span>
-        <form onSubmit={this.onFormSubmit}>
-          <h6>Profile Image Upload</h6>
-          <img
-            className="rounded-circle"
-            src={imgholder}
-            height="180"
-            width="180"
-            alt="preview..."
-          />
-          <br />
-          <input type="file" name="avatar" onChange={e => this.previewFile(e)} />
-          <small id="fileHelp" className="form-text text-muted">
-            Please upload a valid image file. Size of image should not be more than 2MB.
-          </small>
-          <span style={errors.file ? dangerStyle : null}>
-            <Error error={errors.file ? errors.file : null} />
-          </span>
-          <div className="btn-spacing">
-            <button className="btn btn-sm btn-success upload-btn" type="submit">
-              Upload
-            </button>
+        <main className=" container profile-page">
+          <span>{loading ? <Spinner /> : null}</span>
+          <form onSubmit={this.onFormSubmit}>
+            <h6>Profile Image Upload</h6>
+            <img
+              className="rounded-circle profile-img"
+              src={imgholder}
+              height="180"
+              width="180"
+              alt="preview..."
+            />
+            <br />
+            <input type="file" name="avatar" onChange={e => this.previewFile(e)} />
+            <small id="fileHelp" className="form-text text-muted img-text">
+              Please upload a valid image file. Size of image should not be more than 2MB.
+            </small>
+            <span style={errors.file ? dangerStyle : null}>
+              <Error error={errors.file ? errors.file : null} />
+            </span>
+            <div className="btn-spacing">
+              <button className="btn btn-sm btn-success upload-btn" type="submit">
+                Upload
+              </button>
 
-            <button
-              type="button"
-              className="btn btn-sm btn-primary upload-btn"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
+              <button
+                type="button"
+                className="btn btn-sm btn-primary upload-btn"
+                onClick={this.handleCancelClick}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </main>
       </div>
     );
   }
