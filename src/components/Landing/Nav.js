@@ -144,7 +144,6 @@ class Nav extends PureComponent {
         const data = res.data;
         localStorage.setItem("avatarUrl", res.data.avatar_url);
         this.setState({
-          avatar: data.avatar,
           avatarUrl: data.avatar_url
         });
       })
@@ -240,7 +239,7 @@ class Nav extends PureComponent {
         </div>
         <div>
           <NavLink className="nav-item nav-link" to="/profile">
-            <img src={avatarUrl} className="d-inline-block align-top avatar" alt="avatar" />
+            <img src={avatarUrl} className="d-inline-block align-top avatar" alt="" />
           </NavLink>
         </div>
       </nav>
