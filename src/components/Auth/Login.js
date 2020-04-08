@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "../../axios";
 import { setLogin } from "../../redux/actionCreators/authActions";
-import banner from "../../images/banner.jpg";
+import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
@@ -157,7 +157,7 @@ class Login extends PureComponent {
                 <div className="m-2">
                   <img
                     className="img-fluid rounded mx-auto d-block img-thumbnail"
-                    src={banner}
+                    src={beiprostorage}
                     alt="Petroleum storage tanks installation. Sets the theme for the web site"
                   />
                 </div>
