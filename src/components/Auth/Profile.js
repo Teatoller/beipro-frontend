@@ -37,7 +37,6 @@ class Profile extends Component {
           firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
-          avatar: data.avatar,
           avatarUrl: data.avatar_url,
           loading: false
         });
@@ -83,7 +82,6 @@ class Profile extends Component {
           <small className="form-text text-muted img-text">
             <Link to="profileimg">Click to Upload/Change Image</Link>
           </small>
-          <br />
           <hr />
 
           <table className="table table-striped profile-page">
