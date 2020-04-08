@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import React from "react";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "../../axios";
-import Nav from "../Landing/Nav";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import profileholder from "../../images/profileholder.png";
@@ -117,12 +117,16 @@ class ProfileImg extends React.Component {
     return (
       <div>
         <div>
-          <Nav />
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <NavLink className="logo" to="/welcome">
+              Beipro
+            </NavLink>
+          </nav>
         </div>
         <main className=" container profile-page">
           <span>{loading ? <Spinner /> : null}</span>
           <form onSubmit={this.onFormSubmit}>
-            <h6>Profile Image Upload</h6>
+            <h6>Image Upload</h6>
             <img
               className="rounded-circle profile-img"
               src={imgholder}
