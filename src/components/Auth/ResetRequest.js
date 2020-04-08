@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
-import banner from "../../images/banner.jpg";
+import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
@@ -81,29 +81,33 @@ class ResetRequest extends PureComponent {
                 </p>
               </header>
               <main>
-              <form>
-                <div className="form-group">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={this.email}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="email"
-                    aria-describedby="emailInput"
-                    placeholder="Enter Email"
-                  />
-                  <span style={errors.email ? dangerStyle : null}>
-                    <Error error={errors.email ? errors.email : null} />
-                  </span>
-                </div>
-                <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary btn-sm" onClick={this.onSubmit}>
-                    Submit
-                  </button>
-                </div>
-              </form>
+                <form>
+                  <div className="form-group">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={this.email}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="email"
+                      aria-describedby="emailInput"
+                      placeholder="Enter Email"
+                    />
+                    <span style={errors.email ? dangerStyle : null}>
+                      <Error error={errors.email ? errors.email : null} />
+                    </span>
+                  </div>
+                  <div className="text-right mb-3">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-sm"
+                      onClick={this.onSubmit}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </main>
               <section className="row">
                 <div className="col text-right">
@@ -118,7 +122,7 @@ class ResetRequest extends PureComponent {
               <div className="m-2">
                 <img
                   className="img-fluid rounded mx-auto d-block img-thumbnail"
-                  src={banner}
+                  src={beiprostorage}
                   alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>
