@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
-import banner from "../../images/banner.jpg";
+import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
@@ -94,83 +94,87 @@ class Reset extends PureComponent {
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                  <p className="text-secondary">Please enter details to reset password</p>
-                </header>
+                <p className="text-secondary">Please enter details to reset password</p>
+              </header>
               <main>
-              <form>
-                <div className="form-group">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={this.email}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="email"
-                    placeholder="Enter Email"
-                    aria-describedby="emailInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter Password"
-                    value={this.password}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="password"
-                    aria-describedby="passwordInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <label htmlFor="passwordConfirmation">confirm password</label>
-                  <input
-                    type="password"
-                    name="password_confirmation"
-                    placeholder="Confirm Password"
-                    value={this.password_confirmation}
-                    onChange={this.onChange}
-                    className="form-control"
-                    id="passwordConfirmation"
-                    aria-describedby="passwordConfirmationInput"
-                    aria-required="true"
-                    aria-invalid="false"
-                  />
+                <form>
                   <div className="form-group">
-                    <label htmlFor="token">Token</label>
+                    <label htmlFor="email">Email address</label>
                     <input
-                      type="string"
-                      name="token"
-                      value={this.token}
+                      type="email"
+                      name="email"
+                      value={this.email}
                       onChange={this.onChange}
                       className="form-control"
-                      id="token"
-                      placeholder="Enter Token"
-                      aria-describedby="tokenInput"
+                      id="email"
+                      placeholder="Enter Email"
+                      aria-describedby="emailInput"
                       aria-required="true"
                       aria-invalid="false"
                     />
-                    <span style={errors.password ? dangerStyle : null}>
-                      <Error error={errors.password ? errors.password : null} />
-                    </span>
-                    <span>
-                      example:{" "}
-                      <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
-                    </span>
                   </div>
-                </div>
-                <div className="text-right mb-3">
-                  <button type="submit" className="btn btn-primary btn-sm" onClick={this.onSubmit}>
-                    Reset Password
-                  </button>
-                </div>
-              </form>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Enter Password"
+                      value={this.password}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="password"
+                      aria-describedby="passwordInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                  </div>
+                  <div className="form-group mb-3">
+                    <label htmlFor="passwordConfirmation">confirm password</label>
+                    <input
+                      type="password"
+                      name="password_confirmation"
+                      placeholder="Confirm Password"
+                      value={this.password_confirmation}
+                      onChange={this.onChange}
+                      className="form-control"
+                      id="passwordConfirmation"
+                      aria-describedby="passwordConfirmationInput"
+                      aria-required="true"
+                      aria-invalid="false"
+                    />
+                    <div className="form-group">
+                      <label htmlFor="token">Token</label>
+                      <input
+                        type="string"
+                        name="token"
+                        value={this.token}
+                        onChange={this.onChange}
+                        className="form-control"
+                        id="token"
+                        placeholder="Enter Token"
+                        aria-describedby="tokenInput"
+                        aria-required="true"
+                        aria-invalid="false"
+                      />
+                      <span style={errors.password ? dangerStyle : null}>
+                        <Error error={errors.password ? errors.password : null} />
+                      </span>
+                      <span>
+                        example:{" "}
+                        <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right mb-3">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-sm"
+                      onClick={this.onSubmit}
+                    >
+                      Reset Password
+                    </button>
+                  </div>
+                </form>
               </main>
               <section className="row">
                 <div className="col text-right">
@@ -187,7 +191,7 @@ class Reset extends PureComponent {
               <div className="m-2">
                 <img
                   className="img-fluid rounded mx-auto d-block img-thumbnail"
-                  src={banner}
+                  src={beiprostorage}
                   alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>

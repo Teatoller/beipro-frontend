@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { NavLink, Link } from "react-router-dom";
 import axios from "../../axios";
-import banner from "../../images/banner.jpg";
+import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
@@ -250,7 +250,7 @@ class Register extends PureComponent {
               <div className="m-2">
                 <img
                   className="img-fluid rounded mx-auto d-block img-thumbnail"
-                  src={banner}
+                  src={beiprostorage}
                   alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>
