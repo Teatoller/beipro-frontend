@@ -295,7 +295,7 @@ class AdminCreate extends Component {
                         name="staff_id"
                         className="form-control form-control-sm"
                         id="staffId"
-                        placeholder="Enter Front-admin Staff Id"
+                        placeholder="Enter Staff Id"
                         onChange={this.onChange}
                         aria-describedby="staffIdInput"
                         aria-required="true"

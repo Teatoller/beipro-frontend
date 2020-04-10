@@ -110,12 +110,21 @@ body {
 .fader {
   animation-name: example;
   animation-duration: 15s;
+}
+
+@keyframes example {
+  from {
+    color: darkgrey;
   }
-  
-  @keyframes example {
-  from {color:darkgrey;}
-  to {color:#fff;}
+  to {
+    color: #fff;
   }
+}
+
+.wpcf7 {
+  background-color: #f7f7f7;
+  border: 0.5px solid #0f0;
+}
 
 /* Table */
 
@@ -454,6 +463,54 @@ td.auditview {
   font-size: small;
 }
 
+/* Table Feedback*/
+
+table.feed {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+thead.feed th:nth-child(1) {
+  width: 5%;
+}
+
+thead.feed th:nth-child(2) {
+  width: 15%;
+}
+
+thead.feed th:nth-child(3) {
+  width: 10%;
+}
+
+thead.feed th:nth-child(4) {
+  width: 10%;
+}
+
+thead.feed th:nth-child(5) {
+  width: 10%;
+}
+
+thead.feed th:nth-child(6) {
+  width: 10%;
+}
+
+thead.feed th:nth-child(7) {
+  width: 10%;
+}
+
+thead.feed th:nth-child(8) {
+  width: 10%;
+}
+
+th.feed,
+td.feed {
+  padding: 4px;
+  text-align: center;
+  font-size: small;
+}
+
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
@@ -470,7 +527,7 @@ td.auditview {
     float: none;
     width: 100%;
   }
-  
+
   .avatar {
     float: right;
     width: 15%;
@@ -723,6 +780,33 @@ td.auditview {
     content: "Tags";
   }
   td.audit:nth-of-type(10):before {
+    content: "Action";
+  }
+
+  /* Feedback Table */
+  td.feed:nth-of-type(1):before {
+    content: "#";
+  }
+  td.feed:nth-of-type(2):before {
+    content: "Name: ";
+  }
+  td.feed:nth-of-type(3):before {
+    content: "Email: ";
+  }
+  td.feed:nth-of-type(4):before {
+    content: "Phone No: ";
+  }
+  td.feed:nth-of-type(5):before {
+    content: "Subject: ";
+  }
+  td.feed:nth-of-type(6):before {
+    content: "Message:";
+  }
+  td.feed:nth-of-type(7):before {
+    content: "Date Created: ";
+  }
+
+  td.feed:nth-of-type(8):before {
     content: "Action";
   }
 }
