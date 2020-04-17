@@ -35,7 +35,6 @@ import Terms from "./components/Auth/Terms";
 import ProfileImg from "./components/Auth/ProfileImg";
 import ProfileEdit from "./components/Auth/ProfileEdit";
 import ContactUs from "./components/Auth/ContactUs";
-import CompanyLogo from "./components/SuperAdmin/Company/CompanyLogo";
 import Feedback from "./components/SuperAdmin/Feedback/Feedback";
 
 const checkAuth = () => {
@@ -97,7 +96,6 @@ const BeiproRouter = () => {
         <AuthRoute exact path="/company" component={Company} />
         <AuthRoute exact path="/companycreate" component={CompanyCreate} />
         <AuthRoute exact path="/companyedit" component={CompanyEdit} />
-        <AuthRoute exact path="/companylogo" component={CompanyLogo} />
         <AuthRoute exact path="/companydelete" component={CompanyDelete} />
         <AuthRoute exact path="/frontoffice" component={FrontOffice} />
         <AuthRoute exact path="/frontofficecreate" component={FrontOfficeCreate} />
