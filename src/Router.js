@@ -34,6 +34,8 @@ import Privacy from "./components/Auth/Privacy";
 import Terms from "./components/Auth/Terms";
 import ProfileImg from "./components/Auth/ProfileImg";
 import ProfileEdit from "./components/Auth/ProfileEdit";
+import ContactUs from "./components/Auth/ContactUs";
+import Feedback from "./components/SuperAdmin/Feedback/Feedback";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -75,6 +77,7 @@ const BeiproRouter = () => {
         <AuthRoute exact path="/profile" component={Profile} />
         <AuthRoute exact path="/profileedit" component={ProfileEdit} />
         <AuthRoute exact path="/profileimg" component={ProfileImg} />
+        <AuthRoute exact path="/contactus" component={ContactUs} />
         <Route exact path="/resetrequest" component={ResetRequest} />
         <Route exact path="/reset" component={Reset} />
         <AuthRoute path="/welcome" component={Welcome} />
@@ -101,6 +104,7 @@ const BeiproRouter = () => {
         <AuthRoute exact path="/depots" component={Depots} />
         <AuthRoute exact path="/audit" component={Audit} />
         <AuthRoute exact path="/auditview" component={AuditView} />
+        <AuthRoute exact path="/feedback" component={Feedback} />
       </Switch>
     </div>
   );

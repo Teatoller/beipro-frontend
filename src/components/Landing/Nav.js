@@ -143,6 +143,8 @@ class Nav extends PureComponent {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;
         localStorage.setItem("avatarUrl", res.data.avatar_url);
+        localStorage.setItem("fname", res.data.firstname);
+        localStorage.setItem("lname", res.data.lastname);
         this.setState({
           avatarUrl: data.avatar_url
         });
@@ -229,8 +231,20 @@ class Nav extends PureComponent {
                 </NavLink>
               )}
             />
+            <Can
+              role={roleSadmin}
+              perform="feedback:list"
+              yes={() => (
+                <NavLink className="nav-item nav-link" to="/feedback">
+                  Feedbacks
+                </NavLink>
+              )}
+            />
             <NavLink className="nav-item nav-link" to="/profile">
               Profile
+            </NavLink>
+            <NavLink className="nav-item nav-link" to="/contactus">
+              Contact Us
             </NavLink>
             <NavLink className="nav-item nav-link" to="#">
               <Logout />

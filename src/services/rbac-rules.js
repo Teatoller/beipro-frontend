@@ -50,6 +50,7 @@ const rules = {
       "welcome:visit",
       "depots:visit",
       "audit:list",
+      "feedback:list",
     ]
   }
 };

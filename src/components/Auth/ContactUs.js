@@ -1,0 +1,160 @@
+/* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import axios from "../../axios";
+import Nav from "../Landing/Nav";
+import Footer from "../Landing/Footer";
+import "../css/depot.css";
+import Error from "../Error";
+
+class ContactUs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      errors: {
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
+      }
+    };
+    this.onChange = this.onChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      email: localStorage.getItem("email"),
+      name: `${localStorage.getItem("fname")} ${localStorage.getItem("lname")}`
+    });
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const { history } = this.props;
+
+    axios({
+      method: "POST",
+      url: `/contact-us`,
+      data: this.state
+    })
+      .then(response => {
+        if (response) {
+          alert("Message Sent. Thank you for contacting us");
+          history.push(`/depots`);
+        }
+      })
+      .catch(err => {
+        this.setState({
+          errors: {
+            name: err.response.request.response,
+            email: err.response.request.response,
+            phone: err.response.request.response,
+            subject: err.response.request.response,
+            message: err.response.request.response
+          }
+        });
+      });
+  }
+
+  render() {
+    const { name, email, errors } = this.state;
+
+    const dangerStyle = {
+      fontStyle: "italic",
+      color: "red"
+    };
+    return (
+      <div>
+        <Nav />
+        <div className="container">
+          <h6>Contact us</h6>
+          <form id="contact-form">
+            <div className="row">
+              <div className="col-sm">
+                <div className="form-group">
+                  <label htmlFor="name">Name:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    name="name"
+                    placeholder={name}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email address:</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    aria-describedby="email"
+                    name="email"
+                    onChange={this.onChange}
+                    placeholder={email}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone number:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="phone"
+                    name="phone_number"
+                    placeholder="Enter phone number"
+                    onChange={this.onChange}
+                  />
+                </div>
+              </div>
+              <div className="col-sm">
+                <div className="form-group">
+                  <label htmlFor="subject">Subject:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="Enter subject"
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Message:</label>
+                  <textarea
+                    className="form-control wpcf7"
+                    rows="5"
+                    id="message"
+                    name="message"
+                    placeholder="Enter message"
+                    onChange={this.onChange}
+                  />
+                  <span style={errors.password ? dangerStyle : null}>
+                    <Error error={errors.message ? errors.message : null} />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>
+              Submit
+            </button>
+          </form>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+}
+ContactUs.propTypes = {
+  history: PropTypes.shape().isRequired
+};
+export default ContactUs;
