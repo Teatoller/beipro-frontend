@@ -11,9 +11,9 @@ class Feedback extends Component {
     super(props);
     this.state = {
       loading: true,
-      admins: [],
+      feeds: [],
       activePage: "1",
-      itemCountPerPage: "10"
+      itemCountPerPage: "5"
     };
   }
 
@@ -23,50 +23,30 @@ class Feedback extends Component {
 
   getFeedbackData = () => {
     axios.get(`/contact-us`, {}).then(response => {
-      const adminData = response.data;
-      console.log("feeds...!!!!", adminData);
+      const feedData = response.data;
       this.setState({
-        admins: adminData,
+        feeds: feedData,
         loading: false
       });
     });
   };
 
-  handleEditClick = e => {
-    const { history } = this.props;
-
-    e.preventDefault();
-    const attribute = e.currentTarget;
-    const sadminid = attribute.getAttribute("sadminid");
-    localStorage.setItem("sadminid", sadminid);
-
-    history.push("/sadminedit");
-  };
-
-  handleCreateClick = e => {
-    const { history } = this.props;
-
-    e.preventDefault();
-
-    history.push("/xcreate");
-  };
-
-  // Select front admin record to delete
+  // Select front feed record to delete
 
   handleDeleteClick = e => {
     const { history } = this.props;
     e.preventDefault();
     const attribute = e.currentTarget;
-    const sadminid = attribute.getAttribute("sadminid");
-    localStorage.setItem("sadminid", sadminid);
-    history.push("/xdelete");
+    const sfeedid = attribute.getAttribute("sfeedid");
+    localStorage.setItem("sfeedid", sfeedid);
+    history.push("/feedbkdelete");
   };
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admins, loading } = this.state;
+    const { feeds, loading } = this.state;
 
-    const companyAdminStaff = admins.map((item, index) => {
+    const companyAdminStaff = feeds.map((item, index) => {
       return (
         <tr key={item.id}>
           <td className="feed">{index + 1}</td>
@@ -78,19 +58,9 @@ class Feedback extends Component {
           <td className="feed">{item.created_at}</td>
           <td className="feed">
             <button
-              className="btn btn-sm btn-primary"
-              type="button"
-              sadminid={item.id}
-              onClick={this.handleEditClick}
-            >
-              Edit
-            </button>
-          </td>
-          <td className="admin">
-            <button
               className="btn btn-sm btn-outline-danger"
               type="button"
-              sadminid={item.id}
+              sfeedid={item.id}
               onClick={this.handleDeleteClick}
             >
               Delete
@@ -133,25 +103,12 @@ class Feedback extends Component {
                     <th scope="col">Subject</th>
                     <th scope="col">Message</th>
                     <th scope="col">Date Created</th>
-                    <th scope="col">Action</th>
                     <th scope="col">Remove</th>
                   </tr>
                 </thead>
                 <tbody>{currentItems}</tbody>
               </table>
             </div>
-          </div>
-
-          <span>Click button to add a new Feedback</span>
-
-          <div className="btn-spacing">
-            <button
-              className="btn btn-sm btn-success"
-              type="submit"
-              onClick={this.handleCreateClick}
-            >
-              Add
-            </button>
           </div>
           <Pagination
             itemCountPerPage={itemCountPerPage}

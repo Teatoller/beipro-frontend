@@ -7,6 +7,7 @@ import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import "../css/depot.css";
 import Error from "../Error";
+import Spinner from "../../spinner/Spinner";
 
 class ContactUs extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class ContactUs extends Component {
     this.state = {
       name: "",
       email: "",
+      loading: false,
       errors: {
         name: "",
         email: "",
@@ -42,12 +44,27 @@ class ContactUs extends Component {
 
     const { history } = this.props;
 
-    axios({
-      method: "POST",
-      url: `/contact-us`,
-      data: this.state
-    })
+    const { name, email, phone_number, subject, message } = this.state;
+
+    const data = {
+      name,
+      email,
+      phone_number,
+      subject,
+      message
+    };
+
+    // axios({
+    //   method: "POST",
+    //   url: `/contact-us`,
+    //   data: this.state
+    // })
+    axios
+      .post(`/contact-us`, data)
       .then(response => {
+        this.setState({
+          loading: true
+        });
         if (response) {
           alert("Message Sent. Thank you for contacting us");
           history.push(`/depots`);
@@ -67,7 +84,7 @@ class ContactUs extends Component {
   }
 
   render() {
-    const { name, email, errors } = this.state;
+    const { name, email, errors, loading } = this.state;
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -77,6 +94,7 @@ class ContactUs extends Component {
       <div>
         <Nav />
         <div className="container">
+          <span>{loading ? <Spinner /> : null}</span>
           <h6>Contact us</h6>
           <form id="contact-form">
             <div className="row">
