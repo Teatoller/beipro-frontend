@@ -93,7 +93,7 @@ class ProfileEdit extends Component {
         <main className="profile-page">
           <span>{loading ? <Spinner /> : null}</span>
           <h6>Edit Profile</h6>
-          <form>
+          <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label htmlFor="firstname">First Name:</label>
               <input
@@ -131,9 +131,7 @@ class ProfileEdit extends Component {
             </div>
 
             <div className="text-right mb-3">
-              <button type="submit" className="btn btn-success btn-sm" onClick={this.onSubmit}>
-                Submit
-              </button>
+              <input type="submit" className="btn btn-success btn-sm" value="Submit" />
             </div>
           </form>
           <div className="btn-spacing">
