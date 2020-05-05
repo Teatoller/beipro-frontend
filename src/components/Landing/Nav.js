@@ -156,6 +156,7 @@ class Nav extends PureComponent {
 
   render() {
     const { role, roleAdmin, roleSadmin, avatarUrl } = this.state;
+    const activeStyle = { color: "#f0a243" };
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="logo" to="/welcome">
@@ -174,15 +175,15 @@ class Nav extends PureComponent {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <NavLink className="nav-item nav-link active" to="/depots">
-              Home<span className="sr-only">(current)</span>
+            <NavLink className="nav-item nav-link active" activeStyle={activeStyle} to="/depots">
+              Home |<span className="sr-only">(current)</span>
             </NavLink>
             <Can
               role={roleAdmin}
               perform="company-admin:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/admin">
-                  Admin
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/admin">
+                  Admin |
                 </NavLink>
               )}
             />
@@ -190,8 +191,8 @@ class Nav extends PureComponent {
               role={role}
               perform="front-admin:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/fadmin">
-                  Staff
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/fadmin">
+                  Staff |
                 </NavLink>
               )}
             />
@@ -199,8 +200,8 @@ class Nav extends PureComponent {
               role={roleSadmin}
               perform="admin:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/sadmin">
-                  Admins
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/sadmin">
+                  Admins |
                 </NavLink>
               )}
             />
@@ -208,7 +209,7 @@ class Nav extends PureComponent {
               role={roleSadmin}
               perform="company:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/company">
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/company">
                   Companies
                 </NavLink>
               )}
@@ -217,7 +218,7 @@ class Nav extends PureComponent {
               role={roleSadmin}
               perform="front-office:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/frontoffice">
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/frontoffice">
                   Front-offices
                 </NavLink>
               )}
@@ -226,7 +227,7 @@ class Nav extends PureComponent {
               role={roleSadmin}
               perform="audit:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/audit">
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/audit">
                   Audits
                 </NavLink>
               )}
@@ -235,24 +236,24 @@ class Nav extends PureComponent {
               role={roleSadmin}
               perform="feedback:list"
               yes={() => (
-                <NavLink className="nav-item nav-link" to="/feedback">
+                <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/feedback">
                   Feedbacks
                 </NavLink>
               )}
             />
-            <NavLink className="nav-item nav-link" to="/profile">
-              Profile
+            <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/profile">
+              Profile |
             </NavLink>
-            <NavLink className="nav-item nav-link" to="/contactus">
-              Contact Us
+            <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/contactus">
+              Contact Us |
             </NavLink>
-            <NavLink className="nav-item nav-link" to="#">
+            <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="#">
               <Logout />
             </NavLink>
           </div>
         </div>
         <div>
-          <NavLink className="nav-item nav-link" to="/profile">
+          <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/profile">
             <img src={avatarUrl} className="d-inline-block align-top avatar" alt="" />
           </NavLink>
         </div>
