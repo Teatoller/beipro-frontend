@@ -75,13 +75,17 @@ class ResetRequest extends PureComponent {
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                <p className="text-secondary">
+                <p className="text-secondary" style={{
+                    fontSize: ".85em",
+                    color: "gray",
+                    padding: "8px"
+                  }}>
                   Please enter your Email address below and we&apos;ll send you a link to reset your
                   password
                 </p>
               </header>
               <main>
-                <form>
+                <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <label htmlFor="email">Email address</label>
                     <input
@@ -99,13 +103,7 @@ class ResetRequest extends PureComponent {
                     </span>
                   </div>
                   <div className="text-right mb-3">
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-sm"
-                      onClick={this.onSubmit}
-                    >
-                      Submit
-                    </button>
+                    <input type="submit" className="btn btn-primary btn-sm" value="Submit" />
                   </div>
                 </form>
               </main>
@@ -125,6 +123,35 @@ class ResetRequest extends PureComponent {
                   src={beiprostorage}
                   alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
+              </div>
+              <div className="container">
+                <p
+                  style={{
+                    fontSize: ".95em",
+                    fontStyle: "italic",
+                    color: "gray",
+                    padding: "8px"
+                  }}
+                >
+                  <span style={{ textDecoration: "underline" }}>Beipro </span>is a{" "}
+                  <span>dynamic platform </span>that
+                  <span>
+                    {" "}
+                    remotely <span style={{ textDecoration: "underline" }}>
+                      {" "}
+                      connects buyers
+                    </span>{" "}
+                  </span>
+                  <span style={{ textDecoration: "underline" }}>to</span>
+                  <span>
+                    {" "}
+                    the prevailing <span style={{ textDecoration: "underline" }}>
+                      {" "}
+                      Sellers
+                    </span>{" "}
+                    bulk petroleum stock prices
+                  </span>
+                </p>
               </div>
             </article>
           </div>

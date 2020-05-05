@@ -81,6 +81,15 @@ class Login extends PureComponent {
         <nav className="header">
           <NavLink to="/" className="logo">
             Beipro
+            {/* <br />
+            <small
+              style={{
+                fontSize: ".35em",
+                color: "#007bff"
+              }}
+            >
+              Petroleum Stock Price&apos;s
+            </small> */}
           </NavLink>
           <div className="header-right">
             <NavLink to="/register">Sign up</NavLink>
@@ -95,7 +104,7 @@ class Login extends PureComponent {
                   <p className="text-secondary">Please sign in</p>
                 </header>
                 <main>
-                  <form>
+                  <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                       <label htmlFor="email">Email address</label>
                       <input
@@ -128,13 +137,7 @@ class Login extends PureComponent {
                       </span>
                     </div>
                     <div className="text-right mb-3">
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-sm"
-                        onClick={this.onSubmit}
-                      >
-                        Sign in
-                      </button>
+                      <input type="submit" className="btn btn-primary btn-sm" value="Sign in" />
                     </div>
                   </form>
                 </main>
@@ -160,6 +163,33 @@ class Login extends PureComponent {
                     src={beiprostorage}
                     alt="Petroleum storage tanks installation. Sets the theme for the web site"
                   />
+                </div>
+                <div className="container">
+                  <p
+                    style={{
+                      fontSize: ".95em",
+                      fontStyle: "italic",
+                      color: "gray",
+                      padding: "8px"
+                    }}
+                  >
+                    <span style={{ textDecoration: "underline" }}>Beipro </span>is a{" "}
+                    <span>dynamic platform </span>that
+                    <span>
+                      {" "}
+                      remotely <span style={{ textDecoration: "underline" }}>
+                        {" "}
+                        connects buyers
+                      </span>{" "}
+                    </span>
+                    <span style={{ textDecoration: "underline" }}>to</span>
+                    <span>
+                      {" "}
+                      the prevailing{" "}
+                      <span style={{ textDecoration: "underline" }}> Sellers</span> bulk
+                      petroleum stock prices
+                    </span>
+                  </p>
                 </div>
               </article>
             </div>
