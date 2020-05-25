@@ -173,21 +173,25 @@ class Login extends PureComponent {
                       padding: "8px"
                     }}
                   >
-                    <span style={{ textDecoration: "underline" }}>Beipro </span>is a{" "}
-                    <span>dynamic platform </span>that
+                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>Beipro </span>is
+                    a <span>dynamic platform </span>that
                     <span>
                       {" "}
-                      remotely <span style={{ textDecoration: "underline" }}>
+                      remotely{" "}
+                      <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
                         {" "}
                         connects buyers
                       </span>{" "}
                     </span>
-                    <span style={{ textDecoration: "underline" }}>to</span>
+                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>to</span>
                     <span>
                       {" "}
                       the prevailing{" "}
-                      <span style={{ textDecoration: "underline" }}> Sellers</span> bulk
-                      petroleum stock prices
+                      <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
+                        {" "}
+                        sellers
+                      </span>{" "}
+                      bulk petroleum stock prices
                     </span>
                   </p>
                 </div>
