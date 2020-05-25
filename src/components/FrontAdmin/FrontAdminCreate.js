@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
@@ -59,6 +60,7 @@ class FrontAdminCreate extends Component {
       .post(`/currentprices`, data)
       .then(response => {
         if (response) {
+          toast.success("Price created successfully");
           setTimeout(() => history.push(`/fadmin`), 50);
         }
         this.setState({ loading: false });

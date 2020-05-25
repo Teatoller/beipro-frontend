@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
@@ -66,7 +67,7 @@ class ContactUs extends Component {
           loading: true
         });
         if (response) {
-          alert("Message Sent. Thank you for contacting us");
+          toast.success("Submitted Successfully");
           history.push(`/depots`);
         }
       })
