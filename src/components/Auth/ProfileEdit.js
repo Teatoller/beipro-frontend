@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
@@ -58,6 +59,7 @@ class ProfileEdit extends Component {
           loading: true
         });
         if (response) {
+          toast.success("Records updated successfully");
           history.push(`/profile`);
         }
       })

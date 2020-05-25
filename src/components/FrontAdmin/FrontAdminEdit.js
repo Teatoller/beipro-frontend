@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
@@ -63,6 +64,7 @@ class FrontAdminEdit extends PureComponent {
       .patch(`/currentprices/${priceid}`, data)
       .then(response => {
         if (response) {
+          toast.success("Price updated successfully");
           history.push("/fadmin");
         }
         this.setState({ loading: false });

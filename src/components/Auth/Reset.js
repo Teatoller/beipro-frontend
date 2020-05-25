@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import beiprostorage from "../../images/beiprostorage.svg";
@@ -58,7 +59,10 @@ class Reset extends PureComponent {
         this.setState({
           loading: true
         });
-        if (response) history.push(`/`);
+        if (response) {
+          toast.success("Password reset succesful");
+          history.push(`/`);
+        }
       })
       .catch(err => {
         this.setState({
@@ -202,21 +206,23 @@ class Reset extends PureComponent {
                     padding: "8px"
                   }}
                 >
-                  <span style={{ textDecoration: "underline" }}>Beipro </span>is a{" "}
+                  <span style={{ textDecoration: "italic", fontWeight: "bold" }}>Beipro </span>is a{" "}
                   <span>dynamic platform </span>that
                   <span>
                     {" "}
-                    remotely <span style={{ textDecoration: "underline" }}>
+                    remotely{" "}
+                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
                       {" "}
                       connects buyers
                     </span>{" "}
                   </span>
-                  <span style={{ textDecoration: "underline" }}>to</span>
+                  <span style={{ textDecoration: "italic", fontWeight: "bold" }}>to</span>
                   <span>
                     {" "}
-                    the prevailing <span style={{ textDecoration: "underline" }}>
+                    the prevailing{" "}
+                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
                       {" "}
-                      Sellers
+                      sellers
                     </span>{" "}
                     bulk petroleum stock prices
                   </span>

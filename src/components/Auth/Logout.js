@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -24,12 +25,12 @@ class Logout extends Component {
     axios
       .get(`/auth/logout`, config)
       .then(res => {
-        const message = res.data;
-        localStorage.clear();
-        this.setState({
-          navigate: true,
-          message
-        });
+        if (res) {
+          localStorage.clear();
+          this.setState({
+            navigate: true
+          });
+        }
       })
       .catch(err => {
         throw err;
@@ -40,6 +41,7 @@ class Logout extends Component {
     const { navigate } = this.state;
 
     if (navigate) {
+      toast.success("You have been succesfully logged out");
       return <Redirect to="/" />;
     }
     return (
