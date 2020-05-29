@@ -85,7 +85,9 @@ class Login extends PureComponent {
             <small
               style={{
                 fontSize: ".35em",
-                color: "#007bff"
+                color: "#007bff",
+                padding:0,
+                margin:0,
               }}
             >
               Petroleum Stock Price&apos;s
