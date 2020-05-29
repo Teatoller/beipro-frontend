@@ -42,6 +42,25 @@
   base-uri https://beipro-frontend.herokuapp.com/ https://beipro.herokuapp.com/;
   object-src 'none';
   ">
+  <script type="text/json" id="csp-report-uri">
+    {
+        "keys" : [
+        "blockedURI", 
+        "columnNumber", 
+        "disposition", 
+        "documentURI", 
+        "effectiveDirective", 
+        "lineNumber", 
+        "originalPolicy", 
+        "referrer", 
+        "sample", 
+        "sourceFile", 
+        "statusCode", 
+        "violatedDirective"
+        ],
+        "reportUri" : "https://beipro-frontend.herokuapp.com/.report-uri.com/r/d/csp/enforce"
+    }
+    </script>
 
   <!-- local dev csp -->
   <!-- <meta http-equiv="Content-Security-Policy" content="
@@ -52,7 +71,7 @@
   img-src 'self' data: http://res.cloudinary.com/beipro/; 
   style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css;
   font-src 'self';"> -->
-  <script type="text/json" id="csp-report-uri">
+  <!-- <script type="text/json" id="csp-report-uri">
     {
         "keys" : [
         "blockedURI", 
@@ -70,7 +89,7 @@
         ],
         "reportUri" : "http://localhost:3000/.report-uri.com/r/d/csp/enforce"
     }
-    </script>
+    </script> -->
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
