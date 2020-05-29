@@ -5,10 +5,10 @@
   <!-- production csp -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; 
     manifest-src https://beipro-frontend.herokuapp.com/site.webmanifest https://beipro-frontend.herokuapp.com/;
-    script-src https://code.jquery.com/jquery-3.4.1.slim.min.js https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js 'sha256-EGFkM0n/aMEwydziMPIXrYMjwvGD3iU+M9UZ7JsZ0w4=' https://beipro-frontend.herokuapp.com/static/js/2.74fa8e60.chunk.js https://beipro-frontend.herokuapp.com/static/js/main.87597232.chunk.js; 
+    script-src 'self' https://code.jquery.com/jquery-3.4.1.slim.min.js https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js 'sha256-EGFkM0n/aMEwydziMPIXrYMjwvGD3iU+M9UZ7JsZ0w4='; 
     connect-src 'self' https://beipro.herokuapp.com/; 
     img-src 'self' data: http://res.cloudinary.com/beipro/image/upload/; 
-    style-src https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css https://beipro-frontend.herokuapp.com/static/css/2.89946ceb.chunk.css https://beipro-frontend.herokuapp.com/static/css/main.50ea718b.chunk.css;
+    style-src 'self' https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css https://beipro-frontend.herokuapp.com/static/css/2.89946ceb.chunk.css https://beipro-frontend.herokuapp.com/static/css/main.50ea718b.chunk.css;
     font-src 'self' data: font/woff;
     base-uri https://beipro-frontend.herokuapp.com/ https://beipro.herokuapp.com/;
     object-src 'none';
