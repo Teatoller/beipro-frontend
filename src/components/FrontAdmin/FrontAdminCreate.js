@@ -298,7 +298,7 @@ class FrontAdminCreate extends Component {
                     </div>
                   </fieldset>
 
-                  <h6>Price Input</h6>
+                  <h4>Price Input</h4>
                   <div className="form-group row">
                     <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
                       Diesel:
@@ -308,6 +308,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="diesel"
                         id="diesel"
+                        className="form-control"
                         placeholder={diesel}
                         onChange={this.onChange}
                         aria-describedby="dieselPriceInput"
@@ -324,6 +325,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="petrol"
                         id="petrol"
+                        className="form-control"
                         placeholder={petrol}
                         onChange={this.onChange}
                         aria-describedby="petrolePriceInput"
@@ -340,6 +342,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="kerosene"
                         id="kerosene"
+                        className="form-control"
                         placeholder={kerosene}
                         onChange={this.onChange}
                         aria-describedby="kerosenePriceInput"
@@ -356,6 +359,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="ido"
                         id="ido"
+                        className="form-control"
                         placeholder={ido}
                         onChange={this.onChange}
                         aria-describedby="idoPriceInput"
@@ -372,6 +376,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="fo"
                         id="fuelOil"
+                        className="form-control"
                         placeholder={fo}
                         onChange={this.onChange}
                         aria-describedby="fuelOilPriceInput"
@@ -388,6 +393,7 @@ class FrontAdminCreate extends Component {
                         type="decimal"
                         name="lpg"
                         id="lpg"
+                        className="form-control"
                         placeholder={lpg}
                         onChange={this.onChange}
                         aria-describedby="bulkLpgPriceInput"
@@ -399,20 +405,26 @@ class FrontAdminCreate extends Component {
                       </span>
                     </div>
                   </div>
-                  <div className="btn-spacing">
-                    <input className="btn btn-sm btn-success" type="submit" value="Add" />
+                  <div className="row">
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <input className="btn btn-sm btn-success" type="submit" value="Add a new price" />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-warning"
+                          onClick={this.handleCancelClick}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </fieldset>
               </form>
-              <div className="btn-spacing">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
-              </div>
             </div>
 
             <div className="col">
