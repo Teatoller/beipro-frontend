@@ -3,8 +3,8 @@ import "../css/style.css";
 
 const Footer = () => {
   return (
-    <footer id="footer">
-      <span>Beipro &copy;2018</span>
+    <footer id="footer" className="text-center">
+      <span>Beipro &copy;{new Date().getFullYear()}</span>
     </footer>
   );
 };
