@@ -310,7 +310,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="diesel"
                         id="diesel"
-                        class="form-control"
+                        className="form-control"
                         placeholder={diesel}
                         onChange={this.onChange}
                         aria-describedby="dieselPriceInput"
@@ -324,7 +324,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="petrol"
                         id="petrol"
-                        class="form-control"
+                        className="form-control"
                         placeholder={petrol}
                         onChange={this.onChange}
                         aria-describedby="petrolPriceInput"
@@ -340,7 +340,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="kerosene"
                         id="kerosene"
-                        class="form-control"
+                        className="form-control"
                         placeholder={kerosene}
                         onChange={this.onChange}
                         aria-describedby="kerosenePriceInput"
@@ -355,7 +355,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="ido"
                         id="ido"
-                        class="form-control"
+                        className="form-control"
                         placeholder={ido}
                         onChange={this.onChange}
                         aria-describedby="idoPriceInput"
@@ -370,7 +370,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="fo"
                         id="fuelOil"
-                        class="form-control"
+                        className="form-control"
                         placeholder={fo}
                         onChange={this.onChange}
                         aria-describedby="fuelOilPriceInput"
@@ -385,7 +385,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="lpg"
                         id="lpg"
-                        class="form-control"
+                        className="form-control"
                         placeholder={lpg}
                         onChange={this.onChange}
                         aria-describedby="bulkLpgPriceInput"
