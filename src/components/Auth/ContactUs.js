@@ -96,7 +96,7 @@ class ContactUs extends Component {
         <Nav />
         <div className="container">
           <span>{loading ? <Spinner /> : null}</span>
-          <h6>Contact us</h6>
+          <h4>Contact us</h4>
           <form id="contact-form">
             <div className="row">
               <div className="col-sm">
@@ -108,6 +108,7 @@ class ContactUs extends Component {
                     id="name"
                     name="name"
                     placeholder={name}
+                    value={name}
                     onChange={this.onChange}
                   />
                 </div>
@@ -121,6 +122,7 @@ class ContactUs extends Component {
                     name="email"
                     onChange={this.onChange}
                     placeholder={email}
+                    value={email}
                   />
                 </div>
                 <div className="form-group">

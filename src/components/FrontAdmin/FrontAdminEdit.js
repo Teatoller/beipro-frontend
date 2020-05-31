@@ -217,6 +217,15 @@ class FrontAdminEdit extends PureComponent {
     );
   };
 
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/fadmin");
+    this.setState({ loading: false });
+  };
+
   render() {
     // eslint-disable-next-line camelcase
     const {
@@ -264,7 +273,7 @@ class FrontAdminEdit extends PureComponent {
             <span>{loading ? <Spinner /> : null}</span>
             <div className="col">
               <h6>
-                Edit Entry Pad: {company}-{location}
+                Edit Entry Pad: {company} - <em>{location}</em>
               </h6>
               <form noValidate onSubmit={this.onSubmit}>
                 <fieldset className="front-fieldset">
@@ -301,12 +310,12 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="diesel"
                         id="diesel"
+                        class="form-control"
                         placeholder={diesel}
                         onChange={this.onChange}
                         aria-describedby="dieselPriceInput"
                       />
                     </div>
-
                     <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
                       Petrol:
                     </label>
@@ -315,11 +324,13 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="petrol"
                         id="petrol"
+                        class="form-control"
                         placeholder={petrol}
                         onChange={this.onChange}
                         aria-describedby="petrolPriceInput"
                       />
                     </div>
+
 
                     <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
                       Kerosene:
@@ -329,6 +340,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="kerosene"
                         id="kerosene"
+                        class="form-control"
                         placeholder={kerosene}
                         onChange={this.onChange}
                         aria-describedby="kerosenePriceInput"
@@ -343,6 +355,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="ido"
                         id="ido"
+                        class="form-control"
                         placeholder={ido}
                         onChange={this.onChange}
                         aria-describedby="idoPriceInput"
@@ -357,6 +370,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="fo"
                         id="fuelOil"
+                        class="form-control"
                         placeholder={fo}
                         onChange={this.onChange}
                         aria-describedby="fuelOilPriceInput"
@@ -371,6 +385,7 @@ class FrontAdminEdit extends PureComponent {
                         type="decimal"
                         name="lpg"
                         id="lpg"
+                        class="form-control"
                         placeholder={lpg}
                         onChange={this.onChange}
                         aria-describedby="bulkLpgPriceInput"
@@ -380,8 +395,23 @@ class FrontAdminEdit extends PureComponent {
                       </span>
                     </div>
                   </div>
-                  <div className="btn-spacing">
-                    <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                  <div className="row">
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <input className="btn btn-sm btn-success" type="submit" value="Change Price" />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-warning"
+                          onClick={this.handleCancelClick}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </fieldset>
               </form>
