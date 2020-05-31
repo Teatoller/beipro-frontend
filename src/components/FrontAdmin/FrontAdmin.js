@@ -221,14 +221,13 @@ class FrontAdmin extends Component {
               </table>
             </div>
           </div>
-          <span>Click button to add a new current price</span>
           <div className="btn-spacing">
             <button
               className="btn btn-sm btn-success"
               type="submit"
               onClick={this.handleCreateClick}
             >
-              Add
+              Add a new current price
             </button>
           </div>
         </div>

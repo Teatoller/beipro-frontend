@@ -68,7 +68,7 @@ class Profile extends Component {
     return (
       <div>
         <Nav />
-        <div className="container profile-page">
+        <div className="container profile-page mt-3">
           <span>{loading ? <Spinner /> : null}</span>
           <div>
             <img
@@ -102,7 +102,7 @@ class Profile extends Component {
               </tr>
             </tbody>
           </table>
-          <div className="btn-spacing">
+          <div className="btn-spacing text-center">
             <button
               type="button"
               className="btn btn-sm btn-primary upload-btn"
