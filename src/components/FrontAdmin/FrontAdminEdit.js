@@ -217,6 +217,15 @@ class FrontAdminEdit extends PureComponent {
     );
   };
 
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/fadmin");
+    this.setState({ loading: false });
+  };
+
   render() {
     // eslint-disable-next-line camelcase
     const {
@@ -386,8 +395,23 @@ class FrontAdminEdit extends PureComponent {
                       </span>
                     </div>
                   </div>
-                  <div className="btn-spacing">
-                    <input className="btn btn-sm btn-success" type="submit" value="Change Price" />
+                  <div className="row">
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <input className="btn btn-sm btn-success" type="submit" value="Change Price" />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="btn-spacing">
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-warning"
+                          onClick={this.handleCancelClick}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </fieldset>
               </form>
