@@ -9,10 +9,11 @@ import { connect } from "react-redux";
 import axios from "../../axios";
 import { setLogin } from "../../redux/actionCreators/authActions";
 import Footer from "../Landing/Footer";
-import Error from "../Error";
+// import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import SiteTheme from "./SiteTheme";
 import SiteImage from "./SiteImage";
+import LoginTextInput from "./LoginTextInput";
 
 class Login extends PureComponent {
   constructor(props) {
@@ -42,7 +43,7 @@ class Login extends PureComponent {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("email", res.data.email);
         this.setState({
-          loading: true
+          loading: true,
         });
         if (res) {
           history.push("/welcome");
@@ -64,18 +65,7 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { errors, loading } = this.state;
-
-    const dangerStyle = {
-      _fontStyle: "italic",
-      get fontStyle() {
-        return this._fontStyle;
-      },
-      set fontStyle(value) {
-        this._fontStyle = value;
-      },
-      color: "red"
-    };
+    const { email, password, errors, loading } = this.state;
 
     return (
       <div>
@@ -108,40 +98,13 @@ class Login extends PureComponent {
                 </header>
                 <main>
                   <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="email">Email address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={this.email}
-                        onChange={this.onChange}
-                        className="form-control"
-                        id="email"
-                        aria-describedby="email"
-                        placeholder="Enter Email"
-                        aria-required="true"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="password">Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter Password"
-                        value={this.password}
-                        onChange={this.onChange}
-                        className="form-control"
-                        id="password"
-                        aria-describedby="password"
-                        aria-required="true"
-                      />
-                      <span style={errors.password ? dangerStyle : null}>
-                        <Error error={errors.password ? errors.password : null} />
-                      </span>
-                    </div>
-                    <div className="text-right mb-3">
-                      <input type="submit" className="btn btn-primary btn-sm" value="Sign in" />
-                    </div>
+                    <LoginTextInput
+                      email={email}
+                      password={password}
+                      onChange={this.onChange}
+                      errors={errors}
+                      loading={loading}
+                    />
                   </form>
                 </main>
                 <section className="row">
