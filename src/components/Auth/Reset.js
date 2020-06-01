@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import axios from "../../axios";
-import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import SiteTheme from "./SiteTheme";
+import SiteImage from "./SiteImage";
 
 class Reset extends PureComponent {
   constructor(props) {
@@ -191,13 +191,7 @@ class Reset extends PureComponent {
               </section>
             </div>
             <article className="col-5">
-              <div className="m-2">
-                <img
-                  className="img-fluid rounded mx-auto d-block img-thumbnail"
-                  src={beiprostorage}
-                  alt="Petroleum storage tanks installation. Sets the theme for the web site"
-                />
-              </div>
+              <SiteImage />
               <SiteTheme />
             </article>
           </div>
