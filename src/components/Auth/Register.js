@@ -9,6 +9,7 @@ import beiprostorage from "../../images/beiprostorage.svg";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
+import SiteTheme from "./SiteTheme";
 
 class Register extends PureComponent {
   constructor(props) {
@@ -252,37 +253,7 @@ class Register extends PureComponent {
                   alt="Petroleum storage tanks installation. Sets the theme for the web site"
                 />
               </div>
-              <div className="container">
-                <p
-                  style={{
-                    fontSize: ".95em",
-                    fontStyle: "italic",
-                    color: "gray",
-                    padding: "8px"
-                  }}
-                >
-                  <span style={{ textDecoration: "italic", fontWeight: "bold" }}>Beipro </span>is a{" "}
-                  <span>dynamic platform </span>that
-                  <span>
-                    {" "}
-                    remotely{" "}
-                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
-                      {" "}
-                      connects buyers
-                    </span>{" "}
-                  </span>
-                  <span style={{ textDecoration: "italic", fontWeight: "bold" }}>to</span>
-                  <span>
-                    {" "}
-                    the prevailing{" "}
-                    <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
-                      {" "}
-                      sellers
-                    </span>{" "}
-                    bulk petroleum stock prices
-                  </span>
-                </p>
-              </div>
+              <SiteTheme />
             </article>
           </div>
         </div>

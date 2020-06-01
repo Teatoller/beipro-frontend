@@ -38,8 +38,6 @@
     img-src 'self' data: http://res.cloudinary.com/beipro/image/upload/ https://res.cloudinary.com/beipro/image/upload/; 
     style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css;
     font-src 'self' data: font/woff;
-    base-uri 'self' https://beipro.herokuapp.com/;
-    object-src 'none';
     " />
   <script type="text/json" id="csp-report-uri">
       {
@@ -61,19 +59,8 @@
   font-src 'self';" />
   <script type="text/json" id="csp-report-uri">
     {
-        "keys" : [
-        "blockedURI", 
-        "columnNumber", 
-        "disposition", 
-        "documentURI", 
-        "effectiveDirective", 
-        "lineNumber", 
-        "originalPolicy", 
-        "referrer", 
-        "sample", 
-        "sourceFile", 
-        "statusCode", 
-        "violatedDirective"
+        "keys" : ["blockedURI", "columnNumber", "disposition", "documentURI", "effectiveDirective", 
+        "lineNumber", "originalPolicy", "referrer", "sample", "sourceFile", "statusCode", "violatedDirective"
         ],
         "reportUri" : "http://localhost:3000/.report-uri.com/r/d/csp/enforce"
     }
