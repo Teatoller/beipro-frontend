@@ -53,7 +53,7 @@ LoginTextInput.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired,
+  errors: PropTypes.shape().isRequired,
   loading: PropTypes.bool.isRequired,
 };
 export default LoginTextInput;
