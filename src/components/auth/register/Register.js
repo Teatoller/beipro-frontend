@@ -4,19 +4,20 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { NavLink } from "react-router-dom";
-import axios from "../../axios";
-import Footer from "../Landing/Footer";
-import Spinner from "../../spinner/Spinner";
-import SiteTheme from "./SiteTheme";
-import SiteImage from "./SiteImage";
+import axios from "../../../axios";
+import Footer from "../../Landing/Footer";
+import Spinner from "../../../spinner/Spinner";
+import SiteTheme from "../common/SiteTheme";
+import SiteImage from "../common/SiteImage";
 import RegisterTextInput from "./RegisterTextInput";
+import RegisterExtra from "./RegisterExtra";
+import CommonAuthNav from "../common/CommonAuthNav";
 
 class Register extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       firstname: "",
       lastname: "",
       email: "",
@@ -61,11 +62,12 @@ class Register extends PureComponent {
       })
       .then(response => {
         const message = response.data;
-        this.setState({
-          alertMessage: message,
-          loading: true
-        });
+
         if (response) {
+          this.setState({
+            alertMessage: message,
+            loading: false
+          });
           toast.success(
             "Success, check for an email with confirmation link to complete the activation process."
           );
@@ -112,18 +114,11 @@ class Register extends PureComponent {
 
     return (
       <div>
-        <nav className="header">
-          <NavLink to="/" className="logo">
-            Beipro
-          </NavLink>
-          <div className="header-right">
-            <NavLink to="/">Sign in</NavLink>
-          </div>
-        </nav>
+        <CommonAuthNav />
         <div className="container" aria-label="Sign up form">
           <div className="row">
             <div className="col-7">
-              <span>{loading ? <Spinner /> : null}</span>
+              <span>{loading ? null : <Spinner />}</span>
               <header className="text-center">
                 <p className="text-secondary">Please sign up</p>
               </header>
@@ -147,14 +142,7 @@ class Register extends PureComponent {
                 </form>
               </main>
               <section className="row">
-                <div className="col text-right">
-                  <p>
-                    Already have an account?{" "}
-                    <span className="create-account">
-                      <NavLink to="/">Sign in</NavLink>
-                    </span>
-                  </p>
-                </div>
+                <RegisterExtra />
               </section>
             </div>
             <article className="col-5">
