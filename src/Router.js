@@ -30,8 +30,8 @@ import AdminDelete from "./components/SuperAdmin/Admin/AdminDelete";
 import CompanyDelete from "./components/SuperAdmin/Company/CompanyDelete";
 import FrontOfficeDelete from "./components/SuperAdmin/FrontOffice/FrontOfficeDelete";
 import FrontAdminDelete from "./components/FrontAdmin/FrontAdminDelete";
-import Privacy from "./components/auth/Privacy";
-import Terms from "./components/auth/Terms";
+import Privacy from "./components/auth/common/Privacy";
+import Terms from "./components/auth/common/Terms"
 import ProfileImg from "./components/auth/profile/ProfileImg";
 import ProfileEdit from "./components/auth/profile/ProfileEdit";
 import ContactUs from "./components/auth/contact/ContactUs";
