@@ -17,7 +17,7 @@ class Register extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       firstname: "",
       lastname: "",
       email: "",
@@ -48,6 +48,10 @@ class Register extends PureComponent {
     const { firstname, lastname, email, password, password_confirmation } = this.state;
     const { history } = this.props;
 
+    this.setState({
+      loading: true
+    });
+
     const newUser = {
       firstname,
       lastname,
@@ -65,8 +69,7 @@ class Register extends PureComponent {
 
         if (response) {
           this.setState({
-            alertMessage: message,
-            loading: false
+            alertMessage: message
           });
           toast.success(
             "Success, check for an email with confirmation link to complete the activation process."
@@ -76,6 +79,7 @@ class Register extends PureComponent {
       })
       .catch(err => {
         this.setState({
+          loading: false,
           errors: {
             firstname: err.response.request.response,
             lastname: err.response.request.response,
@@ -118,7 +122,7 @@ class Register extends PureComponent {
         <div className="container" aria-label="Sign up form">
           <div className="row">
             <div className="col-7">
-              <span>{loading ? null : <Spinner />}</span>
+              <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
                 <p className="text-secondary">Please sign up</p>
               </header>

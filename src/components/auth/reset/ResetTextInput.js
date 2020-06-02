@@ -87,7 +87,7 @@ const ResetTextInput = ({
       </div>
       <div className="text-right mb-3">
         <button type="submit" className="btn btn-primary btn-sm">
-          {loading ? "Reset Password" : "Processing..."}
+          {loading ? "Processing..." : "Reset Password"}
         </button>
       </div>
     </>

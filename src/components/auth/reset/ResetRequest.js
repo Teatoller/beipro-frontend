@@ -37,12 +37,13 @@ class ResetRequest extends PureComponent {
     const { email } = this.state;
     const { history } = this.props;
 
+    this.setState({
+      loading: true
+    });
+
     axios
       .post("/password/create", { email })
       .then(res => {
-        this.setState({
-          loading: true
-        });
         if (res) {
           toast.success("We have e-mailed you a link with password reset token");
           history.push(`/reset`);
@@ -50,6 +51,7 @@ class ResetRequest extends PureComponent {
       })
       .catch(err => {
         this.setState({
+          loading: false,
           errors: {
             email: err.response.request.response
           }

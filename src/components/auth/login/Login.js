@@ -19,7 +19,7 @@ class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       email: "",
       password: "",
       errors: {
@@ -37,20 +37,22 @@ class Login extends PureComponent {
     e.preventDefault();
     const data = { email, password };
 
+    this.setState({
+      loading: true
+    });
+
     axios
       .post(`/auth/login`, data)
       .then(res => {
         if (res) {
           localStorage.setItem("token", res.data.access_token);
           localStorage.setItem("email", res.data.email);
-          this.setState({
-            loading: false
-          });
           history.push("/welcome");
         }
       })
       .catch(err => {
         this.setState({
+          loading: false,
           errors: {
             email: err.response.request.response,
             password: err.response.request.response
@@ -74,7 +76,7 @@ class Login extends PureComponent {
           <div>
             <div className="row">
               <div className="col-7 p-2">
-                <span>{loading ? null : <Spinner />}</span>
+                <span>{loading ? <Spinner /> : null}</span>
                 <header className="text-center">
                   <p className="text-secondary">Please sign in</p>
                 </header>
