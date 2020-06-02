@@ -3,13 +3,14 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { NavLink } from "react-router-dom";
-import axios from "../../axios";
-import Footer from "../Landing/Footer";
-import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
-import SiteTheme from "./SiteTheme";
-import SiteImage from "./SiteImage";
+import axios from "../../../axios";
+import Footer from "../../Landing/Footer";
+import Spinner from "../../../spinner/Spinner";
+import SiteTheme from "../common/SiteTheme";
+import SiteImage from "../common/SiteImage";
+import ResetRequestExtra from "./ResetRequestExtra";
+import ResetRequestTextInput from "./ResetRequestTextInput";
+import CommonAuthNav from "../common/CommonAuthNav";
 
 class ResetRequest extends PureComponent {
   constructor(props) {
@@ -58,23 +59,11 @@ class ResetRequest extends PureComponent {
   }
 
   render() {
-    const { errors, loading } = this.state;
-
-    const dangerStyle = {
-      fontStyle: "italic",
-      color: "red"
-    };
+    const { email, errors, loading } = this.state;
 
     return (
       <div>
-        <nav className="header">
-          <NavLink to="/" className="logo">
-            Beipro
-          </NavLink>
-          <div className="header-right">
-            <NavLink to="/">Sign in</NavLink>
-          </div>
-        </nav>
+        <CommonAuthNav />
         <div className="container" aria-label="Password reset request form">
           <div className="row">
             <div className="col-7">
@@ -94,34 +83,16 @@ class ResetRequest extends PureComponent {
               </header>
               <main>
                 <form onSubmit={this.onSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={this.email}
-                      onChange={this.onChange}
-                      className="form-control"
-                      id="email"
-                      aria-describedby="emailInput"
-                      placeholder="Enter Email"
-                    />
-                    <span style={errors.email ? dangerStyle : null}>
-                      <Error error={errors.email ? errors.email : null} />
-                    </span>
-                  </div>
-                  <div className="text-right mb-3">
-                    <input type="submit" className="btn btn-primary btn-sm" value="Submit" />
-                  </div>
+                  <ResetRequestTextInput
+                    email={email}
+                    onChange={this.onChange}
+                    errors={errors}
+                    loading={loading}
+                  />
                 </form>
               </main>
               <section className="row">
-                <div className="col text-right">
-                  <p>Have an account?</p>
-                  <span className="create-account">
-                    <NavLink to="/">Sign in</NavLink>
-                  </span>
-                </div>
+                <ResetRequestExtra />
               </section>
             </div>
             <article className="col-5">

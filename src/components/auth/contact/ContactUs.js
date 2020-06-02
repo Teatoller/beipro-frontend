@@ -3,12 +3,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import axios from "../../axios";
-import Nav from "../Landing/Nav";
-import Footer from "../Landing/Footer";
-import "../css/depot.css";
-import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
+import axios from "../../../axios";
+import Nav from "../../Landing/Nav";
+import Footer from "../../Landing/Footer";
+import "../../css/depot.css";
+import Error from "../../Error";
+import Spinner from "../../../spinner/Spinner";
 
 class ContactUs extends Component {
   constructor(props) {
@@ -97,7 +97,7 @@ class ContactUs extends Component {
         <div className="container">
           <span>{loading ? <Spinner /> : null}</span>
           <h4>Contact us</h4>
-          <form id="contact-form">
+          <form onSubmit={this.handleSubmit} id="contact-form" >
             <div className="row">
               <div className="col-sm">
                 <div className="form-group">
@@ -165,7 +165,7 @@ class ContactUs extends Component {
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>

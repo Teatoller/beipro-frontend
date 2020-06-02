@@ -2,10 +2,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-import axios from "../../axios";
-import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
-import profileholder from "../../images/profileholder.png";
+import axios from "../../../axios";
+import Error from "../../Error";
+import Spinner from "../../../spinner/Spinner";
+import profileholder from "../../../images/profileholder.png";
 
 class ProfileImg extends React.Component {
   constructor(props) {

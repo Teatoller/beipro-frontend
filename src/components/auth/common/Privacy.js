@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/depot.css";
+import "../../css/depot.css";
 
 const Privacy = () => {
   return (

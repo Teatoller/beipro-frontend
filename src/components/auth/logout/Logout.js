@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "../../axios";
-import { setLogout } from "../../redux/actionCreators/authActions";
+import axios from "../../../axios";
+import { setLogout } from "../../../redux/actionCreators/authActions";
 
 class Logout extends Component {
   constructor(props) {

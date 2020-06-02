@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Error from "../Error";
+import Error from "../../Error";
 
 function RegisterTextInput({
   firstname,
@@ -118,7 +118,7 @@ function RegisterTextInput({
         </span>
         {checkbox === false ? (
           <button type="submit" className="btn btn-secondary btn-sm" onClick={handleAlert}>
-            {loading ? "Processing..." : "Sign up"}
+            {loading ? "Sign up" : "Processing..."}
           </button>
         ) : (
           <input type="submit" className="btn btn-primary btn-sm" value="Sign up" />
@@ -135,7 +135,7 @@ RegisterTextInput.propTypes = {
   password_confirmation: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   handleAlert: PropTypes.func.isRequired,
-  checkbox: PropTypes.shape().isRequired,
+  checkbox: PropTypes.bool.isRequired,
   errors: PropTypes.shape().isRequired,
   loading: PropTypes.bool.isRequired
 };

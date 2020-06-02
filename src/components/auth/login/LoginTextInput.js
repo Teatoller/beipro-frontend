@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../Error";
+import Error from "../../Error";
 
 const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
+  
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -43,7 +44,7 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
       </div>
       <div className="text-right mb-3">
         <button type="submit" className="btn btn-primary btn-sm">
-          {loading ? "Processing..." : "Sign in"}
+          {loading ? "Sign in" : "Processing..."}
         </button>
       </div>
     </>
@@ -54,6 +55,6 @@ LoginTextInput.propTypes = {
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.shape().isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 export default LoginTextInput;
