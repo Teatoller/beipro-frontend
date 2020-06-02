@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import axios from "../../axios";
-import Nav from "../Landing/Nav";
-import Footer from "../Landing/Footer";
-import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
+import axios from "../../../axios";
+import Nav from "../../Landing/Nav";
+import Footer from "../../Landing/Footer";
+import Error from "../../Error";
+import Spinner from "../../../spinner/Spinner";
 
 class ProfileEdit extends Component {
   constructor(props) {

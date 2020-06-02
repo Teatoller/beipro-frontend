@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import axios from "../../axios";
-import Nav from "../Landing/Nav";
-import Footer from "../Landing/Footer";
-import Spinner from "../../spinner/Spinner";
-import profileholder from "../../images/profileholder.png";
-import "../css/depot.css";
+import axios from "../../../axios";
+import Nav from "../../Landing/Nav";
+import Footer from "../../Landing/Footer";
+import Spinner from "../../../spinner/Spinner";
+import profileholder from "../../../images/profileholder.png";
+import "../../css/depot.css";
 
 class Profile extends Component {
   constructor(props) {

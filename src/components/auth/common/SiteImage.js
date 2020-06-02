@@ -1,5 +1,5 @@
 import React from "react";
-import beiprostorage from "../../images/beiprostorage.svg";
+import beiprostorage from "../../../images/beiprostorage.svg";
 
 const SiteImage = () => {
   return (
