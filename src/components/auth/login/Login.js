@@ -4,22 +4,22 @@
 import React, { PureComponent } from "react";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "../../axios";
-import { setLogin } from "../../redux/actionCreators/authActions";
-import Footer from "../Landing/Footer";
-// import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
-import SiteTheme from "./SiteTheme";
-import SiteImage from "./SiteImage";
+import axios from "../../../axios";
+import { setLogin } from "../../../redux/actionCreators/authActions";
+import Footer from "../../Landing/Footer";
+import Spinner from "../../../spinner/Spinner";
+import SiteTheme from "../common/SiteTheme";
+import SiteImage from "../common/SiteImage";
 import LoginTextInput from "./LoginTextInput";
+import LoginNav from "./LoginNav";
+import LoginExtra from "./LoginExtra";
 
 class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       email: "",
       password: "",
       errors: {
@@ -40,12 +40,12 @@ class Login extends PureComponent {
     axios
       .post(`/auth/login`, data)
       .then(res => {
-        localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("email", res.data.email);
-        this.setState({
-          loading: true,
-        });
         if (res) {
+          localStorage.setItem("token", res.data.access_token);
+          localStorage.setItem("email", res.data.email);
+          this.setState({
+            loading: false
+          });
           history.push("/welcome");
         }
       })
@@ -69,30 +69,12 @@ class Login extends PureComponent {
 
     return (
       <div>
-        <nav className="header">
-          <NavLink to="/" className="logo">
-            Beipro
-            {/* <br />
-            <small
-              style={{
-                fontSize: ".35em",
-                color: "#007bff",
-                padding:0,
-                margin:0,
-              }}
-            >
-              Petroleum Stock Price&apos;s
-            </small> */}
-          </NavLink>
-          <div className="header-right">
-            <NavLink to="/register">Sign up</NavLink>
-          </div>
-        </nav>
+        <LoginNav />
         <div className="container" aria-label="Login form">
           <div>
             <div className="row">
               <div className="col-7 p-2">
-                <span>{loading ? <Spinner /> : null}</span>
+                <span>{loading ? null : <Spinner />}</span>
                 <header className="text-center">
                   <p className="text-secondary">Please sign in</p>
                 </header>
@@ -108,18 +90,7 @@ class Login extends PureComponent {
                   </form>
                 </main>
                 <section className="row">
-                  <div className="col-6 text-left">
-                    <p>
-                      Forgot?
-                      <NavLink to="/resetrequest"> Password</NavLink>
-                    </p>
-                  </div>
-                  <div className="col-6 text-right">
-                    <p>Do not have an account?</p>
-                    <span className="create-account">
-                      <NavLink to="/register">Sign up</NavLink>
-                    </span>
-                  </div>
+                  <LoginExtra />
                 </section>
               </div>
               <article className="col-5">

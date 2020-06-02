@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import axios from "../../axios";
 import Can from "../Can";
 import "../css/style.css";
-import Logout from "../Auth/Logout";
+import Logout from "../auth/Logout";
 import profileholder from "../../images/profileholder.png";
 
 class Nav extends PureComponent {
