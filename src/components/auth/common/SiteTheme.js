@@ -3,30 +3,16 @@ import React from "react";
 const SiteTheme = () => {
   return (
     <div className="container">
-      <p
-        style={{
-          fontSize: ".95em",
-          fontStyle: "italic",
-          color: "gray",
-          padding: "8px"
-        }}
-      >
-        <span style={{ textDecoration: "italic", fontWeight: "bold" }}>Beipro </span>is a{" "}
-        <span>dynamic platform </span>that
+      <p className="sitethemep">
+        <span className="sitetheme">Beipro </span>is a <span>dynamic platform </span>that
         <span>
           {" "}
-          remotely{" "}
-          <span style={{ textDecoration: "italic", fontWeight: "bold" }}>
-            {" "}
-            connects buyers
-          </span>{" "}
+          remotely <span className="sitetheme"> connects buyers</span>{" "}
         </span>
-        <span style={{ textDecoration: "italic", fontWeight: "bold" }}>to</span>
+        <span className="sitetheme">to</span>
         <span>
           {" "}
-          the prevailing{" "}
-          <span style={{ textDecoration: "italic", fontWeight: "bold" }}> sellers</span> bulk
-          petroleum stock prices
+          the prevailing <span className="sitetheme"> sellers</span> bulk petroleum stock prices
         </span>
       </p>
     </div>

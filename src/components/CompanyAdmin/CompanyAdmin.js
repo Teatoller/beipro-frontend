@@ -165,19 +165,24 @@ class CompanyAdmin extends Component {
       // Object containing detail of logged user
       if (officesArray[0]) {
         localStorage.setItem("f1", officesArray[0].id);
+        localStorage.setItem("f1loc", officesArray[0].location);
         localStorage.setItem("company", officesArray[0].name);
       }
       if (officesArray[1]) {
         localStorage.setItem("f2", officesArray[1].id);
+        localStorage.setItem("f2loc", officesArray[1].location);
       }
       if (officesArray[2]) {
         localStorage.setItem("f3", officesArray[2].id);
+        localStorage.setItem("f3loc", officesArray[2].location);
       }
       if (officesArray[3]) {
         localStorage.setItem("f4", officesArray[3].id);
+        localStorage.setItem("f4loc", officesArray[3].location);
       }
       if (officesArray[4]) {
         localStorage.setItem("f5", officesArray[4].id);
+        localStorage.setItem("f5loc", officesArray[4].location);
       }
     });
   };
