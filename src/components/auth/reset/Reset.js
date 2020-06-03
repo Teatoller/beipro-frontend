@@ -17,7 +17,7 @@ class Reset extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       email: "",
       password: "",
       password_confirmation: "",
@@ -50,6 +50,10 @@ class Reset extends PureComponent {
       token
     };
 
+    this.setState({
+      loading: true
+    });
+
     const config = {
       headers: {
         "Content-Type": "application/json, text/plain, */*"
@@ -61,7 +65,7 @@ class Reset extends PureComponent {
       .then(response => {
         if (response) {
           this.setState({
-            loading: false
+            loading: true
           });
           toast.success("Password reset succesful");
           history.push(`/`);
@@ -69,6 +73,7 @@ class Reset extends PureComponent {
       })
       .catch(err => {
         this.setState({
+          loading: false,
           errors: {
             email: err.response.request.response,
             password: err.response.request.response,
@@ -87,7 +92,7 @@ class Reset extends PureComponent {
         <div className="container" aria-label="Password Reset form">
           <div className="row">
             <div className="col-7">
-              <span>{loading ? null : <Spinner />}</span>
+              <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
                 <p className="text-secondary">Please enter details to reset password</p>
               </header>
