@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Error from "../../Error";
 
 const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
-  
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -44,7 +43,7 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
       </div>
       <div className="text-right mb-3">
         <button type="submit" className="btn btn-primary btn-sm">
-          {loading ? "Sign in" : "Processing..."}
+          {loading ? "Processing..." : "Sign in"}
         </button>
       </div>
     </>

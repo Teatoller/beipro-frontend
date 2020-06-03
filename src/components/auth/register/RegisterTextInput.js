@@ -118,10 +118,12 @@ function RegisterTextInput({
         </span>
         {checkbox === false ? (
           <button type="submit" className="btn btn-secondary btn-sm" onClick={handleAlert}>
-            {loading ? "Sign up" : "Processing..."}
+            {loading ? "Processing..." : "Sign up"}
           </button>
         ) : (
-          <input type="submit" className="btn btn-primary btn-sm" value="Sign up" />
+          <button type="submit" className="btn btn-primary btn-sm">
+            {loading ? "Processing..." : "Sign up"}
+          </button>
         )}
       </div>
     </>
