@@ -11,8 +11,8 @@ const SpinnerIcon = () => {
         shapeRendering: "auto",
         outline: "none"
       }}
-      width="200px"
-      height="200px"
+      width="100px"
+      height="100px"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
     >

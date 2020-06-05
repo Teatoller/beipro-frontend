@@ -126,6 +126,22 @@ body {
   border: 0.5px solid #0f0;
 }
 
+.adminlocation {
+  color: green;
+  font-size: 11px;
+}
+
+.sitetheme {
+  font-weight: bold;
+}
+
+.sitethemep {
+  color: gray;
+  font-size: 0.95em;
+  font-style: italic;
+  padding: 8px;
+}
+
 /* Table */
 
 table.depot {
