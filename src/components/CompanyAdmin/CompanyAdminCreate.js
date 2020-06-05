@@ -27,6 +27,11 @@ class CompanyAdminCreate extends Component {
       f3: "",
       f4: "",
       f5: "",
+      f1loc: "",
+      f2loc: "",
+      f3loc: "",
+      f4loc: "",
+      f5loc: "",
       activePage: "1",
       itemCountPerPage: "5",
       errors: {
@@ -162,6 +167,11 @@ class CompanyAdminCreate extends Component {
         f3: localStorage.getItem("f3"),
         f4: localStorage.getItem("f4"),
         f5: localStorage.getItem("f5"),
+        f1loc: localStorage.getItem("f1loc"),
+        f2loc: localStorage.getItem("f2loc"),
+        f3loc: localStorage.getItem("f3loc"),
+        f4loc: localStorage.getItem("f4loc"),
+        f5loc: localStorage.getItem("f5loc"),
         loading: false
       });
       localStorage.setItem("admin_id", lockey);
@@ -232,7 +242,22 @@ class CompanyAdminCreate extends Component {
 
   render() {
     // eslint-disable-next-line camelcase
-    const { admin_id, fadmins, errors, f1, f2, f3, f4, f5, loading } = this.state;
+    const {
+      admin_id,
+      fadmins,
+      errors,
+      f1,
+      f2,
+      f3,
+      f4,
+      f5,
+      f1loc,
+      f2loc,
+      f3loc,
+      f4loc,
+      f5loc,
+      loading
+    } = this.state;
     const company = localStorage.getItem("company");
 
     const companyStaff = fadmins.map((item, index) => {
@@ -318,15 +343,15 @@ class CompanyAdminCreate extends Component {
                           className="form-control form-control-sm"
                           id="frontOfficeId"
                           placeholder="Enter Front-office-id"
-                          // onChange={this.onChange}
                           aria-describedby="frontOfficeIdInput"
                           aria-required="true"
                           aria-invalid="false"
                           ref={this.input}
                         />
                         <span className="col-sm-2 col-form-label col-form-label-sm">
-                          <i style={{ color: "green" }}>
-                            Permissible id &apos;s: {f1},{f2},{f3},{f4},{f5}
+                          <i className="adminlocation">
+                            id &apos;s: {f1}-{f1loc},{f2}-{f2loc},{f3}-{f3loc},{f4}-{f4loc},{f5}-
+                            {f5loc}
                           </i>
                         </span>
                       </div>
