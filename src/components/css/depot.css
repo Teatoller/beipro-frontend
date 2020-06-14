@@ -141,6 +141,10 @@ body {
   font-style: italic;
   padding: 8px;
 }
+.imgsize {
+  height: 25px;
+  width: 25px;
+}
 
 /* Table */
 
@@ -156,11 +160,11 @@ thead.depot th:nth-child(1) {
 }
 
 thead.depot th:nth-child(2) {
-  width: 15%;
+  width: 5%;
 }
 
 thead.depot th:nth-child(3) {
-  width: 10%;
+  width: 15%;
 }
 
 thead.depot th:nth-child(4) {
@@ -180,6 +184,9 @@ thead.depot th:nth-child(7) {
 }
 
 thead.depot th:nth-child(8) {
+  width: 10%;
+}
+thead.depot th:nth-child(9) {
   width: 10%;
 }
 
@@ -598,30 +605,33 @@ td.feed {
     content: "#";
   }
   td.depot:nth-of-type(2):before {
-    content: "Company";
+    content: "Logo";
   }
   td.depot:nth-of-type(3):before {
-    content: "Diesel";
+    content: "Company";
   }
   td.depot:nth-of-type(4):before {
-    content: "Petrol";
+    content: "Diesel";
   }
   td.depot:nth-of-type(5):before {
-    content: "Kerosene";
+    content: "Petrol";
   }
   td.depot:nth-of-type(6):before {
-    content: "Ido";
+    content: "Kerosene";
   }
   td.depot:nth-of-type(7):before {
-    content: "Fuel Oil";
+    content: "Ido";
   }
   td.depot:nth-of-type(8):before {
-    content: "Lpg";
+    content: "Fuel Oil";
   }
   td.depot:nth-of-type(9):before {
-    content: "Action";
+    content: "Lpg";
   }
   td.depot:nth-of-type(10):before {
+    content: "Action";
+  }
+  td.depot:nth-of-type(11):before {
     content: "Remove";
   }
 

@@ -45,11 +45,11 @@ class Logout extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
+      <>
         <NavLink to="/" className="active" onClick={this.handleLogout}>
           Logout
         </NavLink>
-      </div>
+      </>
     );
   }
 }

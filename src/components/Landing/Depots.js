@@ -56,9 +56,11 @@ class Depots extends PureComponent {
     const { selectedLocation, loading } = this.state;
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
+      const imageUrl = `./img/${  item.logo}`;
       return (
         <tr key={item.id}>
           <td className="depot">{index + 1}</td>
+          <td className="depot"><img className="imgsize" src={imageUrl } alt=""/></td>
           <td className="depot">{item.name}</td>
           <td className="depot">{item.diesel}</td>
           <td className="depot">{item.petrol}</td>
@@ -117,6 +119,7 @@ class Depots extends PureComponent {
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col">Logo</th>
                       <th scope="col">Company</th>
                       <th scope="col">Diesel</th>
                       <th scope="col">Petrol</th>
