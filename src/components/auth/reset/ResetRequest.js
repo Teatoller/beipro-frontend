@@ -74,7 +74,7 @@ class ResetRequest extends PureComponent {
                 <p
                   className="text-secondary"
                   style={{
-                    fontSize: ".85em",
+                    fontSize: "12px",
                     color: "gray",
                     padding: "8px"
                   }}
