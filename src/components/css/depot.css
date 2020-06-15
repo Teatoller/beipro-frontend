@@ -157,8 +157,11 @@ body {
 .input-font {
   font-size: 12px;
 }
-.btn-size {
+
+#contact-btn {
   font-size: 10px;
+  position: absolute;
+  bottom: 35px;
 }
 
 /* Table */
@@ -570,6 +573,11 @@ td.feed {
     float: right;
     width: 15%;
     position: relative;
+  }
+
+  #contact-btn {
+    float: none;
+    /* position: relative; */
   }
 
   /* Force table to not be like tables anymore */
