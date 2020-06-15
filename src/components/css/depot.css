@@ -79,7 +79,7 @@ body {
   font-weight: bold;
 }
 .size-petit {
-  font-size: 11px;
+  font-size: 10px;
 }
 .upload-btn {
   margin: 2px;
@@ -144,6 +144,21 @@ body {
 .imgsize {
   height: 25px;
   width: 25px;
+}
+.form-height {
+  height: 55px;
+  font-size: 12px;
+}
+.form-label {
+  margin: 0px;
+  padding: 0px;
+}
+
+.input-font {
+  font-size: 12px;
+}
+.btn-size {
+  font-size: 10px;
 }
 
 /* Table */

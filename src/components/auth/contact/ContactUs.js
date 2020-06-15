@@ -96,15 +96,17 @@ class ContactUs extends Component {
         <Nav />
         <div className="container">
           <span>{loading ? <Spinner /> : null}</span>
-          <h4>Contact us</h4>
-          <form onSubmit={this.handleSubmit} id="contact-form" >
+          <h6>Contact us</h6>
+          <form onSubmit={this.handleSubmit} id="contact-form">
             <div className="row">
               <div className="col-sm">
-                <div className="form-group">
-                  <label htmlFor="name">Name:</label>
+                <div className="form-group form-height">
+                  <label className="form-label" htmlFor="name">
+                    Name:
+                  </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control input-font"
                     id="name"
                     name="name"
                     placeholder={name}
@@ -112,11 +114,13 @@ class ContactUs extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email address:</label>
+                <div className="form-group form-height">
+                  <label className="form-label" htmlFor="email">
+                    Email address:
+                  </label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control input-font"
                     id="email"
                     aria-describedby="email"
                     name="email"
@@ -125,11 +129,13 @@ class ContactUs extends Component {
                     value={email}
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="phone">Phone number:</label>
+                <div className="form-group form-height">
+                  <label className="form-label" htmlFor="phone">
+                    Phone number:
+                  </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control input-font"
                     id="phone"
                     name="phone_number"
                     placeholder="Enter phone number"
@@ -138,21 +144,23 @@ class ContactUs extends Component {
                 </div>
               </div>
               <div className="col-sm">
-                <div className="form-group">
-                  <label htmlFor="subject">Subject:</label>
+                <div className="form-group form-height">
+                  <label className="form-label" htmlFor="subject">
+                    Subject:
+                  </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control input-font"
                     id="subject"
                     name="subject"
                     placeholder="Enter subject"
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group form-height">
                   <label htmlFor="message">Message:</label>
                   <textarea
-                    className="form-control wpcf7"
+                    className="form-control wpcf7 input-font"
                     rows="5"
                     id="message"
                     name="message"
@@ -165,9 +173,7 @@ class ContactUs extends Component {
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+            <input type="submit" className="btn btn-primary btn-size" value="Submit" />
           </form>
         </div>
         <Footer />

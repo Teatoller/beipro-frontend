@@ -10,14 +10,16 @@ const ResetRequestTextInput = ({ email, onChange, loading, errors }) => {
 
   return (
     <>
-      <div className="form-group">
-        <label htmlFor="email">Email address</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="email">
+          Email address
+        </label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="email"
           aria-describedby="emailInput"
           placeholder="Enter Email"

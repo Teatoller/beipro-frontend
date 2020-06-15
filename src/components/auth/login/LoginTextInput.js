@@ -10,29 +10,33 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
 
   return (
     <>
-      <div className="form-group">
-        <label htmlFor={email}>Email address</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="email">
+          Email address
+        </label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="email"
           aria-describedby="email"
           placeholder="Enter Email"
           aria-required="true"
         />
       </div>
-      <div className="form-group mb-3">
-        <label htmlFor={password}>Password</label>
+      <div className="form-group mb-3 form-height">
+        <label className="form-label" htmlFor="password">
+          Password
+        </label>
         <input
           type="password"
           name="password"
           placeholder="Enter Password"
           value={password}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="password"
           aria-describedby="password"
           aria-required="true"
