@@ -173,10 +173,10 @@ class ContactUs extends Component {
                 </div>
               </div>
             </div>
+            <div className="contact-btn">
+              <input type="submit" className="btn btn-primary" value="Submit" />
+            </div>
           </form>
-          <div id="contact-btn">
-            <input type="submit" className="btn btn-primary" value="Submit" />
-          </div>
         </div>
         <Footer />
       </div>
