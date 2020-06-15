@@ -22,14 +22,16 @@ function RegisterTextInput({
   };
   return (
     <>
-      <div className="form-group">
-        <label htmlFor="firstname">First Name</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="firstname">
+          First Name
+        </label>
         <input
           type="text"
           name="firstname"
           value={firstname}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="firstname"
           placeholder="Enter Firstname"
           aria-describedby="firstnameInput"
@@ -37,14 +39,16 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="lastname">Last Name</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="lastname">
+          Last Name
+        </label>
         <input
           type="text"
           name="lastname"
           value={lastname}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="lastname"
           placeholder="Enter Lastname"
           aria-describedby="lastnameInput"
@@ -52,14 +56,16 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="email">Email address</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="email">
+          Email address
+        </label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="email"
           aria-describedby="emailInput"
           placeholder="Enter Email"
@@ -67,30 +73,34 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
+      <div className="form-group form-height">
+        <label className="form-label" htmlFor="password">
+          Password
+        </label>
         <input
           type="password"
           name="password"
           placeholder="Enter Password"
           value={password}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="password"
           aria-describedby="passwordInput"
           aria-required="true"
           aria-invalid="false"
         />
       </div>
-      <div className="form-group mb-3">
-        <label htmlFor="passwordConfirm">Confirm password</label>
+      <div className="form-group mb-3 form-height">
+        <label className="form-label" htmlFor="passwordConfirm">
+          Confirm password
+        </label>
         <input
           type="password"
           name="password_confirmation"
           placeholder="Confirm Password"
           value={password_confirmation}
           onChange={onChange}
-          className="form-control"
+          className="form-control input-font"
           id="passwordConfirm"
           aria-describedby="confirmPasswordInput"
           aria-required="true"
@@ -100,7 +110,7 @@ function RegisterTextInput({
           <Error error={errors.password ? errors.password : null} />
         </span>
       </div>
-      <span>Please indicate:</span>
+      <span className="input-font">Please indicate:</span>
 
       <div className="text-right mb-3">
         <span style={{ color: "red" }}>&#42;</span>
