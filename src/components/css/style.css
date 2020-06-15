@@ -21,11 +21,11 @@
 }
 
 #footer {
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:25px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
   background-color: #f8f9fa;
   border-top: solid 2px lightgray;
   border-bottom: solid 2px lightgray;
