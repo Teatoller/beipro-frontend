@@ -37,6 +37,7 @@ import ProfileEdit from "./components/auth/profile/ProfileEdit";
 import ContactUs from "./components/auth/contact/ContactUs";
 import Feedback from "./components/SuperAdmin/Feedback/Feedback";
 import FeedbkDelete from "./components/SuperAdmin/Feedback/FeedbkDelete";
+import LandingPage from "./components/Landing/LandingPage";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -71,7 +72,8 @@ const BeiproRouter = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/privacy-policy" component={Privacy} />
         <Route exact path="/terms" component={Terms} />
