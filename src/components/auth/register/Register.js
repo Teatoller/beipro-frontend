@@ -149,7 +149,7 @@ class Register extends PureComponent {
                 <RegisterExtra />
               </section>
             </div>
-            <article className="col-5">
+            <article className="col-5 loginimg">
               <SiteImage />
               <SiteTheme />
             </article>

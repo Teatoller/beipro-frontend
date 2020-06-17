@@ -165,6 +165,32 @@ div.contact-btn {
   bottom: 28px;
 }
 
+.landingimg {
+  display: inline-block;
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 40px;
+}
+
+.landingtheme {
+  display: inline-block;
+  margin-top: 80px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.loginalign {
+  margin-top: 80px;
+}
+
+.loginimg {
+  margin-top: 100px;
+}
+
+.signdisp{
+  font-size: 5px;
+}
+
 /* Table */
 
 table.depot {
@@ -574,6 +600,18 @@ td.feed {
     float: right;
     width: 15%;
     position: relative;
+  }
+
+  .landingimg {
+    display: inline-block;
+    float: none;
+    width: auto;
+  }
+
+  .landingtheme {
+    display: inline-block;
+    float: none;
+    width: auto;
   }
 
   /* div.contact-btn {

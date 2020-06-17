@@ -76,7 +76,7 @@ class Login extends PureComponent {
         <div className="container" aria-label="Login form">
           <div>
             <div className="row">
-              <div className="col-7 p-2">
+              <div className="col-7 p-2 loginalign">
                 <span>{loading ? <Spinner /> : null}</span>
                 <header className="text-center">
                   <p className="text-secondary">Please sign in</p>
@@ -96,7 +96,7 @@ class Login extends PureComponent {
                   <LoginExtra />
                 </section>
               </div>
-              <article className="col-5">
+              <article className="col-5 loginimg">
                 <SiteImage />
                 <SiteTheme />
               </article>
