@@ -87,6 +87,8 @@ body {
 .profile-img {
   border: #aaa solid 0.5px;
   display: block;
+  height: 180px;
+  width: 180px;
   margin-left: auto;
   margin-right: auto;
   /* margin-top: 20px; */
@@ -158,15 +160,9 @@ body {
   font-size: 12px;
 }
 
-/* #contact-btn {
-  font-size: 10px;
-  position: absolute;
-  bottom: 35px;
-} */
-
 div.contact-btn {
   position: absolute;
-  bottom: 35px;
+  bottom: 28px;
 }
 
 /* Table */
