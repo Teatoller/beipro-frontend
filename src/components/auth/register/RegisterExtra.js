@@ -8,7 +8,7 @@ const RegisterExtra = () => {
         <p>
           Already have an account?{" "}
           <span className="create-account input-font">
-            <NavLink to="/">Sign in</NavLink>
+            <NavLink to="/login">Sign in</NavLink>
           </span>
         </p>
       </div>
