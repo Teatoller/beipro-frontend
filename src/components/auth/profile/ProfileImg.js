@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import axios from "../../../axios";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
-import profileholder from "../../../images/profileholder.png";
 
 class ProfileImg extends React.Component {
   constructor(props) {
@@ -29,8 +28,9 @@ class ProfileImg extends React.Component {
         imgholder: avatarExist
       });
     } else {
+      const profileUrl = `./img/profileholder.svg`;
       this.setState({
-        imgholder: profileholder
+        imgholder: profileUrl
       });
     }
   }
@@ -127,13 +127,7 @@ class ProfileImg extends React.Component {
           <span>{loading ? <Spinner /> : null}</span>
           <form onSubmit={this.onFormSubmit}>
             <h6>Image Upload</h6>
-            <img
-              className="rounded-circle profile-img"
-              src={imgholder}
-              height="180"
-              width="180"
-              alt="preview..."
-            />
+            <img className="rounded-circle profile-img" src={imgholder} alt="preview..." />
             <br />
             <input type="file" name="avatar" onChange={e => this.previewFile(e)} />
             <small id="fileHelp" className="form-text text-muted img-text">
