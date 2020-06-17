@@ -97,7 +97,7 @@ class ProfileEdit extends Component {
           <h4>Edit Profile</h4>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label htmlFor="firstname">First Name:</label>
+              <label className="form-label" htmlFor="firstname">First Name:</label>
               <input
                 type="text"
                 name="firstname"
@@ -112,7 +112,7 @@ class ProfileEdit extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="lastname">Last Name:</label>
+              <label className="form-label" htmlFor="lastname">Last Name:</label>
               <input
                 type="text"
                 name="lastname"

@@ -5,7 +5,6 @@ import axios from "../../axios";
 import Can from "../Can";
 import "../css/style.css";
 import Logout from "../auth/logout/Logout";
-import profileholder from "../../images/profileholder.png";
 
 class Nav extends PureComponent {
   constructor() {
@@ -20,8 +19,8 @@ class Nav extends PureComponent {
   }
 
   componentDidMount() {
-    this.getAdminRole();
     this.getFrontAdminRole();
+    this.getAdminRole();
     this.getSuperAdminRole();
     this.getImageUrl();
 
@@ -32,8 +31,10 @@ class Nav extends PureComponent {
         avatarUrl: localStorage.getItem("avatarUrl")
       });
     } else {
+      const newLocal = `./img/profileholder.svg`;
+      const profileUrl = newLocal;
       this.setState({
-        avatarUrl: profileholder
+        avatarUrl: profileUrl
       });
     }
   }
@@ -162,17 +163,6 @@ class Nav extends PureComponent {
         <NavLink className="logo" to="/welcome">
           Beipro
         </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink className="nav-item nav-link active" activeStyle={activeStyle} to="/depots">
@@ -252,11 +242,20 @@ class Nav extends PureComponent {
             </NavLink>
           </div>
         </div>
-        <div>
-          <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/profile">
-            <img src={avatarUrl} className="d-inline-block align-top avatar" alt="" />
-          </NavLink>
-        </div>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/profile">
+          <img src={avatarUrl} className="d-inline-block align-top avatar" alt="" />
+        </NavLink>
       </nav>
     );
   }

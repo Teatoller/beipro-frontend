@@ -5,7 +5,6 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
-import profileholder from "../../../images/profileholder.png";
 import "../../css/depot.css";
 
 class Profile extends Component {
@@ -16,7 +15,7 @@ class Profile extends Component {
       firstname: "",
       lastname: "",
       email: "",
-      avatarUrl: profileholder
+      avatarUrl: `./img/profileholder.svg`,
     };
   }
 
