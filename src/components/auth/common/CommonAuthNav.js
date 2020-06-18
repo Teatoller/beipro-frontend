@@ -8,8 +8,8 @@ function CommonAuthNav() {
         <NavLink to="/" className="logo">
           Beipro
         </NavLink>
-        <div className="header-right">
-          <NavLink to="/login">Sign in</NavLink>
+        <div className="header-right signdisp">
+          <NavLink to="/login">Sign-in</NavLink>
         </div>
       </nav>
     </>

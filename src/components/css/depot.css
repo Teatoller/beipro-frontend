@@ -174,9 +174,9 @@ div.contact-btn {
 
 .landingtheme {
   display: inline-block;
-  margin-top: 80px;
+  margin-top: 180px;
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .loginalign {
@@ -187,7 +187,7 @@ div.contact-btn {
   margin-top: 100px;
 }
 
-.signdisp{
+.signdisp {
   font-size: 5px;
 }
 
@@ -579,7 +579,7 @@ td.feed {
   font-size: small;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 640px) {
   .header a {
     float: none;
     display: block;
@@ -602,21 +602,39 @@ td.feed {
     position: relative;
   }
 
+  div.contact-btn {
+    position: absolute;
+    bottom: 28px;
+  }
+
   .landingimg {
     display: inline-block;
     float: none;
     width: auto;
+    margin-top: 40px;
+    margin-left: 40px;
   }
 
   .landingtheme {
     display: inline-block;
     float: none;
     width: auto;
+    margin-top: 40px;
+    margin-left: 10px;
+    font-size: 16px;
   }
 
-  /* div.contact-btn {
-    float: none;
-  } */
+  .signdisp {
+    font-style: italic;
+  }
+
+  .loginalign {
+    margin-top: 40px;
+  }
+
+  .loginimg {
+    margin-top: 40px;
+  }
 
   /* Force table to not be like tables anymore */
   table,

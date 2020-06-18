@@ -7,8 +7,8 @@ const LoginNav = () => {
       <NavLink to="/" className="logo">
         Beipro
       </NavLink>
-      <div className="header-right">
-        <NavLink to="/register">Sign up</NavLink>
+      <div className="header-right signdisp">
+        <NavLink to="/register">Sign-up</NavLink>
       </div>
     </nav>
   );

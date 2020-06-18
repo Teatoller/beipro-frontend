@@ -47,7 +47,7 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
       </div>
       <div className="text-right mb-3">
         <button type="submit" className="btn btn-primary btn-sm">
-          {loading ? "Processing..." : "Sign in"}
+          {loading ? "Processing..." : "Sign-in"}
         </button>
       </div>
     </>
