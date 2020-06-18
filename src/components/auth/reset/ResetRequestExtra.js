@@ -7,7 +7,7 @@ const ResetRequestExtra = () => {
       <div className="col text-right input-font">
         <p>Have an account?</p>
         <span className="create-account input-font">
-          <NavLink to="/">Sign in</NavLink>
+          <NavLink to="/">Sign-in</NavLink>
         </span>
       </div>
     </>
