@@ -13,7 +13,7 @@ const LoginExtra = () => {
       <div className="col-6 text-right input-font">
         <p>Do not have an account?</p>
         <span className="create-account">
-          <NavLink to="/register">Sign up</NavLink>
+          <NavLink to="/register">Sign-up</NavLink>
         </span>
       </div>
     </>

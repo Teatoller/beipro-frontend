@@ -119,12 +119,12 @@ class Register extends PureComponent {
     return (
       <div>
         <CommonAuthNav />
-        <div className="container" aria-label="Sign up form">
+        <div className="container" aria-label="Sign-up form">
           <div className="row">
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                <p className="text-secondary">Please sign up</p>
+                <p className="text-secondary">Please Sign-up</p>
               </header>
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}

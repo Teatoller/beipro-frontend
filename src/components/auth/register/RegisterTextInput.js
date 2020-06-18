@@ -128,11 +128,11 @@ function RegisterTextInput({
         </span>
         {checkbox === false ? (
           <button type="submit" className="btn btn-secondary btn-sm" onClick={handleAlert}>
-            {loading ? "Processing..." : "Sign up"}
+            {loading ? "Processing..." : "Sign-up"}
           </button>
         ) : (
           <button type="submit" className="btn btn-primary btn-sm">
-            {loading ? "Processing..." : "Sign up"}
+            {loading ? "Processing..." : "Sign-up"}
           </button>
         )}
       </div>

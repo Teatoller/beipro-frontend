@@ -8,10 +8,10 @@ const LandingNav = () => {
         Beipro
       </NavLink>
       <span className="header-right signdisp">
-        <NavLink to="/login">Sign in</NavLink>
+        <NavLink to="/login">Sign-in</NavLink>
       </span>
       <span className="header-right signdisp">
-        <NavLink to="/register">Sign up</NavLink>
+        <NavLink to="/register">Sign-up</NavLink>
       </span>
     </nav>
   );

@@ -8,7 +8,7 @@ const ResetExtra = () => {
         <p>
           Have an account?{" "}
           <span className="create-account input-font">
-            <NavLink to="/">Sign in</NavLink>
+            <NavLink to="/">Sign-in</NavLink>
           </span>
         </p>
       </div>
