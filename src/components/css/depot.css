@@ -580,7 +580,19 @@ td.feed {
 }
 
 @media screen and (max-width: 640px) {
+  body {
+    background-color: #fff;
+    padding: 4px;
+  }
+
+  .header {
+    overflow: hidden;
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+  }
+
   .header a {
+    color: gray;
     float: none;
     display: block;
     text-align: left;
@@ -602,6 +614,10 @@ td.feed {
     position: relative;
   }
 
+  .input-font {
+    font-size: 12px;
+  }
+
   div.contact-btn {
     position: absolute;
     bottom: 28px;
@@ -611,7 +627,7 @@ td.feed {
     display: inline-block;
     float: none;
     width: auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 40px;
   }
 
