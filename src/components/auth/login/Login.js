@@ -79,7 +79,7 @@ class Login extends PureComponent {
               <div className="col-7 p-2 loginalign">
                 <span>{loading ? <Spinner /> : null}</span>
                 <header className="text-center">
-                  <p className="text-secondary">Please Sign-in</p>
+                  <p className="text-secondary">Please Sign in</p>
                 </header>
                 <main>
                   <form onSubmit={this.onSubmit}>

@@ -124,7 +124,7 @@ class Register extends PureComponent {
             <div className="col-7">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                <p className="text-secondary">Please Sign-up</p>
+                <p className="text-secondary">Please Sign up</p>
               </header>
               <span style={alertMessage ? alertStyle : null}>
                 {alertMessage ? alertMessage.message : null}
