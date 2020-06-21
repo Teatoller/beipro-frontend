@@ -163,6 +163,17 @@ class Nav extends PureComponent {
         <NavLink className="logo" to="/welcome">
           Beipro
         </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink className="nav-item nav-link active" activeStyle={activeStyle} to="/depots">
@@ -242,17 +253,7 @@ class Nav extends PureComponent {
             </NavLink>
           </div>
         </div>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+
         <NavLink className="nav-item nav-link" activeStyle={activeStyle} to="/profile">
           <img src={avatarUrl} className="d-inline-block align-top avatar" alt="" />
         </NavLink>
