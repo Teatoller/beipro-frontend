@@ -8,6 +8,8 @@ import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
+import CoAdminLocation from "./CoAdminLocation";
+import CoAdminRole from "./CoAdminRole";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
@@ -417,17 +419,7 @@ class CompanyAdminCreate extends Component {
                         Role:
                       </label>
                       <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="role"
-                          className="form-control form-control-sm"
-                          id="role"
-                          placeholder="Enter role as staff"
-                          onChange={this.onChange}
-                          aria-describedby="roleInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
+                        <CoAdminRole onChange={this.onChange} />
                       </div>
 
                       <label
@@ -457,17 +449,7 @@ class CompanyAdminCreate extends Component {
                         Location:
                       </label>
                       <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="location_code"
-                          className="form-control form-control-sm"
-                          id="location"
-                          placeholder="Enter Front-office location"
-                          onChange={this.onChange}
-                          aria-describedby="locationInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
+                        <CoAdminLocation onChange={this.onChange} />
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>
