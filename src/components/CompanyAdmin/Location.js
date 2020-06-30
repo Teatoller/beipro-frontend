@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CoAdminLocation = props => {
+const Location = props => {
   const { onChange } = props;
   return (
     <select
@@ -22,7 +22,7 @@ const CoAdminLocation = props => {
     </select>
   );
 };
-CoAdminLocation.propTypes = {
+Location.propTypes = {
   onChange: PropTypes.func.isRequired
 };
-export default CoAdminLocation;
+export default Location;

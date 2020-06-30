@@ -8,6 +8,7 @@ import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import AdminRole from "./AdminRole";
 
 class AdminEdit extends Component {
   constructor(props) {
@@ -181,7 +182,6 @@ class AdminEdit extends Component {
       lastname,
       staff_id,
       email,
-      role
     } = this.state;
 
     const companyAdminStaff = admins.map((item, index) => {
@@ -305,17 +305,7 @@ class AdminEdit extends Component {
                       Role:
                     </label>
                     <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="role"
-                        className="form-control form-control-sm"
-                        id="role"
-                        placeholder={role}
-                        onChange={this.onChange}
-                        aria-describedby="roleInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
+                      <AdminRole onChange={this.onChange} />
                     </div>
 
                     <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
