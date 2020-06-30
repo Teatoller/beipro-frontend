@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Location = props => {
+const CoLocation = props => {
   const { onChange } = props;
   return (
     <select
       className="form-control form-control-sm"
-      name="location_code"
+      name="location"
       onChange={onChange}
       id="location"
       aria-describedby="locationInput"
@@ -22,7 +22,7 @@ const Location = props => {
     </select>
   );
 };
-Location.propTypes = {
+CoLocation.propTypes = {
   onChange: PropTypes.func.isRequired
 };
-export default Location;
+export default CoLocation;

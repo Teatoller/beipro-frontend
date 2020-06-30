@@ -20,7 +20,7 @@ class CompanyAdminDelete extends Component {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: []
     };
 
@@ -51,7 +51,7 @@ class CompanyAdminDelete extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     } = this.state;
     e.preventDefault();
     const data = {
@@ -62,7 +62,7 @@ class CompanyAdminDelete extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     const { history } = this.props;
@@ -187,7 +187,7 @@ class CompanyAdminDelete extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
           <td className="fadmin">
             <button
               className="btn btn-sm btn-outline-danger"

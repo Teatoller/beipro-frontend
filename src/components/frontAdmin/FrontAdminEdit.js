@@ -331,7 +331,6 @@ class FrontAdminEdit extends PureComponent {
                       />
                     </div>
 
-
                     <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
                       Kerosene:
                     </label>
@@ -398,7 +397,11 @@ class FrontAdminEdit extends PureComponent {
                   <div className="row">
                     <div className="col">
                       <div className="btn-spacing">
-                        <input className="btn btn-sm btn-success" type="submit" value="Change Price" />
+                        <input
+                          className="btn btn-sm btn-success"
+                          type="submit"
+                          value="Change Price"
+                        />
                       </div>
                     </div>
                     <div className="col">

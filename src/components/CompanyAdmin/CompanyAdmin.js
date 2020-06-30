@@ -203,7 +203,7 @@ class CompanyAdmin extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
           <td className="fadmin">
             <button
               className="btn btn-sm btn-primary"
