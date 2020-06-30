@@ -292,6 +292,7 @@ class CompanyAdminEdit extends PureComponent {
                           placeholder={front_office_id}
                           onChange={this.onChange}
                           aria-describedby="forntOfficeIdInput"
+                          readOnly
                         />
                       </div>
 
@@ -358,6 +359,7 @@ class CompanyAdminEdit extends PureComponent {
                           placeholder={role}
                           onChange={this.onChange}
                           aria-describedby="roleInput"
+                          readOnly
                         />
                       </div>
 
@@ -395,6 +397,7 @@ class CompanyAdminEdit extends PureComponent {
                           onChange={this.onChange}
                           aria-describedby="locationInput"
                         />
+                        {/* <Location onChange={this.onChange} /> */}
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>
