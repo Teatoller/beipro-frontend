@@ -97,19 +97,15 @@ class Depots extends PureComponent {
             <div className="col-sm">
               <span>{loading ? <Spinner /> : null}</span>
               <div className="selector select-css">
-                <span>
-                  Showing results for
-                  {"\u00A0"}
-                  {selectedLocation}
-                  {"\u00A0"}
-                </span>
                 <select
                   style={{ color: "gray" }}
                   className="location-select select-css"
                   onChange={this.handleChange}
                 >
-                  {/* <option value=" ">--Select location--</option> */}
-                  <option value="Nairobi">Nairobi</option>
+                  <option value=" ">--Select location--</option>
+                  <option selected value="Nairobi">
+                    Nairobi
+                  </option>
                   <option value="Mombasa">Mombasa</option>
                   <option value="Nakuru">Nakuru</option>
                   <option value="Eldoret">Eldoret</option>
