@@ -8,7 +8,7 @@ import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
-import CoAdminLocation from "./CoAdminLocation";
+import Location from "./Location";
 import CoAdminRole from "./CoAdminRole";
 
 class CompanyAdminCreate extends Component {
@@ -79,7 +79,6 @@ class CompanyAdminCreate extends Component {
 
     const {
       admin_id,
-      // front_office_id,
       firstname,
       lastname,
       staff_id,
@@ -449,7 +448,7 @@ class CompanyAdminCreate extends Component {
                         Location:
                       </label>
                       <div className="col-sm-10">
-                        <CoAdminLocation onChange={this.onChange} />
+                        <Location onChange={this.onChange} />
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>
