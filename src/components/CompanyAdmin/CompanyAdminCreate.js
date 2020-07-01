@@ -8,7 +8,7 @@ import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
-import Location from "./Location";
+import CoLocation from "./CoLocation";
 import CoAdminRole from "./CoAdminRole";
 
 class CompanyAdminCreate extends Component {
@@ -22,7 +22,7 @@ class CompanyAdminCreate extends Component {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: [],
       f1: "",
       f2: "",
@@ -77,15 +77,7 @@ class CompanyAdminCreate extends Component {
         ? this.input.current.value
         : "error";
 
-    const {
-      admin_id,
-      firstname,
-      lastname,
-      staff_id,
-      email,
-      role,
-      location_code
-    } = this.state;
+    const { admin_id, firstname, lastname, staff_id, email, role, location } = this.state;
     e.preventDefault();
     const data = {
       admin_id,
@@ -95,7 +87,7 @@ class CompanyAdminCreate extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     const { history } = this.props;
@@ -271,7 +263,7 @@ class CompanyAdminCreate extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
         </tr>
       );
     });
@@ -448,7 +440,7 @@ class CompanyAdminCreate extends Component {
                         Location:
                       </label>
                       <div className="col-sm-10">
-                        <Location onChange={this.onChange} />
+                        <CoLocation onChange={this.onChange} />
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>

@@ -8,6 +8,8 @@ import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import CoLocation from "../../CompanyAdmin/CoLocation";
+import CoName from "../Company/CoName";
 
 class FrontOfficeCreate extends Component {
   constructor(props) {
@@ -212,7 +214,7 @@ class FrontOfficeCreate extends Component {
                       Name:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="name"
                         className="form-control form-control-sm"
@@ -222,7 +224,8 @@ class FrontOfficeCreate extends Component {
                         aria-describedby="frontOfficeNameInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoName onChange={this.onChange} />
                     </div>
 
                     <label htmlFor="code" className="col-sm-2 col-form-label col-form-label-sm">
@@ -246,7 +249,7 @@ class FrontOfficeCreate extends Component {
                       Location:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="location"
                         className="form-control form-control-sm"
@@ -257,7 +260,8 @@ class FrontOfficeCreate extends Component {
                         aria-describedby="locationInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoLocation onChange={this.onChange} />
                       <span style={errors.location ? dangerStyle : null}>
                         <Error error={errors.location ? errors.location : null} />
                       </span>

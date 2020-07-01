@@ -113,6 +113,12 @@ class Depots extends PureComponent {
                 </select>
               </div>
               <main>
+                <span className="sitethemep">
+                  {"\u00A0"}
+                  {selectedLocation}
+                  {"\u00A0"}
+                  prices
+                </span>
                 <table className="table table-striped">
                   <thead>
                     <tr>

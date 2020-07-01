@@ -8,6 +8,8 @@ import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import CoName from "./CoName";
+import CoLocation from "../../CompanyAdmin/CoLocation";
 
 class CompanyCreate extends Component {
   constructor(props) {
@@ -204,7 +206,7 @@ class CompanyCreate extends Component {
                       Name:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="name"
                         className="form-control form-control-sm"
@@ -214,7 +216,8 @@ class CompanyCreate extends Component {
                         aria-describedby="companyNameInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoName onChange={this.onChange} />
                     </div>
 
                     <label htmlFor="logo" className="col-sm-2 col-form-label col-form-label-sm">
@@ -258,7 +261,7 @@ class CompanyCreate extends Component {
                       Location:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="location"
                         className="form-control form-control-sm"
@@ -269,7 +272,8 @@ class CompanyCreate extends Component {
                         aria-describedby="locationInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoLocation onChange={this.onChange} />
                     </div>
 
                     <label htmlFor="country" className="col-sm-2 col-form-label col-form-label-sm">

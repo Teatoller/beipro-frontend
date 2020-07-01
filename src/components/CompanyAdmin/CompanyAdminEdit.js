@@ -22,7 +22,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: [],
       activePage: "1",
       itemCountPerPage: "5",
@@ -66,7 +66,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code
+      location
     } = this.state;
     e.preventDefault();
     const data = {
@@ -77,7 +77,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     // Get selected frontadmin and update state with new changes
@@ -183,10 +183,19 @@ class CompanyAdminEdit extends PureComponent {
         staff_id: adminObj.staff_id,
         email: adminObj.email,
         role: adminObj.role,
-        location_code: adminObj.location_code,
+        location: adminObj.location,
         loading: false
       });
     });
+  };
+
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/admin");
+    this.setState({ loading: false });
   };
 
   render() {
@@ -200,7 +209,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code,
+      location,
       errors,
       loading
     } = this.state;
@@ -217,7 +226,7 @@ class CompanyAdminEdit extends PureComponent {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
         </tr>
       );
     });
@@ -390,10 +399,10 @@ class CompanyAdminEdit extends PureComponent {
                       <div className="col-sm-10">
                         <input
                           type="text"
-                          name="location_code"
+                          name="location"
                           className="form-control form-control-sm"
                           id="location"
-                          placeholder={location_code}
+                          placeholder={location}
                           onChange={this.onChange}
                           aria-describedby="locationInput"
                         />
@@ -409,6 +418,15 @@ class CompanyAdminEdit extends PureComponent {
                   </fieldset>
                 </form>
               </main>
+              <div className="btn-spacing">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
             <div className="col-sm">
               <h6>Staff details</h6>
