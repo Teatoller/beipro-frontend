@@ -19,8 +19,14 @@ class CompanyDelete extends Component {
   }
 
   getCompaniesData = () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     const companyId = localStorage.getItem("companyId");
-    axios.get(`/companies/${companyId}`, {}).then(response => {
+    axios.get(`/auth/companies/${companyId}`, config).then(response => {
       const companyData = response.data;
       this.setState({
         companies: companyData,
@@ -39,8 +45,13 @@ class CompanyDelete extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected company record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companies/${companyId}`, {}).then(
+    axios.delete(`/auth/companies/${companyId}`, config).then(
       response => {
         if (response) {
           history.push("/company");

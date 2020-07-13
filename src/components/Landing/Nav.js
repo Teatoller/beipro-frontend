@@ -42,7 +42,12 @@ class Nav extends PureComponent {
   // Get admin role
 
   getAdminRole = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsRoledata = response.data;
 
       const loggedUserEmail = localStorage.getItem("email");
@@ -73,7 +78,12 @@ class Nav extends PureComponent {
   // Get Front Admin role
 
   getFrontAdminRole = () => {
-    axios.get(`/frontadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/frontadmins`, config).then(response => {
       const adminsRoledata = response.data;
 
       const loggedUserEmail = localStorage.getItem("email");
@@ -104,7 +114,12 @@ class Nav extends PureComponent {
   // Get Super Admin role
 
   getSuperAdminRole = () => {
-    axios.get(`/superadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/superadmins`, config).then(response => {
       const adminsRoledata = response.data;
 
       const loggedUserEmail = localStorage.getItem("email");
@@ -138,8 +153,9 @@ class Nav extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
+
     axios
-      .get(`/auth/profile`, config)
+      .get(`/auth/profile`, {}, config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;

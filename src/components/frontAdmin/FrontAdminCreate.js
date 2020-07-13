@@ -55,9 +55,14 @@ class FrontAdminCreate extends Component {
     const data = { front_office_id, diesel, petrol, kerosene, fo, ido, lpg };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/currentprices`, data)
+      .post(`/auth/currentprices`, data, config)
       .then(response => {
         if (response) {
           toast.success("Price created successfully");
@@ -95,7 +100,13 @@ class FrontAdminCreate extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/frontadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -127,10 +138,14 @@ class FrontAdminCreate extends Component {
 
   getCurrentPriceData = () => {
     // eslint-disable-next-line camelcase
-    // const {front_office_id} = this.state;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     try {
-      axios.get(`/currentprices`, {}).then(response => {
+      axios.get(`/auth/currentprices`, config).then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
@@ -211,9 +226,14 @@ class FrontAdminCreate extends Component {
     localStorage.setItem("priceid", priceid);
 
     // Delete selected current price record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .delete(`/currentprices/${priceid}`, {})
+      .delete(`/auth/currentprices/${priceid}`, config)
       .then(response => {
         if (response) {
           history.push("/fadmin");
@@ -408,7 +428,11 @@ class FrontAdminCreate extends Component {
                   <div className="row">
                     <div className="col">
                       <div className="btn-spacing">
-                        <input className="btn btn-sm btn-success" type="submit" value="Add a new price" />
+                        <input
+                          className="btn btn-sm btn-success"
+                          type="submit"
+                          value="Add a new price"
+                        />
                       </div>
                     </div>
                     <div className="col">

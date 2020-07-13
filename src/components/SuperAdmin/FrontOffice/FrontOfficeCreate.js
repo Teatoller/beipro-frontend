@@ -59,9 +59,14 @@ class FrontOfficeCreate extends Component {
     };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/frontoffices`, data)
+      .post(`/auth/frontoffices`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/frontoffice`), 50);
@@ -82,7 +87,13 @@ class FrontOfficeCreate extends Component {
   };
 
   getFrontOfficesData = () => {
-    axios.get(`/frontoffices`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/frontoffices`, config).then(response => {
       const frontOfficesData = response.data;
       this.setState({
         frontoffices: frontOfficesData,
@@ -129,8 +140,13 @@ class FrontOfficeCreate extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/frontoffices/${frontofficeId}`, {}).then(
+    axios.delete(`/auth/frontoffices/${frontofficeId}`, config).then(
       response => {
         if (response) {
           history.push("/frontoffice");

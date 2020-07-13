@@ -22,7 +22,12 @@ class Company extends Component {
   }
 
   getCompaniesData = () => {
-    axios.get(`/companies`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companies`, config).then(response => {
       const companyData = response.data;
       this.setState({
         companies: companyData,

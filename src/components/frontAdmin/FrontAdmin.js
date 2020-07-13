@@ -38,64 +38,81 @@ class FrontAdmin extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/frontadmins`, {}).then(response => {
-      const frontadminsdata = response.data;
-      const loggedUserEmail = localStorage.getItem("email");
-
-      // Array with object containing details of the logged user
-
-      const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
-
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      // eslint-disable-next-line consistent-return
-      function frontkey() {
-        if (userObj) {
-          const frontOfficeId = userObj.front_office_id;
-
-          return frontOfficeId;
-        }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
       }
+    };
 
-      const lockey = parseInt(frontkey(), 10);
+    axios
+      .get(`/auth/frontadmins`, config)
+      .then(response => {
+        const frontadminsdata = response.data;
+        const loggedUserEmail = localStorage.getItem("email");
 
-      localStorage.setItem("front_office_id", lockey);
+        // Array with object containing details of the logged user
 
-    }).catch(error => {
-      throw error;
-    });
+        const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
+
+        // Object containing detail of logged user
+        const userObj = userArray[0];
+
+        // Key
+        // eslint-disable-next-line consistent-return
+        function frontkey() {
+          if (userObj) {
+            const frontOfficeId = userObj.front_office_id;
+
+            return frontOfficeId;
+          }
+        }
+
+        const lockey = parseInt(frontkey(), 10);
+
+        localStorage.setItem("front_office_id", lockey);
+      })
+      .catch(error => {
+        throw error;
+      });
   };
 
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    axios.get(`/currentprices`, {}).then(response => {
-      const currentPriceData = response.data;
-      const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-      // Array with object containing details of the front office current prices
+    axios
+      .get(`/auth/currentprices`, config)
+      .then(response => {
+        const currentPriceData = response.data;
+        const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
-      const priceArray = currentPriceData.filter(
-        object => object.front_office_id === frontOfficeId
-      );
+        // Array with object containing details of the front office current prices
 
-      // sort prices in reverse to get the latest price
+        const priceArray = currentPriceData.filter(
+          object => object.front_office_id === frontOfficeId
+        );
 
-      const latestprices = [];
+        // sort prices in reverse to get the latest price
 
-      const sortbyid = priceArray.sort((c1, c2) => (c1.id > c2.id ? 1 : -1)).pop();
+        const latestprices = [];
 
-      latestprices.push(sortbyid);
+        const sortbyid = priceArray.sort((c1, c2) => (c1.id > c2.id ? 1 : -1)).pop();
 
-      this.setState({
-        latestprices,
-        loading: false
+        latestprices.push(sortbyid);
+
+        this.setState({
+          latestprices,
+          loading: false
+        });
+      })
+      .catch(error => {
+        throw error;
       });
-    }).catch(error => {
-      throw error;
-    });
   };
 
   // Select current price record to edit
@@ -136,9 +153,15 @@ class FrontAdmin extends Component {
   // phase 1 Establish the company front offices name and location
 
   getFofficeData = () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     const frontid = localStorage.getItem("front_office_id");
     const frontId = parseInt(frontid, 10);
-    axios.get(`/frontoffices/${frontId}`, {}).then(response => {
+    axios.get(`/auth/frontoffices/${frontId}`, config).then(response => {
       const fofficesData = response.data;
 
       const officesObj = fofficesData[0];

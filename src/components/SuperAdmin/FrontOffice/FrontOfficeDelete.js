@@ -20,8 +20,13 @@ class FrontOfficeDelete extends Component {
 
   getFrontOfficesData = () => {
     const frontofficeId = localStorage.getItem("frontofficeId");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.get(`/frontoffices/${frontofficeId}`, {}).then(response => {
+    axios.get(`/auth/frontoffices/${frontofficeId}`, config).then(response => {
       const frontofficeData = response.data;
       this.setState({
         frontoffices: frontofficeData,
@@ -40,8 +45,13 @@ class FrontOfficeDelete extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front office record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/frontoffices/${frontofficeId}`, {}).then(
+    axios.delete(`/auth/frontoffices/${frontofficeId}`, config).then(
       response => {
         if (response) {
           history.push("/frontoffice");
