@@ -84,9 +84,14 @@ class CompanyAdminEdit extends PureComponent {
 
     const fadminid = localStorage.getItem("fadminid");
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .patch(`/companyadmins/${fadminid}`, data)
+      .patch(`/auth/companyadmins/${fadminid}`, data, config)
       .then(response => {
         if (response) {
           history.push("/admin");
@@ -122,7 +127,12 @@ class CompanyAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -151,7 +161,12 @@ class CompanyAdminEdit extends PureComponent {
   };
 
   getFrontAdminsData = () => {
-    axios.get(`/companyadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -171,7 +186,12 @@ class CompanyAdminEdit extends PureComponent {
 
   getFrontAdminData = () => {
     const fadminid = localStorage.getItem("fadminid");
-    axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
       const selectedFadminData = response.data;
 
       const adminObj = selectedFadminData[0];

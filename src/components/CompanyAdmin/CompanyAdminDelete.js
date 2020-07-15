@@ -66,9 +66,14 @@ class CompanyAdminDelete extends Component {
     };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/companyadmins`, data)
+      .post(`/auth/companyadmins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
@@ -94,7 +99,12 @@ class CompanyAdminDelete extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -124,8 +134,13 @@ class CompanyAdminDelete extends Component {
 
   getFrontAdminsData = () => {
     const fadminid = localStorage.getItem("fadminid");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
+    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -151,8 +166,13 @@ class CompanyAdminDelete extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companyadmins/${fadminid}`, {}).then(
+    axios.delete(`/auth/companyadmins/${fadminid}`, config).then(
       response => {
         if (response) {
           history.push("/admin");

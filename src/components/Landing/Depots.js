@@ -11,6 +11,7 @@ class Depots extends PureComponent {
     super(props);
     this.state = {
       loading: false,
+      curTime: new Date().toLocaleString(),
       frontoffices: [],
       selectedLocation: "Nairobi",
       activePage: "1",
@@ -24,8 +25,14 @@ class Depots extends PureComponent {
 
   getFrontofficeData = () => {
     this.setState({ loading: true });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     try {
-      axios.get(`/depotprices`, {}).then(response => {
+      axios.get(`/auth/depotprices`, config).then(response => {
         // eslint-disable-next-line prefer-destructuring
         const data = response.data;
         this.setState({
@@ -53,7 +60,7 @@ class Depots extends PureComponent {
   };
 
   render() {
-    const { selectedLocation, loading } = this.state;
+    const { selectedLocation, loading, curTime } = this.state;
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
       const logoUrl = `./img/${item.logo}`;
@@ -117,7 +124,7 @@ class Depots extends PureComponent {
                   {"\u00A0"}
                   {selectedLocation}
                   {"\u00A0"}
-                  prices
+                  prices as at {curTime}
                 </span>
                 <table className="table table-striped">
                   <thead>

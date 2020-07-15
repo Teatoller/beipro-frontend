@@ -20,7 +20,12 @@ class FeedbkDelete extends Component {
 
   getFeedbackData = () => {
     const sfeedid = localStorage.getItem("sfeedid");
-    axios.get(`/contact-us/${sfeedid}`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/contact-us/${sfeedid}`, config).then(response => {
       const feedData = response.data;
       this.setState({
         feeds: feedData,
@@ -39,8 +44,13 @@ class FeedbkDelete extends Component {
     localStorage.setItem("sfeedid", sfeedid);
 
     // Delete selected feedback record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/contact-us/${sfeedid}`, {}).then(
+    axios.delete(`/auth/contact-us/${sfeedid}`, config).then(
       response => {
         if (response) {
           history.push("/feedback");
@@ -108,7 +118,7 @@ class FeedbkDelete extends Component {
               <table className="table table-striped">
                 <thead>
                   <tr>
-                  <th scope="col">#</th>
+                    <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone No</th>

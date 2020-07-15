@@ -67,8 +67,14 @@ class CompanyCreate extends Component {
 
     const { history } = this.props;
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     axios
-      .post(`/companies`, data)
+      .post(`/auth/companies`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/company`), 50);
@@ -91,7 +97,13 @@ class CompanyCreate extends Component {
   };
 
   getCompaniesData = () => {
-    axios.get(`/companies`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/companies`, config).then(response => {
       const companiesData = response.data;
       this.setState({
         companies: companiesData,
@@ -138,8 +150,13 @@ class CompanyCreate extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companies/${companyId}`, {}).then(
+    axios.delete(`/auth/companies/${companyId}`, config).then(
       response => {
         if (response) {
           history.push("/company");
@@ -206,17 +223,6 @@ class CompanyCreate extends Component {
                       Name:
                     </label>
                     <div className="col-sm-10">
-                      {/* <input
-                        type="text"
-                        name="name"
-                        className="form-control form-control-sm"
-                        id="name"
-                        placeholder="Enter Company name"
-                        onChange={this.onChange}
-                        aria-describedby="companyNameInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      /> */}
                       <CoName onChange={this.onChange} />
                     </div>
 
@@ -261,18 +267,6 @@ class CompanyCreate extends Component {
                       Location:
                     </label>
                     <div className="col-sm-10">
-                      {/* <input
-                        type="text"
-                        name="location"
-                        className="form-control form-control-sm"
-                        id="location"
-                        placeholder="Enter Company"
-                        Location
-                        onChange={this.onChange}
-                        aria-describedby="locationInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      /> */}
                       <CoLocation onChange={this.onChange} />
                     </div>
 

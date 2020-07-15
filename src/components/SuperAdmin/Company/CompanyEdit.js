@@ -66,8 +66,14 @@ class CompanyEdit extends Component {
     const companyId = localStorage.getItem("companyId");
     const { history } = this.props;
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     axios
-      .patch(`/companies/${companyId}`, data)
+      .patch(`/auth/companies/${companyId}`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/company`), 50);
@@ -90,7 +96,13 @@ class CompanyEdit extends Component {
   };
 
   getCompaniesData = () => {
-    axios.get(`/companies`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/companies`, config).then(response => {
       const companiesData = response.data;
       this.setState({
         companies: companiesData,
@@ -137,8 +149,13 @@ class CompanyEdit extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companies/${companyId}`, {}).then(
+    axios.delete(`/auth/companies/${companyId}`, config).then(
       response => {
         if (response) {
           history.push("/company");
@@ -152,7 +169,13 @@ class CompanyEdit extends Component {
 
   getCompanyData = () => {
     const companyId = localStorage.getItem("companyId");
-    axios.get(`/companies/${companyId}`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/companies/${companyId}`, config).then(response => {
       const selectedCompanyData = response.data;
 
       const adminObj = selectedCompanyData[0];

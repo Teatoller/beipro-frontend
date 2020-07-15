@@ -12,7 +12,7 @@ const SiteTheme = () => {
         <span className="sitetheme">to</span>
         <span>
           {" "}
-          the prevailing <span className="sitetheme"> sellers</span> bulk petroleum stock prices
+          the prevailing <span className="sitetheme"> sellers</span> bulk petroleum stock prices.
         </span>
       </p>
     </div>

@@ -65,8 +65,14 @@ class AdminCreate extends Component {
 
     const { history } = this.props;
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     axios
-      .post(`/admins`, data)
+      .post(`/auth/admins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/sadmin`), 50);
@@ -89,7 +95,12 @@ class AdminCreate extends Component {
   };
 
   getAdminsData = () => {
-    axios.get(`/admins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/admins`, config).then(response => {
       const adminData = response.data;
       this.setState({
         admins: adminData,
@@ -136,8 +147,13 @@ class AdminCreate extends Component {
     localStorage.setItem("sadminid", sadminid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companyadmins/${sadminid}`, {}).then(
+    axios.delete(`/auth/companyadmins/${sadminid}`, {}, config).then(
       response => {
         if (response) {
           history.push("/sadmin");
