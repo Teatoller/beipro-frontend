@@ -728,7 +728,7 @@ td.feed {
     content: "#";
   }
   td.depot:nth-of-type(2):before {
-    content: "Office Id";
+    content: "Logo";
   }
   td.depot:nth-of-type(3):before {
     content: "Company";
