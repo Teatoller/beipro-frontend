@@ -22,7 +22,12 @@ class Admin extends Component {
   }
 
   getAdminsData = () => {
-    axios.get(`/admins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/admins`, config).then(response => {
       const adminData = response.data;
       this.setState({
         admins: adminData,

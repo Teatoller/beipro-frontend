@@ -42,7 +42,13 @@ class CompanyAdmin extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -70,7 +76,12 @@ class CompanyAdmin extends Component {
   };
 
   getFrontAdminsData = () => {
-    axios.get(`/companyadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -121,7 +132,12 @@ class CompanyAdmin extends Component {
 
   // phase 1 Establish the company id
   getadminssData = () => {
-    axios.get(`/admins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/admins`, config).then(response => {
       const adminssData = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -151,7 +167,12 @@ class CompanyAdmin extends Component {
   // phase 2 Establish the company front offices id's
 
   getFofficeData = () => {
-    axios.get(`/frontoffices`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/frontoffices`, config).then(response => {
       const fofficesData = response.data;
 
       const AdminxCompanyId = localStorage.getItem("company_id");
@@ -203,7 +224,7 @@ class CompanyAdmin extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
           <td className="fadmin">
             <button
               className="btn btn-sm btn-primary"

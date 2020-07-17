@@ -20,7 +20,7 @@ class CompanyAdminDelete extends Component {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: []
     };
 
@@ -51,7 +51,7 @@ class CompanyAdminDelete extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     } = this.state;
     e.preventDefault();
     const data = {
@@ -62,13 +62,18 @@ class CompanyAdminDelete extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/companyadmins`, data)
+      .post(`/auth/companyadmins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
@@ -94,7 +99,12 @@ class CompanyAdminDelete extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -124,8 +134,13 @@ class CompanyAdminDelete extends Component {
 
   getFrontAdminsData = () => {
     const fadminid = localStorage.getItem("fadminid");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
+    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -151,8 +166,13 @@ class CompanyAdminDelete extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companyadmins/${fadminid}`, {}).then(
+    axios.delete(`/auth/companyadmins/${fadminid}`, config).then(
       response => {
         if (response) {
           history.push("/admin");
@@ -187,7 +207,7 @@ class CompanyAdminDelete extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
           <td className="fadmin">
             <button
               className="btn btn-sm btn-outline-danger"

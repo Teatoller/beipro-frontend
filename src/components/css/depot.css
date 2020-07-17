@@ -191,6 +191,24 @@ div.contact-btn {
   font-size: 5px;
 }
 
+.logoutview {
+  background-color: gray;
+  border-radius: 5px;
+  display: block;
+  height: 80px;
+  outline: none;
+  margin: 200px;
+  text-align: center;
+}
+
+.logoutQues {
+  color: white;
+}
+
+.logoutMarg {
+  margin: 1px;
+}
+
 /* Table */
 
 table.depot {
@@ -638,6 +656,28 @@ td.feed {
 
   .loginimg {
     margin-top: 10px;
+  }
+
+  .logoutview {
+    float: none;
+    width: 200px;
+    background-color: grey;
+    border-radius: 5px;
+    height: 150px;
+    outline: none;
+    margin: 75px;
+  }
+  .logoutQues {
+    color: white;
+    display: inline;
+  }
+
+  .logoutMarg {
+    width: 40px;
+    margin: 1px;
+  }
+  .logoutviewbtn {
+    margin: 40px;
   }
 
   /* Force table to not be like tables anymore */

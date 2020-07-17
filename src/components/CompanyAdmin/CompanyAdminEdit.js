@@ -22,7 +22,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: [],
       activePage: "1",
       itemCountPerPage: "5",
@@ -66,7 +66,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code
+      location
     } = this.state;
     e.preventDefault();
     const data = {
@@ -77,16 +77,21 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     // Get selected frontadmin and update state with new changes
 
     const fadminid = localStorage.getItem("fadminid");
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .patch(`/companyadmins/${fadminid}`, data)
+      .patch(`/auth/companyadmins/${fadminid}`, data, config)
       .then(response => {
         if (response) {
           history.push("/admin");
@@ -122,7 +127,12 @@ class CompanyAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -151,7 +161,12 @@ class CompanyAdminEdit extends PureComponent {
   };
 
   getFrontAdminsData = () => {
-    axios.get(`/companyadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -171,7 +186,12 @@ class CompanyAdminEdit extends PureComponent {
 
   getFrontAdminData = () => {
     const fadminid = localStorage.getItem("fadminid");
-    axios.get(`/companyadmins/${fadminid}`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
       const selectedFadminData = response.data;
 
       const adminObj = selectedFadminData[0];
@@ -183,10 +203,19 @@ class CompanyAdminEdit extends PureComponent {
         staff_id: adminObj.staff_id,
         email: adminObj.email,
         role: adminObj.role,
-        location_code: adminObj.location_code,
+        location: adminObj.location,
         loading: false
       });
     });
+  };
+
+  handleCancelClick = e => {
+    const { history } = this.props;
+
+    e.preventDefault();
+
+    history.push("/admin");
+    this.setState({ loading: false });
   };
 
   render() {
@@ -200,7 +229,7 @@ class CompanyAdminEdit extends PureComponent {
       staff_id,
       email,
       role,
-      location_code,
+      location,
       errors,
       loading
     } = this.state;
@@ -217,7 +246,7 @@ class CompanyAdminEdit extends PureComponent {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
         </tr>
       );
     });
@@ -292,6 +321,7 @@ class CompanyAdminEdit extends PureComponent {
                           placeholder={front_office_id}
                           onChange={this.onChange}
                           aria-describedby="forntOfficeIdInput"
+                          readOnly
                         />
                       </div>
 
@@ -358,6 +388,7 @@ class CompanyAdminEdit extends PureComponent {
                           placeholder={role}
                           onChange={this.onChange}
                           aria-describedby="roleInput"
+                          readOnly
                         />
                       </div>
 
@@ -388,13 +419,14 @@ class CompanyAdminEdit extends PureComponent {
                       <div className="col-sm-10">
                         <input
                           type="text"
-                          name="location_code"
+                          name="location"
                           className="form-control form-control-sm"
                           id="location"
-                          placeholder={location_code}
+                          placeholder={location}
                           onChange={this.onChange}
                           aria-describedby="locationInput"
                         />
+                        {/* <Location onChange={this.onChange} /> */}
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>
@@ -406,6 +438,15 @@ class CompanyAdminEdit extends PureComponent {
                   </fieldset>
                 </form>
               </main>
+              <div className="btn-spacing">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
             <div className="col-sm">
               <h6>Staff details</h6>

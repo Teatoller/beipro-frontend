@@ -20,8 +20,14 @@ class AdminDelete extends Component {
 
   getAdminsData = () => {
     const sadminid = localStorage.getItem("sadminid");
-    
-    axios.get(`/admins/${sadminid}`, {}).then(response => {
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/admins/${sadminid}`, config).then(response => {
       const adminData = response.data;
       this.setState({
         admins: adminData,
@@ -40,8 +46,13 @@ class AdminDelete extends Component {
     localStorage.setItem("sadminid", sadminid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/admins/${sadminid}`, {}).then(
+    axios.delete(`/auth/admins/${sadminid}`, config).then(
       response => {
         if (response) {
           history.push("/sadmin");
@@ -89,7 +100,7 @@ class AdminDelete extends Component {
         </tr>
       );
     });
-   
+
     const dangerStyle = {
       fontStyle: "italic",
       fontWeight: "bold",

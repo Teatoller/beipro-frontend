@@ -8,6 +8,8 @@ import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
+import CoLocation from "./CoLocation";
+import CoAdminRole from "./CoAdminRole";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class CompanyAdminCreate extends Component {
       staff_id: "",
       email: "",
       role: "",
-      location_code: "",
+      location: "",
       fadmins: [],
       f1: "",
       f2: "",
@@ -75,16 +77,7 @@ class CompanyAdminCreate extends Component {
         ? this.input.current.value
         : "error";
 
-    const {
-      admin_id,
-      // front_office_id,
-      firstname,
-      lastname,
-      staff_id,
-      email,
-      role,
-      location_code
-    } = this.state;
+    const { admin_id, firstname, lastname, staff_id, email, role, location } = this.state;
     e.preventDefault();
     const data = {
       admin_id,
@@ -94,13 +87,18 @@ class CompanyAdminCreate extends Component {
       staff_id,
       email,
       role,
-      location_code
+      location
     };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/companyadmins`, data)
+      .post(`/auth/companyadmins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
@@ -137,7 +135,12 @@ class CompanyAdminCreate extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/combineadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -179,7 +182,12 @@ class CompanyAdminCreate extends Component {
   };
 
   getFrontAdminsData = () => {
-    axios.get(`/companyadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -226,8 +234,13 @@ class CompanyAdminCreate extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/companyadmins/${fadminid}`, {}).then(
+    axios.delete(`/auth/companyadmins/${fadminid}`, config).then(
       response => {
         if (response) {
           history.push("/admin");
@@ -270,7 +283,7 @@ class CompanyAdminCreate extends Component {
           <td className="fadmin">{item.staff_id}</td>
           <td className="fadmin">{item.email}</td>
           <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location_code}</td>
+          <td className="fadmin">{item.location}</td>
         </tr>
       );
     });
@@ -417,17 +430,7 @@ class CompanyAdminCreate extends Component {
                         Role:
                       </label>
                       <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="role"
-                          className="form-control form-control-sm"
-                          id="role"
-                          placeholder="Enter role as staff"
-                          onChange={this.onChange}
-                          aria-describedby="roleInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
+                        <CoAdminRole onChange={this.onChange} />
                       </div>
 
                       <label
@@ -457,17 +460,7 @@ class CompanyAdminCreate extends Component {
                         Location:
                       </label>
                       <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="location_code"
-                          className="form-control form-control-sm"
-                          id="location"
-                          placeholder="Enter Front-office location"
-                          onChange={this.onChange}
-                          aria-describedby="locationInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
+                        <CoLocation onChange={this.onChange} />
                         <span style={errors.email ? dangerStyle : null}>
                           <Error error={errors.email ? errors.email : null} />
                         </span>

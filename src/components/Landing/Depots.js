@@ -11,6 +11,7 @@ class Depots extends PureComponent {
     super(props);
     this.state = {
       loading: false,
+      curTime: new Date().toLocaleString(),
       frontoffices: [],
       selectedLocation: "Nairobi",
       activePage: "1",
@@ -24,8 +25,14 @@ class Depots extends PureComponent {
 
   getFrontofficeData = () => {
     this.setState({ loading: true });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     try {
-      axios.get(`/depotprices`, {}).then(response => {
+      axios.get(`/auth/depotprices`, config).then(response => {
         // eslint-disable-next-line prefer-destructuring
         const data = response.data;
         this.setState({
@@ -53,7 +60,7 @@ class Depots extends PureComponent {
   };
 
   render() {
-    const { selectedLocation, loading } = this.state;
+    const { selectedLocation, loading, curTime } = this.state;
 
     const selectedLocationItems = this.getLocationData(selectedLocation).map((item, index) => {
       const logoUrl = `./img/${item.logo}`;
@@ -97,19 +104,15 @@ class Depots extends PureComponent {
             <div className="col-sm">
               <span>{loading ? <Spinner /> : null}</span>
               <div className="selector select-css">
-                <span>
-                  Showing results for
-                  {"\u00A0"}
-                  {selectedLocation}
-                  {"\u00A0"}
-                </span>
                 <select
                   style={{ color: "gray" }}
                   className="location-select select-css"
                   onChange={this.handleChange}
                 >
-                  {/* <option value=" ">--Select location--</option> */}
-                  <option value="Nairobi">Nairobi</option>
+                  <option value=" ">--Select location--</option>
+                  <option selected value="Nairobi">
+                    Nairobi
+                  </option>
                   <option value="Mombasa">Mombasa</option>
                   <option value="Nakuru">Nakuru</option>
                   <option value="Eldoret">Eldoret</option>
@@ -117,6 +120,12 @@ class Depots extends PureComponent {
                 </select>
               </div>
               <main>
+                <span className="sitethemep">
+                  {"\u00A0"}
+                  {selectedLocation}
+                  {"\u00A0"}
+                  prices as at {curTime}
+                </span>
                 <table className="table table-striped">
                   <thead>
                     <tr>

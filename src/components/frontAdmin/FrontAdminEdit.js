@@ -59,9 +59,14 @@ class FrontAdminEdit extends PureComponent {
     // Get selected current price and update state with new changes
     const priceid = localStorage.getItem("priceid");
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .patch(`/currentprices/${priceid}`, data)
+      .patch(`/auth/currentprices/${priceid}`, data, config)
       .then(response => {
         if (response) {
           toast.success("Price updated successfully");
@@ -98,7 +103,12 @@ class FrontAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    axios.get(`/frontadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -130,11 +140,15 @@ class FrontAdminEdit extends PureComponent {
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    // eslint-disable-next-line camelcase
-    // const {front_office_id} = this.state;
+    
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     try {
-      axios.get(`/currentprices`, {}).then(response => {
+      axios.get(`/auth/currentprices`, config).then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
@@ -203,8 +217,13 @@ class FrontAdminEdit extends PureComponent {
     localStorage.setItem("fadminid", priceid);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/currentprices/${priceid}`, {}).then(
+    axios.delete(`/auth/currentprices/${priceid}`, config).then(
       response => {
         if (response) {
           history.push("/fadmin");
@@ -331,7 +350,6 @@ class FrontAdminEdit extends PureComponent {
                       />
                     </div>
 
-
                     <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
                       Kerosene:
                     </label>
@@ -398,7 +416,11 @@ class FrontAdminEdit extends PureComponent {
                   <div className="row">
                     <div className="col">
                       <div className="btn-spacing">
-                        <input className="btn btn-sm btn-success" type="submit" value="Change Price" />
+                        <input
+                          className="btn btn-sm btn-success"
+                          type="submit"
+                          value="Change Price"
+                        />
                       </div>
                     </div>
                     <div className="col">

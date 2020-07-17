@@ -22,7 +22,13 @@ class FrontOffice extends Component {
   }
 
   getFrontOfficesData = () => {
-    axios.get(`/frontoffices`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/frontoffices`, config).then(response => {
       const frontofficeData = response.data;
       this.setState({
         frontoffices: frontofficeData,

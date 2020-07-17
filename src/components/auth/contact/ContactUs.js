@@ -55,13 +55,14 @@ class ContactUs extends Component {
       message
     };
 
-    // axios({
-    //   method: "POST",
-    //   url: `/contact-us`,
-    //   data: this.state
-    // })
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
     axios
-      .post(`/contact-us`, data)
+      .post(`/auth/contact-us`, data, config)
       .then(response => {
         this.setState({
           loading: true

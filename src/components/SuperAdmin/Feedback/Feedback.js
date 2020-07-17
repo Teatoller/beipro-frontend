@@ -22,7 +22,12 @@ class Feedback extends Component {
   }
 
   getFeedbackData = () => {
-    axios.get(`/contact-us`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/contact-us`, config).then(response => {
       const feedData = response.data;
       this.setState({
         feeds: feedData,

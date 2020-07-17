@@ -44,9 +44,14 @@ class FrontAdminDelete extends Component {
     const { front_office_id, diesel, petrol, kerosene, fo, ido, lpg } = this.state;
     e.preventDefault();
     const data = { front_office_id, diesel, petrol, kerosene, fo, ido, lpg };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/currentprices`, data)
+      .post(`/auth/currentprices`, data, config)
       .then(response => {
         if (response) {
           this.setState({
@@ -73,7 +78,12 @@ class FrontAdminDelete extends Component {
    */
 
   getOfficeData = () => {
-    axios.get(`/frontadmins`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/auth/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -105,8 +115,13 @@ class FrontAdminDelete extends Component {
 
   getCurrentPriceData = () => {
     const priceid = localStorage.getItem("priceid");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.get(`/currentprices/${priceid}`, {}).then(response => {
+    axios.get(`/auth/currentprices/${priceid}`, config).then(response => {
       const currentPriceData = response.data;
       const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
@@ -152,9 +167,14 @@ class FrontAdminDelete extends Component {
     localStorage.setItem("priceid", priceid);
 
     // Delete selected current price record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .delete(`/currentprices/${priceid}`, {})
+      .delete(`/auth/currentprices/${priceid}`, config)
       .then(response => {
         if (response) {
           toast.success("Price deleted successfully");

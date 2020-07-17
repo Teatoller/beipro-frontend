@@ -8,6 +8,8 @@ import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import CoLocation from "../../CompanyAdmin/CoLocation";
+import CoName from "../Company/CoName";
 
 class FrontOfficeCreate extends Component {
   constructor(props) {
@@ -57,9 +59,14 @@ class FrontOfficeCreate extends Component {
     };
 
     const { history } = this.props;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
     axios
-      .post(`/frontoffices`, data)
+      .post(`/auth/frontoffices`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/frontoffice`), 50);
@@ -80,7 +87,13 @@ class FrontOfficeCreate extends Component {
   };
 
   getFrontOfficesData = () => {
-    axios.get(`/frontoffices`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+
+    axios.get(`/auth/frontoffices`, config).then(response => {
       const frontOfficesData = response.data;
       this.setState({
         frontoffices: frontOfficesData,
@@ -127,8 +140,13 @@ class FrontOfficeCreate extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front admin record
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
 
-    axios.delete(`/frontoffices/${frontofficeId}`, {}).then(
+    axios.delete(`/auth/frontoffices/${frontofficeId}`, config).then(
       response => {
         if (response) {
           history.push("/frontoffice");
@@ -212,7 +230,7 @@ class FrontOfficeCreate extends Component {
                       Name:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="name"
                         className="form-control form-control-sm"
@@ -222,7 +240,8 @@ class FrontOfficeCreate extends Component {
                         aria-describedby="frontOfficeNameInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoName onChange={this.onChange} />
                     </div>
 
                     <label htmlFor="code" className="col-sm-2 col-form-label col-form-label-sm">
@@ -246,7 +265,7 @@ class FrontOfficeCreate extends Component {
                       Location:
                     </label>
                     <div className="col-sm-10">
-                      <input
+                      {/* <input
                         type="text"
                         name="location"
                         className="form-control form-control-sm"
@@ -257,7 +276,8 @@ class FrontOfficeCreate extends Component {
                         aria-describedby="locationInput"
                         aria-required="true"
                         aria-invalid="false"
-                      />
+                      /> */}
+                      <CoLocation onChange={this.onChange} />
                       <span style={errors.location ? dangerStyle : null}>
                         <Error error={errors.location ? errors.location : null} />
                       </span>
