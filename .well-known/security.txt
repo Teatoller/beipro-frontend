@@ -1,0 +1,3 @@
+Contact: mailto:beipro002@gmail.com
+Preferred-Languages: en
+Canonical: http//www.beipro.net/.well-known/security.txt

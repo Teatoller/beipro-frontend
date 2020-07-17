@@ -155,7 +155,7 @@ class Nav extends PureComponent {
     };
 
     axios
-      .get(`/auth/profile`, {}, config)
+      .get(`/auth/profile`, config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;
