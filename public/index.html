@@ -58,11 +58,13 @@
     ">
   <script type="text/json" id="csp-report-uri">
       {
-          "keys" : ["blockedURI", "columnNumber", "disposition", "documentURI", "effectiveDirective", 
-          "lineNumber", "originalPolicy", "referrer", "sample", "sourceFile", "statusCode", 
-          "violatedDirective"],
+          "keys" : ["blockedURI", "columnNumber", "disposition", 
+          "documentURI", "effectiveDirective", "lineNumber", "originalPolicy", 
+          "referrer", "sample", "sourceFile", "statusCode", "violatedDirective",
+          ],
           "reportUri" : "https://beipro-frontend.herokuapp.com/r/d/csp/enforce",
-          "Report-To": {"group":"default","max_age":31536000,"endpoints":[{"url":"https://c5229459446f1739ed9d0f7dbcebc541.report-uri.com/a/d/g"}],"include_subdomains":true}
+          "reportUri": "https://c5229459446f1739ed9d0f7dbcebc541.report-uri.com/r/d/csp/enforce",
+          "Report-To": {"group":"default","max_age":31536000,"endpoints":[{"url":"https://c5229459446f1739ed9d0f7dbcebc541.report-uri.com/a/d/g"}],"include_subdomains":true},
       }
   </script>
 
