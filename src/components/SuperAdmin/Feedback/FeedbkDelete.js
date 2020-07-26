@@ -4,6 +4,8 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
+import ConstSAdmin from "../ConstSAdmin";
+import UnAuthorized from "../../auth/common/UnAuthorized";
 
 class FeedbkDelete extends Component {
   constructor(props) {
@@ -74,6 +76,7 @@ class FeedbkDelete extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { feeds, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const feedbk = feeds.map((item, index) => {
       return (
@@ -108,42 +111,46 @@ class FeedbkDelete extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Feedback details</h6>
+                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>{feedbk}</tbody>
+                  </table>
+                </div>
+              </div>
 
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Feedback details</h6>
-              <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone No</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Date Created</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{feedbk}</tbody>
-              </table>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-primary"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

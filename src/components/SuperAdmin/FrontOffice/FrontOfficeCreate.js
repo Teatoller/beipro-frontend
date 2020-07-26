@@ -10,6 +10,8 @@ import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import CoLocation from "../../CompanyAdmin/CoLocation";
 import CoName from "../Company/CoName";
+import ConstSAdmin from "../ConstSAdmin";
+import UnAuthorized from "../../auth/common/UnAuthorized";
 
 class FrontOfficeCreate extends Component {
   constructor(props) {
@@ -161,6 +163,7 @@ class FrontOfficeCreate extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { frontoffices, loading, errors } = this.state;
+    const newLocal = ConstSAdmin();
 
     const frontOffice = frontoffices.map((item, index) => {
       return (
@@ -196,7 +199,7 @@ class FrontOfficeCreate extends Component {
     return (
       <div>
         <Nav />
-
+        {newLocal ? <></> : <UnAuthorized />}
         <div className="container" aria-label="Create company front admin form">
           <div className="row">
             <span>{loading ? <Spinner /> : null}</span>

@@ -7,6 +7,8 @@ import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
+import ConstFrontAdmin from "./ConstFrontAdmin";
+import UnAuthorized from "../auth/common/UnAuthorized";
 
 class FrontAdminCreate extends Component {
   constructor(props) {
@@ -262,6 +264,7 @@ class FrontAdminCreate extends Component {
 
     const company = localStorage.getItem("name1");
     const location = localStorage.getItem("location");
+    const newLocal = ConstFrontAdmin();
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -286,191 +289,209 @@ class FrontAdminCreate extends Component {
     return (
       <div>
         <Nav />
-        <div className="container" aria-label="Create current price form">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col">
-              <h6>
-                Entry Pad: {company}-{location}
-              </h6>
-              <form noValidate onSubmit={this.onSubmit}>
-                <fieldset className="front-fieldset">
-                  <fieldset disabled className="admin-fieldset hide">
-                    <div className="form-group row">
-                      <label
-                        htmlFor="frontOfficeId"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Office Id:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="decimal"
-                          name="front_office_id"
-                          id="frontOfficeId"
-                          className="form-control"
-                          placeholder="Disabled input"
-                          // eslint-disable-next-line camelcase
-                          value={front_office_id}
-                          aria-describedby="frontOfficeIdInput"
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
+        {newLocal ? (
+          <>
+            <div className="container" aria-label="Create current price form">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col">
+                  <h6>
+                    Entry Pad: {company}-{location}
+                  </h6>
+                  <form noValidate onSubmit={this.onSubmit}>
+                    <fieldset className="front-fieldset">
+                      <fieldset disabled className="admin-fieldset hide">
+                        <div className="form-group row">
+                          <label
+                            htmlFor="frontOfficeId"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Office Id:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="decimal"
+                              name="front_office_id"
+                              id="frontOfficeId"
+                              className="form-control"
+                              placeholder="Disabled input"
+                              // eslint-disable-next-line camelcase
+                              value={front_office_id}
+                              aria-describedby="frontOfficeIdInput"
+                            />
+                          </div>
+                        </div>
+                      </fieldset>
 
-                  <h4>Price Input</h4>
-                  <div className="form-group row">
-                    <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
-                      Diesel:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="diesel"
-                        id="diesel"
-                        className="form-control"
-                        placeholder={diesel}
-                        onChange={this.onChange}
-                        aria-describedby="dieselPriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
-                      Petrol:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="petrol"
-                        id="petrol"
-                        className="form-control"
-                        placeholder={petrol}
-                        onChange={this.onChange}
-                        aria-describedby="petrolePriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
-                      Kerosene:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="kerosene"
-                        id="kerosene"
-                        className="form-control"
-                        placeholder={kerosene}
-                        onChange={this.onChange}
-                        aria-describedby="kerosenePriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
-                      Ido:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="ido"
-                        id="ido"
-                        className="form-control"
-                        placeholder={ido}
-                        onChange={this.onChange}
-                        aria-describedby="idoPriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
-                      Fuel Oil:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="fo"
-                        id="fuelOil"
-                        className="form-control"
-                        placeholder={fo}
-                        onChange={this.onChange}
-                        aria-describedby="fuelOilPriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
-                      Bulk Lpg:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="lpg"
-                        id="lpg"
-                        className="form-control"
-                        placeholder={lpg}
-                        onChange={this.onChange}
-                        aria-describedby="bulkLpgPriceInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                      <span style={errors.diesel ? dangerStyle : null}>
-                        <Error error={errors.diesel ? errors.diesel : null} />
-                      </span>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <div className="btn-spacing">
-                        <input
-                          className="btn btn-sm btn-success"
-                          type="submit"
-                          value="Add a new price"
-                        />
-                      </div>
-                    </div>
-                    <div className="col">
-                      <div className="btn-spacing">
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-outline-warning"
-                          onClick={this.handleCancelClick}
+                      <h4>Price Input</h4>
+                      <div className="form-group row">
+                        <label
+                          htmlFor="diesel"
+                          className="col-sm-2 col-form-label col-form-label-sm"
                         >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
+                          Diesel:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="diesel"
+                            id="diesel"
+                            className="form-control"
+                            placeholder={diesel}
+                            onChange={this.onChange}
+                            aria-describedby="dieselPriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-            <div className="col">
-              <h6>Current Price</h6>
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Front-office-id</th>
-                    <th scope="col">Diesel</th>
-                    <th scope="col">Petrol</th>
-                    <th scope="col">Kerosene</th>
-                    <th scope="col">Ido</th>
-                    <th scope="col">Fuel Oil</th>
-                    <th scope="col">Lpg</th>
-                  </tr>
-                </thead>
-                <tbody>{currentPrice}</tbody>
-              </table>
+                        <label
+                          htmlFor="petrol"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Petrol:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="petrol"
+                            id="petrol"
+                            className="form-control"
+                            placeholder={petrol}
+                            onChange={this.onChange}
+                            aria-describedby="petrolePriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
+
+                        <label
+                          htmlFor="kerosene"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Kerosene:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="kerosene"
+                            id="kerosene"
+                            className="form-control"
+                            placeholder={kerosene}
+                            onChange={this.onChange}
+                            aria-describedby="kerosenePriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
+
+                        <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
+                          Ido:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="ido"
+                            id="ido"
+                            className="form-control"
+                            placeholder={ido}
+                            onChange={this.onChange}
+                            aria-describedby="idoPriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
+
+                        <label
+                          htmlFor="fuelOil"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Fuel Oil:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="fo"
+                            id="fuelOil"
+                            className="form-control"
+                            placeholder={fo}
+                            onChange={this.onChange}
+                            aria-describedby="fuelOilPriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
+
+                        <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
+                          Bulk Lpg:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="lpg"
+                            id="lpg"
+                            className="form-control"
+                            placeholder={lpg}
+                            onChange={this.onChange}
+                            aria-describedby="bulkLpgPriceInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                          <span style={errors.diesel ? dangerStyle : null}>
+                            <Error error={errors.diesel ? errors.diesel : null} />
+                          </span>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col">
+                          <div className="btn-spacing">
+                            <input
+                              className="btn btn-sm btn-success"
+                              type="submit"
+                              value="Add a new price"
+                            />
+                          </div>
+                        </div>
+                        <div className="col">
+                          <div className="btn-spacing">
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-warning"
+                              onClick={this.handleCancelClick}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+
+                <div className="col">
+                  <h6>Current Price</h6>
+                  <table className="table table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Front-office-id</th>
+                        <th scope="col">Diesel</th>
+                        <th scope="col">Petrol</th>
+                        <th scope="col">Kerosene</th>
+                        <th scope="col">Ido</th>
+                        <th scope="col">Fuel Oil</th>
+                        <th scope="col">Lpg</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentPrice}</tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

@@ -7,6 +7,8 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import NewValue from "./NewValue";
+import UnAuthorized from "../../auth/common/UnAuthorized";
+import ConstSAdmin from "../ConstSAdmin";
 
 class AuditView extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class AuditView extends Component {
       user_agent: "",
       tags: "",
       created_at: "",
-      updated_at: "",
+      updated_at: ""
     };
   }
 
@@ -92,6 +94,7 @@ class AuditView extends Component {
       created_at,
       updated_at
     } = this.state;
+    const newLocal = ConstSAdmin();
 
     const dangerStyle = {
       fontStyle: "italic",
@@ -101,90 +104,95 @@ class AuditView extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            <div className="container" aria-label="Create company front admin form">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
 
-        <div className="container" aria-label="Create company front admin form">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-
-            <div className="col-sm">
-              <h6>Audit Item</h6>
-              <table className="table table-striped">
-                <tbody>
-                  <tr>
-                    <td className="auditview">id</td>
-                    <td className="auditview">{id}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">User Type</td>
-                    <td className="auditview">{user_type}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">User Id</td>
-                    <td className="auditview">{user_id}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">Event</td>
-                    <td className="auditview">{event}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">Auditable Type</td>
-                    <td className="auditview">{auditable_type}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">Auditable_Id</td>
-                    <td className="auditview">{auditable_id}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">old_values</td>
-                    <td className="auditview">{old_values}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">new_values</td>
-                    {/* <td className="auditview"><NewValue newvalue={new_values} /></td> */}
-                    <td className="auditview">
-                      <span style={new_values ? dangerStyle : null}>
-                        <NewValue newvalue={new_values ? "Happy??" : null} />
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">url</td>
-                    <td className="auditview">{url}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">ip_address</td>
-                    <td className="admin">{ip_address}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">user_agent</td>
-                    <td className="admin">{user_agent}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">tags</td>
-                    <td className="admin">{tags}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">created_at</td>
-                    <td className="admin">{created_at}</td>
-                  </tr>
-                  <tr>
-                    <td className="auditview">updated_at</td>
-                    <td className="auditview">{updated_at}</td>
-                  </tr>
-                </tbody>
-              </table>
+                <div className="col-sm">
+                  <h6>Audit Item</h6>
+                  <table className="table table-striped">
+                    <tbody>
+                      <tr>
+                        <td className="auditview">id</td>
+                        <td className="auditview">{id}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">User Type</td>
+                        <td className="auditview">{user_type}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">User Id</td>
+                        <td className="auditview">{user_id}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">Event</td>
+                        <td className="auditview">{event}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">Auditable Type</td>
+                        <td className="auditview">{auditable_type}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">Auditable_Id</td>
+                        <td className="auditview">{auditable_id}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">old_values</td>
+                        <td className="auditview">{old_values}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">new_values</td>
+                        {/* <td className="auditview"><NewValue newvalue={new_values} /></td> */}
+                        <td className="auditview">
+                          <span style={new_values ? dangerStyle : null}>
+                            <NewValue newvalue={new_values ? "Happy??" : null} />
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">url</td>
+                        <td className="auditview">{url}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">ip_address</td>
+                        <td className="admin">{ip_address}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">user_agent</td>
+                        <td className="admin">{user_agent}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">tags</td>
+                        <td className="admin">{tags}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">created_at</td>
+                        <td className="admin">{created_at}</td>
+                      </tr>
+                      <tr>
+                        <td className="auditview">updated_at</td>
+                        <td className="auditview">{updated_at}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-info"
+                  onClick={this.handleCancelClick}
+                >
+                  Back
+                </button>
+              </div>
             </div>
-          </div>
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-outline-info"
-              onClick={this.handleCancelClick}
-            >
-              Back
-            </button>
-          </div>
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

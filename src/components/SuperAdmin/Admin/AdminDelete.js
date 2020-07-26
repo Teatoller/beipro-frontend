@@ -4,6 +4,8 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
+import UnAuthorized from "../../auth/common/UnAuthorized";
+import ConstSAdmin from "../ConstSAdmin";
 
 class AdminDelete extends Component {
   constructor(props) {
@@ -76,6 +78,7 @@ class AdminDelete extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { admins, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const companyAdminStaff = admins.map((item, index) => {
       return (
@@ -110,41 +113,45 @@ class AdminDelete extends Component {
     return (
       <div>
         <Nav />
-
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Admin details</h6>
-              <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company-id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Staff_id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{companyAdminStaff}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Admin details</h6>
+                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company-id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Staff_id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>{companyAdminStaff}</tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-primary"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

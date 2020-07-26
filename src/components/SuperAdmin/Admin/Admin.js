@@ -5,6 +5,8 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import UnAuthorized from "../../auth/common/UnAuthorized";
+import ConstSAdmin from "../ConstSAdmin";
 
 class Admin extends Component {
   constructor(props) {
@@ -69,6 +71,7 @@ class Admin extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { admins, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const companyAdminStaff = admins.map((item, index) => {
       return (
@@ -121,49 +124,54 @@ class Admin extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            {" "}
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Admin details</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company-id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Staff_id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
+              </div>
 
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Admin details</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company-id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Staff_id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
+              <span>Click button to add a new Admin</span>
+
+              <div className="btn-spacing">
+                <button
+                  className="btn btn-sm btn-success"
+                  type="submit"
+                  onClick={this.handleCreateClick}
+                >
+                  Add
+                </button>
+              </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={companyAdminStaff.length}
+                paginate={paginate}
+              />
             </div>
-          </div>
-
-          <span>Click button to add a new Admin</span>
-
-          <div className="btn-spacing">
-            <button
-              className="btn btn-sm btn-success"
-              type="submit"
-              onClick={this.handleCreateClick}
-            >
-              Add
-            </button>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={companyAdminStaff.length}
-            paginate={paginate}
-          />
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

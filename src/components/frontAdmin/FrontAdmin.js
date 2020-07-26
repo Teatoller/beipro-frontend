@@ -4,6 +4,8 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
+import UnAuthorized from "../auth/common/UnAuthorized";
+import ConstFrontAdmin from "./ConstFrontAdmin";
 
 class FrontAdmin extends Component {
   constructor(props) {
@@ -179,6 +181,7 @@ class FrontAdmin extends Component {
     const { latestprices, loading } = this.state;
     const company = localStorage.getItem("name1");
     const location = localStorage.getItem("location");
+    const newLocal = ConstFrontAdmin();
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -218,42 +221,48 @@ class FrontAdmin extends Component {
     return (
       <div>
         <Nav />
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col">
-              <h6>
-                Current Price: {company}-{location}
-              </h6>
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Front-office-id</th>
-                    <th scope="col">Diesel</th>
-                    <th scope="col">Petrol</th>
-                    <th scope="col">Kerosene</th>
-                    <th scope="col">Ido</th>
-                    <th scope="col">Fuel Oil</th>
-                    <th scope="col">Lpg</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>{currentPrice}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col">
+                  <h6>
+                    Current Price: {company}-{location}
+                  </h6>
+                  <table className="table table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Front-office-id</th>
+                        <th scope="col">Diesel</th>
+                        <th scope="col">Petrol</th>
+                        <th scope="col">Kerosene</th>
+                        <th scope="col">Ido</th>
+                        <th scope="col">Fuel Oil</th>
+                        <th scope="col">Lpg</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentPrice}</tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="btn-spacing">
+                <button
+                  className="btn btn-sm btn-success"
+                  type="submit"
+                  onClick={this.handleCreateClick}
+                >
+                  Add a new current price
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="btn-spacing">
-            <button
-              className="btn btn-sm btn-success"
-              type="submit"
-              onClick={this.handleCreateClick}
-            >
-              Add a new current price
-            </button>
-          </div>
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

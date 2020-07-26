@@ -10,6 +10,8 @@ import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
 import CoLocation from "./CoLocation";
 import CoAdminRole from "./CoAdminRole";
+import ConstCoAdmin from "./ConstCoAdmin";
+import UnAuthorized from "../auth/common/UnAuthorized";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
@@ -272,6 +274,7 @@ class CompanyAdminCreate extends Component {
       loading
     } = this.state;
     const company = localStorage.getItem("company");
+    const newLocal = ConstCoAdmin();
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -310,204 +313,215 @@ class CompanyAdminCreate extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            <div className="container" aria-label="Create company front admin form">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>{company}:Entry Pad</h6>
+                  <main>
+                    <form noValidate onSubmit={this.onSubmit}>
+                      <fieldset className="front-fieldset">
+                        <fieldset disabled className="admin-fieldset hide">
+                          <div className="form-group row">
+                            <label
+                              htmlFor="adminId"
+                              className="col-sm-2 col-form-label col-form-label-sm"
+                            >
+                              Admin:
+                            </label>
+                            <div className="col-sm-10">
+                              <input
+                                type="decimal"
+                                name="admin_id"
+                                id="adminId"
+                                className="form-control"
+                                placeholder="Disabled input"
+                                // eslint-disable-next-line camelcase
+                                value={admin_id}
+                                aria-describedby="adminIdInput"
+                              />
+                            </div>
+                          </div>
+                        </fieldset>
+                        <h6>Front Admin Details</h6>
+                        <div className="form-group row">
+                          <label
+                            htmlFor="frontOfficeId"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Office-Id:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="decimal"
+                              name="front_office_id"
+                              className="form-control form-control-sm"
+                              id="frontOfficeId"
+                              placeholder="Enter Front-office-id"
+                              aria-describedby="frontOfficeIdInput"
+                              aria-required="true"
+                              aria-invalid="false"
+                              ref={this.input}
+                            />
+                            <span className="col-sm-2 col-form-label col-form-label-sm">
+                              <i className="adminlocation">
+                                id &apos;s: {f1}-{f1loc},{f2}-{f2loc},{f3}-{f3loc},{f4}-{f4loc},{f5}
+                                -{f5loc}
+                              </i>
+                            </span>
+                          </div>
 
-        <div className="container" aria-label="Create company front admin form">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>{company}:Entry Pad</h6>
-              <main>
-                <form noValidate onSubmit={this.onSubmit}>
-                  <fieldset className="front-fieldset">
-                    <fieldset disabled className="admin-fieldset hide">
-                      <div className="form-group row">
-                        <label
-                          htmlFor="adminId"
-                          className="col-sm-2 col-form-label col-form-label-sm"
-                        >
-                          Admin:
-                        </label>
-                        <div className="col-sm-10">
-                          <input
-                            type="decimal"
-                            name="admin_id"
-                            id="adminId"
-                            className="form-control"
-                            placeholder="Disabled input"
-                            // eslint-disable-next-line camelcase
-                            value={admin_id}
-                            aria-describedby="adminIdInput"
-                          />
+                          <label
+                            htmlFor="lastName"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Firstname:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="text"
+                              name="firstname"
+                              className="form-control form-control-sm"
+                              id="firstname"
+                              placeholder="Enter Front-admin Firstname"
+                              onChange={this.onChange}
+                              aria-describedby="firstnameInput"
+                              aria-required="true"
+                              aria-invalid="false"
+                            />
+                          </div>
+
+                          <label
+                            htmlFor="lastName"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Lastname:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="text"
+                              name="lastname"
+                              className="form-control form-control-sm"
+                              id="lastname"
+                              placeholder="Enter Front-admin Lastname"
+                              onChange={this.onChange}
+                              aria-describedby="lastnameInput"
+                              aria-required="true"
+                              aria-invalid="false"
+                            />
+                          </div>
+
+                          <label
+                            htmlFor="email"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Email:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="email"
+                              name="email"
+                              className="form-control form-control-sm"
+                              id="email"
+                              placeholder="Enter Front-admin Email"
+                              onChange={this.onChange}
+                              aria-describedby="emailInput"
+                              aria-required="true"
+                              aria-invalid="false"
+                            />
+                          </div>
+
+                          <label
+                            htmlFor="role"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Role:
+                          </label>
+                          <div className="col-sm-10">
+                            <CoAdminRole onChange={this.onChange} />
+                          </div>
+
+                          <label
+                            htmlFor="staffId"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Staff Id:
+                          </label>
+                          <div className="col-sm-10">
+                            <input
+                              type="text"
+                              name="staff_id"
+                              className="form-control form-control-sm"
+                              id="staffId"
+                              placeholder="Enter Staff Id"
+                              onChange={this.onChange}
+                              aria-describedby="staffIdInput"
+                              aria-required="true"
+                              aria-invalid="false"
+                            />
+                          </div>
+
+                          <label
+                            htmlFor="location"
+                            className="col-sm-2 col-form-label col-form-label-sm"
+                          >
+                            Location:
+                          </label>
+                          <div className="col-sm-10">
+                            <CoLocation onChange={this.onChange} />
+                            <span style={errors.email ? dangerStyle : null}>
+                              <Error error={errors.email ? errors.email : null} />
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </fieldset>
-                    <h6>Front Admin Details</h6>
-                    <div className="form-group row">
-                      <label
-                        htmlFor="frontOfficeId"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Office-Id:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="decimal"
-                          name="front_office_id"
-                          className="form-control form-control-sm"
-                          id="frontOfficeId"
-                          placeholder="Enter Front-office-id"
-                          aria-describedby="frontOfficeIdInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                          ref={this.input}
-                        />
-                        <span className="col-sm-2 col-form-label col-form-label-sm">
-                          <i className="adminlocation">
-                            id &apos;s: {f1}-{f1loc},{f2}-{f2loc},{f3}-{f3loc},{f4}-{f4loc},{f5}-
-                            {f5loc}
-                          </i>
-                        </span>
-                      </div>
+                        <div className="btn-spacing">
+                          <input className="btn btn-sm btn-success" type="submit" value="Create" />
+                        </div>
+                      </fieldset>
+                    </form>
+                  </main>
+                  <div className="btn-spacing">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={this.handleCancelClick}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
 
-                      <label
-                        htmlFor="lastName"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Firstname:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="firstname"
-                          className="form-control form-control-sm"
-                          id="firstname"
-                          placeholder="Enter Front-admin Firstname"
-                          onChange={this.onChange}
-                          aria-describedby="firstnameInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                      </div>
-
-                      <label
-                        htmlFor="lastName"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Lastname:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="lastname"
-                          className="form-control form-control-sm"
-                          id="lastname"
-                          placeholder="Enter Front-admin Lastname"
-                          onChange={this.onChange}
-                          aria-describedby="lastnameInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                      </div>
-
-                      <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
-                        Email:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="email"
-                          name="email"
-                          className="form-control form-control-sm"
-                          id="email"
-                          placeholder="Enter Front-admin Email"
-                          onChange={this.onChange}
-                          aria-describedby="emailInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                      </div>
-
-                      <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
-                        Role:
-                      </label>
-                      <div className="col-sm-10">
-                        <CoAdminRole onChange={this.onChange} />
-                      </div>
-
-                      <label
-                        htmlFor="staffId"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Staff Id:
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="text"
-                          name="staff_id"
-                          className="form-control form-control-sm"
-                          id="staffId"
-                          placeholder="Enter Staff Id"
-                          onChange={this.onChange}
-                          aria-describedby="staffIdInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                      </div>
-
-                      <label
-                        htmlFor="location"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Location:
-                      </label>
-                      <div className="col-sm-10">
-                        <CoLocation onChange={this.onChange} />
-                        <span style={errors.email ? dangerStyle : null}>
-                          <Error error={errors.email ? errors.email : null} />
-                        </span>
-                      </div>
-                    </div>
-                    <div className="btn-spacing">
-                      <input className="btn btn-sm btn-success" type="submit" value="Create" />
-                    </div>
-                  </fieldset>
-                </form>
-              </main>
-              <div className="btn-spacing">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <div className="col-sm">
+                  <h6>Staff details</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Office-id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Staff_id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
               </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={companyStaff.length}
+                paginate={paginate}
+              />
             </div>
-
-            <div className="col-sm">
-              <h6>Staff details</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Office-id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Staff_id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Location</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
-            </div>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={companyStaff.length}
-            paginate={paginate}
-          />
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );
