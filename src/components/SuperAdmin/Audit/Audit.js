@@ -5,6 +5,8 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import UnAuthorized from "../../auth/common/UnAuthorized";
+import ConstSAdmin from "../ConstSAdmin";
 
 class Audit extends Component {
   constructor(props) {
@@ -44,6 +46,7 @@ class Audit extends Component {
 
   render() {
     const { audits, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const beiproAudit = audits.map((item, index) => {
       return (
@@ -86,36 +89,40 @@ class Audit extends Component {
     return (
       <div>
         <Nav />
-
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Admin details</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Event</th>
-                    <th scope="col">Auditable_type</th>
-                    <th scope="col">Auditable_id</th>
-                    <th scope="col">Old_values</th>
-                    <th scope="col">New_values</th>
-                    <th scope="col">Tags</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Admin details</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">Auditable_type</th>
+                        <th scope="col">Auditable_id</th>
+                        <th scope="col">Old_values</th>
+                        <th scope="col">New_values</th>
+                        <th scope="col">Tags</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
+              </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={beiproAudit.length}
+                paginate={paginate}
+              />
             </div>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={beiproAudit.length}
-            paginate={paginate}
-          />
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

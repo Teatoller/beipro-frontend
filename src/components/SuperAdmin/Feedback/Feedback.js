@@ -5,6 +5,8 @@ import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import ConstSAdmin from "../ConstSAdmin";
+import UnAuthorized from "../../auth/common/UnAuthorized";
 
 class Feedback extends Component {
   constructor(props) {
@@ -50,6 +52,7 @@ class Feedback extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { feeds, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const companyAdminStaff = feeds.map((item, index) => {
       return (
@@ -92,36 +95,40 @@ class Feedback extends Component {
     return (
       <div>
         <Nav />
-
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Feedback details</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone No</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Date Created</th>
-                    <th scope="col">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Feedback details</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
+              </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={companyAdminStaff.length}
+                paginate={paginate}
+              />
             </div>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={companyAdminStaff.length}
-            paginate={paginate}
-          />
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );
