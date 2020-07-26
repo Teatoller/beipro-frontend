@@ -9,6 +9,8 @@ import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import AdminRole from "./AdminRole";
+import UnAuthorized from "../../auth/common/UnAuthorized";
+import ConstSAdmin from "../ConstSAdmin";
 
 class AdminCreate extends Component {
   constructor(props) {
@@ -168,6 +170,7 @@ class AdminCreate extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { admins, loading, errors } = this.state;
+    const newLocal = ConstSAdmin();
 
     const companyAdminStaff = admins.map((item, index) => {
       return (
@@ -205,154 +208,172 @@ class AdminCreate extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            {" "}
+            <div className="container" aria-label="Create company front admin form">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Entry Pad</h6>
+                  <form noValidate onSubmit={this.onSubmit}>
+                    <fieldset className="front-fieldset">
+                      <h6>Admin Details</h6>
+                      <div className="form-group row">
+                        <label
+                          htmlFor="frontOfficeId"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Company Id:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="company_id"
+                            className="form-control form-control-sm"
+                            id="companyId"
+                            placeholder="Enter Company-id"
+                            onChange={this.onChange}
+                            aria-describedby="companyIdInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-        <div className="container" aria-label="Create company front admin form">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Entry Pad</h6>
-              <form noValidate onSubmit={this.onSubmit}>
-                <fieldset className="front-fieldset">
-                  <h6>Admin Details</h6>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="frontOfficeId"
-                      className="col-sm-2 col-form-label col-form-label-sm"
-                    >
-                      Company Id:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="company_id"
-                        className="form-control form-control-sm"
-                        id="companyId"
-                        placeholder="Enter Company-id"
-                        onChange={this.onChange}
-                        aria-describedby="companyIdInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label
+                          htmlFor="lastName"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Firstname:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="firstname"
+                            className="form-control form-control-sm"
+                            id="firstname"
+                            placeholder="Enter Front-admin Firstname"
+                            onChange={this.onChange}
+                            aria-describedby="firstnameInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                      Firstname:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="firstname"
-                        className="form-control form-control-sm"
-                        id="firstname"
-                        placeholder="Enter Front-admin Firstname"
-                        onChange={this.onChange}
-                        aria-describedby="firstnameInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label
+                          htmlFor="lastName"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Lastname:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="lastname"
+                            className="form-control form-control-sm"
+                            id="lastname"
+                            placeholder="Enter Front-admin Lastname"
+                            onChange={this.onChange}
+                            aria-describedby="lastnameInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                      Lastname:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="lastname"
-                        className="form-control form-control-sm"
-                        id="lastname"
-                        placeholder="Enter Front-admin Lastname"
-                        onChange={this.onChange}
-                        aria-describedby="lastnameInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label
+                          htmlFor="email"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Email:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="email"
+                            name="email"
+                            className="form-control form-control-sm"
+                            id="email"
+                            placeholder="Enter Front-admin Email"
+                            onChange={this.onChange}
+                            aria-describedby="emailInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
-                      Email:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control form-control-sm"
-                        id="email"
-                        placeholder="Enter Front-admin Email"
-                        onChange={this.onChange}
-                        aria-describedby="emailInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
+                          Role:
+                        </label>
+                        <div className="col-sm-10">
+                          <AdminRole onChange={this.onChange} />
+                        </div>
 
-                    <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
-                      Role:
-                    </label>
-                    <div className="col-sm-10">
-                      <AdminRole onChange={this.onChange} />
-                    </div>
-
-                    <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
-                      Staff Id:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="staff_id"
-                        className="form-control form-control-sm"
-                        id="staffId"
-                        placeholder="Enter Staff Id"
-                        onChange={this.onChange}
-                        aria-describedby="staffIdInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                      <span style={errors.email ? dangerStyle : null}>
-                        <Error error={errors.email ? errors.email : null} />
-                      </span>
-                    </div>
-                  </div>
+                        <label
+                          htmlFor="staffId"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Staff Id:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="staff_id"
+                            className="form-control form-control-sm"
+                            id="staffId"
+                            placeholder="Enter Staff Id"
+                            onChange={this.onChange}
+                            aria-describedby="staffIdInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                          <span style={errors.email ? dangerStyle : null}>
+                            <Error error={errors.email ? errors.email : null} />
+                          </span>
+                        </div>
+                      </div>
+                      <div className="btn-spacing">
+                        <input className="btn btn-sm btn-success" type="submit" value="Create" />
+                      </div>
+                    </fieldset>
+                  </form>
                   <div className="btn-spacing">
-                    <input className="btn btn-sm btn-success" type="submit" value="Create" />
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={this.handleCancelClick}
+                    >
+                      Cancel
+                    </button>
                   </div>
-                </fieldset>
-              </form>
-              <div className="btn-spacing">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
+                </div>
 
-            <div className="col-sm">
-              <h6>Admins</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company-id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Staff_id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
+                <div className="col-sm">
+                  <h6>Admins</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company-id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Staff_id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
+              </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={companyAdminStaff.length}
+                paginate={paginate}
+              />
             </div>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={companyAdminStaff.length}
-            paginate={paginate}
-          />
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

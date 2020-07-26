@@ -8,6 +8,8 @@ import Footer from "../../Landing/Footer";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
+import ConstSAdmin from "../ConstSAdmin";
+import UnAuthorized from "../../auth/common/UnAuthorized";
 
 class CompanyEdit extends Component {
   constructor(props) {
@@ -205,6 +207,7 @@ class CompanyEdit extends Component {
       country,
       established
     } = this.state;
+    const newLocal = ConstSAdmin();
 
     const company = companies.map((item, index) => {
       return (
@@ -243,168 +246,179 @@ class CompanyEdit extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            <div className="container" aria-label="Create company front admin form">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Entry Pad</h6>
+                  <form noValidate onSubmit={this.onSubmit}>
+                    <fieldset className="front-fieldset">
+                      <h6>Company Details</h6>
+                      <div className="form-group row">
+                        <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
+                          Name:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="name"
+                            className="form-control form-control-sm"
+                            id="name"
+                            placeholder={name}
+                            onChange={this.onChange}
+                            aria-describedby="companyNameInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-        <div className="container" aria-label="Create company front admin form">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Entry Pad</h6>
-              <form noValidate onSubmit={this.onSubmit}>
-                <fieldset className="front-fieldset">
-                  <h6>Company Details</h6>
-                  <div className="form-group row">
-                    <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
-                      Name:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="name"
-                        className="form-control form-control-sm"
-                        id="name"
-                        placeholder={name}
-                        onChange={this.onChange}
-                        aria-describedby="companyNameInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label htmlFor="logo" className="col-sm-2 col-form-label col-form-label-sm">
+                          Logo:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="icon"
+                            name="logo"
+                            className="form-control form-control-sm"
+                            id="logo"
+                            placeholder={logo}
+                            onChange={this.onChange}
+                            aria-describedby="companyIconInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label htmlFor="logo" className="col-sm-2 col-form-label col-form-label-sm">
-                      Logo:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="icon"
-                        name="logo"
-                        className="form-control form-control-sm"
-                        id="logo"
-                        placeholder={logo}
-                        onChange={this.onChange}
-                        aria-describedby="companyIconInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label
+                          htmlFor="description"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Description:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="description"
+                            className="form-control form-control-sm"
+                            id="description"
+                            placeholder={description}
+                            onChange={this.onChange}
+                            aria-describedby="companyDescriptionInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label
-                      htmlFor="description"
-                      className="col-sm-2 col-form-label col-form-label-sm"
-                    >
-                      Description:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="description"
-                        className="form-control form-control-sm"
-                        id="description"
-                        placeholder={description}
-                        onChange={this.onChange}
-                        aria-describedby="companyDescriptionInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
+                        <label
+                          htmlFor="location"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Location:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="location"
+                            className="form-control form-control-sm"
+                            id="location"
+                            placeholder={location}
+                            Location
+                            onChange={this.onChange}
+                            aria-describedby="locationInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
 
-                    <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
-                      Location:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="location"
-                        className="form-control form-control-sm"
-                        id="location"
-                        placeholder={location}
-                        Location
-                        onChange={this.onChange}
-                        aria-describedby="locationInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-
-                    <label htmlFor="country" className="col-sm-2 col-form-label col-form-label-sm">
-                      Country:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="text"
-                        name="country"
-                        className="form-control form-control-sm"
-                        id="country"
-                        placeholder={country}
-                        onChange={this.onChange}
-                        aria-describedby="countryInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                    </div>
-                    <label
-                      htmlFor="established"
-                      className="col-sm-2 col-form-label col-form-label-sm"
-                    >
-                      Established:
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="decimal"
-                        name="established"
-                        className="form-control form-control-sm"
-                        id="established"
-                        placeholder={established}
-                        onChange={this.onChange}
-                        aria-describedby="establishedInput"
-                        aria-required="true"
-                        aria-invalid="false"
-                      />
-                      <span style={errors.country ? dangerStyle : null}>
-                        <Error error={errors.country ? errors.country : null} />
-                      </span>
-                    </div>
-                  </div>
+                        <label
+                          htmlFor="country"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Country:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="text"
+                            name="country"
+                            className="form-control form-control-sm"
+                            id="country"
+                            placeholder={country}
+                            onChange={this.onChange}
+                            aria-describedby="countryInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                        </div>
+                        <label
+                          htmlFor="established"
+                          className="col-sm-2 col-form-label col-form-label-sm"
+                        >
+                          Established:
+                        </label>
+                        <div className="col-sm-10">
+                          <input
+                            type="decimal"
+                            name="established"
+                            className="form-control form-control-sm"
+                            id="established"
+                            placeholder={established}
+                            onChange={this.onChange}
+                            aria-describedby="establishedInput"
+                            aria-required="true"
+                            aria-invalid="false"
+                          />
+                          <span style={errors.country ? dangerStyle : null}>
+                            <Error error={errors.country ? errors.country : null} />
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                      </div>
+                    </fieldset>
+                  </form>
                   <div>
-                    <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={this.handleCancelClick}
+                    >
+                      Cancel
+                    </button>
                   </div>
-                </fieldset>
-              </form>
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
+                </div>
 
-            <div className="col-sm">
-              <h6>Companies</h6>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Logo</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Established</th>
-                  </tr>
-                </thead>
-                <tbody>{currentItems}</tbody>
-              </table>
+                <div className="col-sm">
+                  <h6>Companies</h6>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Logo</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Established</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentItems}</tbody>
+                  </table>
+                </div>
+              </div>
+              <Pagination
+                itemCountPerPage={itemCountPerPage}
+                totalItems={company.length}
+                paginate={paginate}
+              />
             </div>
-          </div>
-          <Pagination
-            itemCountPerPage={itemCountPerPage}
-            totalItems={company.length}
-            paginate={paginate}
-          />
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

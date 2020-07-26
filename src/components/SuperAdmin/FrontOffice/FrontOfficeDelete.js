@@ -4,6 +4,8 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
+import ConstSAdmin from "../ConstSAdmin";
+import UnAuthorized from "../../auth/common/UnAuthorized";
 
 class FrontOfficeDelete extends Component {
   constructor(props) {
@@ -75,6 +77,7 @@ class FrontOfficeDelete extends Component {
   render() {
     // eslint-disable-next-line camelcase
     const { frontoffices, loading } = this.state;
+    const newLocal = ConstSAdmin();
 
     const frontOffice = frontoffices.map((item, index) => {
       return (
@@ -107,40 +110,44 @@ class FrontOfficeDelete extends Component {
     return (
       <div>
         <Nav />
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>Front Office details</h6>
+                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>{frontOffice}</tbody>
+                  </table>
+                </div>
+              </div>
 
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>Front Office details</h6>
-              <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Company Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{frontOffice}</tbody>
-              </table>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-primary"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

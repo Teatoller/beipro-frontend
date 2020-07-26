@@ -7,6 +7,8 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
+import ConstCoAdmin from "./ConstCoAdmin";
+import UnAuthorized from "../auth/common/UnAuthorized";
 
 class CompanyAdminDelete extends Component {
   constructor(props) {
@@ -196,6 +198,7 @@ class CompanyAdminDelete extends Component {
   render() {
     const { fadmins, loading } = this.state;
     const company = localStorage.getItem("company");
+    const newLocal = ConstCoAdmin();
 
     const companyStaff = fadmins.map((item, index) => {
       return (
@@ -231,42 +234,46 @@ class CompanyAdminDelete extends Component {
     return (
       <div>
         <Nav />
-
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col-sm">
-              <h6>{company}:Staff details</h6>
-              <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Office-id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Staff_id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{companyStaff}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col-sm">
+                  <h6>{company}:Staff details</h6>
+                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Office-id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Staff_id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>{companyStaff}</tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-primary"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );

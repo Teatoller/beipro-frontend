@@ -7,6 +7,8 @@ import axios from "../../axios";
 import Nav from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
+import ConstFrontAdmin from "./ConstFrontAdmin";
+import UnAuthorized from "../auth/common/UnAuthorized";
 
 class FrontAdminDelete extends Component {
   constructor(props) {
@@ -201,6 +203,7 @@ class FrontAdminDelete extends Component {
     const { latestprices, loading } = this.state;
     const company = localStorage.getItem("name1");
     const location = localStorage.getItem("location");
+    const newLocal = ConstFrontAdmin();
 
     const currentPrice = latestprices.map((item, index) => {
       return (
@@ -236,43 +239,48 @@ class FrontAdminDelete extends Component {
     return (
       <div>
         <Nav />
-        <div className="container">
-          <div className="row">
-            <span>{loading ? <Spinner /> : null}</span>
-            <div className="col">
-              <h6>
-                Current Price: {company}-{location}
-              </h6>
-              <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Front-office-id</th>
-                    <th scope="col">Diesel</th>
-                    <th scope="col">Petrol</th>
-                    <th scope="col">Kerosene</th>
-                    <th scope="col">Ido</th>
-                    <th scope="col">Fuel Oil</th>
-                    <th scope="col">Lpg</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>{currentPrice}</tbody>
-              </table>
+        {newLocal ? (
+          <>
+            <div className="container">
+              <div className="row">
+                <span>{loading ? <Spinner /> : null}</span>
+                <div className="col">
+                  <h6>
+                    Current Price: {company}-{location}
+                  </h6>
+                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
+                  <table className="table table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Front-office-id</th>
+                        <th scope="col">Diesel</th>
+                        <th scope="col">Petrol</th>
+                        <th scope="col">Kerosene</th>
+                        <th scope="col">Ido</th>
+                        <th scope="col">Fuel Oil</th>
+                        <th scope="col">Lpg</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentPrice}</tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  onClick={this.handleCancelClick}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-sm btn-primary"
-              onClick={this.handleCancelClick}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
+          </>
+        ) : (
+          <UnAuthorized />
+        )}
         <Footer />
       </div>
     );
