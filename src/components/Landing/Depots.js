@@ -32,7 +32,7 @@ class Depots extends PureComponent {
     };
 
     try {
-      axios.get(`/auth/depotprices`, config).then(response => {
+      axios.get(`/depotprices`, config).then(response => {
         // eslint-disable-next-line prefer-destructuring
         const data = response.data;
         this.setState({

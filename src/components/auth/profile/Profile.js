@@ -26,7 +26,7 @@ class Profile extends Component {
       }
     };
     axios
-      .get(`/auth/profile`, config)
+      .get(`/profile`, config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;

@@ -53,7 +53,7 @@ class FrontAdminDelete extends Component {
     };
 
     axios
-      .post(`/auth/currentprices`, data, config)
+      .post(`/currentprices`, data, config)
       .then(response => {
         if (response) {
           this.setState({
@@ -85,7 +85,7 @@ class FrontAdminDelete extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/frontadmins`, config).then(response => {
+    axios.get(`/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -123,7 +123,7 @@ class FrontAdminDelete extends Component {
       }
     };
 
-    axios.get(`/auth/currentprices/${priceid}`, config).then(response => {
+    axios.get(`/currentprices/${priceid}`, config).then(response => {
       const currentPriceData = response.data;
       const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
@@ -176,7 +176,7 @@ class FrontAdminDelete extends Component {
     };
 
     axios
-      .delete(`/auth/currentprices/${priceid}`, config)
+      .delete(`/currentprices/${priceid}`, config)
       .then(response => {
         if (response) {
           toast.success("Price deleted successfully");

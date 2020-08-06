@@ -75,7 +75,7 @@ class CompanyEdit extends Component {
     };
 
     axios
-      .patch(`/auth/companies/${companyId}`, data, config)
+      .patch(`/companies/${companyId}`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/company`), 50);
@@ -104,7 +104,7 @@ class CompanyEdit extends Component {
       }
     };
 
-    axios.get(`/auth/companies`, config).then(response => {
+    axios.get(`/companies`, config).then(response => {
       const companiesData = response.data;
       this.setState({
         companies: companiesData,
@@ -157,7 +157,7 @@ class CompanyEdit extends Component {
       }
     };
 
-    axios.delete(`/auth/companies/${companyId}`, config).then(
+    axios.delete(`/companies/${companyId}`, config).then(
       response => {
         if (response) {
           history.push("/company");
@@ -177,7 +177,7 @@ class CompanyEdit extends Component {
       }
     };
 
-    axios.get(`/auth/companies/${companyId}`, config).then(response => {
+    axios.get(`/companies/${companyId}`, config).then(response => {
       const selectedCompanyData = response.data;
 
       const adminObj = selectedCompanyData[0];

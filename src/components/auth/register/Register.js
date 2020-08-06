@@ -61,7 +61,7 @@ class Register extends PureComponent {
     };
 
     axios
-      .post("/auth/register", newUser, {
+      .post("/register", newUser, {
         headers: { "Content-Type": "application/json" }
       })
       .then(response => {

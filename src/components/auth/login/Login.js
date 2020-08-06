@@ -43,7 +43,7 @@ class Login extends PureComponent {
     });
 
     axios
-      .post(`/auth/login`, data)
+      .post(`/login`, data)
       .then(res => {
         if (res) {
           localStorage.setItem("token", res.data.access_token);

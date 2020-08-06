@@ -93,7 +93,7 @@ class CompanyAdminEdit extends PureComponent {
     };
 
     axios
-      .patch(`/auth/companyadmins/${fadminid}`, data, config)
+      .patch(`/companyadmins/${fadminid}`, data, config)
       .then(response => {
         if (response) {
           history.push("/admin");
@@ -134,7 +134,7 @@ class CompanyAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/combineadmins`, config).then(response => {
+    axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -168,7 +168,7 @@ class CompanyAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins`, config).then(response => {
+    axios.get(`/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -193,7 +193,7 @@ class CompanyAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
+    axios.get(`/companyadmins/${fadminid}`, config).then(response => {
       const selectedFadminData = response.data;
 
       const adminObj = selectedFadminData[0];

@@ -68,7 +68,7 @@ class FrontOfficeCreate extends Component {
     };
 
     axios
-      .post(`/auth/frontoffices`, data, config)
+      .post(`/frontoffices`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/frontoffice`), 50);
@@ -95,7 +95,7 @@ class FrontOfficeCreate extends Component {
       }
     };
 
-    axios.get(`/auth/frontoffices`, config).then(response => {
+    axios.get(`/frontoffices`, config).then(response => {
       const frontOfficesData = response.data;
       this.setState({
         frontoffices: frontOfficesData,
@@ -148,7 +148,7 @@ class FrontOfficeCreate extends Component {
       }
     };
 
-    axios.delete(`/auth/frontoffices/${frontofficeId}`, config).then(
+    axios.delete(`/frontoffices/${frontofficeId}`, config).then(
       response => {
         if (response) {
           history.push("/frontoffice");

@@ -76,7 +76,7 @@ class CompanyCreate extends Component {
     };
 
     axios
-      .post(`/auth/companies`, data, config)
+      .post(`/companies`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/company`), 50);
@@ -105,7 +105,7 @@ class CompanyCreate extends Component {
       }
     };
 
-    axios.get(`/auth/companies`, config).then(response => {
+    axios.get(`/companies`, config).then(response => {
       const companiesData = response.data;
       this.setState({
         companies: companiesData,
@@ -158,7 +158,7 @@ class CompanyCreate extends Component {
       }
     };
 
-    axios.delete(`/auth/companies/${companyId}`, config).then(
+    axios.delete(`/companies/${companyId}`, config).then(
       response => {
         if (response) {
           history.push("/company");

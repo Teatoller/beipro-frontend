@@ -30,7 +30,7 @@ class FrontOffice extends Component {
       }
     };
 
-    axios.get(`/auth/frontoffices`, config).then(response => {
+    axios.get(`/frontoffices`, config).then(response => {
       const frontofficeData = response.data;
       this.setState({
         frontoffices: frontofficeData,

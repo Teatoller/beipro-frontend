@@ -27,7 +27,7 @@ class FeedbkDelete extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/contact-us/${sfeedid}`, config).then(response => {
+    axios.get(`/contact-us/${sfeedid}`, config).then(response => {
       const feedData = response.data;
       this.setState({
         feeds: feedData,
@@ -52,7 +52,7 @@ class FeedbkDelete extends Component {
       }
     };
 
-    axios.delete(`/auth/contact-us/${sfeedid}`, config).then(
+    axios.delete(`/contact-us/${sfeedid}`, config).then(
       response => {
         if (response) {
           history.push("/feedback");

@@ -29,7 +29,7 @@ class Feedback extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/contact-us`, config).then(response => {
+    axios.get(`/contact-us`, config).then(response => {
       const feedData = response.data;
       this.setState({
         feeds: feedData,

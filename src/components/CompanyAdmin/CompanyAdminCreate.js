@@ -100,7 +100,7 @@ class CompanyAdminCreate extends Component {
     };
 
     axios
-      .post(`/auth/companyadmins`, data, config)
+      .post(`/companyadmins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/admin`), 50);
@@ -142,7 +142,7 @@ class CompanyAdminCreate extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/combineadmins`, config).then(response => {
+    axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -189,7 +189,7 @@ class CompanyAdminCreate extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins`, config).then(response => {
+    axios.get(`/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -242,7 +242,7 @@ class CompanyAdminCreate extends Component {
       }
     };
 
-    axios.delete(`/auth/companyadmins/${fadminid}`, config).then(
+    axios.delete(`/companyadmins/${fadminid}`, config).then(
       response => {
         if (response) {
           history.push("/admin");

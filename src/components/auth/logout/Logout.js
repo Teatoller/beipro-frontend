@@ -23,7 +23,7 @@ class Logout extends Component {
       }
     };
     axios
-      .get(`/auth/logout`, config)
+      .get(`/logout`, config)
       .then(res => {
         if (res) {
           localStorage.clear();

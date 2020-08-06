@@ -50,7 +50,7 @@ class CompanyAdmin extends Component {
       }
     };
 
-    axios.get(`/auth/combineadmins`, config).then(response => {
+    axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -83,7 +83,7 @@ class CompanyAdmin extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins`, config).then(response => {
+    axios.get(`/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -139,7 +139,7 @@ class CompanyAdmin extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/admins`, config).then(response => {
+    axios.get(`/admins`, config).then(response => {
       const adminssData = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -174,7 +174,7 @@ class CompanyAdmin extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/frontoffices`, config).then(response => {
+    axios.get(`/frontoffices`, config).then(response => {
       const fofficesData = response.data;
 
       const AdminxCompanyId = localStorage.getItem("company_id");
