@@ -29,7 +29,7 @@ class Company extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companies`, config).then(response => {
+    axios.get(`/companies`, config).then(response => {
       const companyData = response.data;
       this.setState({
         companies: companyData,

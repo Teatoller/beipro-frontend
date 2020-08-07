@@ -74,7 +74,7 @@ class AdminCreate extends Component {
     };
 
     axios
-      .post(`/auth/admins`, data, config)
+      .post(`/admins`, data, config)
       .then(response => {
         if (response) {
           setTimeout(() => history.push(`/sadmin`), 50);
@@ -102,7 +102,7 @@ class AdminCreate extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/admins`, config).then(response => {
+    axios.get(`/admins`, config).then(response => {
       const adminData = response.data;
       this.setState({
         admins: adminData,
@@ -155,7 +155,7 @@ class AdminCreate extends Component {
       }
     };
 
-    axios.delete(`/auth/companyadmins/${sadminid}`, {}, config).then(
+    axios.delete(`/companyadmins/${sadminid}`, {}, config).then(
       response => {
         if (response) {
           history.push("/sadmin");

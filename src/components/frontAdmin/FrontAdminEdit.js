@@ -68,7 +68,7 @@ class FrontAdminEdit extends PureComponent {
     };
 
     axios
-      .patch(`/auth/currentprices/${priceid}`, data, config)
+      .patch(`/currentprices/${priceid}`, data, config)
       .then(response => {
         if (response) {
           toast.success("Price updated successfully");
@@ -110,7 +110,7 @@ class FrontAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/frontadmins`, config).then(response => {
+    axios.get(`/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -149,7 +149,7 @@ class FrontAdminEdit extends PureComponent {
     };
 
     try {
-      axios.get(`/auth/currentprices`, config).then(response => {
+      axios.get(`/currentprices`, config).then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 
@@ -224,7 +224,7 @@ class FrontAdminEdit extends PureComponent {
       }
     };
 
-    axios.delete(`/auth/currentprices/${priceid}`, config).then(
+    axios.delete(`/currentprices/${priceid}`, config).then(
       response => {
         if (response) {
           history.push("/fadmin");

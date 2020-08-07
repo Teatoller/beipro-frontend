@@ -49,7 +49,7 @@ class ProfileImg extends React.Component {
       }
     };
     axios
-      .post(`/auth/profile`, formData, config)
+      .post(`/profile`, formData, config)
       .then(response => {
         this.setState({
           loading: false
