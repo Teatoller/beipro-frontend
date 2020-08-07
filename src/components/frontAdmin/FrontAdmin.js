@@ -47,7 +47,7 @@ class FrontAdmin extends Component {
     };
 
     axios
-      .get(`/auth/frontadmins`, config)
+      .get(`/frontadmins`, config)
       .then(response => {
         const frontadminsdata = response.data;
         const loggedUserEmail = localStorage.getItem("email");
@@ -88,7 +88,7 @@ class FrontAdmin extends Component {
     };
 
     axios
-      .get(`/auth/currentprices`, config)
+      .get(`/currentprices`, config)
       .then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
@@ -163,7 +163,7 @@ class FrontAdmin extends Component {
 
     const frontid = localStorage.getItem("front_office_id");
     const frontId = parseInt(frontid, 10);
-    axios.get(`/auth/frontoffices/${frontId}`, config).then(response => {
+    axios.get(`/frontoffices/${frontId}`, config).then(response => {
       const fofficesData = response.data;
 
       const officesObj = fofficesData[0];

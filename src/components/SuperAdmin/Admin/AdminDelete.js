@@ -29,7 +29,7 @@ class AdminDelete extends Component {
       }
     };
 
-    axios.get(`/auth/admins/${sadminid}`, config).then(response => {
+    axios.get(`/admins/${sadminid}`, config).then(response => {
       const adminData = response.data;
       this.setState({
         admins: adminData,
@@ -54,7 +54,7 @@ class AdminDelete extends Component {
       }
     };
 
-    axios.delete(`/auth/admins/${sadminid}`, config).then(
+    axios.delete(`/admins/${sadminid}`, config).then(
       response => {
         if (response) {
           history.push("/sadmin");

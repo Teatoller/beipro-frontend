@@ -22,26 +22,12 @@ class CompanyAdmin extends Component {
   componentDidMount() {
     this.getOfficeData();
     this.adminData = setTimeout(() => this.getFrontAdminsData(), 1500);
-    this.getadminssData();
     this.getFofficeData();
   }
 
   componentWillUnmount() {
     clearTimeout(this.adminData);
   }
-
-  /**
-   * Pseudo code
-   *
-   * Step 1:
-   * Figure out the logged in user email
-   *
-   * Step 2:
-   * Figure out the company admin id using the email and admins endpoint
-   *
-   * Step 3:
-   * Assign to the form company and admin id input field and keep disabled
-   */
 
   getOfficeData = () => {
     const config = {
@@ -50,30 +36,19 @@ class CompanyAdmin extends Component {
       }
     };
 
-    axios.get(`/auth/combineadmins`, config).then(response => {
+    axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
-      const loggedUserEmail = localStorage.getItem("email");
 
-      // Array with object containing details of the logged user
+      const adminId = adminsdata.id;
+      const companyId = adminsdata.company_id;
 
-      const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
+      const lockey = parseInt(adminId, 10);
 
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      // eslint-disable-next-line consistent-return
-      function adminkey() {
-        if (userObj) {
-          const adminId = userObj.id;
-
-          return adminId;
-        }
-      }
-
-      const lockey = parseInt(adminkey(), 10);
+      const lockey2 = parseInt(companyId, 10);
 
       localStorage.setItem("admin_id", lockey);
+
+      localStorage.setItem("company_id", lockey2);
     });
   };
 
@@ -83,7 +58,7 @@ class CompanyAdmin extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins`, config).then(response => {
+    axios.get(`/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -130,42 +105,6 @@ class CompanyAdmin extends Component {
     history.push("/admindelete");
   };
 
-  // experiment
-
-  // phase 1 Establish the company id
-  getadminssData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
-    axios.get(`/auth/admins`, config).then(response => {
-      const adminssData = response.data;
-      const loggedUserEmail = localStorage.getItem("email");
-
-      // Array with object containing details of the logged user
-
-      const userArray = adminssData.filter(object => object.email === loggedUserEmail);
-
-      // Object containing detail of logged user
-      const adminObj = userArray[0];
-
-      // Key
-      // eslint-disable-next-line consistent-return
-      function compkey() {
-        if (adminObj) {
-          const compId = adminObj.company_id;
-
-          return compId;
-        }
-      }
-
-      const companyId = parseInt(compkey(), 10);
-
-      localStorage.setItem("company_id", companyId);
-    });
-  };
-
   // phase 2 Establish the company front offices id's
 
   getFofficeData = () => {
@@ -174,7 +113,7 @@ class CompanyAdmin extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/frontoffices`, config).then(response => {
+    axios.get(`/frontoffices`, config).then(response => {
       const fofficesData = response.data;
 
       const AdminxCompanyId = localStorage.getItem("company_id");

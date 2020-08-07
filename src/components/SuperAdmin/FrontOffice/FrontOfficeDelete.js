@@ -28,7 +28,7 @@ class FrontOfficeDelete extends Component {
       }
     };
 
-    axios.get(`/auth/frontoffices/${frontofficeId}`, config).then(response => {
+    axios.get(`/frontoffices/${frontofficeId}`, config).then(response => {
       const frontofficeData = response.data;
       this.setState({
         frontoffices: frontofficeData,
@@ -53,7 +53,7 @@ class FrontOfficeDelete extends Component {
       }
     };
 
-    axios.delete(`/auth/frontoffices/${frontofficeId}`, config).then(
+    axios.delete(`/frontoffices/${frontofficeId}`, config).then(
       response => {
         if (response) {
           history.push("/frontoffice");

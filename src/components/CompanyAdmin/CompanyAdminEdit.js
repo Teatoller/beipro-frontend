@@ -93,7 +93,7 @@ class CompanyAdminEdit extends PureComponent {
     };
 
     axios
-      .patch(`/auth/companyadmins/${fadminid}`, data, config)
+      .patch(`/companyadmins/${fadminid}`, data, config)
       .then(response => {
         if (response) {
           history.push("/admin");
@@ -115,50 +115,23 @@ class CompanyAdminEdit extends PureComponent {
       });
   };
 
-  /**
-   * Pseudo code
-   *
-   * Step 1:
-   * Figure out the logged in user email
-   *
-   * Step 2:
-   * Figure out the company admin id using the email and admins endpoint
-   *
-   * Step 3:
-   * Assign to the form company and admin id input field and keep disabled
-   */
-
   getOfficeData = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/combineadmins`, config).then(response => {
+
+    axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
-      const loggedUserEmail = localStorage.getItem("email");
 
-      // Array with object containing details of the logged user
+      const adminId = adminsdata.id;
 
-      const userArray = adminsdata.filter(object => object.email === loggedUserEmail);
+      const lockey = parseInt(adminId, 10);
 
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      // eslint-disable-next-line consistent-return
-      function adminkey() {
-        if (userObj) {
-          const adminId = userObj.id;
-
-          return adminId;
-        }
-      }
-
-      const lockey = parseInt(adminkey(), 10);
+      localStorage.setItem("admin_id", lockey);
 
       this.setState({ admin_id: lockey });
-      localStorage.setItem("admin_id", lockey);
     });
   };
 
@@ -168,7 +141,7 @@ class CompanyAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins`, config).then(response => {
+    axios.get(`/companyadmins`, config).then(response => {
       const frontadminData = response.data;
 
       const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
@@ -193,7 +166,7 @@ class CompanyAdminEdit extends PureComponent {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/companyadmins/${fadminid}`, config).then(response => {
+    axios.get(`/companyadmins/${fadminid}`, config).then(response => {
       const selectedFadminData = response.data;
 
       const adminObj = selectedFadminData[0];

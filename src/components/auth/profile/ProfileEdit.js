@@ -53,7 +53,7 @@ class ProfileEdit extends Component {
     };
 
     axios
-      .patch(`/auth/profile`, updateData, config)
+      .patch(`/profile`, updateData, config)
       .then(response => {
         this.setState({
           loading: true

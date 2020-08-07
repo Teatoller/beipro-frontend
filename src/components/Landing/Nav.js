@@ -19,9 +19,7 @@ class Nav extends PureComponent {
   }
 
   componentDidMount() {
-    this.getFrontAdminRole();
-    this.getAdminRole();
-    this.getSuperAdminRole();
+    this.getRole();
     this.getImageUrl();
 
     const avatarExist = localStorage.getItem("avatarUrl");
@@ -39,111 +37,25 @@ class Nav extends PureComponent {
     }
   }
 
-  // Get admin role
+  // Get role
 
-  getAdminRole = () => {
+  getRole = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/auth/combineadmins`, config).then(response => {
-      const adminsRoledata = response.data;
+    axios.get(`/roles`, config).then(response => {
+      const roleData = response.data;
 
-      const loggedUserEmail = localStorage.getItem("email");
-
-      // Array with object containing details of the logged user
-
-      const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
-
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      function adminRolekey() {
-        if (userObj) {
-          const adminRole = userObj.role;
-
-          return adminRole;
-        }
-      }
-
-      const rolekey = adminRolekey();
-
-      this.setState({ roleAdmin: rolekey });
-      localStorage.setItem("roleAdmin", rolekey);
-    });
-  };
-
-  // Get Front Admin role
-
-  getFrontAdminRole = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
-    axios.get(`/auth/frontadmins`, config).then(response => {
-      const adminsRoledata = response.data;
-
-      const loggedUserEmail = localStorage.getItem("email");
-
-      // Array with object containing details of the logged user
-
-      const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
-
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      function fadminRolekey() {
-        if (userObj) {
-          const adminRole = userObj.role;
-
-          return adminRole;
-        }
-      }
-
-      const rolekey = fadminRolekey();
-
-      this.setState({ role: rolekey });
-      localStorage.setItem("role", rolekey);
-    });
-  };
-
-  // Get Super Admin role
-
-  getSuperAdminRole = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
-    axios.get(`/auth/superadmins`, config).then(response => {
-      const adminsRoledata = response.data;
-
-      const loggedUserEmail = localStorage.getItem("email");
-
-      // Array with object containing details of the logged user
-
-      const userArray = adminsRoledata.filter(object => object.email === loggedUserEmail);
-
-      // Object containing detail of logged user
-      const userObj = userArray[0];
-
-      // Key
-      function sadminRolekey() {
-        if (userObj) {
-          const adminRole = userObj.role;
-
-          return adminRole;
-        }
-      }
-
-      const rolekey = sadminRolekey();
-
-      this.setState({ roleSadmin: rolekey });
-      localStorage.setItem("roleSadmin", rolekey);
+      this.setState({
+        roleAdmin: roleData,
+        role: roleData,
+        roleSadmin: roleData
+      });
+      localStorage.setItem("roleAdmin", roleData);
+      localStorage.setItem("role", roleData);
+      localStorage.setItem("roleSadmin", roleData);
     });
   };
 
@@ -155,7 +67,7 @@ class Nav extends PureComponent {
     };
 
     axios
-      .get(`/auth/profile`, config)
+      .get(`/profile`, config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;

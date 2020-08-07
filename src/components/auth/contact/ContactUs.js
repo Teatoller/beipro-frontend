@@ -62,7 +62,7 @@ class ContactUs extends Component {
     };
 
     axios
-      .post(`/auth/contact-us`, data, config)
+      .post(`/contact-us`, data, config)
       .then(response => {
         this.setState({
           loading: true
