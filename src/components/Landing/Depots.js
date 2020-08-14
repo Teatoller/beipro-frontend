@@ -110,7 +110,7 @@ class Depots extends PureComponent {
                   onChange={this.handleChange}
                 >
                   <option value=" ">--Select location--</option>
-                  <option selected value="Nairobi">
+                  <option defaultValue="Nairobi">
                     Nairobi
                   </option>
                   <option value="Mombasa">Mombasa</option>

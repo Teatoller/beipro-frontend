@@ -59,13 +59,8 @@ class CompanyAdmin extends Component {
       }
     };
     axios.get(`/companyadmins`, config).then(response => {
-      const frontadminData = response.data;
 
-      const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
-
-      // Array with object containing details of the logged user
-
-      const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+      const adminsArray = response.data;
 
       this.setState({
         fadmins: adminsArray,
@@ -93,8 +88,6 @@ class CompanyAdmin extends Component {
     history.push("/admincreate");
   };
 
-  // Select front admin record to delete
-
   handleDeleteClick = e => {
     const { history } = this.props;
     e.preventDefault();
@@ -105,26 +98,15 @@ class CompanyAdmin extends Component {
     history.push("/admindelete");
   };
 
-  // phase 2 Establish the company front offices id's
-
   getFofficeData = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.token}`
       }
     };
-    axios.get(`/frontoffices`, config).then(response => {
-      const fofficesData = response.data;
+    axios.get(`/frontshores`, config).then(response => {
+      const officesArray = response.data;
 
-      const AdminxCompanyId = localStorage.getItem("company_id");
-
-      const AdminCompanyId = parseInt(AdminxCompanyId, 10);
-
-      // Array with object containing details of the logged user
-
-      const officesArray = fofficesData.filter(object => object.company_id === AdminCompanyId);
-
-      // Object containing detail of logged user
       if (officesArray[0]) {
         localStorage.setItem("f1", officesArray[0].id);
         localStorage.setItem("f1loc", officesArray[0].location);
@@ -148,8 +130,6 @@ class CompanyAdmin extends Component {
       }
     });
   };
-
-  // end experiment
 
   render() {
     const { fadmins, loading } = this.state;

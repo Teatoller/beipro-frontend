@@ -116,23 +116,10 @@ class CompanyAdminEdit extends PureComponent {
   };
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const adminId = localStorage.getItem("admin_id");
+    const lockey = parseInt(adminId, 10);
 
-    axios.get(`/combineadmins`, config).then(response => {
-      const adminsdata = response.data;
-
-      const adminId = adminsdata.id;
-
-      const lockey = parseInt(adminId, 10);
-
-      localStorage.setItem("admin_id", lockey);
-
-      this.setState({ admin_id: lockey });
-    });
+    this.setState({ admin_id: lockey });
   };
 
   getFrontAdminsData = () => {
@@ -142,13 +129,7 @@ class CompanyAdminEdit extends PureComponent {
       }
     };
     axios.get(`/companyadmins`, config).then(response => {
-      const frontadminData = response.data;
-
-      const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
-
-      // Array with object containing details of the logged user
-
-      const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+      const adminsArray = response.data;
 
       this.setState({
         fadmins: adminsArray,
