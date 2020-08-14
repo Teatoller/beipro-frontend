@@ -88,23 +88,10 @@ class CompanyAdminDelete extends Component {
   };
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const adminId = localStorage.getItem("admin_id");
+    const lockey = parseInt(adminId, 10);
 
-    axios.get(`/combineadmins`, config).then(response => {
-      const adminsdata = response.data;
-
-      const adminId = adminsdata.id;
-
-      const lockey = parseInt(adminId, 10);
-
-      localStorage.setItem("admin_id", lockey);
-
-      this.setState({ admin_id: lockey });
-    });
+    this.setState({ admin_id: lockey });
   };
 
   getFrontAdminsData = () => {
