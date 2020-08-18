@@ -10,17 +10,19 @@ const Pagination = ({ itemCountPerPage, totalItems, paginate }) => {
   }
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <Link onClick={() => paginate(number)} href="!#" className="page-link">
-              {number}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav aria-label="Page navigation">
+        <ul className="pagination pagination-sm justify-content-center">
+          {pageNumbers.map(number => (
+            <li key={number} className="page-item">
+              <Link onClick={() => paginate(number)} href="!#" className="page-link">
+                {number}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 Pagination.propTypes = {

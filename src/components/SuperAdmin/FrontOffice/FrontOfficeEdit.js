@@ -10,6 +10,7 @@ import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import EditBtn from "../common/EditBtn";
 
 class FrontOfficeEdit extends Component {
   constructor(props) {
@@ -191,11 +192,11 @@ class FrontOfficeEdit extends Component {
     const frontOffice = frontoffices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="foffices">{index + 1}</td>
-          <td className="foffices">{item.company_id}</td>
-          <td className="foffices">{item.name}</td>
-          <td className="foffices">{item.code}</td>
-          <td className="foffices">{item.location}</td>
+          <td className="foffices text-center">{index + 1}</td>
+          <td className="foffices text-center">{item.company_id}</td>
+          <td className="foffices text-center">{item.name}</td>
+          <td className="foffices text-center">{item.code}</td>
+          <td className="foffices text-center">{item.location}</td>
         </tr>
       );
     });
@@ -227,19 +228,16 @@ class FrontOfficeEdit extends Component {
             <div className="container" aria-label="Create company front admin form">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h6>Entry Pad</h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">Entry Pad</h5>
                   <form noValidate onSubmit={this.onSubmit}>
-                    <fieldset className="front-fieldset">
+                    <fieldset>
                       <h6>Front Office Detail&apos;s</h6>
                       <div className="form-group row">
-                        <label
-                          htmlFor="companyId"
-                          className="col-sm-2 col-form-label col-form-label-sm"
-                        >
+                        <label htmlFor="companyId" className="col-sm-2 col-form-label-sm">
                           Company Id:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="company_id"
@@ -256,7 +254,7 @@ class FrontOfficeEdit extends Component {
                         <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
                           Name:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="name"
@@ -273,7 +271,7 @@ class FrontOfficeEdit extends Component {
                         <label htmlFor="code" className="col-sm-2 col-form-label col-form-label-sm">
                           Code:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="code"
@@ -293,7 +291,7 @@ class FrontOfficeEdit extends Component {
                         >
                           Location:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="location"
@@ -311,36 +309,32 @@ class FrontOfficeEdit extends Component {
                           </span>
                         </div>
                       </div>
-                      <div>
-                        <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                      <span className="font-italic text-secondary">
+                        Click button to change front office detail
+                      </span>
+                      <div className="row">
+                        <EditBtn handleCancelClick={this.handleCancelClick} />
                       </div>
                     </fieldset>
                   </form>
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-primary"
-                      onClick={this.handleCancelClick}
-                    >
-                      Cancel
-                    </button>
-                  </div>
                 </div>
 
-                <div className="col-sm">
-                  <h6>Front Offices</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Location</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                <div className="col-sm-6 mx-auto">
+                  <h5 className="text-secondary">Front Offices</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Code</th>
+                          <th scope="col">Location</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <Pagination

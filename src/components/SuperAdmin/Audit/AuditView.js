@@ -50,8 +50,13 @@ class AuditView extends Component {
   };
 
   getAuditData = () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
     const sauditid = localStorage.getItem("auditid");
-    axios.get(`/audits/${sauditid}`, {}).then(response => {
+    axios.get(`/audits/${sauditid}`, config).then(response => {
       const auditData = response.data;
 
       const auditObj = auditData[0];
@@ -111,8 +116,9 @@ class AuditView extends Component {
                 <span>{loading ? <Spinner /> : null}</span>
 
                 <div className="col-sm">
-                  <h6>Audit Item</h6>
-                  <table className="table table-striped">
+                  <h5 className="text-secondary">Audit Item</h5>
+                  <div className="table-responsive">
+                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
                     <tbody>
                       <tr>
                         <td className="auditview">id</td>
@@ -177,6 +183,7 @@ class AuditView extends Component {
                       </tr>
                     </tbody>
                   </table>
+                  </div>
                 </div>
               </div>
               <div>

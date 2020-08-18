@@ -11,6 +11,7 @@ import Error from "../Error";
 import Spinner from "../../spinner/Spinner";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import EditBtn from "../SuperAdmin/common/EditBtn";
 
 class FrontAdminEdit extends PureComponent {
   constructor(props) {
@@ -268,14 +269,14 @@ class FrontAdminEdit extends PureComponent {
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="depot">{index + 1}</td>
-          <td className="depot">{item.front_office_id}</td>
-          <td className="depot">{item.diesel}</td>
-          <td className="depot">{item.petrol}</td>
-          <td className="depot">{item.kerosene}</td>
-          <td className="depot">{item.ido}</td>
-          <td className="depot">{item.fo}</td>
-          <td className="depot">{item.lpg}</td>
+          <td className="depot text-center">{index + 1}</td>
+          <td className="depot text-center">{item.front_office_id}</td>
+          <td className="depot text-center">{item.diesel}</td>
+          <td className="depot text-center">{item.petrol}</td>
+          <td className="depot text-center">{item.kerosene}</td>
+          <td className="depot text-center">{item.ido}</td>
+          <td className="depot text-center">{item.fo}</td>
+          <td className="depot text-center">{item.lpg}</td>
         </tr>
       );
     });
@@ -293,21 +294,18 @@ class FrontAdminEdit extends PureComponent {
             <div className="container">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col">
-                  <h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">
                     Edit Entry Pad: {company} - <em>{location}</em>
-                  </h6>
+                  </h5>
                   <form noValidate onSubmit={this.onSubmit}>
-                    <fieldset className="front-fieldset">
-                      <fieldset disabled className="admin-fieldset hide">
+                    <fieldset>
+                      <fieldset disabled className="hide invisible">
                         <div className="form-group row">
-                          <label
-                            htmlFor="frontOfficeId"
-                            className="col-sm-2 col-form-label col-form-label-sm"
-                          >
+                          <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
                             Office-Id:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="decimal"
                               name="front_office_id"
@@ -322,15 +320,12 @@ class FrontAdminEdit extends PureComponent {
                         </div>
                       </fieldset>
 
-                      <h6>Price Input</h6>
+                      <h6 className="text-secondary">Price Input</h6>
                       <div className="form-group row">
-                        <label
-                          htmlFor="diesel"
-                          className="col-sm-2 col-form-label col-form-label-sm"
-                        >
+                        <label htmlFor="diesel" className="col-sm-2 col-form-label-sm">
                           Diesel:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="diesel"
@@ -347,7 +342,7 @@ class FrontAdminEdit extends PureComponent {
                         >
                           Petrol:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="petrol"
@@ -365,7 +360,7 @@ class FrontAdminEdit extends PureComponent {
                         >
                           Kerosene:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="kerosene"
@@ -380,7 +375,7 @@ class FrontAdminEdit extends PureComponent {
                         <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
                           Ido:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="ido"
@@ -398,7 +393,7 @@ class FrontAdminEdit extends PureComponent {
                         >
                           Fuel Oil:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="fo"
@@ -413,7 +408,7 @@ class FrontAdminEdit extends PureComponent {
                         <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
                           Bulk Lpg:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="lpg"
@@ -428,49 +423,35 @@ class FrontAdminEdit extends PureComponent {
                           </span>
                         </div>
                       </div>
+                      <span className="font-italic text-secondary">
+                        Click button to change price
+                      </span>
                       <div className="row">
-                        <div className="col">
-                          <div className="btn-spacing">
-                            <input
-                              className="btn btn-sm btn-success"
-                              type="submit"
-                              value="Change Price"
-                            />
-                          </div>
-                        </div>
-                        <div className="col">
-                          <div className="btn-spacing">
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-outline-warning"
-                              onClick={this.handleCancelClick}
-                            >
-                              Cancel
-                            </button>
-                          </div>
-                        </div>
+                        <EditBtn handleCancelClick={this.handleCancelClick} />
                       </div>
                     </fieldset>
                   </form>
                 </div>
 
-                <div className="col">
-                  <h6>Current Price</h6>
-                  <table className="table table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Front-office-id</th>
-                        <th scope="col">Diesel</th>
-                        <th scope="col">Petrol</th>
-                        <th scope="col">Kerosene</th>
-                        <th scope="col">Ido</th>
-                        <th scope="col">Fuel Oil</th>
-                        <th scope="col">Lpg</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentPrice}</tbody>
-                  </table>
+                <div className="col-sm-6 mx-auto">
+                  <h5 className="text-secondary">Current Price</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Front-office-id</th>
+                          <th scope="col">Diesel</th>
+                          <th scope="col">Petrol</th>
+                          <th scope="col">Kerosene</th>
+                          <th scope="col">Ido</th>
+                          <th scope="col">Fuel Oil</th>
+                          <th scope="col">Lpg</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentPrice}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

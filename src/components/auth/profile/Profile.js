@@ -5,7 +5,7 @@ import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
-import "../../css/depot.css";
+import "../../css/site.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Profile extends Component {
       firstname: "",
       lastname: "",
       email: "",
-      avatarUrl: `./img/profileholder.svg`,
+      avatarUrl: ""
     };
   }
 
@@ -30,8 +30,10 @@ class Profile extends Component {
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;
+
         localStorage.setItem("firstname", res.data.firstname);
         localStorage.setItem("lastname", res.data.lastname);
+        localStorage.setItem("avatarUrl", res.data.avatar_url);
         this.setState({
           firstname: data.firstname,
           lastname: data.lastname,
@@ -39,6 +41,18 @@ class Profile extends Component {
           avatarUrl: data.avatar_url,
           loading: false
         });
+
+        if (!data.avatar_url === "profileholder.svg") {
+          this.setState({
+            avatarUrl: localStorage.getItem("avatarUrl")
+          });
+        }
+        if (data.avatar_url === "profileholder.svg") {
+          const profileUrl = `./img/${res.data.avatar_url}`;
+          this.setState({
+            avatarUrl: profileUrl
+          });
+        }
       })
       .catch(error => {
         throw error;
@@ -67,56 +81,61 @@ class Profile extends Component {
     return (
       <div>
         <Nav />
-        <div className="container profile-page mt-3">
+        <div className="container">
           <span>{loading ? <Spinner /> : null}</span>
-          <div>
+          <div className="my-2">
             <img
-              className="rounded-circle profile-img"
+              className="rounded-circle mx-auto d-block profile-img"
               src={avatarUrl}
-              height="180"
-              width="180"
               alt="avatar"
             />
           </div>
-          <small className="form-text text-muted img-text">
-            <Link to="profileimg">Click to Upload/Change Image</Link>
-          </small>
+          <div className="text-center">
+            <Link className="btn btn-sm btn-success" to="/profileimg">
+              <small>Click to Upload/Change Image</small>
+            </Link>
+          </div>
           <hr />
 
-          <table className="table table-striped profile-page">
+          <table className="table-sm mx-auto table-hover w-50 table-striped">
             <tbody>
-              <tr className="d-flex flex-row bd-highlight mb-2">
-                <th className="p-2 bd-highlight" scope="col">
+              <tr className="">
+                <th className="p-2" scope="col">
                   Name:
                 </th>
-                <td className="p-2 bd-highlight">
+                <td className="p-2 text-capitalize">
                   {firstname} {lastname}
                 </td>
               </tr>
-              <tr className="d-flex flex-row bd-highlight mb-2">
-                <th className="p-2 bd-highlight" scope="col">
+              <tr className="">
+                <th className="p-2 " scope="col">
                   Email:
                 </th>
-                <td className="p-2 bd-highlight">{email}</td>
+                <td className="p-2 ">{email}</td>
               </tr>
             </tbody>
           </table>
-          <div className="btn-spacing text-center">
-            <button
-              type="button"
-              className="btn btn-sm btn-primary upload-btn"
-              onClick={this.handleEditClick}
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              className="btn btn-sm btn-secondary upload-btn"
-              onClick={this.handleCancelClick}
-            >
-              Home
-            </button>
+          <div className="row justify-content-center">
+            <div className="col-1-sm m-2">
+              <button
+                type="button"
+                className="btn btn-sm btn-primary"
+                onClick={this.handleEditClick}
+              >
+                Edit
+              </button>
+            </div>
+            <div className="col-1-sm m-2">
+              <button
+                type="button"
+                className="btn btn-sm btn-secondary"
+                onClick={this.handleCancelClick}
+              >
+                Home
+              </button>
+            </div>
           </div>
+          <hr />
         </div>
         <Footer />
       </div>

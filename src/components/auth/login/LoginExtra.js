@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 const LoginExtra = () => {
   return (
     <>
-      <div className="col-6 text-left input-font">
+      <div className="col-6 text-sm-left">
         <p>
           Forgot?
           <NavLink to="/resetrequest"> Password</NavLink>
         </p>
       </div>
-      <div className="col-6 text-right input-font">
+      <div className="col-6 text-sm-right">
         <p>Do not have an account?</p>
         <span className="create-account">
           <NavLink to="/register">Sign-up</NavLink>

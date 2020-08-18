@@ -6,6 +6,7 @@ import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import CancelBtn from "../common/CancelBtn";
 
 class FrontOfficeDelete extends Component {
   constructor(props) {
@@ -82,12 +83,12 @@ class FrontOfficeDelete extends Component {
     const frontOffice = frontoffices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="foffices">{index + 1}</td>
-          <td className="foffices">{item.company_id}</td>
-          <td className="foffices">{item.name}</td>
-          <td className="foffices">{item.code}</td>
-          <td className="foffices">{item.location}</td>
-          <td className="foffices">
+          <td className="foffices text-center">{index + 1}</td>
+          <td className="foffices text-center">{item.company_id}</td>
+          <td className="foffices text-center">{item.name}</td>
+          <td className="foffices text-center">{item.code}</td>
+          <td className="foffices text-center">{item.location}</td>
+          <td className="foffices text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -101,12 +102,6 @@ class FrontOfficeDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
@@ -116,32 +111,29 @@ class FrontOfficeDelete extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Front Office details</h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{frontOffice}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Front Office details</h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Code</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{frontOffice}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-
               <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <CancelBtn handleCancelClick={this.handleCancelClick} />
               </div>
             </div>
           </>

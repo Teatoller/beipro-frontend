@@ -9,6 +9,7 @@ import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import CancelBtn from "../SuperAdmin/common/CancelBtn";
 
 class FrontAdminDelete extends Component {
   constructor(props) {
@@ -208,15 +209,15 @@ class FrontAdminDelete extends Component {
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="depot">{index + 1}</td>
-          <td className="depot">{item.front_office_id}</td>
-          <td className="depot">{item.diesel}</td>
-          <td className="depot">{item.petrol}</td>
-          <td className="depot">{item.kerosene}</td>
-          <td className="depot">{item.ido}</td>
-          <td className="depot">{item.fo}</td>
-          <td className="depot">{item.lpg}</td>
-          <td className="depot">
+          <td className="depot text-center">{index + 1}</td>
+          <td className="depot text-center">{item.front_office_id}</td>
+          <td className="depot text-center">{item.diesel}</td>
+          <td className="depot text-center">{item.petrol}</td>
+          <td className="depot text-center">{item.kerosene}</td>
+          <td className="depot text-center">{item.ido}</td>
+          <td className="depot text-center">{item.fo}</td>
+          <td className="depot text-center">{item.lpg}</td>
+          <td className="depot text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -230,51 +231,43 @@ class FrontAdminDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
         {newLocal ? (
           <>
             <div className="container">
-              <div className="row">
+              <div className="row mx-auto">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col">
-                  <h6>
+                <div className="col-sm">
+                  <h5 className="text-secondary">
                     Current Price: {company}-{location}
-                  </h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Front-office-id</th>
-                        <th scope="col">Diesel</th>
-                        <th scope="col">Petrol</th>
-                        <th scope="col">Kerosene</th>
-                        <th scope="col">Ido</th>
-                        <th scope="col">Fuel Oil</th>
-                        <th scope="col">Lpg</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentPrice}</tbody>
-                  </table>
+                  </h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Front-office-id</th>
+                          <th scope="col">Diesel</th>
+                          <th scope="col">Petrol</th>
+                          <th scope="col">Kerosene</th>
+                          <th scope="col">Ido</th>
+                          <th scope="col">Fuel Oil</th>
+                          <th scope="col">Lpg</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentPrice}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <CancelBtn handleCancelClick={this.handleCancelClick} />
               </div>
             </div>
           </>

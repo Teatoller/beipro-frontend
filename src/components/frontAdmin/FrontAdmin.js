@@ -186,15 +186,15 @@ class FrontAdmin extends Component {
     const currentPrice = latestprices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="depot">{index + 1}</td>
-          <td className="depot">{item.front_office_id}</td>
-          <td className="depot">{item.diesel}</td>
-          <td className="depot">{item.petrol}</td>
-          <td className="depot">{item.kerosene}</td>
-          <td className="depot">{item.ido}</td>
-          <td className="depot">{item.fo}</td>
-          <td className="depot">{item.lpg}</td>
-          <td className="depot">
+          <td className="depot text-center">{index + 1}</td>
+          <td className="depot text-center">{item.front_office_id}</td>
+          <td className="depot text-center">{item.diesel}</td>
+          <td className="depot text-center">{item.petrol}</td>
+          <td className="depot text-center">{item.kerosene}</td>
+          <td className="depot text-center">{item.ido}</td>
+          <td className="depot text-center">{item.fo}</td>
+          <td className="depot text-center">{item.lpg}</td>
+          <td className="depot text-center">
             <button
               className="btn btn-sm btn-primary"
               type="button"
@@ -204,7 +204,7 @@ class FrontAdmin extends Component {
               Edit
             </button>
           </td>
-          <td className="depot">
+          <td className="depot text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -226,36 +226,41 @@ class FrontAdmin extends Component {
             <div className="container">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col">
-                  <h6>
+                <div className="col-sm">
+                  <h5 className="text-secondary">
                     Current Price: {company}-{location}
-                  </h6>
-                  <table className="table table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Front-office-id</th>
-                        <th scope="col">Diesel</th>
-                        <th scope="col">Petrol</th>
-                        <th scope="col">Kerosene</th>
-                        <th scope="col">Ido</th>
-                        <th scope="col">Fuel Oil</th>
-                        <th scope="col">Lpg</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentPrice}</tbody>
-                  </table>
+                  </h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Front-office-id</th>
+                          <th scope="col">Diesel</th>
+                          <th scope="col">Petrol</th>
+                          <th scope="col">Kerosene</th>
+                          <th scope="col">Ido</th>
+                          <th scope="col">Fuel Oil</th>
+                          <th scope="col">Lpg</th>
+                          <th scope="col">Action</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentPrice}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <div className="btn-spacing">
+              <span className="font-italic form-text text-muted">
+                Click button to add a new current price
+              </span>
+              <div className="col-1-sm m-2">
                 <button
                   className="btn btn-sm btn-success"
                   type="submit"
                   onClick={this.handleCreateClick}
                 >
-                  Add a new current price
+                  Add
                 </button>
               </div>
             </div>

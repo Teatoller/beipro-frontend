@@ -76,15 +76,15 @@ class Company extends Component {
     const company = companies.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="company">{index + 1}</td>
-          <td className="company">{item.id}</td>
-          <td className="company">{item.name}</td>
-          <td className="company">{item.logo}</td>
-          <td className="company">{item.description}</td>
-          <td className="company">{item.location}</td>
-          <td className="company">{item.country}</td>
-          <td className="company">{item.established}</td>
-          <td className="company">
+          <td className="company text-center">{index + 1}</td>
+          <td className="company text-center">{item.id}</td>
+          <td className="company text-center">{item.name}</td>
+          <td className="company text-center">{item.logo}</td>
+          <td className="company text-center">{item.description}</td>
+          <td className="company text-center">{item.location}</td>
+          <td className="company text-center">{item.country}</td>
+          <td className="company text-center">{item.established}</td>
+          <td className="company text-center">
             <button
               className="btn btn-sm btn-primary"
               type="button"
@@ -94,7 +94,7 @@ class Company extends Component {
               Edit
             </button>
           </td>
-          <td className="company">
+          <td className="company text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -131,30 +131,33 @@ class Company extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Company details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Logo</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Established</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Company details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Logo</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Country</th>
+                          <th scope="col">Established</th>
+                          <th scope="col">Action</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-              <span>Click button to add a new Company</span>
-
-              <div className="btn-spacing">
+              <span className="font-italic form-text text-muted">
+                Click button to add a new Company
+              </span>
+              <div className="m-1">
                 <button
                   className="btn btn-sm btn-success"
                   type="submit"

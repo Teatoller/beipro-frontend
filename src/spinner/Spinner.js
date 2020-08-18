@@ -1,6 +1,6 @@
 import React from "react";
 import SpinnerIcon from "./SpinnerIcon";
-import "../components/css/style.css";
+import "../components/css/site.css";
 
 const Spinner = () => {
   return (
