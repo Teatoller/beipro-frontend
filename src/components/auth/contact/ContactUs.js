@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import axios from "../../../axios";
 import Nav from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
-import "../../css/depot.css";
+import "../../css/site.css";
 import Error from "../../Error";
 import Spinner from "../../../spinner/Spinner";
+import SiteImage from "../common/SiteImage";
 
 class ContactUs extends Component {
   constructor(props) {
@@ -97,71 +98,71 @@ class ContactUs extends Component {
         <Nav />
         <div className="container">
           <span>{loading ? <Spinner /> : null}</span>
-          <h6>Contact us</h6>
-          <form onSubmit={this.handleSubmit} id="contact-form">
-            <div className="row">
-              <div className="col-sm">
-                <div className="form-group form-height">
-                  <label className="form-label" htmlFor="name">
-                    Name:
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control input-font"
-                    id="name"
-                    name="name"
-                    placeholder={name}
-                    value={name}
-                    onChange={this.onChange}
-                  />
+          <h3 className="display-4 text-muted">Beipro Contact Form</h3>
+          <div className="row">
+            <div className="col-sm-9">
+              <form onSubmit={this.handleSubmit}>
+                <div className="row form-group">
+                  <div className="col">
+                    <label className="form-label" htmlFor="name">
+                      Name:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="name"
+                      name="name"
+                      placeholder={name}
+                      value={name}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <div className="col">
+                    <label className="form-label" htmlFor="email">
+                      Email address:
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      aria-describedby="email"
+                      name="email"
+                      onChange={this.onChange}
+                      placeholder={email}
+                      value={email}
+                    />
+                  </div>
                 </div>
-                <div className="form-group form-height">
-                  <label className="form-label" htmlFor="email">
-                    Email address:
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control input-font"
-                    id="email"
-                    aria-describedby="email"
-                    name="email"
-                    onChange={this.onChange}
-                    placeholder={email}
-                    value={email}
-                  />
-                </div>
-                <div className="form-group form-height">
+                <div className="form-group">
                   <label className="form-label" htmlFor="phone">
                     Phone number:
                   </label>
                   <input
                     type="text"
-                    className="form-control input-font"
+                    className="form-control"
                     id="phone"
                     name="phone_number"
                     placeholder="Enter phone number"
                     onChange={this.onChange}
                   />
                 </div>
-              </div>
-              <div className="col-sm">
-                <div className="form-group form-height">
+                <div className="form-group">
                   <label className="form-label" htmlFor="subject">
                     Subject:
                   </label>
                   <input
                     type="text"
-                    className="form-control input-font"
+                    className="form-control"
                     id="subject"
                     name="subject"
                     placeholder="Enter subject"
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="form-group form-height">
+                <div className="form-group">
                   <label htmlFor="message">Message:</label>
                   <textarea
-                    className="form-control wpcf7 input-font"
+                    className="form-control"
                     rows="5"
                     id="message"
                     name="message"
@@ -172,12 +173,15 @@ class ContactUs extends Component {
                     <Error error={errors.message ? errors.message : null} />
                   </span>
                 </div>
-              </div>
+                <div className="">
+                  <input type="submit" className="btn btn-primary" value="Send" />
+                </div>
+              </form>
             </div>
-            <div className="contact-btn">
-              <input type="submit" className="btn btn-primary" value="Submit" />
+            <div className="col-sm-3">
+              <SiteImage />
             </div>
-          </form>
+          </div>
         </div>
         <Footer />
       </div>

@@ -74,33 +74,31 @@ class Login extends PureComponent {
       <div>
         <LoginNav />
         <div className="container" aria-label="Login form">
-          <div>
-            <div className="row">
-              <div className="col-7 p-2 loginalign">
-                <span>{loading ? <Spinner /> : null}</span>
-                <header className="text-center">
-                  <p className="text-secondary">Please Sign in</p>
-                </header>
-                <main>
-                  <form onSubmit={this.onSubmit}>
-                    <LoginTextInput
-                      email={email}
-                      password={password}
-                      onChange={this.onChange}
-                      errors={errors}
-                      loading={loading}
-                    />
-                  </form>
-                </main>
-                <section className="row">
-                  <LoginExtra />
-                </section>
-              </div>
-              <article className="col-5 loginimg">
-                <SiteImage />
-                <SiteTheme />
-              </article>
+          <div className="row">
+            <div className="col-6 p-2">
+              <span>{loading ? <Spinner /> : null}</span>
+              <header className="text-center">
+                <p className="text-secondary">Please Sign in</p>
+              </header>
+              <main>
+                <form onSubmit={this.onSubmit}>
+                  <LoginTextInput
+                    email={email}
+                    password={password}
+                    onChange={this.onChange}
+                    errors={errors}
+                    loading={loading}
+                  />
+                </form>
+              </main>
+              <section className="row">
+                <LoginExtra />
+              </section>
             </div>
+            <article className="col-6">
+              <SiteImage />
+              <SiteTheme />
+            </article>
           </div>
         </div>
         <Footer />

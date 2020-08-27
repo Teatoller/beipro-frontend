@@ -1,0 +1,390 @@
+/* body {
+  background-color: #fff;
+  padding: 4px;
+} */
+
+.profile-img {
+  border: #aaa solid 0.5px;
+  height: 180px;
+  width: 180px;
+}
+
+.nav-img {
+  height: 25px;
+  width: 25px;
+}
+
+.company-logo {
+  height: 25px;
+  width: 25px;
+}
+
+.jumbotron {
+  background-image: url(/img/beiprostorage.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.spinner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  outline: none;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  outline: none;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #f8f9fa;
+  border-top: solid 2px lightgray;
+  border-bottom: solid 2px lightgray;
+  color: gray;
+  outline: none;
+  width: 100%;
+}
+
+/* Table */
+
+th.depot,
+td.depot {
+  font-size: small;
+}
+
+/* Table Front Admin*/
+
+th.fadmin,
+td.fadmin {
+  font-size: small;
+}
+
+/* Table Admin*/
+
+th.admin,
+td.admin {
+  font-size: small;
+}
+
+/* Table Company*/
+
+th.company,
+td.company {
+  font-size: small;
+}
+
+/* Table Front Offices*/
+
+th.foffices,
+td.foffices {
+  font-size: small;
+}
+
+/* Table Audit*/
+
+th.audit,
+td.audit {
+  font-size: small;
+}
+
+/* Table Audit View*/
+
+th.auditview,
+td.auditview {
+  font-size: small;
+}
+
+/* Table Feedback*/
+
+th.feed,
+td.feed {
+  font-size: small;
+}
+
+@media screen and (max-width: 575.98px) {
+  /* Force table to not be like tables anymore */
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /* Label the data */
+  td.depot:nth-of-type(1):before {
+    content: "#";
+  }
+  td.depot:nth-of-type(2):before {
+    content: "Logo";
+  }
+  td.depot:nth-of-type(3):before {
+    content: "Company";
+  }
+  td.depot:nth-of-type(4):before {
+    content: "Diesel";
+  }
+  td.depot:nth-of-type(5):before {
+    content: "Petrol";
+  }
+  td.depot:nth-of-type(6):before {
+    content: "Kerosene";
+  }
+  td.depot:nth-of-type(7):before {
+    content: "Ido";
+  }
+  td.depot:nth-of-type(8):before {
+    content: "Fuel Oil";
+  }
+  td.depot:nth-of-type(9):before {
+    content: "Lpg";
+  }
+  td.depot:nth-of-type(10):before {
+    content: "Action";
+  }
+  td.depot:nth-of-type(11):before {
+    content: "Remove";
+  }
+
+  /* front admin */
+  td.fadmin:nth-of-type(1):before {
+    content: "#";
+  }
+  td.fadmin:nth-of-type(2):before {
+    content: "Office-id";
+  }
+  td.fadmin:nth-of-type(3):before {
+    content: "Firstname";
+  }
+  td.fadmin:nth-of-type(4):before {
+    content: "LastName";
+  }
+  td.fadmin:nth-of-type(5):before {
+    content: "Staff-id";
+  }
+  td.fadmin:nth-of-type(6):before {
+    content: "Email";
+  }
+  td.fadmin:nth-of-type(7):before {
+    content: "Role";
+  }
+  td.fadmin:nth-of-type(8):before {
+    content: "Location";
+  }
+  td.fadmin:nth-of-type(9):before {
+    content: "Action";
+  }
+  td.fadmin:nth-of-type(10):before {
+    content: "Remove";
+  }
+
+  /* admin */
+  td.admin:nth-of-type(1):before {
+    content: "#";
+  }
+  td.admin:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.admin:nth-of-type(3):before {
+    content: "Firstname";
+  }
+  td.admin:nth-of-type(4):before {
+    content: "LastName";
+  }
+  td.admin:nth-of-type(5):before {
+    content: "Staff-id";
+  }
+  td.admin:nth-of-type(6):before {
+    content: "Email";
+  }
+  td.admin:nth-of-type(7):before {
+    content: "Role";
+  }
+  td.admin:nth-of-type(8):before {
+    content: "Action";
+  }
+  td.admin:nth-of-type(9):before {
+    content: "Remove";
+  }
+
+  /* company */
+  td.company:nth-of-type(1):before {
+    content: "#";
+  }
+  td.company:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.company:nth-of-type(3):before {
+    content: "Name";
+  }
+  td.company:nth-of-type(4):before {
+    content: "Logo";
+  }
+  td.company:nth-of-type(5):before {
+    content: "Description";
+  }
+  td.company:nth-of-type(6):before {
+    content: "Location";
+  }
+  td.company:nth-of-type(7):before {
+    content: "Country";
+  }
+  td.company:nth-of-type(8):before {
+    content: "Established";
+  }
+  td.company:nth-of-type(9):before {
+    content: "Action";
+  }
+  td.company:nth-of-type(10):before {
+    content: "Remove";
+  }
+
+  /* Front Offices */
+  td.foffices:nth-of-type(1):before {
+    content: "#";
+  }
+  td.foffices:nth-of-type(2):before {
+    content: "Company-id";
+  }
+  td.foffices:nth-of-type(3):before {
+    content: "Name";
+  }
+  td.foffices:nth-of-type(4):before {
+    content: "Code";
+  }
+  td.foffices:nth-of-type(5):before {
+    content: "Location";
+  }
+  td.foffices:nth-of-type(6):before {
+    content: "Action";
+  }
+  td.foffices:nth-of-type(7):before {
+    content: "Remove";
+  }
+
+  /* Audit */
+  td.audit:nth-of-type(1):before {
+    content: "#";
+  }
+  td.audit:nth-of-type(2):before {
+    content: "Event";
+  }
+  td.audit:nth-of-type(3):before {
+    content: "Auditable Type";
+  }
+  td.audit:nth-of-type(4):before {
+    content: "Auditable Id";
+  }
+  td.audit:nth-of-type(5):before {
+    content: "Old Values";
+  }
+  td.audit:nth-of-type(6):before {
+    content: "New Values";
+  }
+  td.audit:nth-of-type(7):before {
+    content: "Tags";
+  }
+  td.audit:nth-of-type(8):before {
+    content: "Action";
+  }
+
+  /* Audit View */
+  td.audit:nth-of-type(1):before {
+    content: "#";
+  }
+  td.audit:nth-of-type(2):before {
+    content: "User Type";
+  }
+  td.audit:nth-of-type(3):before {
+    content: "User Id";
+  }
+  td.audit:nth-of-type(4):before {
+    content: "Event";
+  }
+  td.audit:nth-of-type(5):before {
+    content: "Auditable Type";
+  }
+  td.audit:nth-of-type(6):before {
+    content: "Auditable Id";
+  }
+  td.audit:nth-of-type(7):before {
+    content: "Old Values";
+  }
+  td.audit:nth-of-type(8):before {
+    content: "New Values";
+  }
+  td.audit:nth-of-type(9):before {
+    content: "Tags";
+  }
+  td.audit:nth-of-type(10):before {
+    content: "Action";
+  }
+
+  /* Feedback Table */
+  td.feed:nth-of-type(1):before {
+    content: "#";
+  }
+  td.feed:nth-of-type(2):before {
+    content: "Name: ";
+  }
+  td.feed:nth-of-type(3):before {
+    content: "Email: ";
+  }
+  td.feed:nth-of-type(4):before {
+    content: "Phone No: ";
+  }
+  td.feed:nth-of-type(5):before {
+    content: "Subject: ";
+  }
+  td.feed:nth-of-type(6):before {
+    content: "Message:";
+  }
+  td.feed:nth-of-type(7):before {
+    content: "Date Created: ";
+  }
+
+  td.feed:nth-of-type(8):before {
+    content: "Action";
+  }
+}

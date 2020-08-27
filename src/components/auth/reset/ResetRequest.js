@@ -68,17 +68,10 @@ class ResetRequest extends PureComponent {
         <CommonAuthNav />
         <div className="container" aria-label="Password reset request form">
           <div className="row">
-            <div className="col-7">
+            <div className="col-6 m-auto">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
-                <p
-                  className="text-secondary"
-                  style={{
-                    fontSize: ".95em",
-                    color: "gray",
-                    padding: "8px"
-                  }}
-                >
+                <p className="text-secondary">
                   Please enter your Email address below and we&apos;ll send you a link to reset your
                   password
                 </p>
@@ -97,7 +90,7 @@ class ResetRequest extends PureComponent {
                 <ResetRequestExtra />
               </section>
             </div>
-            <article className="col-5">
+            <article className="col-6">
               <SiteImage />
               <SiteTheme />
             </article>

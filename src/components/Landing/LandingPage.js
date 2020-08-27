@@ -6,16 +6,20 @@ import LandingNav from "./LandingNav";
 
 const LandingPage = () => {
   return (
-    <div>
+    <>
       <LandingNav />
-      <span className="row col-5 landingtheme">
-        <SiteTheme />
-      </span>
-      <span className="row col-5 landingimg">
-        <SiteImage />
-      </span>
-      <Footer />
-    </div>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-6 m-auto">
+            <SiteTheme />
+          </div>
+          <div className="col-6">
+            <SiteImage />
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 export default LandingPage;

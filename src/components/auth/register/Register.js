@@ -121,7 +121,7 @@ class Register extends PureComponent {
         <CommonAuthNav />
         <div className="container" aria-label="Sign-up form">
           <div className="row">
-            <div className="col-7">
+            <div className="col-8">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
                 <p className="text-secondary">Please Sign up</p>
@@ -145,11 +145,11 @@ class Register extends PureComponent {
                   />
                 </form>
               </main>
-              <section className="row">
+              <section>
                 <RegisterExtra />
               </section>
             </div>
-            <article className="col-5 loginimg">
+            <article className="col-4">
               <SiteImage />
               <SiteTheme />
             </article>

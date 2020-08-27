@@ -15,7 +15,7 @@ class Audit extends Component {
       loading: true,
       audits: [],
       activePage: "1",
-      itemCountPerPage: "12"
+      itemCountPerPage: "10"
     };
   }
 
@@ -24,7 +24,12 @@ class Audit extends Component {
   }
 
   getAuditsData = () => {
-    axios.get(`/audits`, {}).then(response => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    axios.get(`/audits`, config).then(response => {
       const auditData = response.data;
       this.setState({
         audits: auditData,
@@ -51,14 +56,14 @@ class Audit extends Component {
     const beiproAudit = audits.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="audit">{index + 1}</td>
-          <td className="audit">{item.event}</td>
-          <td className="audit">{item.auditable_type}</td>
-          <td className="audit">{item.auditable_id}</td>
-          <td className="audit">{item.old_values}</td>
-          <td className="audit">{item.new_values}</td>
-          <td className="audit">{item.tags}</td>
-          <td className="audit">
+          <td className="audit text-center">{index + 1}</td>
+          <td className="audit text-center">{item.event}</td>
+          <td className="audit text-center">{item.auditable_type}</td>
+          <td className="audit text-center">{item.auditable_id}</td>
+          <td className="audit text-center">{item.old_values}</td>
+          <td className="audit text-center">{item.new_values}</td>
+          <td className="audit text-center">{item.tags}</td>
+          <td className="audit text-center">
             <button
               className="btn btn-sm btn-outline-info"
               type="button"
@@ -95,22 +100,24 @@ class Audit extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Admin details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Event</th>
-                        <th scope="col">Auditable_type</th>
-                        <th scope="col">Auditable_id</th>
-                        <th scope="col">Old_values</th>
-                        <th scope="col">New_values</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Admin details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Event</th>
+                          <th scope="col">Auditable_type</th>
+                          <th scope="col">Auditable_id</th>
+                          <th scope="col">Old_values</th>
+                          <th scope="col">New_values</th>
+                          <th scope="col">Tags</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <Pagination

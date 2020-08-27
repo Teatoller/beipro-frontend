@@ -81,14 +81,14 @@ class FeedbkDelete extends Component {
     const feedbk = feeds.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="feed">{index + 1}</td>
-          <td className="feed">{item.name}</td>
-          <td className="feed">{item.email}</td>
-          <td className="feed">{item.phone_number}</td>
-          <td className="feed">{item.subject}</td>
-          <td className="feed">{item.message}</td>
-          <td className="feed">{item.created_at}</td>
-          <td className="feed">
+          <td className="feed text-center">{index + 1}</td>
+          <td className="feed text-center">{item.name}</td>
+          <td className="feed text-center">{item.email}</td>
+          <td className="feed text-center">{item.phone_number}</td>
+          <td className="feed text-center">{item.subject}</td>
+          <td className="feed text-center">{item.message}</td>
+          <td className="feed text-center">{item.created_at}</td>
+          <td className="feed text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -102,12 +102,6 @@ class FeedbkDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
@@ -117,23 +111,27 @@ class FeedbkDelete extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Feedback details</h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone No</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Message</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{feedbk}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Feedback details</h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Phone No</th>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Message</th>
+                          <th scope="col">Date Created</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{feedbk}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 

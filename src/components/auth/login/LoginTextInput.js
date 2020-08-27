@@ -27,7 +27,7 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
         />
       </div>
       <div className="form-group mb-3">
-        <label className="form-label" htmlFor="password">
+        <label className="form-label" htmlFor={password}>
           Password
         </label>
         <input

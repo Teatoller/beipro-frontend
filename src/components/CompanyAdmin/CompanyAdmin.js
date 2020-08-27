@@ -59,7 +59,6 @@ class CompanyAdmin extends Component {
       }
     };
     axios.get(`/companyadmins`, config).then(response => {
-
       const adminsArray = response.data;
 
       this.setState({
@@ -139,15 +138,15 @@ class CompanyAdmin extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="fadmin">{index + 1}</td>
-          <td className="fadmin">{item.front_office_id}</td>
-          <td className="fadmin">{item.firstname}</td>
-          <td className="fadmin">{item.lastname}</td>
-          <td className="fadmin">{item.staff_id}</td>
-          <td className="fadmin">{item.email}</td>
-          <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location}</td>
-          <td className="fadmin">
+          <td className="fadmin text-center">{index + 1}</td>
+          <td className="fadmin text-center">{item.front_office_id}</td>
+          <td className="fadmin text-center">{item.firstname}</td>
+          <td className="fadmin text-center">{item.lastname}</td>
+          <td className="fadmin text-center">{item.staff_id}</td>
+          <td className="fadmin text-center">{item.email}</td>
+          <td className="fadmin text-center">{item.role}</td>
+          <td className="fadmin text-center">{item.location}</td>
+          <td className="fadmin text-center">
             <button
               className="btn btn-sm btn-primary"
               type="button"
@@ -157,7 +156,7 @@ class CompanyAdmin extends Component {
               Edit
             </button>
           </td>
-          <td className="fadmin">
+          <td className="fadmin text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -194,30 +193,34 @@ class CompanyAdmin extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>{company}:Staff details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Office-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                  <h5 className="text-secondary">{company}:Staff details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Office-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Action</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-              <span>Click button to add a new Front Office Admin</span>
+              <span className="font-italic text-secondary">
+                Click button to add a new Front Office Admin
+              </span>
 
-              <div className="btn-spacing">
+              <div className="m-1">
                 <button
                   className="btn btn-sm btn-success"
                   type="submit"
@@ -226,11 +229,13 @@ class CompanyAdmin extends Component {
                   Add
                 </button>
               </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={companyStaff.length}
-                paginate={paginate}
-              />
+              <div className="fixed-bottom mb-3">
+                <Pagination
+                  itemCountPerPage={itemCountPerPage}
+                  totalItems={companyStaff.length}
+                  paginate={paginate}
+                />
+              </div>
             </div>
           </>
         ) : (

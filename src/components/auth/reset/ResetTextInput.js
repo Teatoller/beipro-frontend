@@ -19,7 +19,7 @@ const ResetTextInput = ({
 
   return (
     <>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="email">
           Email address
         </label>
@@ -28,7 +28,7 @@ const ResetTextInput = ({
           name="email"
           value={email}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="email"
           placeholder="Enter Email"
           aria-describedby="emailInput"
@@ -36,7 +36,7 @@ const ResetTextInput = ({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="password">
           Password
         </label>
@@ -46,14 +46,14 @@ const ResetTextInput = ({
           placeholder="Enter Password"
           value={password}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="password"
           aria-describedby="passwordInput"
           aria-required="true"
           aria-invalid="false"
         />
       </div>
-      <div className="form-group mb-3 form-height">
+      <div className="form-group mb-0">
         <label className="form-label" htmlFor="passwordConfirmation">
           confirm password
         </label>
@@ -63,13 +63,13 @@ const ResetTextInput = ({
           placeholder="Confirm Password"
           value={password_confirmation}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="passwordConfirmation"
           aria-describedby="passwordConfirmationInput"
           aria-required="true"
           aria-invalid="false"
         />
-        <div className="form-group form-height">
+        <div className="form-group m-0">
           <label className="form-label" htmlFor="token">
             Token
           </label>
@@ -78,7 +78,7 @@ const ResetTextInput = ({
             name="token"
             value={token}
             onChange={onChange}
-            className="form-control input-font"
+            className="form-control"
             id="token"
             placeholder="Enter Token"
             aria-describedby="tokenInput"
@@ -88,13 +88,13 @@ const ResetTextInput = ({
           <span style={errors.password ? dangerStyle : null}>
             <Error error={errors.password ? errors.password : null} />
           </span>
-          <span className="input-font">
+          <span>
             example: <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
           </span>
         </div>
       </div>
-      <div className="text-right mb-3">
-        <button type="submit" className="btn btn-primary btn-sm">
+      <div className="text-right mb-0">
+        <button type="submit" className="btn btn-primary btn-sm mt-1">
           {loading ? "Processing..." : "Reset Password"}
         </button>
       </div>

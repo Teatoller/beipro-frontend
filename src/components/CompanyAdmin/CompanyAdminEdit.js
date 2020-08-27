@@ -11,6 +11,7 @@ import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import EditBtn from "../SuperAdmin/common/EditBtn";
 
 class CompanyAdminEdit extends PureComponent {
   constructor(props) {
@@ -196,14 +197,14 @@ class CompanyAdminEdit extends PureComponent {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="fadmin">{index + 1}</td>
-          <td className="fadmin">{item.front_office_id}</td>
-          <td className="fadmin">{item.firstname}</td>
-          <td className="fadmin">{item.lastname}</td>
-          <td className="fadmin">{item.staff_id}</td>
-          <td className="fadmin">{item.email}</td>
-          <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location}</td>
+          <td className="fadmin text-center">{index + 1}</td>
+          <td className="fadmin text-center">{item.front_office_id}</td>
+          <td className="fadmin text-center">{item.firstname}</td>
+          <td className="fadmin text-center">{item.lastname}</td>
+          <td className="fadmin text-center">{item.staff_id}</td>
+          <td className="fadmin text-center">{item.email}</td>
+          <td className="fadmin text-center">{item.role}</td>
+          <td className="fadmin text-center">{item.location}</td>
         </tr>
       );
     });
@@ -235,12 +236,12 @@ class CompanyAdminEdit extends PureComponent {
             <div className="container">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h6>{company}:Edit Entry Pad</h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">{company}:Edit Entry Pad</h5>
                   <main>
                     <form noValidate onSubmit={this.onSubmit}>
-                      <fieldset className="front-fieldset">
-                        <fieldset disabled className="admin-fieldset hide">
+                      <fieldset>
+                        <fieldset disabled className="hide invisible">
                           <div className="form-group row">
                             <label
                               htmlFor="adminId"
@@ -253,7 +254,7 @@ class CompanyAdminEdit extends PureComponent {
                                 type="decimal"
                                 name="admin_id"
                                 id="adminId"
-                                className="form-control"
+                                className="form-control form-control-sm"
                                 placeholder="Disabled input"
                                 // eslint-disable-next-line camelcase
                                 value={admin_id}
@@ -270,7 +271,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Office Id:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="decimal"
                               name="front_office_id"
@@ -289,7 +290,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Firstname:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="firstname"
@@ -307,7 +308,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Lastname:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="lastname"
@@ -325,7 +326,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Email:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="email"
                               name="email"
@@ -343,7 +344,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Role:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="role"
@@ -362,7 +363,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Staff Id:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="staff_id"
@@ -380,7 +381,7 @@ class CompanyAdminEdit extends PureComponent {
                           >
                             Location:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="location"
@@ -395,46 +396,44 @@ class CompanyAdminEdit extends PureComponent {
                             </span>
                           </div>
                         </div>
-                        <div>
-                          <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                        <span className="font-italic text-secondary">
+                          Click button to change admin details
+                        </span>
+                        <div className="row">
+                          <EditBtn handleCancelClick={this.handleCancelClick} />
                         </div>
                       </fieldset>
                     </form>
                   </main>
-                  <div className="btn-spacing">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-primary"
-                      onClick={this.handleCancelClick}
-                    >
-                      Cancel
-                    </button>
+                </div>
+                <div className="col-sm-6 mx-auto">
+                  <h5 className="text-secondary">Staff details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Office-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Location</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
                   </div>
                 </div>
-                <div className="col-sm">
-                  <h6>Staff details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Office-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Location</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
-                </div>
               </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={companyStaff.length}
-                paginate={paginate}
-              />
+              <div className="fixed-bottom mb-3">
+                <Pagination
+                  itemCountPerPage={itemCountPerPage}
+                  totalItems={companyStaff.length}
+                  paginate={paginate}
+                />
+              </div>
             </div>
           </>
         ) : (

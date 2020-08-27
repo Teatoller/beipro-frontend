@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 const ResetRequestExtra = () => {
   return (
     <>
-      <div className="col text-right input-font">
+      <div className="col text-right">
         <p>Have an account?</p>
-        <span className="create-account input-font">
+        <span>
           <NavLink to="/">Sign-in</NavLink>
         </span>
       </div>

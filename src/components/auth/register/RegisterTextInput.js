@@ -22,7 +22,7 @@ function RegisterTextInput({
   };
   return (
     <>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="firstname">
           First Name
         </label>
@@ -31,7 +31,7 @@ function RegisterTextInput({
           name="firstname"
           value={firstname}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="firstname"
           placeholder="Enter Firstname"
           aria-describedby="firstnameInput"
@@ -39,7 +39,7 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="lastname">
           Last Name
         </label>
@@ -48,7 +48,7 @@ function RegisterTextInput({
           name="lastname"
           value={lastname}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="lastname"
           placeholder="Enter Lastname"
           aria-describedby="lastnameInput"
@@ -56,7 +56,7 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="email">
           Email address
         </label>
@@ -65,7 +65,7 @@ function RegisterTextInput({
           name="email"
           value={email}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="email"
           aria-describedby="emailInput"
           placeholder="Enter Email"
@@ -73,7 +73,7 @@ function RegisterTextInput({
           aria-invalid="false"
         />
       </div>
-      <div className="form-group form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="password">
           Password
         </label>
@@ -83,14 +83,14 @@ function RegisterTextInput({
           placeholder="Enter Password"
           value={password}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="password"
           aria-describedby="passwordInput"
           aria-required="true"
           aria-invalid="false"
         />
       </div>
-      <div className="form-group mb-3 form-height">
+      <div className="form-group m-0">
         <label className="form-label" htmlFor="passwordConfirm">
           Confirm password
         </label>
@@ -100,7 +100,7 @@ function RegisterTextInput({
           placeholder="Confirm Password"
           value={password_confirmation}
           onChange={onChange}
-          className="form-control input-font"
+          className="form-control"
           id="passwordConfirm"
           aria-describedby="confirmPasswordInput"
           aria-required="true"
@@ -110,10 +110,10 @@ function RegisterTextInput({
           <Error error={errors.password ? errors.password : null} />
         </span>
       </div>
-      <span className="input-font">Please indicate:</span>
+      <span>Please indicate:</span>
 
-      <div className="text-right mb-3">
-        <span style={{ color: "red" }}>&#42;</span>
+      <div className="text-right">
+        <span className="text-danger">&#42;</span>
         <input
           type="checkbox"
           name="checkbox"
@@ -121,10 +121,12 @@ function RegisterTextInput({
           id="agree"
           onChange={onChange}
         />{" "}
-        <span className="size-petit">
-          I have read and agree to the
-          <Link to="terms"> Terms & Conditions</Link> and{" "}
-          <Link to="privacy-policy">Privacy Policy.</Link>{" "}
+        <span className="">
+          <small>
+            I have read and agree to the
+            <Link to="terms"> Terms & Conditions</Link> and{" "}
+            <Link to="privacy-policy">Privacy Policy.</Link>{" "}
+          </small>
         </span>
         {checkbox === false ? (
           <button type="submit" className="btn btn-secondary btn-sm" onClick={handleAlert}>

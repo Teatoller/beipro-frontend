@@ -1,17 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import BeiproHeader from "./BeiproHeader";
 
 const LoginNav = () => {
+  const logoUrl = `./img/beipro.svg`;
   return (
-    <nav className="header">
-      {/* <NavLink to="/" className="logo">
-        Beipro
-      </NavLink> */}
-      <BeiproHeader />
-      <div className="header-right signdisp">
-        <NavLink to="/register">Sign-up</NavLink>
-      </div>
+    <nav className="navbar navbar-light bg-light">
+      <NavLink className="navbar-brand" to="/">
+        <img
+          src={logoUrl}
+          width="30"
+          height="30"
+          className="d-inline-block align-top p-1"
+          alt=""
+          loading="lazy"
+        />
+        <span className="font-weight-bold text-secondary">Beipro</span>
+      </NavLink>
+      <ul className="nav navbar justify-content-end">
+        <li className="nav-item">
+          <NavLink className="nav-link active p-1" to="/register">
+            Sign-up
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 };
