@@ -4,13 +4,18 @@ import Footer from "./Footer";
 
 const Welcome = () => {
   return (
-    <div>
+    <>
+    <div className="container">
       <Nav />
-      <section className="bei-welcome">
-        <h2 className="fader" >Welcome to Beipro!</h2>
+      <section className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4 text-muted">Beipro</h1>
+          <p className="lead text-secondary">Reseller bureau</p>
+        </div>
       </section>
       <Footer />
     </div>
+    </>
   );
 };
 export default Welcome;

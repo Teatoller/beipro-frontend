@@ -2,16 +2,33 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const LandingNav = () => {
+  const logoUrl = `./img/beipro.svg`;
   return (
-    <nav className="header">
-      <NavLink to="/" className="logo">
-        Beipro
+    <nav className="navbar navbar-light bg-light">
+      <NavLink className="navbar-brand" to="/">
+        <img
+          src={logoUrl}
+          width="30"
+          height="30"
+          className="d-inline-block align-top p-1"
+          alt=""
+          loading="lazy"
+        />
+        <span className="font-weight-bold text-secondary">Beipro</span>
       </NavLink>
-      <span className="header-right signdisp">
-        <NavLink to="/login">Sign-in</NavLink>
-      </span>
-      <span className="header-right signdisp">
-        <NavLink to="/register">Sign-up</NavLink>
+      <span>
+        <ul className="nav navbar justify-content-end">
+          <li className="nav-item">
+            <NavLink className="nav-link active p-1" to="/login">
+              Sign-in
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link p1" to="/register">
+              Sign-up
+            </NavLink>
+          </li>
+        </ul>
       </span>
     </nav>
   );

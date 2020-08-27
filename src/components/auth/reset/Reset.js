@@ -91,7 +91,7 @@ class Reset extends PureComponent {
         <CommonAuthNav />
         <div className="container" aria-label="Password Reset form">
           <div className="row">
-            <div className="col-7">
+            <div className="col-6 m-auto">
               <span>{loading ? <Spinner /> : null}</span>
               <header className="text-center">
                 <p className="text-secondary">Please enter details to reset password</p>
@@ -109,11 +109,11 @@ class Reset extends PureComponent {
                   />
                 </form>
               </main>
-              <section className="row">
+              <section className="row mt-1">
                 <ResetExtra />
               </section>
             </div>
-            <article className="col-5">
+            <article className="col-6">
               <SiteImage />
               <SiteTheme />
             </article>

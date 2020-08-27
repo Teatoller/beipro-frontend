@@ -76,14 +76,14 @@ class Admin extends Component {
     const companyAdminStaff = admins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="admin">{index + 1}</td>
-          <td className="admin">{item.company_id}</td>
-          <td className="admin">{item.firstname}</td>
-          <td className="admin">{item.lastname}</td>
-          <td className="admin">{item.staff_id}</td>
-          <td className="admin">{item.email}</td>
-          <td className="admin">{item.role}</td>
-          <td className="admin">
+          <td className="admin text-center">{index + 1}</td>
+          <td className="admin text-center">{item.company_id}</td>
+          <td className="admin text-center">{item.firstname}</td>
+          <td className="admin text-center">{item.lastname}</td>
+          <td className="admin text-center">{item.staff_id}</td>
+          <td className="admin text-center">{item.email}</td>
+          <td className="admin text-center">{item.role}</td>
+          <td className="admin text-center">
             <button
               className="btn btn-sm btn-primary"
               type="button"
@@ -93,7 +93,7 @@ class Admin extends Component {
               Edit
             </button>
           </td>
-          <td className="admin">
+          <td className="admin text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -131,29 +131,31 @@ class Admin extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Admin details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Admin details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Action</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-
-              <span>Click button to add a new Admin</span>
-
-              <div className="btn-spacing">
+              <span className="font-italic form-text text-muted">
+                Click button to add a new Admin
+              </span>
+              <div className="m-1">
                 <button
                   className="btn btn-sm btn-success"
                   type="submit"

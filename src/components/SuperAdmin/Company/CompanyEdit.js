@@ -10,6 +10,7 @@ import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import EditBtn from "../common/EditBtn";
 
 class CompanyEdit extends Component {
   constructor(props) {
@@ -212,14 +213,14 @@ class CompanyEdit extends Component {
     const company = companies.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="company">{index + 1}</td>
-          <td className="company">{item.id}</td>
-          <td className="company">{item.name}</td>
-          <td className="company">{item.logo}</td>
-          <td className="company">{item.description}</td>
-          <td className="company">{item.location}</td>
-          <td className="company">{item.country}</td>
-          <td className="company">{item.established}</td>
+          <td className="company text-center">{index + 1}</td>
+          <td className="company text-center">{item.id}</td>
+          <td className="company text-center">{item.name}</td>
+          <td className="company text-center">{item.logo}</td>
+          <td className="company text-center">{item.description}</td>
+          <td className="company text-center">{item.location}</td>
+          <td className="company text-center">{item.country}</td>
+          <td className="company text-center">{item.established}</td>
         </tr>
       );
     });
@@ -251,16 +252,16 @@ class CompanyEdit extends Component {
             <div className="container" aria-label="Create company front admin form">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h6>Entry Pad</h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">Entry Pad</h5>
                   <form noValidate onSubmit={this.onSubmit}>
-                    <fieldset className="front-fieldset">
-                      <h6>Company Details</h6>
+                    <fieldset>
+                      <h5 className="text-secondary">Company Details</h5>
                       <div className="form-group row">
                         <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
                           Name:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="name"
@@ -277,7 +278,7 @@ class CompanyEdit extends Component {
                         <label htmlFor="logo" className="col-sm-2 col-form-label col-form-label-sm">
                           Logo:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="icon"
                             name="logo"
@@ -297,7 +298,7 @@ class CompanyEdit extends Component {
                         >
                           Description:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="description"
@@ -317,7 +318,7 @@ class CompanyEdit extends Component {
                         >
                           Location:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="location"
@@ -338,7 +339,7 @@ class CompanyEdit extends Component {
                         >
                           Country:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="country"
@@ -357,7 +358,7 @@ class CompanyEdit extends Component {
                         >
                           Established:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="established"
@@ -374,39 +375,35 @@ class CompanyEdit extends Component {
                           </span>
                         </div>
                       </div>
-                      <div>
-                        <input className="btn btn-sm btn-success" type="submit" value="Change" />
+                      <span className="font-italic text-secondary">
+                        Click button to change company details
+                      </span>
+                      <div className="row">
+                        <EditBtn handleCancelClick={this.handleCancelClick} />
                       </div>
                     </fieldset>
                   </form>
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-primary"
-                      onClick={this.handleCancelClick}
-                    >
-                      Cancel
-                    </button>
-                  </div>
                 </div>
 
-                <div className="col-sm">
-                  <h6>Companies</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Logo</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Established</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                <div className="col-sm-6 mx-auto">
+                  <h5 className="text-secondary">Companies</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Logo</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Country</th>
+                          <th scope="col">Established</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <Pagination

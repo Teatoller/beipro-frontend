@@ -12,6 +12,7 @@ import CoLocation from "./CoLocation";
 import CoAdminRole from "./CoAdminRole";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import CreateBtn from "../SuperAdmin/common/CreateBtn";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
@@ -233,14 +234,14 @@ class CompanyAdminCreate extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="fadmin">{index + 1}</td>
-          <td className="fadmin">{item.front_office_id}</td>
-          <td className="fadmin">{item.firstname}</td>
-          <td className="fadmin">{item.lastname}</td>
-          <td className="fadmin">{item.staff_id}</td>
-          <td className="fadmin">{item.email}</td>
-          <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location}</td>
+          <td className="fadmin text-center">{index + 1}</td>
+          <td className="fadmin text-center">{item.front_office_id}</td>
+          <td className="fadmin text-center">{item.firstname}</td>
+          <td className="fadmin text-center">{item.lastname}</td>
+          <td className="fadmin text-center">{item.staff_id}</td>
+          <td className="fadmin text-center">{item.email}</td>
+          <td className="fadmin text-center">{item.role}</td>
+          <td className="fadmin text-center">{item.location}</td>
         </tr>
       );
     });
@@ -272,12 +273,12 @@ class CompanyAdminCreate extends Component {
             <div className="container" aria-label="Create company front admin form">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h6>{company}:Entry Pad</h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">{company}:Entry Pad</h5>
                   <main>
                     <form noValidate onSubmit={this.onSubmit}>
-                      <fieldset className="front-fieldset">
-                        <fieldset disabled className="admin-fieldset hide">
+                      <fieldset>
+                        <fieldset disabled className="hide invisible">
                           <div className="form-group row">
                             <label
                               htmlFor="adminId"
@@ -285,7 +286,7 @@ class CompanyAdminCreate extends Component {
                             >
                               Admin:
                             </label>
-                            <div className="col-sm-10">
+                            <div className="col-sm-10 mb-1">
                               <input
                                 type="decimal"
                                 name="admin_id"
@@ -307,7 +308,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Office-Id:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="decimal"
                               name="front_office_id"
@@ -320,7 +321,7 @@ class CompanyAdminCreate extends Component {
                               ref={this.input}
                             />
                             <span className="col-sm-2 col-form-label col-form-label-sm">
-                              <i className="adminlocation">
+                              <i className="font-italic text-success">
                                 id &apos;s: {f1}-{f1loc},{f2}-{f2loc},{f3}-{f3loc},{f4}-{f4loc},{f5}
                                 -{f5loc}
                               </i>
@@ -333,7 +334,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Firstname:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="firstname"
@@ -353,7 +354,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Lastname:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="lastname"
@@ -373,7 +374,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Email:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="email"
                               name="email"
@@ -393,7 +394,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Role:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <CoAdminRole onChange={this.onChange} />
                           </div>
 
@@ -403,7 +404,7 @@ class CompanyAdminCreate extends Component {
                           >
                             Staff Id:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <input
                               type="text"
                               name="staff_id"
@@ -423,54 +424,49 @@ class CompanyAdminCreate extends Component {
                           >
                             Location:
                           </label>
-                          <div className="col-sm-10">
+                          <div className="col-sm-10 mb-1">
                             <CoLocation onChange={this.onChange} />
                             <span style={errors.email ? dangerStyle : null}>
                               <Error error={errors.email ? errors.email : null} />
                             </span>
                           </div>
                         </div>
-                        <div className="btn-spacing">
-                          <input className="btn btn-sm btn-success" type="submit" value="Create" />
+                        <div className="row">
+                          <CreateBtn handleCancelClick={this.handleCancelClick} />
                         </div>
                       </fieldset>
                     </form>
                   </main>
-                  <div className="btn-spacing">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-primary"
-                      onClick={this.handleCancelClick}
-                    >
-                      Cancel
-                    </button>
-                  </div>
                 </div>
 
-                <div className="col-sm">
-                  <h6>Staff details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Office-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Location</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                <div className="col-sm-6 mx-auto">
+                  <h5 className="text-secondary">Staff details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Office-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Location</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={companyStaff.length}
-                paginate={paginate}
-              />
+              <div className="fixed-bottom mb-3">
+                <Pagination
+                  itemCountPerPage={itemCountPerPage}
+                  totalItems={companyStaff.length}
+                  paginate={paginate}
+                />
+              </div>
             </div>
           </>
         ) : (

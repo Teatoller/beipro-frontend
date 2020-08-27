@@ -11,6 +11,7 @@ import Pagination from "../../Pagination";
 import AdminRole from "./AdminRole";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";
+import CreateBtn from "../common/CreateBtn";
 
 class AdminCreate extends Component {
   constructor(props) {
@@ -175,13 +176,13 @@ class AdminCreate extends Component {
     const companyAdminStaff = admins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="admin">{index + 1}</td>
-          <td className="admin">{item.company_id}</td>
-          <td className="admin">{item.firstname}</td>
-          <td className="admin">{item.lastname}</td>
-          <td className="admin">{item.staff_id}</td>
-          <td className="admin">{item.email}</td>
-          <td className="admin">{item.role}</td>
+          <td className="admin text-center">{index + 1}</td>
+          <td className="admin text-center">{item.company_id}</td>
+          <td className="admin text-center">{item.firstname}</td>
+          <td className="admin text-center">{item.lastname}</td>
+          <td className="admin text-center">{item.staff_id}</td>
+          <td className="admin text-center">{item.email}</td>
+          <td className="admin text-center">{item.role}</td>
         </tr>
       );
     });
@@ -214,11 +215,11 @@ class AdminCreate extends Component {
             <div className="container" aria-label="Create company front admin form">
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h6>Entry Pad</h6>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">Entry Pad</h5>
                   <form noValidate onSubmit={this.onSubmit}>
-                    <fieldset className="front-fieldset">
-                      <h6>Admin Details</h6>
+                    <fieldset>
+                      <h5 className="text-secondary">Admin Details</h5>
                       <div className="form-group row">
                         <label
                           htmlFor="frontOfficeId"
@@ -226,7 +227,7 @@ class AdminCreate extends Component {
                         >
                           Company Id:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="decimal"
                             name="company_id"
@@ -246,7 +247,7 @@ class AdminCreate extends Component {
                         >
                           Firstname:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="firstname"
@@ -266,7 +267,7 @@ class AdminCreate extends Component {
                         >
                           Lastname:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="lastname"
@@ -286,7 +287,7 @@ class AdminCreate extends Component {
                         >
                           Email:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="email"
                             name="email"
@@ -303,7 +304,7 @@ class AdminCreate extends Component {
                         <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
                           Role:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <AdminRole onChange={this.onChange} />
                         </div>
 
@@ -313,7 +314,7 @@ class AdminCreate extends Component {
                         >
                           Staff Id:
                         </label>
-                        <div className="col-sm-10">
+                        <div className="col-sm-10 mb-1">
                           <input
                             type="text"
                             name="staff_id"
@@ -330,38 +331,33 @@ class AdminCreate extends Component {
                           </span>
                         </div>
                       </div>
-                      <div className="btn-spacing">
-                        <input className="btn btn-sm btn-success" type="submit" value="Create" />
+                      <span className="font-italic text-secondary">
+                        Click button to add a new Admin
+                      </span>
+                      <div className="row">
+                        <CreateBtn handleCancelClick={this.handleCancelClick} />
                       </div>
                     </fieldset>
                   </form>
-                  <div className="btn-spacing">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-primary"
-                      onClick={this.handleCancelClick}
-                    >
-                      Cancel
-                    </button>
-                  </div>
                 </div>
-
-                <div className="col-sm">
-                  <h6>Admins</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                <div className="col-sm-6 m-auto">
+                  <h5 className="text-secondary">Admins</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <Pagination

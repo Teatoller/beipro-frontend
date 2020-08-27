@@ -6,6 +6,7 @@ import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";
+import CancelBtn from "../common/CancelBtn";
 
 class AdminDelete extends Component {
   constructor(props) {
@@ -83,14 +84,14 @@ class AdminDelete extends Component {
     const companyAdminStaff = admins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="admin">{index + 1}</td>
-          <td className="admin">{item.company_id}</td>
-          <td className="admin">{item.firstname}</td>
-          <td className="admin">{item.lastname}</td>
-          <td className="admin">{item.staff_id}</td>
-          <td className="admin">{item.email}</td>
-          <td className="admin">{item.role}</td>
-          <td className="admin">
+          <td className="admin text-center">{index + 1}</td>
+          <td className="admin text-center">{item.company_id}</td>
+          <td className="admin text-center">{item.firstname}</td>
+          <td className="admin text-center">{item.lastname}</td>
+          <td className="admin text-center">{item.staff_id}</td>
+          <td className="admin text-center">{item.email}</td>
+          <td className="admin text-center">{item.role}</td>
+          <td className="admin text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -104,12 +105,6 @@ class AdminDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
@@ -119,33 +114,31 @@ class AdminDelete extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Admin details</h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{companyAdminStaff}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Admin details</h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{companyAdminStaff}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <CancelBtn handleCancelClick={this.handleCancelClick} />
               </div>
             </div>
           </>

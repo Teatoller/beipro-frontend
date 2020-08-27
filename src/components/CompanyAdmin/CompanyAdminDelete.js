@@ -9,6 +9,7 @@ import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import CancelBtn from "../SuperAdmin/common/CancelBtn";
 
 class CompanyAdminDelete extends Component {
   constructor(props) {
@@ -163,15 +164,15 @@ class CompanyAdminDelete extends Component {
     const companyStaff = fadmins.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="fadmin">{index + 1}</td>
-          <td className="fadmin">{item.front_office_id}</td>
-          <td className="fadmin">{item.firstname}</td>
-          <td className="fadmin">{item.lastname}</td>
-          <td className="fadmin">{item.staff_id}</td>
-          <td className="fadmin">{item.email}</td>
-          <td className="fadmin">{item.role}</td>
-          <td className="fadmin">{item.location}</td>
-          <td className="fadmin">
+          <td className="fadmin text-center">{index + 1}</td>
+          <td className="fadmin text-center">{item.front_office_id}</td>
+          <td className="fadmin text-center">{item.firstname}</td>
+          <td className="fadmin text-center">{item.lastname}</td>
+          <td className="fadmin text-center">{item.staff_id}</td>
+          <td className="fadmin text-center">{item.email}</td>
+          <td className="fadmin text-center">{item.role}</td>
+          <td className="fadmin text-center">{item.location}</td>
+          <td className="fadmin text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -185,49 +186,41 @@ class CompanyAdminDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
         {newLocal ? (
           <>
             <div className="container">
-              <div className="row">
+              <div className="row mx-auto">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>{company}:Staff details</h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Office-id</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
-                        <th scope="col">Staff_id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{companyStaff}</tbody>
-                  </table>
+                  <h5 className="text-secondary">{company}:Staff details</h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Office-id</th>
+                          <th scope="col">Firstname</th>
+                          <th scope="col">Lastname</th>
+                          <th scope="col">Staff_id</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{companyStaff}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <CancelBtn handleCancelClick={this.handleCancelClick} />
               </div>
             </div>
           </>

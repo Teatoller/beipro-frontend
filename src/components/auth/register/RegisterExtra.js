@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 const RegisterExtra = () => {
   return (
     <>
-      <div className="col text-right  input-font">
+      <div className="col text-right">
         <p>
-          Already have an account?{" "}
-          <span className="create-account input-font">
+          <small> Already have an account? </small>
+          <span>
             <NavLink to="/login">Sign-in</NavLink>
           </span>
         </p>

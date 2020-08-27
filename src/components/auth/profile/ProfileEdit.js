@@ -92,58 +92,69 @@ class ProfileEdit extends Component {
     return (
       <div>
         <Nav />
-        <main className="profile-page mt-3">
-          <span>{loading ? <Spinner /> : null}</span>
-          <h4>Edit Profile</h4>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label className="form-label" htmlFor="firstname">First Name:</label>
-              <input
-                type="text"
-                name="firstname"
-                value={this.firstname}
-                onChange={this.onChange}
-                className="form-control"
-                id="firstname"
-                placeholder={firstname}
-                aria-describedby="firstname"
-                aria-required="true"
-                aria-invalid="false"
-              />
+        <div className="container">
+          <div className="row bg-light">
+            <div className="col-6 mx-auto">
+              <span>{loading ? <Spinner /> : null}</span>
+              <h6>Edit Profile Name</h6>
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="firstname">
+                    First Name:
+                  </label>
+                  <input
+                    type="text"
+                    name="firstname"
+                    value={this.firstname}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="firstname"
+                    placeholder={firstname}
+                    aria-describedby="firstname"
+                    aria-required="true"
+                    aria-invalid="false"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="lastname">
+                    Last Name:
+                  </label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    value={this.lastname}
+                    onChange={this.onChange}
+                    className="form-control"
+                    id="lastname"
+                    placeholder={lastname}
+                    aria-describedby="lastname"
+                    aria-required="true"
+                    aria-invalid="false"
+                  />
+                </div>
+                <div className="form-group">
+                  <span style={errors.lastname ? dangerStyle : null}>
+                    <Error error={errors.lastname ? errors.lastname : null} />
+                  </span>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-4 m-1">
+                    <input type="submit" className="btn btn-success btn-sm" value="Submit" />
+                  </div>
+                  <div className="col-4 m-1">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={this.handleCancelClick}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="lastname">Last Name:</label>
-              <input
-                type="text"
-                name="lastname"
-                value={this.lastname}
-                onChange={this.onChange}
-                className="form-control"
-                id="lastname"
-                placeholder={lastname}
-                aria-describedby="lastname"
-                aria-required="true"
-                aria-invalid="false"
-              />
-            </div>
-            <div className="form-group">
-              <span style={errors.lastname ? dangerStyle : null}>
-                <Error error={errors.lastname ? errors.lastname : null} />
-              </span>
-            </div>
-
-            <div className="text-right mb-3">
-              <button
-                type="button"
-                className="btn btn-sm btn-outline-warning mr-1"
-                onClick={this.handleCancelClick}
-              >
-                Cancel
-            </button>
-              <input type="submit" className="btn btn-success btn-sm" value="Submit" />
-            </div>
-          </form>
-        </main>
+          </div>
+        </div>
         <Footer />
       </div>
     );

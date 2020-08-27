@@ -77,12 +77,12 @@ class FrontOffice extends Component {
     const frontOffice = frontoffices.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="foffices">{index + 1}</td>
-          <td className="foffices">{item.company_id}</td>
-          <td className="foffices">{item.name}</td>
-          <td className="foffices">{item.code}</td>
-          <td className="foffices">{item.location}</td>
-          <td className="foffices">
+          <td className="foffices text-center">{index + 1}</td>
+          <td className="foffices text-center">{item.company_id}</td>
+          <td className="foffices text-center">{item.name}</td>
+          <td className="foffices text-center">{item.code}</td>
+          <td className="foffices text-center">{item.location}</td>
+          <td className="foffices text-center">
             <button
               className="btn btn-sm btn-primary"
               type="button"
@@ -92,7 +92,7 @@ class FrontOffice extends Component {
               Edit
             </button>
           </td>
-          <td className="foffices">
+          <td className="foffices text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -129,27 +129,30 @@ class FrontOffice extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Front Office details</h6>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Front Office details</h5>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Code</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Action</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-              <span>Click button to add a new FrontOffice</span>
-
-              <div className="btn-spacing">
+              <span className="font-italic form-text text-muted">
+                Click button to add a new FrontOffice
+              </span>
+              <div className="m-1">
                 <button
                   className="btn btn-sm btn-success"
                   type="submit"

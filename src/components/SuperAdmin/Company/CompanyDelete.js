@@ -6,6 +6,7 @@ import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import CancelBtn from "../common/CancelBtn";
 
 class CompanyDelete extends Component {
   constructor(props) {
@@ -82,15 +83,15 @@ class CompanyDelete extends Component {
     const company = companies.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="company">{index + 1}</td>
-          <td className="company">{item.id}</td>
-          <td className="company">{item.name}</td>
-          <td className="company">{item.logo}</td>
-          <td className="company">{item.description}</td>
-          <td className="company">{item.location}</td>
-          <td className="company">{item.country}</td>
-          <td className="company">{item.established}</td>
-          <td className="company">
+          <td className="company text-center">{index + 1}</td>
+          <td className="company text-center">{item.id}</td>
+          <td className="company text-center">{item.name}</td>
+          <td className="company text-center">{item.logo}</td>
+          <td className="company text-center">{item.description}</td>
+          <td className="company text-center">{item.location}</td>
+          <td className="company text-center">{item.country}</td>
+          <td className="company text-center">{item.established}</td>
+          <td className="company text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -104,12 +105,6 @@ class CompanyDelete extends Component {
       );
     });
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      fontWeight: "bold",
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
@@ -119,35 +114,32 @@ class CompanyDelete extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Company details</h6>
-                  <span style={dangerStyle}>Are you sure that you want to Delete this record?</span>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Logo</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Established</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>{company}</tbody>
-                  </table>
+                  <h5 className="text-secondary">Company details</h5>
+                  <div className="alert alert-danger" role="alert">
+                    <strong>Warning! </strong>Are you sure that you want to delete this record?
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Logo</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Country</th>
+                          <th scope="col">Established</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>{company}</tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-
               <div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={this.handleCancelClick}
-                >
-                  Cancel
-                </button>
+                <CancelBtn handleCancelClick={this.handleCancelClick} />
               </div>
             </div>
           </>

@@ -57,14 +57,14 @@ class Feedback extends Component {
     const companyAdminStaff = feeds.map((item, index) => {
       return (
         <tr key={item.id}>
-          <td className="feed">{index + 1}</td>
-          <td className="feed">{item.name}</td>
-          <td className="feed">{item.email}</td>
-          <td className="feed">{item.phone_number}</td>
-          <td className="feed">{item.subject}</td>
-          <td className="feed">{item.message}</td>
-          <td className="feed">{item.created_at}</td>
-          <td className="feed">
+          <td className="feed text-center">{index + 1}</td>
+          <td className="feed text-center">{item.name}</td>
+          <td className="feed text-center">{item.email}</td>
+          <td className="feed text-center">{item.phone_number}</td>
+          <td className="feed text-center">{item.subject}</td>
+          <td className="feed text-center">{item.message}</td>
+          <td className="feed text-center">{item.created_at}</td>
+          <td className="feed text-center">
             <button
               className="btn btn-sm btn-outline-danger"
               type="button"
@@ -101,8 +101,9 @@ class Feedback extends Component {
               <div className="row">
                 <span>{loading ? <Spinner /> : null}</span>
                 <div className="col-sm">
-                  <h6>Feedback details</h6>
-                  <table className="table table-striped">
+                  <h5 className="text-secondary">Feedback details</h5>
+                  <div className="table-responsive">
+                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -117,6 +118,7 @@ class Feedback extends Component {
                     </thead>
                     <tbody>{currentItems}</tbody>
                   </table>
+                  </div>
                 </div>
               </div>
               <Pagination
