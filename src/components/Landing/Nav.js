@@ -224,7 +224,7 @@ class Nav extends PureComponent {
                   </NavLink>
                   <div className="dropdown-divider" />
                   <NavLink className="dropdown-item" to="#">
-                    <span className="dropdown-item rounded bg-light">
+                    <span className="dropdown-item rounded bg-light text-center">
                       <Logout />
                     </span>
                   </NavLink>
