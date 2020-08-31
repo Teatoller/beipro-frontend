@@ -94,7 +94,7 @@ class ProfileEdit extends Component {
         <Nav />
         <div className="container">
           <div className="row bg-light">
-            <div className="col-6 mx-auto">
+            <div className="col-10 mx-auto">
               <span>{loading ? <Spinner /> : null}</span>
               <h6>Edit Profile Name</h6>
               <form onSubmit={this.onSubmit}>

@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+// import Blogo from "../auth/common/Blogo";
 
 const LandingNav = () => {
   const logoUrl = `./img/beipro.svg`;
   return (
     <nav className="navbar navbar-light bg-light">
       <NavLink className="navbar-brand" to="/">
+      {/* <Blogo /> */}
         <img
           src={logoUrl}
           width="30"
