@@ -159,7 +159,7 @@ class Depots extends PureComponent {
               </main>
             </div>
           </div>
-          <div className="fixed-bottom mb-3">
+          <div className="mb-3">
             {" "}
             <Pagination
               itemCountPerPage={itemCountPerPage}
