@@ -11,6 +11,7 @@ import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import EditBtn from "../common/EditBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class CompanyEdit extends Component {
   constructor(props) {
@@ -69,11 +70,7 @@ class CompanyEdit extends Component {
     const companyId = localStorage.getItem("companyId");
     const { history } = this.props;
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .patch(`/companies/${companyId}`, data, config)
@@ -99,11 +96,7 @@ class CompanyEdit extends Component {
   };
 
   getCompaniesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/companies`, config).then(response => {
       const companiesData = response.data;
@@ -152,11 +145,7 @@ class CompanyEdit extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/companies/${companyId}`, config).then(
       response => {
@@ -172,11 +161,7 @@ class CompanyEdit extends Component {
 
   getCompanyData = () => {
     const companyId = localStorage.getItem("companyId");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/companies/${companyId}`, config).then(response => {
       const selectedCompanyData = response.data;

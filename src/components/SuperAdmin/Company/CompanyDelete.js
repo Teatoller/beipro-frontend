@@ -7,6 +7,7 @@ import Spinner from "../../../spinner/Spinner";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import CancelBtn from "../common/CancelBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class CompanyDelete extends Component {
   constructor(props) {
@@ -22,11 +23,7 @@ class CompanyDelete extends Component {
   }
 
   getCompaniesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     const companyId = localStorage.getItem("companyId");
     axios.get(`/companies/${companyId}`, config).then(response => {
@@ -48,11 +45,7 @@ class CompanyDelete extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected company record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/companies/${companyId}`, config).then(
       response => {

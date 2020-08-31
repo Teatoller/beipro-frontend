@@ -6,6 +6,7 @@ import Footer from "../Landing/Footer";
 import Spinner from "../../spinner/Spinner";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import ConstFrontAdmin from "./ConstFrontAdmin";
+import BearerToken from "../../services/BearerToken";
 
 class FrontAdmin extends Component {
   constructor(props) {
@@ -40,11 +41,7 @@ class FrontAdmin extends Component {
    */
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .get(`/frontadmins`, config)
@@ -81,11 +78,7 @@ class FrontAdmin extends Component {
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .get(`/currentprices`, config)
@@ -155,11 +148,7 @@ class FrontAdmin extends Component {
   // phase 1 Establish the company front offices name and location
 
   getFofficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     const frontid = localStorage.getItem("front_office_id");
     const frontId = parseInt(frontid, 10);

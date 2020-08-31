@@ -12,6 +12,7 @@ import Spinner from "../../spinner/Spinner";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import EditBtn from "../SuperAdmin/common/EditBtn";
+import BearerToken from "../../services/BearerToken";
 
 class FrontAdminEdit extends PureComponent {
   constructor(props) {
@@ -62,11 +63,7 @@ class FrontAdminEdit extends PureComponent {
     // Get selected current price and update state with new changes
     const priceid = localStorage.getItem("priceid");
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .patch(`/currentprices/${priceid}`, data, config)
@@ -106,11 +103,8 @@ class FrontAdminEdit extends PureComponent {
    */
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
@@ -143,11 +137,7 @@ class FrontAdminEdit extends PureComponent {
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     try {
       axios.get(`/currentprices`, config).then(response => {
@@ -219,11 +209,7 @@ class FrontAdminEdit extends PureComponent {
     localStorage.setItem("fadminid", priceid);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/currentprices/${priceid}`, config).then(
       response => {

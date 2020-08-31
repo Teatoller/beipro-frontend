@@ -11,6 +11,7 @@ import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import EditBtn from "../common/EditBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class FrontOfficeEdit extends Component {
   constructor(props) {
@@ -62,11 +63,7 @@ class FrontOfficeEdit extends Component {
 
     const frontofficeId = localStorage.getItem("frontofficeId");
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .patch(`/frontoffices/${frontofficeId}`, data, config)
@@ -90,11 +87,7 @@ class FrontOfficeEdit extends Component {
   };
 
   getFrontOfficesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontoffices`, config).then(response => {
       const frontOfficesData = response.data;
@@ -143,11 +136,7 @@ class FrontOfficeEdit extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/frontoffices/${frontofficeId}`, config).then(
       response => {
@@ -163,11 +152,7 @@ class FrontOfficeEdit extends Component {
 
   getFrontOfficeData = () => {
     const frontofficeId = localStorage.getItem("frontofficeId");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontoffices/${frontofficeId}`, config).then(response => {
       const selectedFrontOfficeData = response.data;

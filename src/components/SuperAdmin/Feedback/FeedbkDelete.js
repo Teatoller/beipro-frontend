@@ -6,6 +6,7 @@ import Footer from "../../Landing/Footer";
 import Spinner from "../../../spinner/Spinner";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import BearerToken from "../../../services/BearerToken";
 
 class FeedbkDelete extends Component {
   constructor(props) {
@@ -22,11 +23,8 @@ class FeedbkDelete extends Component {
 
   getFeedbackData = () => {
     const sfeedid = localStorage.getItem("sfeedid");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/contact-us/${sfeedid}`, config).then(response => {
       const feedData = response.data;
       this.setState({
@@ -46,11 +44,7 @@ class FeedbkDelete extends Component {
     localStorage.setItem("sfeedid", sfeedid);
 
     // Delete selected feedback record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/contact-us/${sfeedid}`, config).then(
       response => {
