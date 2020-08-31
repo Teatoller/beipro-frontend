@@ -7,6 +7,7 @@ import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
+import BearerToken from "../../services/BearerToken";
 
 class CompanyAdmin extends Component {
   constructor(props) {
@@ -30,11 +31,7 @@ class CompanyAdmin extends Component {
   }
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/combineadmins`, config).then(response => {
       const adminsdata = response.data;
@@ -53,11 +50,8 @@ class CompanyAdmin extends Component {
   };
 
   getFrontAdminsData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/companyadmins`, config).then(response => {
       const adminsArray = response.data;
 
@@ -98,11 +92,8 @@ class CompanyAdmin extends Component {
   };
 
   getFofficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/frontshores`, config).then(response => {
       const officesArray = response.data;
 

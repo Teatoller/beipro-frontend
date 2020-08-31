@@ -13,6 +13,7 @@ import CoAdminRole from "./CoAdminRole";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import CreateBtn from "../SuperAdmin/common/CreateBtn";
+import BearerToken from "../../services/BearerToken";
 
 class CompanyAdminCreate extends Component {
   constructor(props) {
@@ -94,11 +95,7 @@ class CompanyAdminCreate extends Component {
     };
 
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .post(`/companyadmins`, data, config)
@@ -145,11 +142,8 @@ class CompanyAdminCreate extends Component {
   };
 
   getFrontAdminsData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/companyadmins`, config).then(response => {
       const adminsArray = response.data;
 
@@ -191,11 +185,7 @@ class CompanyAdminCreate extends Component {
     localStorage.setItem("fadminid", fadminid);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/companyadmins/${fadminid}`, config).then(
       response => {

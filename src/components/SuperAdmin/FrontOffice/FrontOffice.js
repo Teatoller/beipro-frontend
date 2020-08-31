@@ -7,6 +7,7 @@ import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import BearerToken from "../../../services/BearerToken";
 
 class FrontOffice extends Component {
   constructor(props) {
@@ -24,11 +25,7 @@ class FrontOffice extends Component {
   }
 
   getFrontOfficesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontoffices`, config).then(response => {
       const frontofficeData = response.data;

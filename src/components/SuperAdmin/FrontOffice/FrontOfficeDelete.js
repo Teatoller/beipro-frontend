@@ -7,6 +7,7 @@ import Spinner from "../../../spinner/Spinner";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import CancelBtn from "../common/CancelBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class FrontOfficeDelete extends Component {
   constructor(props) {
@@ -23,11 +24,7 @@ class FrontOfficeDelete extends Component {
 
   getFrontOfficesData = () => {
     const frontofficeId = localStorage.getItem("frontofficeId");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontoffices/${frontofficeId}`, config).then(response => {
       const frontofficeData = response.data;
@@ -48,11 +45,7 @@ class FrontOfficeDelete extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front office record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/frontoffices/${frontofficeId}`, config).then(
       response => {

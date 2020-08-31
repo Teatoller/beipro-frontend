@@ -7,6 +7,7 @@ import Spinner from "../../../spinner/Spinner";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";
 import CancelBtn from "../common/CancelBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class AdminDelete extends Component {
   constructor(props) {
@@ -23,12 +24,7 @@ class AdminDelete extends Component {
 
   getAdminsData = () => {
     const sadminid = localStorage.getItem("sadminid");
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/admins/${sadminid}`, config).then(response => {
       const adminData = response.data;
@@ -49,11 +45,7 @@ class AdminDelete extends Component {
     localStorage.setItem("sadminid", sadminid);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/admins/${sadminid}`, config).then(
       response => {
