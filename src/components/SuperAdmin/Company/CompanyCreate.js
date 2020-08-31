@@ -13,6 +13,7 @@ import CoLocation from "../../CompanyAdmin/CoLocation";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import CreateBtn from "../common/CreateBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class CompanyCreate extends Component {
   constructor(props) {
@@ -69,12 +70,7 @@ class CompanyCreate extends Component {
     };
 
     const { history } = this.props;
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .post(`/companies`, data, config)
@@ -100,11 +96,7 @@ class CompanyCreate extends Component {
   };
 
   getCompaniesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/companies`, config).then(response => {
       const companiesData = response.data;
@@ -153,11 +145,7 @@ class CompanyCreate extends Component {
     localStorage.setItem("companyId", companyId);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/companies/${companyId}`, config).then(
       response => {

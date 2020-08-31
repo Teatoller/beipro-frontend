@@ -9,6 +9,7 @@ import Spinner from "../../../spinner/Spinner";
 import NewValue from "./NewValue";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";
+import BearerToken from "../../../services/BearerToken";
 
 class AuditView extends Component {
   constructor(props) {
@@ -50,11 +51,8 @@ class AuditView extends Component {
   };
 
   getAuditData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+    
     const sauditid = localStorage.getItem("auditid");
     axios.get(`/audits/${sauditid}`, config).then(response => {
       const auditData = response.data;

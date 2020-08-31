@@ -12,6 +12,7 @@ import Pagination from "../Pagination";
 import ConstCoAdmin from "./ConstCoAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import EditBtn from "../SuperAdmin/common/EditBtn";
+import BearerToken from "../../services/BearerToken";
 
 class CompanyAdminEdit extends PureComponent {
   constructor(props) {
@@ -87,11 +88,7 @@ class CompanyAdminEdit extends PureComponent {
 
     const fadminid = localStorage.getItem("fadminid");
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .patch(`/companyadmins/${fadminid}`, data, config)
@@ -124,11 +121,8 @@ class CompanyAdminEdit extends PureComponent {
   };
 
   getFrontAdminsData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+
     axios.get(`/companyadmins`, config).then(response => {
       const adminsArray = response.data;
 
@@ -143,11 +137,9 @@ class CompanyAdminEdit extends PureComponent {
 
   getFrontAdminData = () => {
     const fadminid = localStorage.getItem("fadminid");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+
+    const config = BearerToken();
+
     axios.get(`/companyadmins/${fadminid}`, config).then(response => {
       const selectedFadminData = response.data;
 

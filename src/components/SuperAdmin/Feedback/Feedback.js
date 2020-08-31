@@ -7,6 +7,7 @@ import Spinner from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
+import BearerToken from "../../../services/BearerToken";
 
 class Feedback extends Component {
   constructor(props) {
@@ -24,11 +25,8 @@ class Feedback extends Component {
   }
 
   getFeedbackData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
+    
     axios.get(`/contact-us`, config).then(response => {
       const feedData = response.data;
       this.setState({

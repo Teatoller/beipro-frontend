@@ -13,6 +13,7 @@ import CoName from "../Company/CoName";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import CreateBtn from "../common/CreateBtn";
+import BearerToken from "../../../services/BearerToken";
 
 class FrontOfficeCreate extends Component {
   constructor(props) {
@@ -62,11 +63,7 @@ class FrontOfficeCreate extends Component {
     };
 
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .post(`/frontoffices`, data, config)
@@ -90,11 +87,7 @@ class FrontOfficeCreate extends Component {
   };
 
   getFrontOfficesData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontoffices`, config).then(response => {
       const frontOfficesData = response.data;
@@ -143,11 +136,7 @@ class FrontOfficeCreate extends Component {
     localStorage.setItem("frontofficeId", frontofficeId);
 
     // Delete selected front admin record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.delete(`/frontoffices/${frontofficeId}`, config).then(
       response => {

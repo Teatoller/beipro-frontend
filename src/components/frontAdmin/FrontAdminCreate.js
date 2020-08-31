@@ -10,6 +10,7 @@ import Spinner from "../../spinner/Spinner";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import CreateBtn from "../SuperAdmin/common/CreateBtn";
+import BearerToken from "../../services/BearerToken";
 
 class FrontAdminCreate extends Component {
   constructor(props) {
@@ -58,11 +59,7 @@ class FrontAdminCreate extends Component {
     const data = { front_office_id, diesel, petrol, kerosene, fo, ido, lpg };
 
     const { history } = this.props;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .post(`/currentprices`, data, config)
@@ -103,11 +100,7 @@ class FrontAdminCreate extends Component {
    */
 
   getOfficeData = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios.get(`/frontadmins`, config).then(response => {
       const frontadminsdata = response.data;
@@ -140,12 +133,7 @@ class FrontAdminCreate extends Component {
   // Display current price as placeholder value
 
   getCurrentPriceData = () => {
-    // eslint-disable-next-line camelcase
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     try {
       axios.get(`/currentprices`, config).then(response => {
@@ -229,11 +217,7 @@ class FrontAdminCreate extends Component {
     localStorage.setItem("priceid", priceid);
 
     // Delete selected current price record
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
 
     axios
       .delete(`/currentprices/${priceid}`, config)
