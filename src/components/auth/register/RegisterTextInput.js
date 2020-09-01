@@ -1,21 +1,10 @@
-/* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Error from "../../Error";
 
-function RegisterTextInput({
-  firstname,
-  lastname,
-  email,
-  password,
-  password_confirmation,
-  onChange,
-  checkbox,
-  handleAlert,
-  loading,
-  errors
-}) {
+function RegisterTextInput({ inputs, onChange, checkbox, handleAlert, loading, errors }) {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -29,7 +18,7 @@ function RegisterTextInput({
         <input
           type="text"
           name="firstname"
-          value={firstname}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="firstname"
@@ -46,7 +35,7 @@ function RegisterTextInput({
         <input
           type="text"
           name="lastname"
-          value={lastname}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="lastname"
@@ -63,7 +52,7 @@ function RegisterTextInput({
         <input
           type="email"
           name="email"
-          value={email}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="email"
@@ -81,7 +70,7 @@ function RegisterTextInput({
           type="password"
           name="password"
           placeholder="Enter Password"
-          value={password}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="password"
@@ -98,7 +87,7 @@ function RegisterTextInput({
           type="password"
           name="password_confirmation"
           placeholder="Confirm Password"
-          value={password_confirmation}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="passwordConfirm"
@@ -106,21 +95,15 @@ function RegisterTextInput({
           aria-required="true"
           aria-invalid="false"
         />
-        <span style={errors.password ? dangerStyle : null}>
-          <Error error={errors.password ? errors.password : null} />
+        <span style={errors ? dangerStyle : null}>
+          <Error error={errors || null} />
         </span>
       </div>
       <span>Please indicate:</span>
 
       <div className="text-right">
         <span className="text-danger">&#42;</span>
-        <input
-          type="checkbox"
-          name="checkbox"
-          value={checkbox}
-          id="agree"
-          onChange={onChange}
-        />{" "}
+        <input type="checkbox" name="checkbox" value={inputs} id="agree" onChange={onChange} />{" "}
         <span className="">
           <small>
             I have read and agree to the
@@ -142,15 +125,11 @@ function RegisterTextInput({
   );
 }
 RegisterTextInput.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  password_confirmation: PropTypes.string.isRequired,
+  inputs: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   handleAlert: PropTypes.func.isRequired,
   checkbox: PropTypes.bool.isRequired,
-  errors: PropTypes.shape().isRequired,
+  errors: PropTypes.objectOf.isRequired,
   loading: PropTypes.bool.isRequired
 };
 export default RegisterTextInput;

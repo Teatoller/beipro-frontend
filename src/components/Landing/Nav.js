@@ -5,6 +5,7 @@ import axios from "../../axios";
 import Can from "../Can";
 import "../css/site.css";
 import Logout from "../auth/logout/Logout";
+import BearerToken from "../../services/BearerToken";
 
 class Nav extends PureComponent {
   constructor() {
@@ -27,11 +28,7 @@ class Nav extends PureComponent {
   // Get role
 
   getRole = () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
+    const config = BearerToken();
     axios.get(`/roles`, config).then(response => {
       const roleData = response.data;
 
