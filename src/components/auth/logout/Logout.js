@@ -1,20 +1,19 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "../../../axios";
 import { setLogout } from "../../../redux/actionCreators/authActions";
+import Spinner from "../../../spinner/Spinner";
+import Error from "../../Error";
 
-class Logout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      navigate: false
-    };
-  }
+const Logout = () => {
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [navigate, setNavigate] = useState(false);
 
-  handleLogout = e => {
+  const handleLogout = e => {
     e.preventDefault();
 
     const config = {
@@ -27,32 +26,36 @@ class Logout extends Component {
       .then(res => {
         if (res) {
           localStorage.clear();
-          this.setState({
-            navigate: true
-          });
+          setNavigate(true);
         }
       })
-      .catch(err => {
-        throw err;
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
   };
 
-  render() {
-    const { navigate } = this.state;
-
-    if (navigate) {
-      toast.success("You have been succesfully logged out");
-      return <Redirect to="/" />;
-    }
-    return (
-      <>
-        <NavLink to="/" className="active" onClick={this.handleLogout}>
-          Logout
-        </NavLink>
-      </>
-    );
+  if (navigate) {
+    toast.success("You have been succesfully logged out");
+    return <Redirect to="/" />;
   }
-}
+  const dangerStyle = {
+    fontStyle: "italic",
+    color: "red"
+  };
+
+  return (
+    <>
+      <span>{loading ? <Spinner /> : null}</span>
+      <NavLink to="/" className="active" onClick={handleLogout}>
+        Logout
+      </NavLink>
+      <span style={errors ? dangerStyle : null}>
+        <Error error={errors || null} />
+      </span>
+    </>
+  );
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

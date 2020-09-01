@@ -1,7 +1,6 @@
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { PureComponent } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
@@ -13,46 +12,21 @@ import ResetExtra from "./ResetExtra";
 import ResetTextInput from "./ResetTextInput";
 import CommonAuthNav from "../common/CommonAuthNav";
 
-class Reset extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      email: "",
-      password: "",
-      password_confirmation: "",
-      token: "",
-      errors: {
-        email: "",
-        password: "",
-        token: ""
-      }
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const Reset = props => {
+  const [inputs, setInputs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(false);
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const onChange = e => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-  onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
 
-    // eslint-disable-next-line camelcase
-    const { email, password, password_confirmation, token } = this.state;
-    const { history } = this.props;
+    const { history } = props;
 
-    const user = {
-      email,
-      password,
-      password_confirmation,
-      token
-    };
-
-    this.setState({
-      loading: true
-    });
+    setLoading(true);
 
     const config = {
       headers: {
@@ -61,69 +35,57 @@ class Reset extends PureComponent {
     };
 
     axios
-      .post("/password/reset", user, config)
+      .post("/password/reset", inputs, config)
       .then(response => {
         if (response) {
-          this.setState({
-            loading: true
-          });
+          setLoading(true);
           toast.success("Password reset succesful");
           history.push(`/`);
         }
       })
-      .catch(err => {
-        this.setState({
-          loading: false,
-          errors: {
-            email: err.response.request.response,
-            password: err.response.request.response,
-            token: err.response.request.response
-          }
-        });
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
-  }
+  };
 
-  render() {
-    const { email, password, password_confirmation, errors, loading } = this.state;
-
-    return (
-      <div>
-        <CommonAuthNav />
-        <div className="container" aria-label="Password Reset form">
-          <div className="row">
-            <div className="col-6 m-auto">
-              <span>{loading ? <Spinner /> : null}</span>
-              <header className="text-center">
-                <p className="text-secondary">Please enter details to reset password</p>
-              </header>
-              <main>
-                <form onSubmit={this.onSubmit}>
-                  <ResetTextInput
-                    email={email}
-                    onChange={this.onChange}
-                    password={password}
-                    password_confirmation={password_confirmation}
-                    loading={loading}
-                    errors={errors}
-                    handleAlert={this.handleAlert}
-                  />
-                </form>
-              </main>
-              <section className="row mt-1">
-                <ResetExtra />
-              </section>
-            </div>
-            <article className="col-6">
-              <SiteImage />
-              <SiteTheme />
-            </article>
+  return (
+    <div>
+      <CommonAuthNav />
+      <div className="container" aria-label="Password Reset form">
+        <div className="row">
+          <div className="col-6 m-auto">
+            <span>{loading ? <Spinner /> : null}</span>
+            <header className="text-center">
+              <p className="text-secondary">Please enter details to reset password</p>
+            </header>
+            <main>
+              <form onSubmit={onSubmit}>
+                <ResetTextInput
+                  email={inputs}
+                  onChange={onChange}
+                  password={inputs}
+                  password_confirmation={inputs}
+                  loading={loading}
+                  errors={errors}
+                  handleAlert={onChange}
+                />
+              </form>
+            </main>
+            <section className="row mt-1">
+              <ResetExtra />
+            </section>
           </div>
+          <article className="col-6">
+            <SiteImage />
+            <SiteTheme />
+          </article>
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
 Reset.propTypes = {
   history: PropTypes.shape().isRequired
 };

@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { PureComponent } from "react";
+import React, { useState } from "react";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -16,34 +16,20 @@ import LoginTextInput from "./LoginTextInput";
 import LoginNav from "./LoginNav";
 import LoginExtra from "./LoginExtra";
 
-class Login extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      email: "",
-      password: "",
-      errors: {
-        email: "",
-        password: ""
-      }
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const Login = props => {
+  const [inputs, setInputs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(false);
 
-  onSubmit = e => {
-    const { email, password } = this.state;
-    const { history } = this.props;
+  const onSubmit = e => {
+    const { history } = props;
+
     e.preventDefault();
-    const data = { email, password };
 
-    this.setState({
-      loading: true
-    });
+    setLoading(true);
 
     axios
-      .post(`/login`, data)
+      .post(`/login`, inputs)
       .then(res => {
         if (res) {
           localStorage.setItem("token", res.data.access_token);
@@ -51,61 +37,52 @@ class Login extends PureComponent {
           history.push("/welcome");
         }
       })
-      .catch(err => {
-        this.setState({
-          loading: false,
-          errors: {
-            email: err.response.request.response,
-            password: err.response.request.response
-          }
-        });
-        throw err;
+      .catch((errors) => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
   };
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const onChange = e => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-  render() {
-    const { email, password, errors, loading } = this.state;
-
-    return (
-      <div>
-        <LoginNav />
-        <div className="container" aria-label="Login form">
-          <div className="row">
-            <div className="col-6 p-2">
-              <span>{loading ? <Spinner /> : null}</span>
-              <header className="text-center">
-                <p className="text-secondary">Please Sign in</p>
-              </header>
-              <main>
-                <form onSubmit={this.onSubmit}>
-                  <LoginTextInput
-                    email={email}
-                    password={password}
-                    onChange={this.onChange}
-                    errors={errors}
-                    loading={loading}
-                  />
-                </form>
-              </main>
-              <section className="row">
-                <LoginExtra />
-              </section>
-            </div>
-            <article className="col-6">
-              <SiteImage />
-              <SiteTheme />
-            </article>
+  return (
+    <div>
+      <LoginNav />
+      <div className="container" aria-label="Login form">
+        <div className="row">
+          <div className="col-6 p-2">
+            <span>{loading ? <Spinner /> : null}</span>
+            <header className="text-center">
+              <p className="text-secondary">Please Sign in</p>
+            </header>
+            <main>
+              <form onSubmit={onSubmit}>
+                <LoginTextInput
+                  email={inputs}
+                  password={inputs}
+                  onChange={onChange}
+                  errors={errors}
+                  loading={loading}
+                />
+              </form>
+            </main>
+            <section className="row">
+              <LoginExtra />
+            </section>
           </div>
+          <article className="col-6">
+            <SiteImage />
+            <SiteTheme />
+          </article>
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
+// }
 Login.propTypes = {
   history: PropTypes.shape().isRequired
 };
