@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
 import Error from "../../Error";
 
-const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
+const LoginTextInput = ({ inputs, onChange, loading, errors }) => {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -17,7 +18,7 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
         <input
           type="email"
           name="email"
-          value={email}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="email"
@@ -27,22 +28,22 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
         />
       </div>
       <div className="form-group mb-3">
-        <label className="form-label" htmlFor={password}>
+        <label className="form-label" htmlFor="password">
           Password
         </label>
         <input
           type="password"
           name="password"
           placeholder="Enter Password"
-          value={password}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="password"
           aria-describedby="password"
           aria-required="true"
         />
-        <span style={errors.password ? dangerStyle : null}>
-          <Error error={errors.password ? errors.password : null} />
+        <span style={errors ? dangerStyle : null}>
+          <Error error={errors || null} />
         </span>
       </div>
       <div className="text-right mb-3">
@@ -54,10 +55,9 @@ const LoginTextInput = ({ email, onChange, password, loading, errors }) => {
   );
 };
 LoginTextInput.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  inputs: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.shape().isRequired,
+  errors: PropTypes.objectOf.isRequired,
   loading: PropTypes.bool.isRequired
 };
 export default LoginTextInput;

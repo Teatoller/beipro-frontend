@@ -1,7 +1,6 @@
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { PureComponent } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
@@ -13,84 +12,43 @@ import RegisterTextInput from "./RegisterTextInput";
 import RegisterExtra from "./RegisterExtra";
 import CommonAuthNav from "../common/CommonAuthNav";
 
-class Register extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      alertMessage: "",
-      checkbox: false,
-      errors: {
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: ""
-      }
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleAlert = this.handleAlert.bind(this);
-  }
+const Register = props => {
+  const [inputs, setInputs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [checkbox, setCheckbox] = useState(false);
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const onChange = e => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    setCheckbox({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-  onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
 
-    // eslint-disable-next-line camelcase
-    const { firstname, lastname, email, password, password_confirmation } = this.state;
-    const { history } = this.props;
+    const { history } = props;
 
-    this.setState({
-      loading: true
-    });
-
-    const newUser = {
-      firstname,
-      lastname,
-      email,
-      password,
-      password_confirmation
-    };
+    setLoading(true);
 
     axios
-      .post("/register", newUser, {
+      .post("/register", inputs, {
         headers: { "Content-Type": "application/json" }
       })
       .then(response => {
-        const message = response.data;
-
         if (response) {
-          this.setState({
-            alertMessage: message
-          });
           toast.success(
             "Success, check for an email with confirmation link to complete the activation process."
           );
           history.push(`/`);
         }
       })
-      .catch(err => {
-        this.setState({
-          loading: false,
-          errors: {
-            firstname: err.response.request.response,
-            lastname: err.response.request.response,
-            email: err.response.request.response,
-            password: err.response.request.response
-          }
-        });
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
-  }
+  };
 
-  handleAlert = e => {
+  const handleAlert = e => {
     e.preventDefault();
     // eslint-disable-next-line no-alert
     alert(
@@ -98,68 +56,47 @@ class Register extends PureComponent {
     );
   };
 
-  render() {
-    const {
-      loading,
-      firstname,
-      lastname,
-      email,
-      password,
-      password_confirmation,
-      alertMessage,
-      checkbox,
-      errors
-    } = this.state;
-
-    const alertStyle = {
-      fontStyle: "italic",
-      color: "green"
-    };
-
-    return (
-      <div>
-        <CommonAuthNav />
-        <div className="container" aria-label="Sign-up form">
-          <div className="row">
-            <div className="col-8">
-              <span>{loading ? <Spinner /> : null}</span>
-              <header className="text-center">
-                <p className="text-secondary">Please Sign up</p>
-              </header>
-              <span style={alertMessage ? alertStyle : null}>
-                {alertMessage ? alertMessage.message : null}
-              </span>
-              <main>
-                <form onSubmit={this.onSubmit}>
-                  <RegisterTextInput
-                    firstname={firstname}
-                    lastname={lastname}
-                    email={email}
-                    onChange={this.onChange}
-                    password={password}
-                    password_confirmation={password_confirmation}
-                    loading={loading}
-                    errors={errors}
-                    checkbox={checkbox}
-                    handleAlert={this.handleAlert}
-                  />
-                </form>
-              </main>
-              <section>
-                <RegisterExtra />
-              </section>
-            </div>
-            <article className="col-4">
-              <SiteImage />
-              <SiteTheme />
-            </article>
+  return (
+    <div>
+      <CommonAuthNav />
+      <div className="container" aria-label="Sign-up form">
+        <div className="row">
+          <div className="col-8">
+            <span>{loading ? <Spinner /> : null}</span>
+            <header className="text-center">
+              <p className="text-secondary">Please Sign up</p>
+            </header>
+            <main>
+              <form onSubmit={onSubmit}>
+                <RegisterTextInput
+                  firstname={inputs}
+                  lastname={inputs}
+                  email={inputs}
+                  onChange={onChange}
+                  password={inputs}
+                  password_confirmation={inputs}
+                  loading={loading}
+                  errors={errors}
+                  checkbox={checkbox}
+                  handleAlert={handleAlert}
+                />
+              </form>
+            </main>
+            <section>
+              <RegisterExtra />
+            </section>
           </div>
+          <article className="col-4">
+            <SiteImage />
+            <SiteTheme />
+          </article>
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
+// }
 Register.propTypes = {
   history: PropTypes.shape().isRequired
 };

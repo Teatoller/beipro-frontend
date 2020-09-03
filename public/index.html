@@ -73,7 +73,7 @@
   default-src 'self'; 
   manifest-src http://localhost:3000/site.webmanifest http://localhost:3000/;
   script-src 'self' https://code.jquery.com/jquery-3.5.1.slim.min.js https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js  https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js 'sha256-QAj9SgqS0tkqFXsMg6gbHzN3KfNnrPW0N0FCdMzN3MI=' https://www.google-analytics.com/analytics.js; 
-  connect-src 'self' http://127.0.0.1:8000; 
+  connect-src 'self' http://127.0.0.1:8000 https://www.google-analytics.com/j/collect https://stats.g.doubleclick.net/j/collect; 
   img-src 'self' data: http://res.cloudinary.com/beipro/ https://www.google-analytics.com/ https://stats.g.doubleclick.net/ http://www.googletagmanager.com/; 
   style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css;
   font-src 'self' data: font/woff;

@@ -1,17 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";
 import Error from "../../Error";
 
-const ResetTextInput = ({
-  email,
-  password,
-  password_confirmation,
-  token,
-  onChange,
-  loading,
-  errors
-}) => {
+const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -26,7 +19,7 @@ const ResetTextInput = ({
         <input
           type="email"
           name="email"
-          value={email}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="email"
@@ -44,7 +37,7 @@ const ResetTextInput = ({
           type="password"
           name="password"
           placeholder="Enter Password"
-          value={password}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="password"
@@ -61,7 +54,7 @@ const ResetTextInput = ({
           type="password"
           name="password_confirmation"
           placeholder="Confirm Password"
-          value={password_confirmation}
+          value={inputs}
           onChange={onChange}
           className="form-control"
           id="passwordConfirmation"
@@ -76,7 +69,7 @@ const ResetTextInput = ({
           <input
             type="string"
             name="token"
-            value={token}
+            value={inputs}
             onChange={onChange}
             className="form-control"
             id="token"
@@ -85,8 +78,8 @@ const ResetTextInput = ({
             aria-required="true"
             aria-invalid="false"
           />
-          <span style={errors.password ? dangerStyle : null}>
-            <Error error={errors.password ? errors.password : null} />
+          <span style={errors ? dangerStyle : null}>
+            <Error error={errors || null} />
           </span>
           <span>
             example: <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
@@ -102,12 +95,9 @@ const ResetTextInput = ({
   );
 };
 ResetTextInput.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  password_confirmation: PropTypes.string.isRequired,
-  token: PropTypes.string.isRequired,
+  inputs: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.shape().isRequired,
+  errors: PropTypes.objectOf.isRequired,
   loading: PropTypes.bool.isRequired
 };
 export default ResetTextInput;

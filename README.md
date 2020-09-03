@@ -1,4 +1,5 @@
 # beiPro
+[![Build Status](https://travis-ci.com/Teatoller/beipro-frontend.svg?token=uGyXyCMx2EKqAzHfANFR&branch=develop)](https://travis-ci.com/Teatoller/beipro-frontend)
 
 ## How to test the application
 

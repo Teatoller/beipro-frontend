@@ -2,7 +2,7 @@ import React from "react";
 
 const Blogo = () => {
   return (
-    <span className="text-white text-center rounded font-weight-bold blogo border border-secondary">
+    <span className="text-secondary text-center rounded font-weight-bold blogo border-secondary">
       B
     </span>
   );

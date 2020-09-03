@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { PureComponent } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
@@ -12,95 +12,73 @@ import ResetRequestExtra from "./ResetRequestExtra";
 import ResetRequestTextInput from "./ResetRequestTextInput";
 import CommonAuthNav from "../common/CommonAuthNav";
 
-class ResetRequest extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      email: "",
-      errors: {
-        email: ""
-      }
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const ResetRequest = props => {
+  const [inputs, setInputs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(false);
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const onChange = e => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-  onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
 
-    // eslint-disable-next-line camelcase
-    const { email } = this.state;
-    const { history } = this.props;
+    const { history } = props;
 
-    this.setState({
-      loading: true
-    });
+    setLoading(true);
 
     axios
-      .post("/password/create", { email })
+      .post("/password/create", inputs)
       .then(res => {
         if (res) {
           toast.success("We have e-mailed you a link with password reset token");
           history.push(`/reset`);
         }
       })
-      .catch(err => {
-        this.setState({
-          loading: false,
-          errors: {
-            email: err.response.request.response
-          }
-        });
-        throw err;
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
-  }
+  };
 
-  render() {
-    const { email, errors, loading } = this.state;
-
-    return (
-      <div>
-        <CommonAuthNav />
-        <div className="container" aria-label="Password reset request form">
-          <div className="row">
-            <div className="col-6 m-auto">
-              <span>{loading ? <Spinner /> : null}</span>
-              <header className="text-center">
-                <p className="text-secondary">
-                  Please enter your Email address below and we&apos;ll send you a link to reset your
-                  password
-                </p>
-              </header>
-              <main>
-                <form onSubmit={this.onSubmit}>
-                  <ResetRequestTextInput
-                    email={email}
-                    onChange={this.onChange}
-                    errors={errors}
-                    loading={loading}
-                  />
-                </form>
-              </main>
-              <section className="row">
-                <ResetRequestExtra />
-              </section>
-            </div>
-            <article className="col-6">
-              <SiteImage />
-              <SiteTheme />
-            </article>
+  return (
+    <div>
+      <CommonAuthNav />
+      <div className="container" aria-label="Password reset request form">
+        <div className="row">
+          <div className="col-6 m-auto">
+            <span>{loading ? <Spinner /> : null}</span>
+            <header className="text-center">
+              <p className="text-secondary">
+                Please enter your Email address below and we&apos;ll send you a link to reset your
+                password
+              </p>
+            </header>
+            <main>
+              <form onSubmit={onSubmit}>
+                <ResetRequestTextInput
+                  email={inputs}
+                  onChange={onChange}
+                  errors={errors}
+                  loading={loading}
+                />
+              </form>
+            </main>
+            <section className="row">
+              <ResetRequestExtra />
+            </section>
           </div>
+          <article className="col-6">
+            <SiteImage />
+            <SiteTheme />
+          </article>
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
 ResetRequest.propTypes = {
   history: PropTypes.shape().isRequired
 };
