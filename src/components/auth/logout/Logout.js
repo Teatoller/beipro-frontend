@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
@@ -5,7 +6,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "../../../axios";
 import { setLogout } from "../../../redux/actionCreators/authActions";
-import Spinner from "../../../spinner/Spinner";
+import { Spinner } from "../../../spinner/Spinner";
 import Error from "../../Error";
 
 const Logout = () => {

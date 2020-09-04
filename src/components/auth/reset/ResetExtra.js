@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const ResetExtra = () => {
+export const ResetExtra = () => {
   return (
     <>
       <div className="col text-right">

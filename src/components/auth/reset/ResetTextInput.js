@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Error from "../../Error";
 
-const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
+export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"

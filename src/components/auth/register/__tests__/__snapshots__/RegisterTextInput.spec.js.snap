@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterTextInput snapshot renders correctly 1`] = `
+Array [
+  <div
+    className="form-group m-0"
+  >
+    <label
+      className="form-label"
+      htmlFor="firstname"
+    >
+      First Name
+    </label>
+    <input
+      aria-describedby="firstnameInput"
+      aria-invalid="false"
+      aria-required="true"
+      className="form-control"
+      id="firstname"
+      name="firstname"
+      placeholder="Enter Firstname"
+      type="text"
+    />
+  </div>,
+  <div
+    className="form-group m-0"
+  >
+    <label
+      className="form-label"
+      htmlFor="lastname"
+    >
+      Last Name
+    </label>
+    <input
+      aria-describedby="lastnameInput"
+      aria-invalid="false"
+      aria-required="true"
+      className="form-control"
+      id="lastname"
+      name="lastname"
+      placeholder="Enter Lastname"
+      type="text"
+    />
+  </div>,
+  <div
+    className="form-group m-0"
+  >
+    <label
+      className="form-label"
+      htmlFor="email"
+    >
+      Email address
+    </label>
+    <input
+      aria-describedby="emailInput"
+      aria-invalid="false"
+      aria-required="true"
+      className="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter Email"
+      type="email"
+    />
+  </div>,
+  <div
+    className="form-group m-0"
+  >
+    <label
+      className="form-label"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      aria-describedby="passwordInput"
+      aria-invalid="false"
+      aria-required="true"
+      className="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter Password"
+      type="password"
+    />
+  </div>,
+  <div
+    className="form-group m-0"
+  >
+    <label
+      className="form-label"
+      htmlFor="passwordConfirm"
+    >
+      Confirm password
+    </label>
+    <input
+      aria-describedby="confirmPasswordInput"
+      aria-invalid="false"
+      aria-required="true"
+      className="form-control"
+      id="passwordConfirm"
+      name="password_confirmation"
+      placeholder="Confirm Password"
+      type="password"
+    />
+    <span
+      style={null}
+    >
+      <div />
+    </span>
+  </div>,
+  <span>
+    Please indicate:
+  </span>,
+  <div
+    className="text-right"
+  >
+    <span
+      className="text-danger"
+    >
+      *
+    </span>
+    <input
+      id="agree"
+      name="checkbox"
+      type="checkbox"
+    />
+     
+    <span
+      className=""
+    >
+      <small>
+        I have read and agree to the
+        <a
+          href="/terms"
+          onClick={[Function]}
+        >
+           Terms & Conditions
+        </a>
+         and
+         
+        <a
+          href="/privacy-policy"
+          onClick={[Function]}
+        >
+          Privacy Policy.
+        </a>
+         
+      </small>
+    </span>
+    <button
+      className="btn btn-primary btn-sm"
+      type="submit"
+    >
+      Sign-up
+    </button>
+  </div>,
+]
+`;
