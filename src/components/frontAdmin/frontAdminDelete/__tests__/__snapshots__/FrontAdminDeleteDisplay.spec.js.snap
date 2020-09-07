@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FrontAdminDeleteDisplay snapshot renders correctly 1`] = `
+<div
+  className="alert alert-danger text-center"
+>
+  <h3>
+    UnAuthorized!!!
+  </h3>
+</div>
+`;

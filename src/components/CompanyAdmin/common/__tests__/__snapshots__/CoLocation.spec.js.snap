@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoLocation() snapshot renders correctly 1`] = `
+<select
+  aria-describedby="locationInput"
+  aria-invalid="false"
+  aria-required="true"
+  className="form-control form-control-sm"
+  id="location"
+  name="location"
+>
+  <option
+    value=" "
+  >
+    Select location
+  </option>
+  <option
+    value="Nairobi"
+  >
+    Nairobi
+  </option>
+  <option
+    value="Mombasa"
+  >
+    Mombasa
+  </option>
+  <option
+    value="Kisumu"
+  >
+    Kisumu
+  </option>
+  <option
+    value="Nakuru"
+  >
+    Nakuru
+  </option>
+  <option
+    value="Eldoret"
+  >
+    Eldoret
+  </option>
+</select>
+`;

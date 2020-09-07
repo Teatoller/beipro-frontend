@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompanyAdminEditDisplay snapshot renders correctly 1`] = `
+<div
+  className="col-sm-6 mx-auto"
+>
+  <h5
+    className="text-secondary"
+  >
+    Staff details
+  </h5>
+  <div
+    className="table-responsive"
+  >
+    <table
+      className="table table-sm table-striped table-hover table-bordered text-secondary"
+    >
+      <thead>
+        <tr>
+          <th
+            scope="col"
+          >
+            #
+          </th>
+          <th
+            scope="col"
+          >
+            Office-id
+          </th>
+          <th
+            scope="col"
+          >
+            Firstname
+          </th>
+          <th
+            scope="col"
+          >
+            Lastname
+          </th>
+          <th
+            scope="col"
+          >
+            Staff_id
+          </th>
+          <th
+            scope="col"
+          >
+            Email
+          </th>
+          <th
+            scope="col"
+          >
+            Role
+          </th>
+          <th
+            scope="col"
+          >
+            Location
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;

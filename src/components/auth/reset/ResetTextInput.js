@@ -95,9 +95,9 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
   );
 };
 ResetTextInput.propTypes = {
-  inputs: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.objectOf.isRequired,
-  loading: PropTypes.bool.isRequired
+  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  errors: PropTypes.bool.isRequired
 };
 export default ResetTextInput;
