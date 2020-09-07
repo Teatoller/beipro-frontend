@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const RegisterExtra = () => {
+export const RegisterExtra = () => {
   return (
     <>
       <div className="col text-right">

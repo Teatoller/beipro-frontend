@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../../axios";
-import Nav from "../../Landing/Nav";
+import { Nav } from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
-import Spinner from "../../../spinner/Spinner";
+import { Spinner } from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";

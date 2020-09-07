@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Login from "./components/auth/login/Login";
-import Register from "./components/auth/register/Register";
-import ResetRequest from "./components/auth/reset/ResetRequest";
+import { Login } from "./components/auth/login/Login";
+import { Register } from "./components/auth/register/Register";
+import ResetRequest from "./components/auth/resetRequest/ResetRequest";
 import Welcome from "./components/Landing/Welcome";
-import FrontAdmin from "./components/frontAdmin/FrontAdmin";
-import Depots from "./components/Landing/Depots";
+import { FrontAdmin } from "./components/frontAdmin/FrontAdmin";
+import { Depots } from "./components/Landing/Home/Depots";
 import Profile from "./components/auth/profile/Profile";
 import CompanyAdmin from "./components/CompanyAdmin/CompanyAdmin";
 import CompanyAdminEdit from "./components/CompanyAdmin/CompanyAdminEdit";

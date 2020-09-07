@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginTextInput snapshot renders correctly 1`] = `
+Array [
+  <div
+    className="form-group"
+  >
+    <label
+      className="form-label"
+      htmlFor="email"
+    >
+      Email address
+    </label>
+    <input
+      aria-describedby="email"
+      aria-required="true"
+      className="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter Email"
+      type="email"
+    />
+  </div>,
+  <div
+    className="form-group mb-3"
+  >
+    <label
+      className="form-label"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      aria-describedby="password"
+      aria-required="true"
+      className="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter Password"
+      type="password"
+    />
+    <span
+      style={null}
+    >
+      <div />
+    </span>
+  </div>,
+  <div
+    className="text-right mb-3"
+  >
+    <button
+      className="btn btn-primary btn-sm"
+      type="submit"
+    >
+      Sign-in
+    </button>
+  </div>,
+]
+`;

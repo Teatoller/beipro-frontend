@@ -1,8 +1,8 @@
 import React from "react";
-import SpinnerIcon from "./SpinnerIcon";
+import { SpinnerIcon } from "./SpinnerIcon";
 import "../components/css/site.css";
 
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <div className="spinner">
       <SpinnerIcon />

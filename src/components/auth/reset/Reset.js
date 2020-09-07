@@ -1,16 +1,11 @@
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
-import Footer from "../../Landing/Footer";
-import Spinner from "../../../spinner/Spinner";
-import SiteTheme from "../common/SiteTheme";
-import SiteImage from "../common/SiteImage";
-import ResetExtra from "./ResetExtra";
-import ResetTextInput from "./ResetTextInput";
-import CommonAuthNav from "../common/CommonAuthNav";
+import { ResetView } from "./ResetView";
 
 const Reset = props => {
   const [inputs, setInputs] = useState({});
@@ -50,40 +45,15 @@ const Reset = props => {
   };
 
   return (
-    <div>
-      <CommonAuthNav />
-      <div className="container" aria-label="Password Reset form">
-        <div className="row">
-          <div className="col-6 m-auto">
-            <span>{loading ? <Spinner /> : null}</span>
-            <header className="text-center">
-              <p className="text-secondary">Please enter details to reset password</p>
-            </header>
-            <main>
-              <form onSubmit={onSubmit}>
-                <ResetTextInput
-                  email={inputs}
-                  onChange={onChange}
-                  password={inputs}
-                  password_confirmation={inputs}
-                  loading={loading}
-                  errors={errors}
-                  handleAlert={onChange}
-                />
-              </form>
-            </main>
-            <section className="row mt-1">
-              <ResetExtra />
-            </section>
-          </div>
-          <article className="col-6">
-            <SiteImage />
-            <SiteTheme />
-          </article>
-        </div>
-      </div>
-      <Footer />
-    </div>
+    <>
+      <ResetView
+        loading={loading}
+        onSubmit={onSubmit}
+        onChange={onChange}
+        inputs={inputs}
+        errors={errors}
+      />
+    </>
   );
 };
 Reset.propTypes = {

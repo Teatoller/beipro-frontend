@@ -4,10 +4,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../axios";
-import Nav from "../Landing/Nav";
+import { Nav } from "../Landing/Nav";
 import Footer from "../Landing/Footer";
 import Error from "../Error";
-import Spinner from "../../spinner/Spinner";
+import { Spinner } from "../../spinner/Spinner";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import CreateBtn from "../SuperAdmin/common/CreateBtn";
@@ -86,19 +86,6 @@ class FrontAdminCreate extends Component {
         throw err;
       });
   };
-
-  /**
-   * Pseudo code
-   *
-   * Step 1:
-   * Figure out the logged in user email
-   *
-   * Step 2:
-   * Figure out the company front office id using the email and frontadmins endpoint
-   *
-   * Step 3:
-   * Assign to the form front office id input field and keep disabled
-   */
 
   getOfficeData = () => {
     const config = BearerToken();
@@ -185,20 +172,6 @@ class FrontAdminCreate extends Component {
     }
   };
 
-  // Select current price record to edit
-
-  handleEditClick = e => {
-    const { history } = this.props;
-
-    e.preventDefault();
-    const attribute = e.currentTarget;
-    const priceid = attribute.getAttribute("priceid");
-    localStorage.setItem("priceid", priceid);
-
-    history.push("/fadminedit");
-    this.setState({ loading: false });
-  };
-
   handleCancelClick = e => {
     const { history } = this.props;
 
@@ -206,31 +179,6 @@ class FrontAdminCreate extends Component {
 
     history.push("/fadmin");
     this.setState({ loading: false });
-  };
-
-  // Select current price record to delete
-
-  handleDeleteClick = e => {
-    const { history } = this.props;
-    e.preventDefault();
-    const attribute = e.currentTarget;
-    const priceid = attribute.getAttribute("priceid");
-    localStorage.setItem("priceid", priceid);
-
-    // Delete selected current price record
-    const config = BearerToken();
-
-    axios
-      .delete(`/currentprices/${priceid}`, config)
-      .then(response => {
-        if (response) {
-          history.push("/fadmin");
-        }
-        this.setState({ loading: false });
-      })
-      .catch(error => {
-        throw error;
-      });
   };
 
   render() {

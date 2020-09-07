@@ -1,47 +1,22 @@
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "../../axios";
-import Nav from "../Landing/Nav";
+import { Nav } from "../Landing/Nav";
 import Footer from "../Landing/Footer";
-import Spinner from "../../spinner/Spinner";
+import { Spinner } from "../../spinner/Spinner";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import ConstFrontAdmin from "./ConstFrontAdmin";
 import BearerToken from "../../services/BearerToken";
+import Error from "../Error";
 
-class FrontAdmin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      latestprices: []
-    };
-  }
+export const FrontAdmin = props => {
+  const [loading, setLoading] = useState(true);
+  const [latestprices, setLatestPrices] = useState([]);
+  const [errors, setErrors] = useState(false);
 
-  componentDidMount() {
-    this.getOfficeData();
-    this.priceData = setTimeout(() => this.getCurrentPriceData(), 1800);
-    this.getFofficeData();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.priceData);
-  }
-
-  /**
-   * Pseudo code
-   *
-   * Step 1:
-   * Figure out the logged in user email
-   *
-   * Step 2:
-   * Figure out the company front office id using the email and frontadmins endpoint
-   *
-   * Step 3:
-   * Assign to the form front office id input field and keep disabled
-   */
-
-  getOfficeData = () => {
+  const getOfficeData = () => {
     const config = BearerToken();
 
     axios
@@ -49,8 +24,6 @@ class FrontAdmin extends Component {
       .then(response => {
         const frontadminsdata = response.data;
         const loggedUserEmail = localStorage.getItem("email");
-
-        // Array with object containing details of the logged user
 
         const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
 
@@ -71,14 +44,15 @@ class FrontAdmin extends Component {
 
         localStorage.setItem("front_office_id", lockey);
       })
-      .catch(error => {
-        throw error;
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
   };
 
   // Display current price as placeholder value
 
-  getCurrentPriceData = () => {
+  const getCurrentPriceData = () => {
     const config = BearerToken();
 
     axios
@@ -101,20 +75,19 @@ class FrontAdmin extends Component {
 
         latestprices.push(sortbyid);
 
-        this.setState({
-          latestprices,
-          loading: false
-        });
+        setLatestPrices(latestprices);
+        setLoading(false);
       })
-      .catch(error => {
-        throw error;
+      .catch(errors => {
+        setErrors(errors.response.request.response);
+        setLoading(false);
       });
   };
 
   // Select current price record to edit
 
-  handleEditClick = e => {
-    const { history } = this.props;
+  const handleEditClick = e => {
+    const { history } = props;
 
     e.preventDefault();
     const attribute = e.currentTarget;
@@ -122,22 +95,22 @@ class FrontAdmin extends Component {
     localStorage.setItem("priceid", priceid);
 
     history.push("/fadminedit");
-    this.setState({ loading: false });
+    setLoading(false);
   };
 
-  handleCreateClick = e => {
-    const { history } = this.props;
+  const handleCreateClick = e => {
+    const { history } = props;
 
     e.preventDefault();
 
     history.push("/fadmincreate");
-    this.setState({ loading: false });
+    setLoading(false);
   };
 
   // Select current price record to delete
 
-  handleDeleteClick = e => {
-    const { history } = this.props;
+  const handleDeleteClick = e => {
+    const { history } = props;
     e.preventDefault();
     const attribute = e.currentTarget;
     const priceid = attribute.getAttribute("priceid");
@@ -148,7 +121,7 @@ class FrontAdmin extends Component {
 
   // phase 1 Establish the company front offices name and location
 
-  getFofficeData = () => {
+  const getFofficeData = () => {
     const config = BearerToken();
 
     const frontid = localStorage.getItem("front_office_id");
@@ -165,104 +138,109 @@ class FrontAdmin extends Component {
     });
   };
 
-  // end experiment
+  useEffect(() => {
+    getOfficeData();
+    setTimeout(() => getCurrentPriceData(), 1800);
+    getFofficeData();
+  }, []);
 
-  render() {
-    const { latestprices, loading } = this.state;
-    const company = localStorage.getItem("name1");
-    const location = localStorage.getItem("location");
-    const newLocal = ConstFrontAdmin();
+  const company = localStorage.getItem("name1");
+  const location = localStorage.getItem("location");
+  const newLocal = ConstFrontAdmin();
 
-    const currentPrice = latestprices.map((item, index) => {
-      return (
-        <tr key={item.id}>
-          <td className="depot text-center">{index + 1}</td>
-          <td className="depot text-center">{item.front_office_id}</td>
-          <td className="depot text-center">{item.diesel}</td>
-          <td className="depot text-center">{item.petrol}</td>
-          <td className="depot text-center">{item.kerosene}</td>
-          <td className="depot text-center">{item.ido}</td>
-          <td className="depot text-center">{item.fo}</td>
-          <td className="depot text-center">{item.lpg}</td>
-          <td className="depot text-center">
-            <button
-              className="btn btn-sm btn-primary"
-              type="button"
-              priceid={item.id}
-              onClick={this.handleEditClick}
-            >
-              Edit
-            </button>
-          </td>
-          <td className="depot text-center">
-            <button
-              className="btn btn-sm btn-outline-danger"
-              type="button"
-              priceid={item.id}
-              onClick={this.handleDeleteClick}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      );
-    });
-
+  const currentPrice = latestprices.map((item, index) => {
     return (
-      <div>
-        <Nav />
-        {newLocal ? (
-          <>
-            <div className="container">
-              <div className="row">
-                <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h5 className="text-secondary">
-                    Current Price: {company}-{location}
-                  </h5>
-                  <div className="table-responsive">
-                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Front-office-id</th>
-                          <th scope="col">Diesel</th>
-                          <th scope="col">Petrol</th>
-                          <th scope="col">Kerosene</th>
-                          <th scope="col">Ido</th>
-                          <th scope="col">Fuel Oil</th>
-                          <th scope="col">Lpg</th>
-                          <th scope="col">Action</th>
-                          <th scope="col">Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>{currentPrice}</tbody>
-                    </table>
-                  </div>
+      <tr key={item.id}>
+        <td className="depot text-center">{index + 1}</td>
+        <td className="depot text-center">{item.front_office_id}</td>
+        <td className="depot text-center">{item.diesel}</td>
+        <td className="depot text-center">{item.petrol}</td>
+        <td className="depot text-center">{item.kerosene}</td>
+        <td className="depot text-center">{item.ido}</td>
+        <td className="depot text-center">{item.fo}</td>
+        <td className="depot text-center">{item.lpg}</td>
+        <td className="depot text-center">
+          <button
+            className="btn btn-sm btn-primary"
+            type="button"
+            priceid={item.id}
+            onClick={handleEditClick}
+          >
+            Edit
+          </button>
+        </td>
+        <td className="depot text-center">
+          <button
+            className="btn btn-sm btn-outline-danger"
+            type="button"
+            priceid={item.id}
+            onClick={handleDeleteClick}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    );
+  });
+
+  const dangerStyle = {
+    fontStyle: "italic",
+    color: "red"
+  };
+
+  return (
+    <div>
+      <Nav />
+      {newLocal ? (
+        <>
+          <div className="container">
+            <div className="row">
+              <span>{loading ? <Spinner /> : null}</span>
+              <div className="col-sm">
+                <h5 className="text-secondary">
+                  Current Price: {company}-{location}
+                </h5>
+                <div className="table-responsive">
+                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Front-office-id</th>
+                        <th scope="col">Diesel</th>
+                        <th scope="col">Petrol</th>
+                        <th scope="col">Kerosene</th>
+                        <th scope="col">Ido</th>
+                        <th scope="col">Fuel Oil</th>
+                        <th scope="col">Lpg</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody>{currentPrice}</tbody>
+                  </table>
+                  <span style={errors ? dangerStyle : null}>
+                    <Error error={errors || null} />
+                  </span>
                 </div>
               </div>
-              <span className="font-italic form-text text-muted">
-                Click button to add a new current price
-              </span>
-              <div className="col-1-sm m-2">
-                <button
-                  className="btn btn-sm btn-success"
-                  type="submit"
-                  onClick={this.handleCreateClick}
-                >
-                  Add
-                </button>
-              </div>
             </div>
-          </>
-        ) : (
-          <UnAuthorized />
-        )}
-        <Footer />
-      </div>
-    );
-  }
-}
+            <span className="font-italic form-text text-muted">
+              Click button to add a new current price
+            </span>
+            <div className="col-1-sm m-2">
+              <button className="btn btn-sm btn-success" type="submit" onClick={handleCreateClick}>
+                Add
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <UnAuthorized />
+      )}
+      <Footer />
+    </div>
+  );
+};
 FrontAdmin.propTypes = {
   history: PropTypes.shape().isRequired
 };

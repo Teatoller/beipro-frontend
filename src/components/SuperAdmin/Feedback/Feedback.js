@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "../../../axios";
-import Nav from "../../Landing/Nav";
+import { Nav } from "../../Landing/Nav";
 import Footer from "../../Landing/Footer";
-import Spinner from "../../../spinner/Spinner";
+import { Spinner } from "../../../spinner/Spinner";
 import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
 import UnAuthorized from "../../auth/common/UnAuthorized";
@@ -27,7 +27,7 @@ class Feedback extends Component {
 
   getFeedbackData = () => {
     const config = BearerToken();
-    
+
     axios.get(`/contact-us`, config).then(response => {
       const feedData = response.data;
       this.setState({
@@ -102,21 +102,21 @@ class Feedback extends Component {
                 <div className="col-sm">
                   <h5 className="text-secondary">Feedback details</h5>
                   <div className="table-responsive">
-                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone No</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Message</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>{currentItems}</tbody>
-                  </table>
+                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Phone No</th>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Message</th>
+                          <th scope="col">Date Created</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>{currentItems}</tbody>
+                    </table>
                   </div>
                 </div>
               </div>

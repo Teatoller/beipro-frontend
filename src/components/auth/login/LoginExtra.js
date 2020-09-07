@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const LoginExtra = () => {
+export const LoginExtra = () => {
   return (
     <>
       <div className="col-6 text-sm-left">

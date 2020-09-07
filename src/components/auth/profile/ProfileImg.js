@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React from "react";
 import PropTypes from "prop-types";
-import Nav from "../../Landing/Nav";
+import { Nav } from "../../Landing/Nav";
 import axios from "../../../axios";
 import Error from "../../Error";
-import Spinner from "../../../spinner/Spinner";
+import { Spinner } from "../../../spinner/Spinner";
 
 class ProfileImg extends React.Component {
   constructor(props) {
