@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import Error from "../../Error";
 
-function RegisterTextInput({ inputs, onChange, checkbox, handleAlert, loading, errors }) {
+export const RegisterTextInput = ({ inputs, onChange, checkbox, handleAlert, loading, errors }) => {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
@@ -107,8 +107,10 @@ function RegisterTextInput({ inputs, onChange, checkbox, handleAlert, loading, e
         <span className="">
           <small>
             I have read and agree to the
-            <Link to="terms"> Terms & Conditions</Link> and{" "}
-            <Link to="privacy-policy">Privacy Policy.</Link>{" "}
+            <BrowserRouter>
+              <Link to="terms"> Terms & Conditions</Link> and{" "}
+              <Link to="privacy-policy">Privacy Policy.</Link>{" "}
+            </BrowserRouter>
           </small>
         </span>
         {checkbox === false ? (
@@ -123,7 +125,7 @@ function RegisterTextInput({ inputs, onChange, checkbox, handleAlert, loading, e
       </div>
     </>
   );
-}
+};
 RegisterTextInput.propTypes = {
   inputs: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

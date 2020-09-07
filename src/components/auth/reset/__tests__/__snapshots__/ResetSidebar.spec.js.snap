@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResetSidebar snapshot renders correctly 1`] = `
+<article
+  className="col-6"
+>
+  <div
+    className="m-2"
+  >
+    <img
+      alt="Petroleum storage tanks installation. Sets the theme for the web site"
+      className="img-fluid rounded d-block mx-auto img-thumbnail"
+      src="./img/beiprostorage.svg"
+    />
+  </div>
+  <p
+    className="font-italic text-secondary text-dark-50"
+  >
+    <span
+      className="font-weight-bolder"
+    >
+      Beipro 
+    </span>
+    is a dynamic platform
+    <br />
+     that remotely
+    <span
+      className="font-weight-bolder"
+    >
+       connects buyers
+    </span>
+    <br />
+     to the prevailing
+    <span
+      className="font-weight-bolder"
+    >
+       sellers
+    </span>
+     bulk petroleum stock prices.
+  </p>
+</article>
+`;

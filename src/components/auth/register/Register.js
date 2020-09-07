@@ -1,18 +1,13 @@
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
-import Footer from "../../Landing/Footer";
-import Spinner from "../../../spinner/Spinner";
-import SiteTheme from "../common/SiteTheme";
-import SiteImage from "../common/SiteImage";
-import RegisterTextInput from "./RegisterTextInput";
-import RegisterExtra from "./RegisterExtra";
-import CommonAuthNav from "../common/CommonAuthNav";
+import { RegisterView } from "./RegisterView";
 
-const Register = props => {
+export const Register = props => {
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(false);
@@ -57,46 +52,23 @@ const Register = props => {
   };
 
   return (
-    <div>
-      <CommonAuthNav />
-      <div className="container" aria-label="Sign-up form">
-        <div className="row">
-          <div className="col-8">
-            <span>{loading ? <Spinner /> : null}</span>
-            <header className="text-center">
-              <p className="text-secondary">Please Sign up</p>
-            </header>
-            <main>
-              <form onSubmit={onSubmit}>
-                <RegisterTextInput
-                  firstname={inputs}
-                  lastname={inputs}
-                  email={inputs}
-                  onChange={onChange}
-                  password={inputs}
-                  password_confirmation={inputs}
-                  loading={loading}
-                  errors={errors}
-                  checkbox={checkbox}
-                  handleAlert={handleAlert}
-                />
-              </form>
-            </main>
-            <section>
-              <RegisterExtra />
-            </section>
-          </div>
-          <article className="col-4">
-            <SiteImage />
-            <SiteTheme />
-          </article>
-        </div>
-      </div>
-      <Footer />
-    </div>
+    <>
+      <RegisterView
+        firstname={inputs}
+        lastname={inputs}
+        email={inputs}
+        onChange={onChange}
+        onSubmit={onSubmit}
+        password={inputs}
+        password_confirmation={inputs}
+        loading={loading}
+        errors={errors}
+        checkbox={checkbox}
+        handleAlert={handleAlert}
+      />
+    </>
   );
 };
-// }
 Register.propTypes = {
   history: PropTypes.shape().isRequired
 };
