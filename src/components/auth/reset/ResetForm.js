@@ -34,10 +34,10 @@ export const ResetForm = props => {
   );
 };
 ResetForm.propTypes = {
-  inputs: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.objectOf.isRequired,
-  loading: PropTypes.bool.isRequired
+  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  errors: PropTypes.bool.isRequired
 };
 export default ResetForm;

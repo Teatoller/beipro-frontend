@@ -28,9 +28,9 @@ function LoginView(props) {
 }
 LoginView.propTypes = {
   loading: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.shape().isRequired,
-  onChange: PropTypes.shape().isRequired,
-  inputs: PropTypes.string.isRequired,
-  errors: PropTypes.shape().isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  errors: PropTypes.bool.isRequired
 };
 export default LoginView;

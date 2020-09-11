@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompanyAdminCreateForm snapshot renders correctly 1`] = `
+<div
+  className="col-sm-6 m-auto"
+>
+  <h5
+    className="text-secondary"
+  >
+    :Entry Pad
+  </h5>
+  <main>
+    <form
+      noValidate={true}
+    >
+      <fieldset>
+        <fieldset
+          className="hide invisible"
+          disabled={true}
+        >
+          <div
+            className="form-group row"
+          >
+            <label
+              className="col-sm-2 col-form-label col-form-label-sm"
+              htmlFor="adminId"
+            >
+              Admin:
+            </label>
+            <div
+              className="col-sm-10 mb-1"
+            >
+              <input
+                aria-describedby="adminIdInput"
+                className="form-control"
+                id="adminId"
+                name="admin_id"
+                placeholder="Disabled input"
+                type="decimal"
+              />
+            </div>
+          </div>
+        </fieldset>
+        <h6>
+          Front Admin Details
+        </h6>
+        <div
+          className="form-group row"
+        >
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="frontOfficeId"
+          >
+            Office-Id:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="frontOfficeIdInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="frontOfficeId"
+              name="front_office_id"
+              placeholder="Enter Front-office-id"
+              type="decimal"
+            />
+            <span
+              className="col-sm-2 col-form-label col-form-label-sm"
+            >
+              <i
+                className="font-italic text-success"
+              >
+                id 's: 
+                -
+                ,
+                -
+                ,
+                -
+                ,
+                -
+                ,
+                -
+              </i>
+            </span>
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="lastName"
+          >
+            Firstname:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="firstnameInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="firstname"
+              name="firstname"
+              onChange={[Function]}
+              placeholder="Enter Front-admin Firstname"
+              type="text"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="lastName"
+          >
+            Lastname:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="lastnameInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="lastname"
+              name="lastname"
+              onChange={[Function]}
+              placeholder="Enter Front-admin Lastname"
+              type="text"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="email"
+          >
+            Email:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="emailInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="email"
+              name="email"
+              onChange={[Function]}
+              placeholder="Enter Front-admin Email"
+              type="email"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="role"
+          >
+            Role:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <select
+              aria-describedby="roleInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="role"
+              name="role"
+              onChange={[Function]}
+            >
+              <option
+                value=" "
+              >
+                Select role
+              </option>
+              <option
+                value="staff"
+              >
+                Staff
+              </option>
+            </select>
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="staffId"
+          >
+            Staff Id:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="staffIdInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="staffId"
+              name="staff_id"
+              onChange={[Function]}
+              placeholder="Enter Staff Id"
+              type="text"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="location"
+          >
+            Location:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <select
+              aria-describedby="locationInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="location"
+              name="location"
+              onChange={[Function]}
+            >
+              <option
+                value=" "
+              >
+                Select location
+              </option>
+              <option
+                value="Nairobi"
+              >
+                Nairobi
+              </option>
+              <option
+                value="Mombasa"
+              >
+                Mombasa
+              </option>
+              <option
+                value="Kisumu"
+              >
+                Kisumu
+              </option>
+              <option
+                value="Nakuru"
+              >
+                Nakuru
+              </option>
+              <option
+                value="Eldoret"
+              >
+                Eldoret
+              </option>
+            </select>
+            <span
+              style={null}
+            >
+              <div />
+            </span>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-1-sm m-2"
+          >
+            <input
+              className="btn btn-sm btn-success"
+              type="submit"
+              value="Create"
+            />
+          </div>
+          <div
+            className="col-1-sm m-2"
+          >
+            <button
+              className="btn btn-sm btn-primary"
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+</div>
+`;
