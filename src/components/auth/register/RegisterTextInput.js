@@ -127,11 +127,11 @@ export const RegisterTextInput = ({ inputs, onChange, checkbox, handleAlert, loa
   );
 };
 RegisterTextInput.propTypes = {
-  inputs: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  errors: PropTypes.bool.isRequired,
   handleAlert: PropTypes.func.isRequired,
-  checkbox: PropTypes.bool.isRequired,
-  errors: PropTypes.objectOf.isRequired,
-  loading: PropTypes.bool.isRequired
+  checkbox: PropTypes.bool.isRequired
 };
 export default RegisterTextInput;

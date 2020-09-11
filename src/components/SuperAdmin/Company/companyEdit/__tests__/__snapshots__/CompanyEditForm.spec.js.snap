@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompanyEditForm snapshot renders correctly 1`] = `
+<div
+  className="col-sm-6 m-auto"
+>
+  <h5
+    className="text-secondary"
+  >
+    Entry Pad
+  </h5>
+  <form
+    noValidate={true}
+  >
+    <fieldset>
+      <h5
+        className="text-secondary"
+      >
+        Company Details
+      </h5>
+      <div
+        className="form-group row"
+      >
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="name"
+        >
+          Name:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            aria-describedby="companyNameInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="name"
+            name="name"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="logo"
+        >
+          Logo:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            aria-describedby="companyIconInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="logo"
+            name="logo"
+            onChange={[Function]}
+            type="icon"
+          />
+        </div>
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="description"
+        >
+          Description:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            aria-describedby="companyDescriptionInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="description"
+            name="description"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="location"
+        >
+          Location:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            Location={true}
+            aria-describedby="locationInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="location"
+            name="location"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="country"
+        >
+          Country:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            aria-describedby="countryInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="country"
+            name="country"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="established"
+        >
+          Established:
+        </label>
+        <div
+          className="col-sm-10 mb-1"
+        >
+          <input
+            aria-describedby="establishedInput"
+            aria-invalid="false"
+            aria-required="true"
+            className="form-control form-control-sm"
+            id="established"
+            name="established"
+            onChange={[Function]}
+            type="decimal"
+          />
+          <span
+            style={null}
+          >
+            <div />
+          </span>
+        </div>
+      </div>
+      <span
+        className="font-italic text-secondary"
+      >
+        Click button to change company details
+      </span>
+      <div
+        className="row"
+      >
+        <div
+          className="col-1-sm m-2"
+        >
+          <input
+            className="btn btn-sm btn-success"
+            type="submit"
+            value="Change"
+          />
+        </div>
+        <div
+          className="col-1-sm m-2"
+        >
+          <button
+            className="btn btn-sm btn-primary"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+`;

@@ -27,12 +27,12 @@ export const RegisterView = props => {
   );
 };
 RegisterView.propTypes = {
-  inputs: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  handleAlert: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.objectOf.isRequired,
   loading: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  errors: PropTypes.bool.isRequired,
+  handleAlert: PropTypes.func.isRequired,
   checkbox: PropTypes.bool.isRequired
 };
 export default RegisterView;
