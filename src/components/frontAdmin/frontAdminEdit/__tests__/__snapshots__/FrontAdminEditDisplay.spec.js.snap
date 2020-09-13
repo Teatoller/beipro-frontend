@@ -13,7 +13,7 @@ exports[`FrontAdminEditDisplay snapshot renders correctly 1`] = `
     className="table-responsive"
   >
     <table
-      className="table table-sm table-striped table-hover table-bordered text-secondary"
+      className="table table-sm table-md table-striped table-hover table-bordered text-secondary"
     >
       <thead>
         <tr>

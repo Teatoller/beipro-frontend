@@ -39,8 +39,7 @@ export const FrontAdminEditForm = props => {
           Edit Entry Pad: {company} - <em>{location}</em>
         </h5>
         <form noValidate onSubmit={onSubmit}>
-          <fieldset>
-            <fieldset disabled className="hide invisible">
+          {/* <fieldset disabled className="hide invisible">
               <div className="form-group row">
                 <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
                   Office-Id:
@@ -57,117 +56,134 @@ export const FrontAdminEditForm = props => {
                   />
                 </div>
               </div>
-            </fieldset>
+            </fieldset> */}
 
-            <h6 className="text-secondary">Price Input</h6>
-            <div className="form-group row">
-              <label htmlFor="diesel" className="col-sm-2 col-form-label-sm">
-                Diesel:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="diesel"
-                  id="diesel"
-                  className="form-control"
-                  placeholder={diesel}
-                  onChange={e => {
-                    setDiesel(e.target.value);
-                  }}
-                  aria-describedby="dieselPriceInput"
-                />
-              </div>
-              <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
-                Petrol:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="petrol"
-                  id="petrol"
-                  className="form-control"
-                  placeholder={petrol}
-                  onChange={e => {
-                    setPetrol(e.target.value);
-                  }}
-                  aria-describedby="petrolPriceInput"
-                />
-              </div>
-
-              <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
-                Kerosene:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="kerosene"
-                  id="kerosene"
-                  className="form-control"
-                  placeholder={kerosene}
-                  onChange={e => {
-                    setKerosene(e.target.value);
-                  }}
-                  aria-describedby="kerosenePriceInput"
-                />
-              </div>
-
-              <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
-                Ido:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="ido"
-                  id="ido"
-                  className="form-control"
-                  placeholder={ido}
-                  onChange={e => {
-                    setIdo(e.target.value);
-                  }}
-                  aria-describedby="idoPriceInput"
-                />
-              </div>
-
-              <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
-                Fuel Oil:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="fo"
-                  id="fuelOil"
-                  className="form-control"
-                  placeholder={fo}
-                  onChange={e => {
-                    setFo(e.target.value);
-                  }}
-                  aria-describedby="fuelOilPriceInput"
-                />
-              </div>
-
-              <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
-                Bulk Lpg:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="decimal"
-                  name="lpg"
-                  id="lpg"
-                  className="form-control"
-                  placeholder={lpg}
-                  onChange={e => {
-                    setLpg(e.target.value);
-                  }}
-                  aria-describedby="bulkLpgPriceInput"
-                />
-                <span style={errors ? dangerStyle : null}>
-                  <Error error={errors || null} />
-                </span>
-              </div>
+          <h6 className="text-secondary">Price Input</h6>
+          <div className="form-group row">
+            <label htmlFor="diesel" className="col-sm-2 col-form-label-sm">
+              Diesel:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="diesel"
+                id="diesel"
+                className="form-control"
+                placeholder={diesel}
+                onChange={e => {
+                  setDiesel(e.target.value);
+                }}
+                aria-describedby="dieselPriceInput"
+              />
             </div>
-            <span className="font-italic text-secondary">Click button to change price</span>
-            <div className="row">
-              <EditBtn handleCancelClick={handleCancelClick} />
+            <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
+              Petrol:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="petrol"
+                id="petrol"
+                className="form-control"
+                placeholder={petrol}
+                onChange={e => {
+                  setPetrol(e.target.value);
+                }}
+                aria-describedby="petrolPriceInput"
+              />
+            </div>
+
+            <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
+              Kerosene:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="kerosene"
+                id="kerosene"
+                className="form-control"
+                placeholder={kerosene}
+                onChange={e => {
+                  setKerosene(e.target.value);
+                }}
+                aria-describedby="kerosenePriceInput"
+              />
+            </div>
+
+            <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
+              Ido:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="ido"
+                id="ido"
+                className="form-control"
+                placeholder={ido}
+                onChange={e => {
+                  setIdo(e.target.value);
+                }}
+                aria-describedby="idoPriceInput"
+              />
+            </div>
+
+            <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
+              Fuel Oil:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="fo"
+                id="fuelOil"
+                className="form-control"
+                placeholder={fo}
+                onChange={e => {
+                  setFo(e.target.value);
+                }}
+                aria-describedby="fuelOilPriceInput"
+              />
+            </div>
+
+            <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
+              Bulk Lpg:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="lpg"
+                id="lpg"
+                className="form-control"
+                placeholder={lpg}
+                onChange={e => {
+                  setLpg(e.target.value);
+                }}
+                aria-describedby="bulkLpgPriceInput"
+              />
+              <span style={errors ? dangerStyle : null}>
+                <Error error={errors || null} />
+              </span>
+            </div>
+          </div>
+          {/* <span className="font-italic text-secondary">Click button to change price</span> */}
+          <div className="row">
+            <EditBtn handleCancelClick={handleCancelClick} />
+          </div>
+          <fieldset disabled className="hide invisible">
+            <div className="form-group row">
+              <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
+                Office-Id:
+              </label>
+              <div className="col-sm-10 mb-1">
+                <input
+                  type="decimal"
+                  name="front_office_id"
+                  id="frontOfficeId"
+                  className="form-control"
+                  placeholder="Disabled input"
+                  value={front_office_id}
+                  aria-describedby="forntOfficeIdInput"
+                />
+              </div>
             </div>
           </fieldset>
         </form>

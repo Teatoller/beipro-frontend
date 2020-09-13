@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -8,7 +9,7 @@ export const FrontAdminEditDisplay = props => {
       <div className="col-sm-6 mx-auto">
         <h5 className="text-secondary">Current Price</h5>
         <div className="table-responsive">
-          <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+          <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
             <thead>
               <tr>
                 <th>#</th>

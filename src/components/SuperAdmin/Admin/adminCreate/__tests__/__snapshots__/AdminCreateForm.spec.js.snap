@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminCreateForm snapshot renders correctly 1`] = `
+<div
+  className="col-sm-6 m-auto"
+>
+  <h5
+    className="text-secondary"
+  >
+    Entry Pad
+  </h5>
+  <form
+    noValidate={true}
+  >
+    <h5
+      className="text-secondary"
+    >
+      Admin Details
+    </h5>
+    <div
+      className="form-group row"
+    >
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="frontOfficeId"
+      >
+        Company Id:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="companyIdInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="companyId"
+          name="company_id"
+          onChange={[Function]}
+          placeholder="Enter Company-id"
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="lastName"
+      >
+        Firstname:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="firstnameInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="firstname"
+          name="firstname"
+          onChange={[Function]}
+          placeholder="Enter Front-admin Firstname"
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="lastName"
+      >
+        Lastname:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="lastnameInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="lastname"
+          name="lastname"
+          onChange={[Function]}
+          placeholder="Enter Front-admin Lastname"
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="email"
+      >
+        Email:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="emailInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Enter Front-admin Email"
+          type="email"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="role"
+      >
+        Role:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <select
+          aria-describedby="roleInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="role"
+          name="role"
+          onChange={[Function]}
+        >
+          <option
+            value=" "
+          >
+            Select role
+          </option>
+          <option
+            value="admin"
+          >
+            Admin
+          </option>
+        </select>
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="staffId"
+      >
+        Staff Id:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="staffIdInput"
+          aria-invalid="false"
+          aria-required="true"
+          className="form-control form-control-sm"
+          id="staffId"
+          name="staff_id"
+          onChange={[Function]}
+          placeholder="Enter Staff Id"
+          type="text"
+        />
+        <span
+          style={null}
+        >
+          <div />
+        </span>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-1-sm m-2"
+      >
+        <input
+          className="btn btn-sm btn-success"
+          type="submit"
+          value="Add"
+        />
+      </div>
+      <div
+        className="col-1-sm m-2"
+      >
+        <button
+          className="btn btn-sm btn-primary"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

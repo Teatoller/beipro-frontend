@@ -6,7 +6,7 @@ const CreateBtn = props => {
   return (
     <>
       <div className="col-1-sm m-2">
-        <input className="btn btn-sm btn-success" type="submit" value="Create" />
+        <input className="btn btn-sm btn-success" type="submit" value="Add" />
       </div>
       <div className="col-1-sm m-2">
         <button type="button" className="btn btn-sm btn-primary" onClick={handleCancelClick}>

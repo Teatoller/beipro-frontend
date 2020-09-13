@@ -111,15 +111,15 @@ export const FrontAdminDelete = props => {
   const currentPrice = latestprices.map((item, index) => {
     return (
       <tr key={item.id}>
-        <td className="depot text-center">{index + 1}</td>
-        <td className="depot text-center">{item.front_office_id}</td>
-        <td className="depot text-center">{item.diesel}</td>
-        <td className="depot text-center">{item.petrol}</td>
-        <td className="depot text-center">{item.kerosene}</td>
-        <td className="depot text-center">{item.ido}</td>
-        <td className="depot text-center">{item.fo}</td>
-        <td className="depot text-center">{item.lpg}</td>
-        <td className="depot text-center">
+        <td className="fadmindepotdata text-center">{index + 1}</td>
+        <td className="fadmindepotdata text-center">{item.front_office_id}</td>
+        <td className="fadmindepotdata text-center">{item.diesel}</td>
+        <td className="fadmindepotdata text-center">{item.petrol}</td>
+        <td className="fadmindepotdata text-center">{item.kerosene}</td>
+        <td className="fadmindepotdata text-center">{item.ido}</td>
+        <td className="fadmindepotdata text-center">{item.fo}</td>
+        <td className="fadmindepotdata text-center">{item.lpg}</td>
+        <td className="fadmindepotdata text-center">
           <button
             className="btn btn-sm btn-outline-danger"
             type="button"

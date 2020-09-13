@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -37,8 +38,7 @@ export const CompanyAdminEditForm = props => {
     <>
       <main>
         <form noValidate onSubmit={onSubmit}>
-          <fieldset>
-            <fieldset disabled className="hide invisible">
+          {/* <fieldset disabled className="hide invisible">
               <div className="form-group row">
                 <label htmlFor="adminId" className="col-sm-2 col-form-label col-form-label-sm">
                   Admin:
@@ -55,136 +55,153 @@ export const CompanyAdminEditForm = props => {
                   />
                 </div>
               </div>
-            </fieldset>
-            <h6>Front Admin Details</h6>
+            </fieldset> */}
+          <h6>Front Admin Details</h6>
+          <div className="form-group row">
+            <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label col-form-label-sm">
+              Office Id:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="decimal"
+                name="front_office_id"
+                className="form-control form-control-sm"
+                id="frontOfficeId"
+                placeholder={front_office_id}
+                onChange={e => {
+                  setFront_Office_Id(e.target.value);
+                }}
+                aria-describedby="forntOfficeIdInput"
+                readOnly
+              />
+            </div>
+
+            <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
+              Firstname:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="text"
+                name="firstname"
+                className="form-control form-control-sm"
+                id="firstname"
+                placeholder={firstname}
+                onChange={e => {
+                  setFirstname(e.target.value);
+                }}
+                aria-describedby="firstnameInput"
+              />
+            </div>
+
+            <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
+              Lastname:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="text"
+                name="lastname"
+                className="form-control form-control-sm"
+                id="lastname"
+                placeholder={lastname}
+                onChange={e => {
+                  setLastname(e.target.value);
+                }}
+                aria-describedby="lastnameInput"
+              />
+            </div>
+
+            <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
+              Email:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="email"
+                name="email"
+                className="form-control form-control-sm"
+                id="email"
+                placeholder={email}
+                onChange={e => {
+                  setEmail(e.target.value);
+                }}
+                aria-describedby="emailInput"
+              />
+            </div>
+
+            <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
+              Role:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="text"
+                name="role"
+                className="form-control form-control-sm"
+                id="role"
+                placeholder={role}
+                onChange={e => {
+                  setRole(e.target.value);
+                }}
+                aria-describedby="roleInput"
+                readOnly
+              />
+            </div>
+
+            <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
+              Staff Id:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="text"
+                name="staff_id"
+                className="form-control form-control-sm"
+                id="staffId"
+                placeholder={staff_id}
+                onChange={e => {
+                  setStaff_Id(e.target.value);
+                }}
+                aria-describedby="staffIdInput"
+              />
+            </div>
+
+            <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
+              Location:
+            </label>
+            <div className="col-sm-10 mb-1">
+              <input
+                type="text"
+                name="location"
+                className="form-control form-control-sm"
+                id="location"
+                placeholder={location}
+                onChange={e => {
+                  setLocation(e.target.value);
+                }}
+                aria-describedby="locationInput"
+              />
+              <span style={errors ? dangerStyle : null}>
+                <Error error={errors || null} />
+              </span>
+            </div>
+          </div>
+          {/* <span className="font-italic text-secondary">Click button to change admin details</span> */}
+          <div className="row">
+            <EditBtn handleCancelClick={handleCancelClick} />
+          </div>
+          <fieldset disabled className="hide invisible">
             <div className="form-group row">
-              <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label col-form-label-sm">
-                Office Id:
+              <label htmlFor="adminId" className="col-sm-2 col-form-label col-form-label-sm">
+                Admin:
               </label>
-              <div className="col-sm-10 mb-1">
+              <div className="col-sm-10">
                 <input
                   type="decimal"
-                  name="front_office_id"
+                  name="admin_id"
+                  id="adminId"
                   className="form-control form-control-sm"
-                  id="frontOfficeId"
-                  placeholder={front_office_id}
-                  onChange={e => {
-                    setFront_Office_Id(e.target.value);
-                  }}
-                  aria-describedby="forntOfficeIdInput"
-                  readOnly
+                  placeholder="Disabled input"
+                  value={admin_id}
+                  aria-describedby="adminIdInput"
                 />
               </div>
-
-              <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                Firstname:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="text"
-                  name="firstname"
-                  className="form-control form-control-sm"
-                  id="firstname"
-                  placeholder={firstname}
-                  onChange={e => {
-                    setFirstname(e.target.value);
-                  }}
-                  aria-describedby="firstnameInput"
-                />
-              </div>
-
-              <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
-                Lastname:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="text"
-                  name="lastname"
-                  className="form-control form-control-sm"
-                  id="lastname"
-                  placeholder={lastname}
-                  onChange={e => {
-                    setLastname(e.target.value);
-                  }}
-                  aria-describedby="lastnameInput"
-                />
-              </div>
-
-              <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
-                Email:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="email"
-                  name="email"
-                  className="form-control form-control-sm"
-                  id="email"
-                  placeholder={email}
-                  onChange={e => {
-                    setEmail(e.target.value);
-                  }}
-                  aria-describedby="emailInput"
-                />
-              </div>
-
-              <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
-                Role:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="text"
-                  name="role"
-                  className="form-control form-control-sm"
-                  id="role"
-                  placeholder={role}
-                  onChange={e => {
-                    setRole(e.target.value);
-                  }}
-                  aria-describedby="roleInput"
-                  readOnly
-                />
-              </div>
-
-              <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
-                Staff Id:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="text"
-                  name="staff_id"
-                  className="form-control form-control-sm"
-                  id="staffId"
-                  placeholder={staff_id}
-                  onChange={e => {
-                    setStaff_Id(e.target.value);
-                  }}
-                  aria-describedby="staffIdInput"
-                />
-              </div>
-
-              <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
-                Location:
-              </label>
-              <div className="col-sm-10 mb-1">
-                <input
-                  type="text"
-                  name="location"
-                  className="form-control form-control-sm"
-                  id="location"
-                  placeholder={location}
-                  onChange={e => {
-                    setLocation(e.target.value);
-                  }}
-                  aria-describedby="locationInput"
-                />
-                <span style={errors ? dangerStyle : null}>
-                  <Error error={errors || null} />
-                </span>
-              </div>
-            </div>
-            <span className="font-italic text-secondary">Click button to change admin details</span>
-            <div className="row">
-              <EditBtn handleCancelClick={handleCancelClick} />
             </div>
           </fieldset>
         </form>

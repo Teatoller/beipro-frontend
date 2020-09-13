@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminRole() snapshot renders correctly 1`] = `
+<select
+  aria-describedby="roleInput"
+  aria-invalid="false"
+  aria-required="true"
+  className="form-control form-control-sm"
+  id="role"
+  name="role"
+>
+  <option
+    value=" "
+  >
+    Select role
+  </option>
+  <option
+    value="admin"
+  >
+    Admin
+  </option>
+</select>
+`;

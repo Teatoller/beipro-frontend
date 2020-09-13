@@ -22,7 +22,7 @@ export const FrontAdminDeleteDisplay = props => {
                   <strong>Warning! </strong>Are you sure that you want to delete this record?
                 </div>
                 <div className="table-responsive">
-                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                  <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
                         <th>#</th>
