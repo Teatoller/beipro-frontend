@@ -5,200 +5,193 @@ exports[`CompanyAdminEditForm snapshot renders correctly 1`] = `
   <form
     noValidate={true}
   >
-    <fieldset>
-      <fieldset
-        className="hide invisible"
-        disabled={true}
+    <h6>
+      Front Admin Details
+    </h6>
+    <div
+      className="form-group row"
+    >
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="frontOfficeId"
       >
-        <div
-          className="form-group row"
+        Office Id:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="forntOfficeIdInput"
+          className="form-control form-control-sm"
+          id="frontOfficeId"
+          name="front_office_id"
+          onChange={[Function]}
+          readOnly={true}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="lastName"
+      >
+        Firstname:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="firstnameInput"
+          className="form-control form-control-sm"
+          id="firstname"
+          name="firstname"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="lastName"
+      >
+        Lastname:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="lastnameInput"
+          className="form-control form-control-sm"
+          id="lastname"
+          name="lastname"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="email"
+      >
+        Email:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="emailInput"
+          className="form-control form-control-sm"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          type="email"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="role"
+      >
+        Role:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="roleInput"
+          className="form-control form-control-sm"
+          id="role"
+          name="role"
+          onChange={[Function]}
+          readOnly={true}
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="staffId"
+      >
+        Staff Id:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="staffIdInput"
+          className="form-control form-control-sm"
+          id="staffId"
+          name="staff_id"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="location"
+      >
+        Location:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="locationInput"
+          className="form-control form-control-sm"
+          id="location"
+          name="location"
+          onChange={[Function]}
+          type="text"
+        />
+        <span
+          style={null}
         >
-          <label
-            className="col-sm-2 col-form-label col-form-label-sm"
-            htmlFor="adminId"
-          >
-            Admin:
-          </label>
-          <div
-            className="col-sm-10"
-          >
-            <input
-              aria-describedby="adminIdInput"
-              className="form-control form-control-sm"
-              id="adminId"
-              name="admin_id"
-              placeholder="Disabled input"
-              type="decimal"
-            />
-          </div>
-        </div>
-      </fieldset>
-      <h6>
-        Front Admin Details
-      </h6>
+          <div />
+        </span>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-1-sm m-2"
+      >
+        <input
+          className="btn btn-sm btn-success"
+          type="submit"
+          value="Change"
+        />
+      </div>
+      <div
+        className="col-1-sm m-2"
+      >
+        <button
+          className="btn btn-sm btn-primary"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+    <fieldset
+      className="hide invisible"
+      disabled={true}
+    >
       <div
         className="form-group row"
       >
         <label
           className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="frontOfficeId"
+          htmlFor="adminId"
         >
-          Office Id:
+          Admin:
         </label>
         <div
-          className="col-sm-10 mb-1"
+          className="col-sm-10"
         >
           <input
-            aria-describedby="forntOfficeIdInput"
+            aria-describedby="adminIdInput"
             className="form-control form-control-sm"
-            id="frontOfficeId"
-            name="front_office_id"
-            onChange={[Function]}
-            readOnly={true}
+            id="adminId"
+            name="admin_id"
+            placeholder="Disabled input"
             type="decimal"
           />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="lastName"
-        >
-          Firstname:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="firstnameInput"
-            className="form-control form-control-sm"
-            id="firstname"
-            name="firstname"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="lastName"
-        >
-          Lastname:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="lastnameInput"
-            className="form-control form-control-sm"
-            id="lastname"
-            name="lastname"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="email"
-        >
-          Email:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="emailInput"
-            className="form-control form-control-sm"
-            id="email"
-            name="email"
-            onChange={[Function]}
-            type="email"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="role"
-        >
-          Role:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="roleInput"
-            className="form-control form-control-sm"
-            id="role"
-            name="role"
-            onChange={[Function]}
-            readOnly={true}
-            type="text"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="staffId"
-        >
-          Staff Id:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="staffIdInput"
-            className="form-control form-control-sm"
-            id="staffId"
-            name="staff_id"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="location"
-        >
-          Location:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="locationInput"
-            className="form-control form-control-sm"
-            id="location"
-            name="location"
-            onChange={[Function]}
-            type="text"
-          />
-          <span
-            style={null}
-          >
-            <div />
-          </span>
-        </div>
-      </div>
-      <span
-        className="font-italic text-secondary"
-      >
-        Click button to change admin details
-      </span>
-      <div
-        className="row"
-      >
-        <div
-          className="col-1-sm m-2"
-        >
-          <input
-            className="btn btn-sm btn-success"
-            type="submit"
-            value="Change"
-          />
-        </div>
-        <div
-          className="col-1-sm m-2"
-        >
-          <button
-            className="btn btn-sm btn-primary"
-            type="button"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </fieldset>

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminCreateDisplay snapshot renders correctly 1`] = `
+Array [
+  <div
+    className="alert alert-danger text-center"
+  >
+    <h3>
+      UnAuthorized!!!
+    </h3>
+  </div>,
+  <footer
+    className="text-center"
+    id="footer"
+  >
+    <span>
+      Beipro ©
+      2020
+    </span>
+  </footer>,
+]
+`;

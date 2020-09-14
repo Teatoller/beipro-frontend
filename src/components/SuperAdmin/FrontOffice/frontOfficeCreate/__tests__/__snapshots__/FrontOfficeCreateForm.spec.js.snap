@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FrontOfficeCreateForm snapshot renders correctly 1`] = `
+<div
+  className="row"
+>
+  <span />
+  <div
+    className="col-sm-6 m-auto"
+  >
+    <h5
+      className="text-secondary"
+    >
+      Entry Pad
+    </h5>
+    <form
+      noValidate={true}
+    >
+      <fieldset>
+        <h6>
+          Front Office Detail's
+        </h6>
+        <div
+          className="form-group row"
+        >
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="companyId"
+          >
+            Company Id:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="companyIdInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="companyId"
+              name="company_id"
+              onChange={[Function]}
+              placeholder="Enter Company Id"
+              type="decimal"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="name"
+          >
+            Name:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <select
+              aria-describedby="companyNameInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              name="name"
+              onChange={[Function]}
+              placeholder="Enter Company name"
+            >
+              <option
+                value=" "
+              >
+                Select name
+              </option>
+              <option
+                value="Amana"
+              >
+                Amana
+              </option>
+              <option
+                value="Ainu Shamsi"
+              >
+                Ainu Shamsi
+              </option>
+              <option
+                value="Asharami Energy"
+              >
+                Asharami Energy
+              </option>
+              <option
+                value="ASPAM Energy"
+              >
+                ASPAM Energy
+              </option>
+              <option
+                value="Aftah Petroleum"
+              >
+                Aftah Petroleum
+              </option>
+              <option
+                value="Axon Energy"
+              >
+                Axon Energy
+              </option>
+              <option
+                value="BE Energy"
+              >
+                BE Energy
+              </option>
+              <option
+                value="Banoda Oil"
+              >
+                Banoda Oil
+              </option>
+              <option
+                value="Brain Field"
+              >
+                Brain Field
+              </option>
+              <option
+                value="Bachulal"
+              >
+                Bachulal
+              </option>
+              <option
+                value="Bushra Energy"
+              >
+                Bushra Energy
+              </option>
+              <option
+                value="City Oil"
+              >
+                City Oil
+              </option>
+              <option
+                value="Dalbit Petroleum"
+              >
+                Dalbit Petroleum
+              </option>
+              <option
+                value="EAGOL Kenya"
+              >
+                EAGOL Kenya
+              </option>
+              <option
+                value="Fastnet"
+              >
+                Fastnet
+              </option>
+              <option
+                value="Fossil Fuel"
+              >
+                Fossil Fuel
+              </option>
+              <option
+                value="Futures"
+              >
+                Futures
+              </option>
+              <option
+                value="Gapco Kenya"
+              >
+                Gapco Kenya
+              </option>
+              <option
+                value="Galana Oil"
+              >
+                Galana Oil
+              </option>
+              <option
+                value="Gulf Energy"
+              >
+                Gulf Energy
+              </option>
+              <option
+                value="Global Oil"
+              >
+                Global Oil
+              </option>
+              <option
+                value="Hammex"
+              >
+                Hammex
+              </option>
+              <option
+                value="Hashi Energy"
+              >
+                Hashi Energy
+              </option>
+              <option
+                value="Ilade Oil"
+              >
+                Ilade Oil
+              </option>
+              <option
+                value="Jaguar Energy"
+              >
+                Jaguar Energy
+              </option>
+              <option
+                value="Kenol Kobil"
+              >
+                Kenol Kobil
+              </option>
+              <option
+                value="Kencor Petroleum"
+              >
+                Kencor Petroleum
+              </option>
+              <option
+                value="Lake Oil Gas"
+              >
+                Lake Oil Gas
+              </option>
+              <option
+                value="Mogas"
+              >
+                Mogas
+              </option>
+              <option
+                value="NOCK"
+              >
+                NOCK
+              </option>
+              <option
+                value="One Petroleum"
+              >
+                One Petroleum
+              </option>
+              <option
+                value="Ocean Energy"
+              >
+                Ocean Energy
+              </option>
+              <option
+                value="Olympic Petroleum"
+              >
+                Olympic Petroleum
+              </option>
+              <option
+                value="Oilcom"
+              >
+                Oilcom
+              </option>
+              <option
+                value="Oryx Energies"
+              >
+                Oryx Energies
+              </option>
+              <option
+                value="Oil Libya"
+              >
+                Oil Libya
+              </option>
+              <option
+                value="Petro Kenya"
+              >
+                Petro Kenya
+              </option>
+              <option
+                value="Prime Regional"
+              >
+                Prime Regional
+              </option>
+              <option
+                value="Petrocam Kenya"
+              >
+                Petrocam Kenya
+              </option>
+              <option
+                value="Regnol Oil"
+              >
+                Regnol Oil
+              </option>
+              <option
+                value="Royal Oilfields"
+              >
+                Royal Oilfields
+              </option>
+              <option
+                value="Texas Energy"
+              >
+                Texas Energy
+              </option>
+              <option
+                value="Tosha Petroleum"
+              >
+                Tosha Petroleum
+              </option>
+              <option
+                value="Total Kenya"
+              >
+                Total Kenya
+              </option>
+              <option
+                value="Tiba"
+              >
+                Tiba
+              </option>
+              <option
+                value="Tri-Star"
+              >
+                Tri-Star
+              </option>
+              <option
+                value="Twoba"
+              >
+                Twoba
+              </option>
+              <option
+                value="Vivo Energy"
+              >
+                Vivo Energy
+              </option>
+            </select>
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="code"
+          >
+            Code:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <input
+              aria-describedby="frontOfficeCodeInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="code"
+              name="code"
+              onChange={[Function]}
+              placeholder="Enter front Office code"
+              type="text"
+            />
+          </div>
+          <label
+            className="col-sm-2 col-form-label col-form-label-sm"
+            htmlFor="location"
+          >
+            Location:
+          </label>
+          <div
+            className="col-sm-10 mb-1"
+          >
+            <select
+              aria-describedby="locationInput"
+              aria-invalid="false"
+              aria-required="true"
+              className="form-control form-control-sm"
+              id="location"
+              name="location"
+              onChange={[Function]}
+            >
+              <option
+                value=" "
+              >
+                Select location
+              </option>
+              <option
+                value="Nairobi"
+              >
+                Nairobi
+              </option>
+              <option
+                value="Mombasa"
+              >
+                Mombasa
+              </option>
+              <option
+                value="Kisumu"
+              >
+                Kisumu
+              </option>
+              <option
+                value="Nakuru"
+              >
+                Nakuru
+              </option>
+              <option
+                value="Eldoret"
+              >
+                Eldoret
+              </option>
+            </select>
+            <span
+              style={null}
+            >
+              <div />
+            </span>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-1-sm m-2"
+          >
+            <input
+              className="btn btn-sm btn-success"
+              type="submit"
+              value="Add"
+            />
+          </div>
+          <div
+            className="col-1-sm m-2"
+          >
+            <button
+              className="btn btn-sm btn-primary"
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div
+    className="col-sm-6 m-auto"
+  >
+    <h5
+      className="text-secondary"
+    >
+      Front Offices
+    </h5>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-hover table-bordered text-secondary"
+      >
+        <thead>
+          <tr>
+            <th
+              scope="col"
+            >
+              #
+            </th>
+            <th
+              scope="col"
+            >
+              Company Id
+            </th>
+            <th
+              scope="col"
+            >
+              Name
+            </th>
+            <th
+              scope="col"
+            >
+              Code
+            </th>
+            <th
+              scope="col"
+            >
+              Location
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;
