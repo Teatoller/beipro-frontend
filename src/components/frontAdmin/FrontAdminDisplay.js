@@ -24,16 +24,16 @@ export const FrontAdminDisplay = props => {
                   Current Price: {company}-{location}
                 </h5>
                 <div className="table-responsive">
-                  <table className="table table-sm table-striped table-hover table-bordered text-secondary">
+                  <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
                         <th>#</th>
                         <th>Front-office-id</th>
                         <th scope="col">Diesel</th>
                         <th scope="col">Petrol</th>
-                        <th scope="col">Kerosene</th>
+                        <th scope="col">Kero</th>
                         <th scope="col">Ido</th>
-                        <th scope="col">Fuel Oil</th>
+                        <th scope="col">Fo</th>
                         <th scope="col">Lpg</th>
                         <th scope="col">Action</th>
                         <th scope="col">Remove</th>
@@ -47,12 +47,12 @@ export const FrontAdminDisplay = props => {
                 </div>
               </div>
             </div>
-            <span className="font-italic form-text text-muted">
+            {/* <span className="font-italic form-text text-muted">
               Click button to add a new current price
-            </span>
+            </span> */}
             <div className="col-1-sm m-2">
               <button className="btn btn-sm btn-success" type="submit" onClick={handleCreateClick}>
-                Add
+                Create
               </button>
             </div>
           </div>

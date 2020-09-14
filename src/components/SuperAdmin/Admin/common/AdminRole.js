@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AdminRole = props => {
+export const AdminRole = props => {
   const { onChange } = props;
   return (
     <select

@@ -1,44 +1,34 @@
 /* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "../../../axios";
-import { Nav } from "../../Landing/Nav";
-import Footer from "../../Landing/Footer";
-import { Spinner } from "../../../spinner/Spinner";
-import Pagination from "../../Pagination";
-import UnAuthorized from "../../auth/common/UnAuthorized";
+
 import ConstSAdmin from "../ConstSAdmin";
 import BearerToken from "../../../services/BearerToken";
+import { AdminView } from "./AdminView";
 
-class Admin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      admins: [],
-      activePage: "1",
-      itemCountPerPage: "10"
-    };
-  }
+export const Admin = props => {
+  const [loading, setLoading] = useState(true);
+  const [admins, setAdmins] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [itemCountPerPage] = useState(10);
 
-  componentDidMount() {
-    this.getAdminsData();
-  }
-
-  getAdminsData = () => {
+  const getAdminsData = () => {
     const config = BearerToken();
 
     axios.get(`/admins`, config).then(response => {
       const adminData = response.data;
-      this.setState({
-        admins: adminData,
-        loading: false
-      });
+      setAdmins(adminData);
+      setLoading(false);
     });
   };
 
-  handleEditClick = e => {
-    const { history } = this.props;
+  useEffect(() => {
+    getAdminsData();
+  }, []);
+
+  const handleEditClick = e => {
+    const { history } = props;
 
     e.preventDefault();
     const attribute = e.currentTarget;
@@ -48,8 +38,8 @@ class Admin extends Component {
     history.push("/sadminedit");
   };
 
-  handleCreateClick = e => {
-    const { history } = this.props;
+  const handleCreateClick = e => {
+    const { history } = props;
 
     e.preventDefault();
 
@@ -58,8 +48,8 @@ class Admin extends Component {
 
   // Select front admin record to delete
 
-  handleDeleteClick = e => {
-    const { history } = this.props;
+  const handleDeleteClick = e => {
+    const { history } = props;
     e.preventDefault();
     const attribute = e.currentTarget;
     const sadminid = attribute.getAttribute("sadminid");
@@ -67,117 +57,62 @@ class Admin extends Component {
     history.push("/sadmindelete");
   };
 
-  render() {
-    // eslint-disable-next-line camelcase
-    const { admins, loading } = this.state;
-    const newLocal = ConstSAdmin();
+  // eslint-disable-next-line camelcase
+  const userRole = ConstSAdmin();
 
-    const companyAdminStaff = admins.map((item, index) => {
-      return (
-        <tr key={item.id}>
-          <td className="admin text-center">{index + 1}</td>
-          <td className="admin text-center">{item.company_id}</td>
-          <td className="admin text-center">{item.firstname}</td>
-          <td className="admin text-center">{item.lastname}</td>
-          <td className="admin text-center">{item.staff_id}</td>
-          <td className="admin text-center">{item.email}</td>
-          <td className="admin text-center">{item.role}</td>
-          <td className="admin text-center">
-            <button
-              className="btn btn-sm btn-primary"
-              type="button"
-              sadminid={item.id}
-              onClick={this.handleEditClick}
-            >
-              Edit
-            </button>
-          </td>
-          <td className="admin text-center">
-            <button
-              className="btn btn-sm btn-outline-danger"
-              type="button"
-              sadminid={item.id}
-              onClick={this.handleDeleteClick}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      );
-    });
-
-    const { activePage, itemCountPerPage } = this.state;
-    // Get current items
-    const indexOfLastItem = activePage * itemCountPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
-    const currentItems = companyAdminStaff.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Change page
-
-    const paginate = pageNumber => {
-      this.setState({
-        activePage: pageNumber
-      });
-    };
-
+  const companyAdminStaff = admins.map((item, index) => {
     return (
-      <div>
-        <Nav />
-        {newLocal ? (
-          <>
-            {" "}
-            <div className="container">
-              <div className="row">
-                <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h5 className="text-secondary">Admin details</h5>
-                  <div className="table-responsive">
-                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Company-id</th>
-                          <th scope="col">Firstname</th>
-                          <th scope="col">Lastname</th>
-                          <th scope="col">Staff_id</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Role</th>
-                          <th scope="col">Action</th>
-                          <th scope="col">Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>{currentItems}</tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <span className="font-italic form-text text-muted">
-                Click button to add a new Admin
-              </span>
-              <div className="m-1">
-                <button
-                  className="btn btn-sm btn-success"
-                  type="submit"
-                  onClick={this.handleCreateClick}
-                >
-                  Add
-                </button>
-              </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={companyAdminStaff.length}
-                paginate={paginate}
-              />
-            </div>
-          </>
-        ) : (
-          <UnAuthorized />
-        )}
-        <Footer />
-      </div>
+      <tr key={item.id}>
+        <td className="admin text-center">{index + 1}</td>
+        <td className="admin text-center">{item.company_id}</td>
+        <td className="admin text-center">{item.firstname}</td>
+        <td className="admin text-center">{item.lastname}</td>
+        <td className="admin text-center">{item.staff_id}</td>
+        <td className="admin text-center">{item.email}</td>
+        <td className="admin text-center">{item.role}</td>
+        <td className="admin text-center">
+          <button
+            className="btn btn-sm btn-primary"
+            type="button"
+            sadminid={item.id}
+            onClick={handleEditClick}
+          >
+            Edit
+          </button>
+        </td>
+        <td className="admin text-center">
+          <button
+            className="btn btn-sm btn-outline-danger"
+            type="button"
+            sadminid={item.id}
+            onClick={handleDeleteClick}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
     );
-  }
-}
+  });
+
+  // Get current items
+  const indexOfLastItem = activePage * itemCountPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+  const currentItems = companyAdminStaff.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <>
+      <AdminView
+        setActivePage={setActivePage}
+        userRole={userRole}
+        loading={loading}
+        currentItems={currentItems}
+        handleCreateClick={handleCreateClick}
+        itemCountPerPage={itemCountPerPage}
+        companyAdminStaff={companyAdminStaff}
+      />
+    </>
+  );
+};
 Admin.propTypes = {
   history: PropTypes.shape().isRequired
 };

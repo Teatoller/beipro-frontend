@@ -440,7 +440,7 @@ exports[`CompanyCreateForm snapshot renders correctly 1`] = `
           <input
             className="btn btn-sm btn-success"
             type="submit"
-            value="Create"
+            value="Add"
           />
         </div>
         <div

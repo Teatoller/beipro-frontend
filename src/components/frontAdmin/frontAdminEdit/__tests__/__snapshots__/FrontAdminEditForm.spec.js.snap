@@ -14,182 +14,175 @@ exports[`FrontAdminEditForm snapshot renders correctly 1`] = `
   <form
     noValidate={true}
   >
-    <fieldset>
-      <fieldset
-        className="hide invisible"
-        disabled={true}
+    <h6
+      className="text-secondary"
+    >
+      Price Input
+    </h6>
+    <div
+      className="form-group row"
+    >
+      <label
+        className="col-sm-2 col-form-label-sm"
+        htmlFor="diesel"
       >
-        <div
-          className="form-group row"
+        Diesel:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="dieselPriceInput"
+          className="form-control"
+          id="diesel"
+          name="diesel"
+          onChange={[Function]}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="petrol"
+      >
+        Petrol:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="petrolPriceInput"
+          className="form-control"
+          id="petrol"
+          name="petrol"
+          onChange={[Function]}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="kerosene"
+      >
+        Kerosene:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="kerosenePriceInput"
+          className="form-control"
+          id="kerosene"
+          name="kerosene"
+          onChange={[Function]}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="ido"
+      >
+        Ido:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="idoPriceInput"
+          className="form-control"
+          id="ido"
+          name="ido"
+          onChange={[Function]}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="fuelOil"
+      >
+        Fuel Oil:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="fuelOilPriceInput"
+          className="form-control"
+          id="fuelOil"
+          name="fo"
+          onChange={[Function]}
+          type="decimal"
+        />
+      </div>
+      <label
+        className="col-sm-2 col-form-label col-form-label-sm"
+        htmlFor="lpg"
+      >
+        Bulk Lpg:
+      </label>
+      <div
+        className="col-sm-10 mb-1"
+      >
+        <input
+          aria-describedby="bulkLpgPriceInput"
+          className="form-control"
+          id="lpg"
+          name="lpg"
+          onChange={[Function]}
+          type="decimal"
+        />
+        <span
+          style={null}
         >
-          <label
-            className="col-sm-2 col-form-label-sm"
-            htmlFor="frontOfficeId"
-          >
-            Office-Id:
-          </label>
-          <div
-            className="col-sm-10 mb-1"
-          >
-            <input
-              aria-describedby="forntOfficeIdInput"
-              className="form-control"
-              id="frontOfficeId"
-              name="front_office_id"
-              placeholder="Disabled input"
-              type="decimal"
-            />
-          </div>
-        </div>
-      </fieldset>
-      <h6
-        className="text-secondary"
+          <div />
+        </span>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-1-sm m-2"
       >
-        Price Input
-      </h6>
+        <input
+          className="btn btn-sm btn-success"
+          type="submit"
+          value="Change"
+        />
+      </div>
+      <div
+        className="col-1-sm m-2"
+      >
+        <button
+          className="btn btn-sm btn-primary"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+    <fieldset
+      className="hide invisible"
+      disabled={true}
+    >
       <div
         className="form-group row"
       >
         <label
           className="col-sm-2 col-form-label-sm"
-          htmlFor="diesel"
+          htmlFor="frontOfficeId"
         >
-          Diesel:
+          Office-Id:
         </label>
         <div
           className="col-sm-10 mb-1"
         >
           <input
-            aria-describedby="dieselPriceInput"
+            aria-describedby="forntOfficeIdInput"
             className="form-control"
-            id="diesel"
-            name="diesel"
-            onChange={[Function]}
+            id="frontOfficeId"
+            name="front_office_id"
+            placeholder="Disabled input"
             type="decimal"
           />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="petrol"
-        >
-          Petrol:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="petrolPriceInput"
-            className="form-control"
-            id="petrol"
-            name="petrol"
-            onChange={[Function]}
-            type="decimal"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="kerosene"
-        >
-          Kerosene:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="kerosenePriceInput"
-            className="form-control"
-            id="kerosene"
-            name="kerosene"
-            onChange={[Function]}
-            type="decimal"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="ido"
-        >
-          Ido:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="idoPriceInput"
-            className="form-control"
-            id="ido"
-            name="ido"
-            onChange={[Function]}
-            type="decimal"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="fuelOil"
-        >
-          Fuel Oil:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="fuelOilPriceInput"
-            className="form-control"
-            id="fuelOil"
-            name="fo"
-            onChange={[Function]}
-            type="decimal"
-          />
-        </div>
-        <label
-          className="col-sm-2 col-form-label col-form-label-sm"
-          htmlFor="lpg"
-        >
-          Bulk Lpg:
-        </label>
-        <div
-          className="col-sm-10 mb-1"
-        >
-          <input
-            aria-describedby="bulkLpgPriceInput"
-            className="form-control"
-            id="lpg"
-            name="lpg"
-            onChange={[Function]}
-            type="decimal"
-          />
-          <span
-            style={null}
-          >
-            <div />
-          </span>
-        </div>
-      </div>
-      <span
-        className="font-italic text-secondary"
-      >
-        Click button to change price
-      </span>
-      <div
-        className="row"
-      >
-        <div
-          className="col-1-sm m-2"
-        >
-          <input
-            className="btn btn-sm btn-success"
-            type="submit"
-            value="Change"
-          />
-        </div>
-        <div
-          className="col-1-sm m-2"
-        >
-          <button
-            className="btn btn-sm btn-primary"
-            type="button"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </fieldset>
