@@ -25,8 +25,8 @@ import { CompanyEdit } from "./components/SuperAdmin/Company/companyEdit/Company
 import { FrontOffice } from "./components/SuperAdmin/FrontOffice/FrontOffice";
 import { FrontOfficeCreate } from "./components/SuperAdmin/FrontOffice/frontOfficeCreate/FrontOfficeCreate";
 import { FrontOfficeEdit } from "./components/SuperAdmin/FrontOffice/frontOfficeEdit/FrontOfficeEdit";
-import Audit from "./components/SuperAdmin/Audit/Audit";
-import AuditView from "./components/SuperAdmin/Audit/AuditView";
+import { Audit } from "./components/SuperAdmin/Audit/Audit";
+import { AuditView } from "./components/SuperAdmin/Audit/auditView/AuditView";
 import { AdminDelete } from "./components/SuperAdmin/Admin/adminDelete/AdminDelete";
 import { CompanyDelete } from "./components/SuperAdmin/Company/companyDelete/CompanyDelete";
 import { FrontOfficeDelete } from "./components/SuperAdmin/FrontOffice/frontOfficeDelete/FrontOfficeDelete";
@@ -36,8 +36,8 @@ import Terms from "./components/auth/common/Terms";
 import ProfileImg from "./components/auth/profile/ProfileImg";
 import ProfileEdit from "./components/auth/profile/ProfileEdit";
 import ContactUs from "./components/auth/contact/ContactUs";
-import Feedback from "./components/SuperAdmin/Feedback/Feedback";
-import FeedbkDelete from "./components/SuperAdmin/Feedback/FeedbkDelete";
+import { Feedback } from "./components/SuperAdmin/Feedback/Feedback";
+import { FeedbkDelete } from "./components/SuperAdmin/Feedback/FeedbackDelete/FeedbkDelete";
 import LandingPage from "./components/Landing/LandingPage";
 
 const checkAuth = () => {

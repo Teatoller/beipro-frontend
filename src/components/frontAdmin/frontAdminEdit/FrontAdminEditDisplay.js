@@ -8,7 +8,7 @@ export const FrontAdminEditDisplay = props => {
     <>
       <div className="col-sm-6 mx-auto">
         <h5 className="text-secondary">Current Price</h5>
-        <div className="table-responsive">
+        <div className="table-responsive m-0">
           <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
             <thead>
               <tr>

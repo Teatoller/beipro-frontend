@@ -35,32 +35,13 @@ export const FrontAdminEditForm = props => {
   return (
     <>
       <div className="col-sm-6 m-auto">
-        <h5 className="text-secondary">
+        <h1 className="text-secondary h6">
           Edit Entry Pad: {company} - <em>{location}</em>
-        </h5>
+        </h1>
         <form noValidate onSubmit={onSubmit}>
-          {/* <fieldset disabled className="hide invisible">
-              <div className="form-group row">
-                <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
-                  Office-Id:
-                </label>
-                <div className="col-sm-10 mb-1">
-                  <input
-                    type="decimal"
-                    name="front_office_id"
-                    id="frontOfficeId"
-                    className="form-control"
-                    placeholder="Disabled input"
-                    value={front_office_id}
-                    aria-describedby="forntOfficeIdInput"
-                  />
-                </div>
-              </div>
-            </fieldset> */}
-
           <h6 className="text-secondary">Price Input</h6>
           <div className="form-group row">
-            <label htmlFor="diesel" className="col-sm-2 col-form-label-sm">
+            <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
               Diesel:
             </label>
             <div className="col-sm-10 mb-1">
@@ -169,7 +150,7 @@ export const FrontAdminEditForm = props => {
             <EditBtn handleCancelClick={handleCancelClick} />
           </div>
           <fieldset disabled className="hide invisible">
-            <div className="form-group row">
+            <div className="form-group row m-0">
               <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
                 Office-Id:
               </label>
