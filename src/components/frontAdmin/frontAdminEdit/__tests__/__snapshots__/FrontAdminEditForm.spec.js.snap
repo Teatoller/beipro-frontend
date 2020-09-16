@@ -4,13 +4,13 @@ exports[`FrontAdminEditForm snapshot renders correctly 1`] = `
 <div
   className="col-sm-6 m-auto"
 >
-  <h5
-    className="text-secondary"
+  <h1
+    className="text-secondary h6"
   >
     Edit Entry Pad: 
      - 
     <em />
-  </h5>
+  </h1>
   <form
     noValidate={true}
   >
@@ -23,7 +23,7 @@ exports[`FrontAdminEditForm snapshot renders correctly 1`] = `
       className="form-group row"
     >
       <label
-        className="col-sm-2 col-form-label-sm"
+        className="col-sm-2 col-form-label col-form-label-sm"
         htmlFor="diesel"
       >
         Diesel:
@@ -164,7 +164,7 @@ exports[`FrontAdminEditForm snapshot renders correctly 1`] = `
       disabled={true}
     >
       <div
-        className="form-group row"
+        className="form-group row m-0"
       >
         <label
           className="col-sm-2 col-form-label-sm"

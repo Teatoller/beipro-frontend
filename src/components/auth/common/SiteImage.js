@@ -7,7 +7,7 @@ const SiteImage = () => {
       <img
         className="img-fluid rounded d-block mx-auto img-thumbnail"
         src={beiprostorage}
-        alt="Petroleum storage tanks installation. Sets the theme for the web site"
+        alt="Storage tanks"
       />
     </div>
   );

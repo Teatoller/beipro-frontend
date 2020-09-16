@@ -1,44 +1,34 @@
 /* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "../../../axios";
-import { Nav } from "../../Landing/Nav";
-import Footer from "../../Landing/Footer";
-import { Spinner } from "../../../spinner/Spinner";
-import Pagination from "../../Pagination";
-import UnAuthorized from "../../auth/common/UnAuthorized";
 import ConstSAdmin from "../ConstSAdmin";
 import BearerToken from "../../../services/BearerToken";
+import { AuditVw } from "./AuditVw";
 
-class Audit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      audits: [],
-      activePage: "1",
-      itemCountPerPage: "10"
-    };
-  }
+export const Audit = props => {
+  const [loading, setLoading] = useState(true);
+  const [audits, setAudits] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [itemCountPerPage] = useState(10);
 
-  componentDidMount() {
-    this.getAuditsData();
-  }
-
-  getAuditsData = () => {
+  const getAuditsData = () => {
     const config = BearerToken();
 
     axios.get(`/audits`, config).then(response => {
       const auditData = response.data;
-      this.setState({
-        audits: auditData,
-        loading: false
-      });
+
+      setAudits(auditData);
+      setLoading(false);
     });
   };
 
-  handleViewClick = e => {
-    const { history } = this.props;
+  useEffect(() => {
+    getAuditsData();
+  }, []);
+
+  const handleViewClick = e => {
+    const { history } = props;
 
     e.preventDefault();
     const attribute = e.currentTarget;
@@ -48,92 +38,50 @@ class Audit extends Component {
     history.push("/auditview");
   };
 
-  render() {
-    const { audits, loading } = this.state;
-    const newLocal = ConstSAdmin();
+  const userRole = ConstSAdmin();
 
-    const beiproAudit = audits.map((item, index) => {
-      return (
-        <tr key={item.id}>
-          <td className="audit text-center">{index + 1}</td>
-          <td className="audit text-center">{item.event}</td>
-          <td className="audit text-center">{item.auditable_type}</td>
-          <td className="audit text-center">{item.auditable_id}</td>
-          <td className="audit text-center">{item.old_values}</td>
-          <td className="audit text-center">{item.new_values}</td>
-          <td className="audit text-center">{item.tags}</td>
-          <td className="audit text-center">
-            <button
-              className="btn btn-sm btn-outline-info"
-              type="button"
-              auditid={item.id}
-              onClick={this.handleViewClick}
-            >
-              View
-            </button>
-          </td>
-        </tr>
-      );
-    });
-
-    const { activePage, itemCountPerPage } = this.state;
-    // Get current items
-    const indexOfLastItem = activePage * itemCountPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
-    const currentItems = beiproAudit.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Change page
-
-    const paginate = pageNumber => {
-      this.setState({
-        activePage: pageNumber
-      });
-    };
-
+  const beiproAudit = audits.map((item, index) => {
     return (
-      <div>
-        <Nav />
-        {newLocal ? (
-          <>
-            <div className="container">
-              <div className="row">
-                <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h5 className="text-secondary">Admin details</h5>
-                  <div className="table-responsive">
-                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Event</th>
-                          <th scope="col">Auditable_type</th>
-                          <th scope="col">Auditable_id</th>
-                          <th scope="col">Old_values</th>
-                          <th scope="col">New_values</th>
-                          <th scope="col">Tags</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>{currentItems}</tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={beiproAudit.length}
-                paginate={paginate}
-              />
-            </div>
-          </>
-        ) : (
-          <UnAuthorized />
-        )}
-        <Footer />
-      </div>
+      <tr key={item.id}>
+        <td className="audit text-center">{index + 1}</td>
+        <td className="audit text-center">{item.event}</td>
+        <td className="audit text-center">{item.auditable_type}</td>
+        <td className="audit text-center">{item.auditable_id}</td>
+        <td className="audit text-center">{item.old_values}</td>
+        <td className="audit text-center">{item.new_values}</td>
+        <td className="audit text-center">{item.tags}</td>
+        <td className="audit text-center">
+          <button
+            className="btn btn-sm btn-outline-info"
+            type="button"
+            auditid={item.id}
+            onClick={handleViewClick}
+          >
+            View
+          </button>
+        </td>
+      </tr>
     );
-  }
-}
+  });
+
+  // Get current items
+  const indexOfLastItem = activePage * itemCountPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+  const currentItems = beiproAudit.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <>
+      <AuditVw
+        userRole={userRole}
+        loading={loading}
+        currentItems={currentItems}
+        itemCountPerPage={itemCountPerPage}
+        beiproAudit={beiproAudit}
+        setActivePage={setActivePage}
+      />
+    </>
+  );
+};
 Audit.propTypes = {
   history: PropTypes.shape().isRequired
 };

@@ -1,46 +1,36 @@
 /* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "../../../axios";
-import { Nav } from "../../Landing/Nav";
-import Footer from "../../Landing/Footer";
-import { Spinner } from "../../../spinner/Spinner";
-import Pagination from "../../Pagination";
 import ConstSAdmin from "../ConstSAdmin";
-import UnAuthorized from "../../auth/common/UnAuthorized";
 import BearerToken from "../../../services/BearerToken";
+import { FeedbackView } from "./FeedbackView";
 
-class Feedback extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      feeds: [],
-      activePage: "1",
-      itemCountPerPage: "5"
-    };
-  }
+export const Feedback = props => {
+  const [loading, setLoading] = useState(true);
+  const [feeds, setFeeds] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [itemCountPerPage] = useState(5);
 
-  componentDidMount() {
-    this.getFeedbackData();
-  }
-
-  getFeedbackData = () => {
+  const getFeedbackData = () => {
     const config = BearerToken();
 
     axios.get(`/contact-us`, config).then(response => {
       const feedData = response.data;
-      this.setState({
-        feeds: feedData,
-        loading: false
-      });
+
+      setFeeds(feedData);
+      setLoading(false);
     });
   };
 
+  useEffect(() => {
+    getFeedbackData();
+  }, []);
+
   // Select front feed record to delete
 
-  handleDeleteClick = e => {
-    const { history } = this.props;
+  const handleDeleteClick = e => {
+    const { history } = props;
     e.preventDefault();
     const attribute = e.currentTarget;
     const sfeedid = attribute.getAttribute("sfeedid");
@@ -48,93 +38,51 @@ class Feedback extends Component {
     history.push("/feedbkdelete");
   };
 
-  render() {
-    // eslint-disable-next-line camelcase
-    const { feeds, loading } = this.state;
-    const newLocal = ConstSAdmin();
+  // eslint-disable-next-line camelcase
+  const userRole = ConstSAdmin();
 
-    const companyAdminStaff = feeds.map((item, index) => {
-      return (
-        <tr key={item.id}>
-          <td className="feed text-center">{index + 1}</td>
-          <td className="feed text-center">{item.name}</td>
-          <td className="feed text-center">{item.email}</td>
-          <td className="feed text-center">{item.phone_number}</td>
-          <td className="feed text-center">{item.subject}</td>
-          <td className="feed text-center">{item.message}</td>
-          <td className="feed text-center">{item.created_at}</td>
-          <td className="feed text-center">
-            <button
-              className="btn btn-sm btn-outline-danger"
-              type="button"
-              sfeedid={item.id}
-              onClick={this.handleDeleteClick}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      );
-    });
-
-    const { activePage, itemCountPerPage } = this.state;
-    // Get current items
-    const indexOfLastItem = activePage * itemCountPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
-    const currentItems = companyAdminStaff.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Change page
-
-    const paginate = pageNumber => {
-      this.setState({
-        activePage: pageNumber
-      });
-    };
-
+  const userFeedback = feeds.map((item, index) => {
     return (
-      <div>
-        <Nav />
-        {newLocal ? (
-          <>
-            <div className="container">
-              <div className="row">
-                <span>{loading ? <Spinner /> : null}</span>
-                <div className="col-sm">
-                  <h5 className="text-secondary">Feedback details</h5>
-                  <div className="table-responsive">
-                    <table className="table table-sm table-striped table-hover table-bordered text-secondary">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Phone No</th>
-                          <th scope="col">Subject</th>
-                          <th scope="col">Message</th>
-                          <th scope="col">Date Created</th>
-                          <th scope="col">Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>{currentItems}</tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <Pagination
-                itemCountPerPage={itemCountPerPage}
-                totalItems={companyAdminStaff.length}
-                paginate={paginate}
-              />
-            </div>
-          </>
-        ) : (
-          <UnAuthorized />
-        )}
-        <Footer />
-      </div>
+      <tr key={item.id}>
+        <td className="feed text-center">{index + 1}</td>
+        <td className="feed text-center">{item.name}</td>
+        <td className="feed text-center">{item.email}</td>
+        <td className="feed text-center">{item.phone_number}</td>
+        <td className="feed text-center">{item.subject}</td>
+        <td className="feed text-center">{item.message}</td>
+        <td className="feed text-center">{item.created_at}</td>
+        <td className="feed text-center">
+          <button
+            className="btn btn-sm btn-outline-danger"
+            type="button"
+            sfeedid={item.id}
+            onClick={handleDeleteClick}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
     );
-  }
-}
+  });
+
+  // Get current items
+  const indexOfLastItem = activePage * itemCountPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
+  const currentItems = userFeedback.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <>
+      <FeedbackView
+        setActivePage={setActivePage}
+        userRole={userRole}
+        loading={loading}
+        currentItems={currentItems}
+        itemCountPerPage={itemCountPerPage}
+        userFeedback={userFeedback}
+      />
+    </>
+  );
+};
 Feedback.propTypes = {
   history: PropTypes.shape().isRequired
 };
