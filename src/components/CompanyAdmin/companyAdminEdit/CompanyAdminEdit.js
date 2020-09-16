@@ -13,23 +13,9 @@ import BearerToken from "../../../services/BearerToken";
 import { CompanyAdminEditView } from "./CompanyAdminEditView";
 
 export const CompanyAdminEdit = props => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  // errors: {
-  //   front_office_id: "",
-  //   firstname: "",
-  //   lastname: "",
-  //   email: "",
-  //   role: "",
-  //   staff_id: "",
-  //   location: ""
-  // }
-  //   };
-  // }
-
   const [loading, setLoading] = useState(true);
   const [admin_id, setAdmin_Id] = useState("");
+  const [company_id, setCompany_Id] = useState("");
   const [staff_id, setStaff_Id] = useState("");
   const [front_office_id, setFront_Office_Id] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -46,6 +32,7 @@ export const CompanyAdminEdit = props => {
     e.preventDefault();
     const data = {
       admin_id,
+      company_id,
       front_office_id,
       firstname,
       lastname,
@@ -70,17 +57,6 @@ export const CompanyAdminEdit = props => {
         setLoading(false);
       })
       .catch(errors => {
-        // this.setState({
-        //   errors: {
-        //     front_office_id: err.response.request.response,
-        //     firstname: err.response.request.response,
-        //     lastname: err.response.request.response,
-        //     email: err.response.request.response,
-        //     role: err.response.request.response,
-        //     staff_id: err.response.request.response,
-        //     location: err.response.request.response
-        //   }
-        // });
         setErrors(errors.response.request.response);
         setLoading(false);
       });
@@ -88,15 +64,18 @@ export const CompanyAdminEdit = props => {
 
   const getOfficeData = () => {
     const adminId = localStorage.getItem("admin_id");
+    const companyId = localStorage.getItem("company_id");
     const lockey = parseInt(adminId, 10);
+    const lockey2 = parseInt(companyId, 10);
 
     setAdmin_Id(lockey);
+    setCompany_Id(lockey2);
   };
 
   const getFrontAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/companyadmins`, config).then(response => {
+    axios.get(`/cofadmins`, config).then(response => {
       const adminsArray = response.data;
 
       setFadmins(adminsArray);
@@ -172,6 +151,7 @@ export const CompanyAdminEdit = props => {
         loading={loading}
         company={company}
         admin_id={admin_id}
+        company_id={company_id}
         front_office_id={front_office_id}
         staff_id={staff_id}
         location={location}

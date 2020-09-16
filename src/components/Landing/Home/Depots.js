@@ -76,6 +76,7 @@ export const Depots = () => {
         itemCountPerPage={itemCountPerPage}
         handleChange={handleChange}
         selectedLocationItems={selectedLocationItems}
+        selectedLocation={selectedLocation}
       />
     </div>
   );

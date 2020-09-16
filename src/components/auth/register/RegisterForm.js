@@ -6,7 +6,7 @@ import { RegisterExtra } from "./RegisterExtra";
 import { RegisterSidebar } from "./RegisterSidebar";
 
 export const RegisterForm = props => {
-  const { loading, onChange, onSubmit, inputs, errors, checkbox, handleAlert } = props;
+  const { loading, onChange, onSubmit, inputs, errors, checkbox, handleAlert, setCheckbox } = props;
   return (
     <>
       <div className="container" aria-label="Sign-up form">
@@ -29,6 +29,7 @@ export const RegisterForm = props => {
                   errors={errors}
                   checkbox={checkbox}
                   handleAlert={handleAlert}
+                  setCheckbox={setCheckbox}
                 />
               </form>
             </main>
@@ -49,6 +50,7 @@ RegisterForm.propTypes = {
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
   errors: PropTypes.bool.isRequired,
   handleAlert: PropTypes.func.isRequired,
-  checkbox: PropTypes.bool.isRequired
+  checkbox: PropTypes.bool.isRequired,
+  setCheckbox: PropTypes.func.isRequired
 };
 export default RegisterForm;

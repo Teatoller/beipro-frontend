@@ -51,11 +51,15 @@ export const DepotTable = props => {
               {selectedLocationItems.length === 0 ? (
                 <tr>
                   <td colSpan="8" className="form-text text-muted">
-                    <small>
-                      No items for
-                      {"\u00A0"}
-                      {selectedLocation}
-                    </small>
+                    {!selectedLocation || selectedLocation === "Select a location" ? (
+                      "No items"
+                    ) : (
+                      <small>
+                        No items for
+                        {"\u00A0"}
+                        {selectedLocation}
+                      </small>
+                    )}
                   </td>
                 </tr>
               ) : (
@@ -79,6 +83,6 @@ DepotTable.propTypes = {
   itemCountPerPage: PropTypes.number.isRequired,
   selectedLocationItems: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectedLocation: PropTypes.string.isRequired,
-  slice: PropTypes.shape().isRequired
+  slice: PropTypes.func.isRequired
 };
 export default DepotTable;

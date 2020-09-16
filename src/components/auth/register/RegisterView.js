@@ -5,7 +5,7 @@ import CommonAuthNav from "../common/CommonAuthNav";
 import { RegisterForm } from "./RegisterForm";
 
 export const RegisterView = props => {
-  const { inputs, onChange, onSubmit, loading, errors, checkbox, handleAlert } = props;
+  const { inputs, onChange, onSubmit, loading, errors, checkbox, handleAlert, setCheckbox } = props;
   return (
     <>
       <CommonAuthNav />
@@ -21,6 +21,7 @@ export const RegisterView = props => {
         errors={errors}
         checkbox={checkbox}
         handleAlert={handleAlert}
+        setCheckbox={setCheckbox}
       />
       <Footer />
     </>
@@ -33,6 +34,7 @@ RegisterView.propTypes = {
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
   errors: PropTypes.bool.isRequired,
   handleAlert: PropTypes.func.isRequired,
-  checkbox: PropTypes.bool.isRequired
+  checkbox: PropTypes.bool.isRequired,
+  setCheckbox: PropTypes.func.isRequired
 };
 export default RegisterView;

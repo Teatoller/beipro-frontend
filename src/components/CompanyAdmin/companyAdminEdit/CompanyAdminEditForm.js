@@ -10,6 +10,7 @@ import EditBtn from "../../SuperAdmin/common/EditBtn";
 export const CompanyAdminEditForm = props => {
   const {
     admin_id,
+    company_id,
     front_office_id,
     staff_id,
     location,
@@ -38,25 +39,7 @@ export const CompanyAdminEditForm = props => {
     <>
       <main>
         <form noValidate onSubmit={onSubmit}>
-          {/* <fieldset disabled className="hide invisible">
-              <div className="form-group row">
-                <label htmlFor="adminId" className="col-sm-2 col-form-label col-form-label-sm">
-                  Admin:
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    type="decimal"
-                    name="admin_id"
-                    id="adminId"
-                    className="form-control form-control-sm"
-                    placeholder="Disabled input"
-                    value={admin_id}
-                    aria-describedby="adminIdInput"
-                  />
-                </div>
-              </div>
-            </fieldset> */}
-          <h6>Front Admin Details</h6>
+          <h1 className="h6">Front Admin Details</h1>
           <div className="form-group row">
             <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label col-form-label-sm">
               Office Id:
@@ -182,14 +165,13 @@ export const CompanyAdminEditForm = props => {
               </span>
             </div>
           </div>
-          {/* <span className="font-italic text-secondary">Click button to change admin details</span> */}
           <div className="row">
             <EditBtn handleCancelClick={handleCancelClick} />
           </div>
           <fieldset disabled className="hide invisible">
             <div className="form-group row">
               <label htmlFor="adminId" className="col-sm-2 col-form-label col-form-label-sm">
-                Admin:
+                admin_id:
               </label>
               <div className="col-sm-10">
                 <input
@@ -200,6 +182,23 @@ export const CompanyAdminEditForm = props => {
                   placeholder="Disabled input"
                   value={admin_id}
                   aria-describedby="adminIdInput"
+                />
+              </div>
+            </div>
+            <hr />
+            <div className="form-group row">
+              <label htmlFor="companyId" className="col-sm-2 col-form-label col-form-label-sm">
+                company_id:
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="decimal"
+                  name="company_id"
+                  id="companyId"
+                  className="form-control form-control-sm"
+                  placeholder="Disabled input"
+                  value={company_id}
+                  aria-describedby="companyIdInput"
                 />
               </div>
             </div>
@@ -216,6 +215,7 @@ CompanyAdminEditForm.propTypes = {
   front_office_id: PropTypes.string.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   admin_id: PropTypes.string.isRequired,
+  company_id: PropTypes.string.isRequired,
   staff_id: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,

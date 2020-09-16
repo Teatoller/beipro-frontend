@@ -14,6 +14,7 @@ import { CompanyAdminCreateView } from "./CompanyAdminCreateView";
 export const CompanyAdminCreate = props => {
   const [loading, setLoading] = useState(true);
   const [admin_id, setAdmin_Id] = useState("");
+  const [company_id, setCompany_Id] = useState("");
   const [staff_id, setStaff_Id] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -49,6 +50,7 @@ export const CompanyAdminCreate = props => {
     e.preventDefault();
     const data = {
       admin_id,
+      company_id,
       front_office_id,
       firstname,
       lastname,
@@ -77,9 +79,12 @@ export const CompanyAdminCreate = props => {
 
   const getOfficeData = () => {
     const adminId = localStorage.getItem("admin_id");
+    const companyId = localStorage.getItem("company_id");
     const lockey = parseInt(adminId, 10);
+    const lockey2 = parseInt(companyId, 10);
 
     setAdmin_Id(lockey);
+    setCompany_Id(lockey2);
     setF1(localStorage.getItem("f1"));
     setF1Loc(localStorage.getItem("f1loc"));
     setF2(localStorage.getItem("f2"));
@@ -148,6 +153,7 @@ export const CompanyAdminCreate = props => {
         loading={loading}
         company={company}
         admin_id={admin_id}
+        company_id={company_id}
         errors={errors}
         handleCancelClick={handleCancelClick}
         onSubmit={onSubmit}

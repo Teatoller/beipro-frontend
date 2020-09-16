@@ -5,9 +5,11 @@ exports[`CompanyAdminEditForm snapshot renders correctly 1`] = `
   <form
     noValidate={true}
   >
-    <h6>
+    <h1
+      className="h6"
+    >
       Front Admin Details
-    </h6>
+    </h1>
     <div
       className="form-group row"
     >
@@ -179,7 +181,7 @@ exports[`CompanyAdminEditForm snapshot renders correctly 1`] = `
           className="col-sm-2 col-form-label col-form-label-sm"
           htmlFor="adminId"
         >
-          Admin:
+          admin_id:
         </label>
         <div
           className="col-sm-10"
@@ -189,6 +191,29 @@ exports[`CompanyAdminEditForm snapshot renders correctly 1`] = `
             className="form-control form-control-sm"
             id="adminId"
             name="admin_id"
+            placeholder="Disabled input"
+            type="decimal"
+          />
+        </div>
+      </div>
+      <hr />
+      <div
+        className="form-group row"
+      >
+        <label
+          className="col-sm-2 col-form-label col-form-label-sm"
+          htmlFor="companyId"
+        >
+          company_id:
+        </label>
+        <div
+          className="col-sm-10"
+        >
+          <input
+            aria-describedby="companyIdInput"
+            className="form-control form-control-sm"
+            id="companyId"
+            name="company_id"
             placeholder="Disabled input"
             type="decimal"
           />

@@ -15,7 +15,6 @@ export const Register = props => {
 
   const onChange = e => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
-    setCheckbox({ ...inputs, [e.target.name]: e.target.value });
   };
 
   const onSubmit = e => {
@@ -65,6 +64,7 @@ export const Register = props => {
         errors={errors}
         checkbox={checkbox}
         handleAlert={handleAlert}
+        setCheckbox={setCheckbox}
       />
     </>
   );
