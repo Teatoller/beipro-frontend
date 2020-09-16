@@ -17,13 +17,13 @@ export const FrontAdminDisplay = props => {
       {userRole ? (
         <>
           <div className="container">
-            <div className="row">
+            <div className="row m-0">
               <span>{loading ? <Spinner /> : null}</span>
-              <div className="col-sm">
-                <h5 className="text-secondary">
+              <div className="col-sm m-0">
+                <h1 className="text-secondary h6">
                   Current Price: {company}-{location}
-                </h5>
-                <div className="table-responsive">
+                </h1>
+                <div className="table-responsive m-0">
                   <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
@@ -47,10 +47,7 @@ export const FrontAdminDisplay = props => {
                 </div>
               </div>
             </div>
-            {/* <span className="font-italic form-text text-muted">
-              Click button to add a new current price
-            </span> */}
-            <div className="col-1-sm m-2">
+            <div className="col-1-sm">
               <button className="btn btn-sm btn-success" type="submit" onClick={handleCreateClick}>
                 Create
               </button>
