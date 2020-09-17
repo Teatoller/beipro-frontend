@@ -14,13 +14,17 @@ import { CompanyAdminDeleteView } from "./CompanyAdminDeleteView";
 export const CompanyAdminDelete = props => {
   const [loading, setLoading] = useState(true);
   const [, setAdmin_Id] = useState("");
+  const [, setCompany_Id] = useState("");
   const [fadmins, setFadmins] = useState([]);
 
   const getOfficeData = () => {
     const adminId = localStorage.getItem("admin_id");
+    const companyId = localStorage.getItem("company_id");
     const lockey = parseInt(adminId, 10);
+    const lockey2 = parseInt(companyId, 10);
 
     setAdmin_Id(lockey);
+    setCompany_Id(lockey2);
   };
 
   const getFrontAdminsData = () => {
@@ -31,11 +35,12 @@ export const CompanyAdminDelete = props => {
     axios.get(`/companyadmins/${fadminid}`, config).then(response => {
       const frontadminData = response.data;
 
-      const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
+      // const isolatekey = parseInt(localStorage.getItem("admin_id"), 10);
+      const isolatekey = parseInt(localStorage.getItem("company_id"), 10);
 
       // Array with object containing details of the logged user
 
-      const adminsArray = frontadminData.filter(object => object.admin_id === isolatekey);
+      const adminsArray = frontadminData.filter(object => object.company_id === isolatekey);
 
       setFadmins(adminsArray);
       setLoading(false);
