@@ -1,13 +1,27 @@
+/* eslint-disable max-len */
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Link } from "react-router-dom";
 import Error from "../../Error";
 
-export const RegisterTextInput = ({ inputs, onChange, checkbox, handleAlert, loading, errors }) => {
+export const RegisterTextInput = ({
+  inputs,
+  onChange,
+  checkbox,
+  handleAlert,
+  loading,
+  errors,
+  setCheckbox
+}) => {
   const dangerStyle = {
     fontStyle: "italic",
     color: "red"
+  };
+
+  const toggle_checkbox = () => {
+    setCheckbox(!checkbox);
   };
   return (
     <>
@@ -103,7 +117,7 @@ export const RegisterTextInput = ({ inputs, onChange, checkbox, handleAlert, loa
 
       <div className="text-right">
         <span className="text-danger">&#42;</span>
-        <input type="checkbox" name="checkbox" value={inputs} id="agree" onChange={onChange} />{" "}
+        <input type="checkbox" name="checkbox" id="agree" onChange={toggle_checkbox} />{" "}
         <span className="">
           <small>
             I have read and agree to the
@@ -132,6 +146,7 @@ RegisterTextInput.propTypes = {
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
   errors: PropTypes.bool.isRequired,
   handleAlert: PropTypes.func.isRequired,
-  checkbox: PropTypes.bool.isRequired
+  checkbox: PropTypes.bool.isRequired,
+  setCheckbox: PropTypes.func.isRequired
 };
 export default RegisterTextInput;

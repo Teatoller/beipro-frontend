@@ -15,6 +15,7 @@ export const CompanyAdminEditView = props => {
     loading,
     company,
     admin_id,
+    company_id,
     front_office_id,
     staff_id,
     location,
@@ -54,6 +55,7 @@ export const CompanyAdminEditView = props => {
                 <h5 className="text-secondary">{company}:Edit Entry Pad</h5>
                 <CompanyAdminEditForm
                   admin_id={admin_id}
+                  company_id={company_id}
                   front_office_id={front_office_id}
                   staff_id={staff_id}
                   location={location}
@@ -101,6 +103,7 @@ CompanyAdminEditView.propTypes = {
   front_office_id: PropTypes.string.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   admin_id: PropTypes.string.isRequired,
+  company_id: PropTypes.string.isRequired,
   staff_id: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,

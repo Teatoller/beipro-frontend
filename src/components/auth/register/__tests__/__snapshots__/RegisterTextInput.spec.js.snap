@@ -121,6 +121,7 @@ Array [
     <input
       id="agree"
       name="checkbox"
+      onChange={[Function]}
       type="checkbox"
     />
      

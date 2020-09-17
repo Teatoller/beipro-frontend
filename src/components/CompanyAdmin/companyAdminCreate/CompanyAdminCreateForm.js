@@ -11,6 +11,7 @@ export const CompanyAdminCreateForm = props => {
   const {
     company,
     admin_id,
+    company_id,
     errors,
     handleCancelClick,
     onSubmit,
@@ -47,7 +48,7 @@ export const CompanyAdminCreateForm = props => {
             <fieldset disabled className="hide invisible">
               <div className="form-group row">
                 <label htmlFor="adminId" className="col-sm-2 col-form-label col-form-label-sm">
-                  Admin:
+                  admin_id:
                 </label>
                 <div className="col-sm-10 mb-1">
                   <input
@@ -58,6 +59,23 @@ export const CompanyAdminCreateForm = props => {
                     placeholder="Disabled input"
                     value={admin_id}
                     aria-describedby="adminIdInput"
+                  />
+                </div>
+              </div>
+              <hr />
+              <div className="form-group row">
+                <label htmlFor="companyId" className="col-sm-2 col-form-label col-form-label-sm">
+                  company_id:
+                </label>
+                <div className="col-sm-10 mb-1">
+                  <input
+                    type="decimal"
+                    name="company_id"
+                    id="companyId"
+                    className="form-control"
+                    placeholder="Disabled input"
+                    value={company_id}
+                    aria-describedby="companyIdInput"
                   />
                 </div>
               </div>
@@ -202,6 +220,7 @@ CompanyAdminCreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   admin_id: PropTypes.string.isRequired,
+  company_id: PropTypes.string.isRequired,
   setFirstname: PropTypes.func.isRequired,
   setEmail: PropTypes.func.isRequired,
   setLastname: PropTypes.func.isRequired,
