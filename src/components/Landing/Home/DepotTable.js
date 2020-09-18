@@ -25,12 +25,16 @@ export const DepotTable = props => {
     <>
       <main>
         <span className="form-text text-muted">
-          <small>
-            {"\u00A0"}
-            {selectedLocation}
-            {"\u00A0"}
-            prices as at {curTime}
-          </small>
+          {!selectedLocation || selectedLocation === "Select a location" ? (
+            ""
+          ) : (
+            <small>
+              {"\u00A0"}
+              {selectedLocation}
+              {"\u00A0"}
+              prices as at {curTime}
+            </small>
+          )}
         </span>
         <div className="table-responsive">
           <table className="table table-sm table-md table-striped table-hover">
@@ -52,7 +56,7 @@ export const DepotTable = props => {
                 <tr>
                   <td colSpan="8" className="form-text text-muted">
                     {!selectedLocation || selectedLocation === "Select a location" ? (
-                      "No items"
+                      ""
                     ) : (
                       <small>
                         No items for
