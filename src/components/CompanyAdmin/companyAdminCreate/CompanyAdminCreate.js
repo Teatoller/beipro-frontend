@@ -101,7 +101,7 @@ export const CompanyAdminCreate = props => {
   const getFrontAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/companyadmins`, config).then(response => {
+    axios.get(`/cofadmins`, config).then(response => {
       const adminsArray = response.data;
 
       setFadmins(adminsArray);

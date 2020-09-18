@@ -13,6 +13,7 @@ export const FrontAdmin = props => {
   const [loading, setLoading] = useState(true);
   const [latestprices, setLatestPrices] = useState([]);
   const [errors, setErrors] = useState("");
+  const [loggedStaffLocation, setLoggedStaffLocation] = useState("");
 
   const getOfficeData = () => {
     const config = BearerToken();
@@ -22,6 +23,7 @@ export const FrontAdmin = props => {
       .then(response => {
         const frontadminsdata = response.data;
         const loggedUserEmail = localStorage.getItem("email");
+        const fStaffLocation = localStorage.getItem("location");
 
         const userArray = frontadminsdata.filter(object => object.email === loggedUserEmail);
 
@@ -41,6 +43,7 @@ export const FrontAdmin = props => {
         const lockey = parseInt(frontkey(), 10);
 
         localStorage.setItem("front_office_id", lockey);
+        setLoggedStaffLocation(fStaffLocation);
       })
       .catch(errors => {
         setErrors(errors.response.request.response);
@@ -191,6 +194,7 @@ export const FrontAdmin = props => {
         currentPrice={currentPrice}
         errors={errors}
         handleCreateClick={handleCreateClick}
+        loggedStaffLocation={loggedStaffLocation}
       />
     </>
   );
