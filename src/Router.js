@@ -39,6 +39,7 @@ import ContactUs from "./components/auth/contact/ContactUs";
 import { Feedback } from "./components/SuperAdmin/Feedback/Feedback";
 import { FeedbkDelete } from "./components/SuperAdmin/Feedback/FeedbackDelete/FeedbkDelete";
 import LandingPage from "./components/Landing/LandingPage";
+import { Illustration } from "./components/illustrations/Illustration";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -79,12 +80,13 @@ const BeiproRouter = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/privacy-policy" component={Privacy} />
           <Route exact path="/terms" component={Terms} />
+          <Route exact path="/resetrequest" component={ResetRequest} />
+          <Route exact path="/reset" component={Reset} />
+          <AuthRoute exact path="/graphs" component={Illustration} />
           <AuthRoute exact path="/profile" component={Profile} />
           <AuthRoute exact path="/profileedit" component={ProfileEdit} />
           <AuthRoute exact path="/profileimg" component={ProfileImg} />
           <AuthRoute exact path="/contactus" component={ContactUs} />
-          <Route exact path="/resetrequest" component={ResetRequest} />
-          <Route exact path="/reset" component={Reset} />
           <AuthRoute path="/welcome" component={Welcome} />
           <AuthRoute exact path="/admin" component={CompanyAdmin} />
           <AuthRoute exact path="/adminedit" component={CompanyAdminEdit} />

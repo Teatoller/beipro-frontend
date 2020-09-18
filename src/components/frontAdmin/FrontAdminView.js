@@ -6,7 +6,16 @@ import Footer from "../Landing/Footer";
 import { FrontAdminDisplay } from "./FrontAdminDisplay";
 
 export const FrontAdminView = props => {
-  const { userRole, loading, company, location, currentPrice, errors, handleCreateClick } = props;
+  const {
+    userRole,
+    loading,
+    company,
+    location,
+    currentPrice,
+    errors,
+    handleCreateClick,
+    loggedStaffLocation
+  } = props;
 
   return (
     <>
@@ -19,6 +28,7 @@ export const FrontAdminView = props => {
         currentPrice={currentPrice}
         errors={errors}
         handleCreateClick={handleCreateClick}
+        loggedStaffLocation={loggedStaffLocation}
       />
       <Footer />
     </>
@@ -31,6 +41,7 @@ FrontAdminView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.bool.isRequired,
+  loggedStaffLocation: PropTypes.string.isRequired
 };
 export default FrontAdminView;

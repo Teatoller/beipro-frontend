@@ -95,6 +95,11 @@ export const Nav = () => {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" activeStyle={activeStyle} to="/graphs">
+                Stats
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <Can
                 role={roleAdmin}
                 perform="company-admin:list"

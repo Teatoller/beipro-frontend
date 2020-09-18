@@ -4,9 +4,23 @@ import PropTypes from "prop-types";
 import { Spinner } from "../../spinner/Spinner";
 import UnAuthorized from "../auth/common/UnAuthorized";
 import Error from "../Error";
+import { NrbGraphs } from "../illustrations/NrbGraphs";
+import { MsaGraphs } from "../illustrations/MsaGraphs";
+import { KsmGraphs } from "../illustrations/KsmGraphs";
+import { NkrGraphs } from "../illustrations/NkrGraphs";
+import { EldGraphs } from "../illustrations/EldGraphs";
 
 export const FrontAdminDisplay = props => {
-  const { userRole, loading, company, location, currentPrice, errors, handleCreateClick } = props;
+  const {
+    userRole,
+    loading,
+    company,
+    location,
+    currentPrice,
+    errors,
+    handleCreateClick,
+    loggedStaffLocation
+  } = props;
 
   const dangerStyle = {
     fontStyle: "italic",
@@ -17,13 +31,13 @@ export const FrontAdminDisplay = props => {
       {userRole ? (
         <>
           <div className="container">
-            <div className="row m-0">
+            <div className="row">
               <span>{loading ? <Spinner /> : null}</span>
-              <div className="col-sm m-0">
+              <div className="col-sm">
                 <h1 className="text-secondary h6">
                   Current Price: {company}-{location}
                 </h1>
-                <div className="table-responsive m-0">
+                <div className="table-responsive">
                   <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
@@ -52,6 +66,47 @@ export const FrontAdminDisplay = props => {
                 Create
               </button>
             </div>
+            <div>
+              <div className="container">
+                <div className="row">
+                  {loggedStaffLocation === "Nairobi" ? (
+                    <div className="col-sm">
+                      <NrbGraphs />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {loggedStaffLocation === "Mombasa" ? (
+                    <div className="col-sm">
+                      <MsaGraphs />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {loggedStaffLocation === "Kisumu" ? (
+                    <div className="col-sm">
+                      <KsmGraphs />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {loggedStaffLocation === "Nakuru" ? (
+                    <div className="col-sm">
+                      <NkrGraphs />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {loggedStaffLocation === "Eldoret" ? (
+                    <div className="col-sm">
+                      <EldGraphs />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </>
       ) : (
@@ -67,6 +122,7 @@ FrontAdminDisplay.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.bool.isRequired,
+  loggedStaffLocation: PropTypes.string.isRequired
 };
 export default FrontAdminDisplay;
