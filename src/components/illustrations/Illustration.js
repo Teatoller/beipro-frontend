@@ -13,24 +13,24 @@ export const Illustration = () => {
       <Nav />
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-sm-12">
             <NrbGraphs />
           </div>
-          <div className="col">
+          <div className="col-sm-12">
             <MsaGraphs />
           </div>
           <div className="w-100" />
-          <div className="col">
+          <div className="col-sm-12">
             <KsmGraphs />
           </div>
-          <div className="col">
+          <div className="col-sm-12">
             <NkrGraphs />
           </div>
           <div className="w-100" />
-          <div className="col">
+          <div className="col-sm-12">
             <EldGraphs />
           </div>
-          <div className="col" />
+          <div className="col-sm-12" />
         </div>
       </div>
     </>

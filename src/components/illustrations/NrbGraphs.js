@@ -43,7 +43,7 @@ export const NrbGraphs = () => {
 
   return (
     <>
-      <h1 className="h6">Nairobi</h1>
+      <h1 className="h6 text-center text-secondary">Nairobi</h1>
       <span>{loading ? <Spinner /> : null}</span>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
@@ -51,23 +51,30 @@ export const NrbGraphs = () => {
           height={300}
           data={nrbData}
           margin={{
-            top: 5,
-            right: 30,
-            left: 20,
+            top: 1,
+            right: 1,
+            left: -15,
             bottom: 5
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis
+            dataKey="name"
+            tick={{ fontSize: "10px", marginTop: "8px" }}
+            label={{ value: "OMC's", position: "Bottom", dy: 10 }}
+          />
+          <YAxis
+            label={{ value: "ksh/lt", position: "insideLeft", angle: -90, dx: 15 }}
+            tick={{ fontSize: "10px", marginTop: "8px" }}
+          />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="diesel" stroke="#FFC200" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="petrol" stroke="#FF0000" />
+          <Line type="monotone" dataKey="petrol" stroke="#FF0000" strokeDasharray="4 1 1 4" />
           <Line type="monotone" dataKey="kerosene" stroke="#4a9540" />
           <Line type="monotone" dataKey="ido" stroke="#42fa5e" />
-          <Line type="monotone" dataKey="fo" stroke="#494c4f" />
-          <Line type="monotone" dataKey="lpg" stroke="#50a6e1" />
+          <Line type="monotone" dataKey="fo" stroke="#494c4f" strokeDasharray="4 2 4 1 1" />
+          <Line type="monotone" dataKey="lpg" stroke="#50a6e1" strokeDasharray="3 4 5 2" />
         </LineChart>
       </ResponsiveContainer>
     </>

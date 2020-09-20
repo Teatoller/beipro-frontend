@@ -31,13 +31,13 @@ export const FrontAdminDisplay = props => {
       {userRole ? (
         <>
           <div className="container">
-            <div className="row m-0">
+            <div className="row">
               <span>{loading ? <Spinner /> : null}</span>
               <div className="col-sm">
                 <h1 className="text-secondary h6">
                   Current Price: {company}-{location}
                 </h1>
-                <div className="table-responsive m-0">
+                <div className="table-responsive">
                   <table className="table table-sm table-md table-striped table-hover table-bordered text-secondary">
                     <thead>
                       <tr>
@@ -70,35 +70,35 @@ export const FrontAdminDisplay = props => {
               <div className="container">
                 <div className="row">
                   {loggedStaffLocation === "Nairobi" ? (
-                    <div className="col">
+                    <div className="col-sm">
                       <NrbGraphs />
                     </div>
                   ) : (
                     ""
                   )}
                   {loggedStaffLocation === "Mombasa" ? (
-                    <div className="col">
+                    <div className="col-sm">
                       <MsaGraphs />
                     </div>
                   ) : (
                     ""
                   )}
                   {loggedStaffLocation === "Kisumu" ? (
-                    <div className="col">
+                    <div className="col-sm">
                       <KsmGraphs />
                     </div>
                   ) : (
                     ""
                   )}
                   {loggedStaffLocation === "Nakuru" ? (
-                    <div className="col">
+                    <div className="col-sm">
                       <NkrGraphs />
                     </div>
                   ) : (
                     ""
                   )}
                   {loggedStaffLocation === "Eldoret" ? (
-                    <div className="col">
+                    <div className="col-sm">
                       <EldGraphs />
                     </div>
                   ) : (
