@@ -81,7 +81,7 @@ Array [
         type="string"
       />
       <span
-        style={null}
+        className="text-danger "
       >
         <div />
       </span>

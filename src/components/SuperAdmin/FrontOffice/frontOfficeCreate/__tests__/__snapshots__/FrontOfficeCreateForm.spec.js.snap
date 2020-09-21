@@ -380,7 +380,7 @@ exports[`FrontOfficeCreateForm snapshot renders correctly 1`] = `
               </option>
             </select>
             <span
-              style={null}
+              className="text-danger "
             >
               <div />
             </span>

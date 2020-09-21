@@ -20,7 +20,7 @@ Array [
       type="email"
     />
     <span
-      style={null}
+      className="text-danger "
     >
       <div />
     </span>

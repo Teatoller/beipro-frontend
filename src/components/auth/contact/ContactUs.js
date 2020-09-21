@@ -89,10 +89,6 @@ class ContactUs extends Component {
   render() {
     const { name, email, errors, loading } = this.state;
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      color: "red"
-    };
     return (
       <div>
         <Nav />
@@ -169,8 +165,8 @@ class ContactUs extends Component {
                     placeholder="Enter message"
                     onChange={this.onChange}
                   />
-                  <span style={errors.password ? dangerStyle : null}>
-                    <Error error={errors.message ? errors.message : null} />
+                  <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
+                    <Error error={errors || null} />
                   </span>
                 </div>
                 <div className="">

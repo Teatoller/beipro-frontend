@@ -86,10 +86,6 @@ class ProfileEdit extends Component {
   render() {
     const { errors, firstname, lastname, loading } = this.state;
 
-    const dangerStyle = {
-      fontStyle: "italic",
-      color: "red"
-    };
     return (
       <div>
         <Nav />
@@ -134,8 +130,8 @@ class ProfileEdit extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <span style={errors.lastname ? dangerStyle : null}>
-                    <Error error={errors.lastname ? errors.lastname : null} />
+                  <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
+                    <Error error={errors || null} />
                   </span>
                 </div>
                 <div className="row justify-content-center">

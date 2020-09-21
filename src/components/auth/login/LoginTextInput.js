@@ -4,11 +4,6 @@ import PropTypes from "prop-types";
 import Error from "../../Error";
 
 export const LoginTextInput = ({ inputs, onChange, loading, errors }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="form-group">
@@ -42,7 +37,7 @@ export const LoginTextInput = ({ inputs, onChange, loading, errors }) => {
           aria-describedby="password"
           aria-required="true"
         />
-        <span style={errors ? dangerStyle : null}>
+        <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
           <Error error={errors || null} />
         </span>
       </div>

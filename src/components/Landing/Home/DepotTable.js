@@ -16,11 +16,6 @@ export const DepotTable = props => {
   const indexOfFirstItem = indexOfLastItem - itemCountPerPage;
   const currentItems = selectedLocationItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <main>
@@ -71,7 +66,7 @@ export const DepotTable = props => {
               )}
             </tbody>
           </table>
-          <span style={errors ? dangerStyle : null}>
+          <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
             <Error error={errors || null} />
           </span>
         </div>

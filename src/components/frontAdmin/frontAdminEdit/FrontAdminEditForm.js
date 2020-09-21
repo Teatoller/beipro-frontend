@@ -27,11 +27,6 @@ export const FrontAdminEditForm = props => {
     setLpg
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="col-sm-6 m-auto">
@@ -140,12 +135,11 @@ export const FrontAdminEditForm = props => {
                 }}
                 aria-describedby="bulkLpgPriceInput"
               />
-              <span style={errors ? dangerStyle : null}>
+              <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                 <Error error={errors || null} />
               </span>
             </div>
           </div>
-          {/* <span className="font-italic text-secondary">Click button to change price</span> */}
           <div className="row">
             <EditBtn handleCancelClick={handleCancelClick} />
           </div>

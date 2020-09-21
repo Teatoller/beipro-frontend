@@ -127,11 +127,6 @@ export const AdminEdit = props => {
     setActivePage(pageNumber);
   };
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <div>
       <Nav />
@@ -267,7 +262,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
-                        <span style={errors ? dangerStyle : null}>
+                        <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                           <Error error={errors || null} />
                         </span>
                       </div>

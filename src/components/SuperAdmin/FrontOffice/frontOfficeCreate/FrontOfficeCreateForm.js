@@ -22,11 +22,6 @@ export const FrontOfficeCreateForm = props => {
     handleCancelClick
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="row">
@@ -95,7 +90,7 @@ export const FrontOfficeCreateForm = props => {
                       setLocation(e.target.value);
                     }}
                   />
-                  <span style={errors ? dangerStyle : null}>
+                  <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                     <Error error={errors || null} />
                   </span>
                 </div>

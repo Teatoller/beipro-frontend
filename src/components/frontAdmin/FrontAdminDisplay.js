@@ -22,10 +22,6 @@ export const FrontAdminDisplay = props => {
     loggedStaffLocation
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
   return (
     <>
       {userRole ? (
@@ -55,7 +51,7 @@ export const FrontAdminDisplay = props => {
                     </thead>
                     <tbody>{currentPrice}</tbody>
                   </table>
-                  <span style={errors ? dangerStyle : null}>
+                  <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                     <Error error={errors || null} />
                   </span>
                 </div>

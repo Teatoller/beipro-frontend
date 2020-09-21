@@ -130,7 +130,7 @@ exports[`FrontAdminEditForm snapshot renders correctly 1`] = `
           type="decimal"
         />
         <span
-          style={null}
+          className="text-danger "
         >
           <div />
         </span>

@@ -155,7 +155,7 @@ exports[`AdminCreateForm snapshot renders correctly 1`] = `
           type="text"
         />
         <span
-          style={null}
+          className="text-danger "
         >
           <div />
         </span>

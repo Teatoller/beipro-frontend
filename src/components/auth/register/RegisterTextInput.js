@@ -15,11 +15,6 @@ export const RegisterTextInput = ({
   errors,
   setCheckbox
 }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   const toggle_checkbox = () => {
     setCheckbox(!checkbox);
   };
@@ -109,7 +104,7 @@ export const RegisterTextInput = ({
           aria-required="true"
           aria-invalid="false"
         />
-        <span style={errors ? dangerStyle : null}>
+        <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
           <Error error={errors || null} />
         </span>
       </div>

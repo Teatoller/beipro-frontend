@@ -26,10 +26,6 @@ export const FrontAdminCreateForm = ({
   setKerosene,
   setLpg
 }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
   return (
     <>
       <div className="col-sm-6 m-auto">
@@ -37,25 +33,6 @@ export const FrontAdminCreateForm = ({
           Entry Pad: {company}-{location}
         </h5>
         <form noValidate onSubmit={onSubmit}>
-          {/* <fieldset disabled className="hide invisible">
-              <div className="form-group row">
-                <label htmlFor="frontOfficeId" className="col-sm-2 col-form-label-sm">
-                  Office Id:
-                </label>
-                <div className="col-sm-10 mb-1">
-                  <input
-                    type="decimal"
-                    name="front_office_id"
-                    id="frontOfficeId"
-                    className="form-control"
-                    placeholder="Disabled input"
-                    value={front_office_id}
-                    aria-describedby="frontOfficeIdInput"
-                  />
-                </div>
-              </div>
-            </fieldset> */}
-
           <h5 className="text-secondary">Price Input</h5>
           <div className="form-group row">
             <label htmlFor="diesel" className="col-sm-2 col-form-label col-form-label-sm">
@@ -170,12 +147,11 @@ export const FrontAdminCreateForm = ({
                 aria-required="true"
                 aria-invalid="false"
               />
-              <span style={errors ? dangerStyle : null}>
+              <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                 <Error error={errors || null} />
               </span>
             </div>
           </div>
-          {/* <span className="font-italic text-secondary">Click button to add a new price</span> */}
           <div className="row">
             <CreateBtn handleCancelClick={handleCancelClick} />
           </div>

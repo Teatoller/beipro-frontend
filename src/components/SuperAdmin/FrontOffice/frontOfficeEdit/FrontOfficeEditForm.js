@@ -20,11 +20,6 @@ export const FrontOfficeEditForm = props => {
     handleCancelClick
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="col-sm-6 m-auto">
@@ -108,7 +103,7 @@ export const FrontOfficeEditForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
-                <span style={errors ? dangerStyle : null}>
+                <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                   <Error error={errors || null} />
                 </span>
               </div>

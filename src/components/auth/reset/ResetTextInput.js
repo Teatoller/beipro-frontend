@@ -5,11 +5,6 @@ import PropTypes from "prop-types";
 import Error from "../../Error";
 
 export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="form-group m-0">
@@ -78,7 +73,7 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
             aria-required="true"
             aria-invalid="false"
           />
-          <span style={errors ? dangerStyle : null}>
+          <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
             <Error error={errors || null} />
           </span>
           <span>

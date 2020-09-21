@@ -30,11 +30,6 @@ export const CompanyAdminEditForm = props => {
     setLocation
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <main>
@@ -160,7 +155,7 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="locationInput"
               />
-              <span style={errors ? dangerStyle : null}>
+              <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                 <Error error={errors || null} />
               </span>
             </div>

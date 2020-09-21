@@ -40,10 +40,6 @@ const Logout = () => {
     toast.success("You have been succesfully logged out");
     return <Redirect to="/" />;
   }
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -51,7 +47,7 @@ const Logout = () => {
       <NavLink to="/" className="active" onClick={handleLogout}>
         Logout
       </NavLink>
-      <span style={errors ? dangerStyle : null}>
+      <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
         <Error error={errors || null} />
       </span>
     </>

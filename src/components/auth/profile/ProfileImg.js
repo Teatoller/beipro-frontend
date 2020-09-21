@@ -114,17 +114,6 @@ class ProfileImg extends React.Component {
   render() {
     const { errors, loading, imgholder } = this.state;
 
-    const dangerStyle = {
-      _fontStyle: "italic",
-      get fontStyle() {
-        return this._fontStyle;
-      },
-      set fontStyle(value) {
-        this._fontStyle = value;
-      },
-      color: "red"
-    };
-
     return (
       <div>
         <Nav />
@@ -147,8 +136,8 @@ class ProfileImg extends React.Component {
               </small>
             </div>
 
-            <span style={errors.file ? dangerStyle : null}>
-              <Error error={errors.file ? errors.file : null} />
+            <span className={`text-danger ${errors.file ? "is-invalid" : ""}`}>
+              <Error error={errors.file || null} />
             </span>
 
             <div className="row justify-content-center">

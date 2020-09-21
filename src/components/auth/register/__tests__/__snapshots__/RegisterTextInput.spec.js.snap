@@ -102,7 +102,7 @@ Array [
       type="password"
     />
     <span
-      style={null}
+      className="text-danger "
     >
       <div />
     </span>

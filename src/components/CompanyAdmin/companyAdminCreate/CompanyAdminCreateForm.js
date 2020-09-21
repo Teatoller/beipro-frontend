@@ -34,11 +34,6 @@ export const CompanyAdminCreateForm = props => {
     f5Loc
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="col-sm-6 m-auto">
@@ -200,7 +195,7 @@ export const CompanyAdminCreateForm = props => {
                     setLocation(e.target.value);
                   }}
                 />
-                <span style={errors ? dangerStyle : null}>
+                <span className={`text-danger ${errors ? "is-invalid" : ""}`}>
                   <Error error={errors || null} />
                 </span>
               </div>

@@ -28,10 +28,6 @@ export const AuditViewDisplay = props => {
     handleCancelClick
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
   return (
     <>
       {userRole ? (
@@ -77,7 +73,7 @@ export const AuditViewDisplay = props => {
                         <td className="auditview">new_values</td>
                         {/* <td className="auditview"><NewValue newvalue={new_values} /></td> */}
                         <td className="auditview">
-                          <span style={new_values ? dangerStyle : null}>
+                          <span className={`text-danger ${new_values ? "is-invalid" : ""}`}>
                             <NewValue newvalue={new_values ? "Happy??" : null} />
                           </span>
                         </td>
