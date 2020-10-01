@@ -2,10 +2,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../Error";
 import { CoLocation } from "../common/CoLocation";
 import { CoAdminRole } from "../common/CoAdminRole";
 import CreateBtn from "../../SuperAdmin/common/CreateBtn";
+import { admin_idError } from "../../frontAdmin/common/errors/admin_idError";
+import { company_idError } from "../../frontAdmin/common/errors/company_id";
+import { front_office_idError } from "../../frontAdmin/common/errors/front_office_id";
+import { firstnameError } from "../../auth/common/firstnameError";
+import { lastnameError } from "../../auth/common/lastnameError";
+import { emailError } from "../../auth/common/emailError";
+import { staff_idError } from "../../frontAdmin/common/errors/staff_id";
+import { locationError } from "../../frontAdmin/common/errors/locationError";
+import { messageError } from "../../auth/common/messageError";
 
 export const CompanyAdminCreateForm = props => {
   const {
@@ -13,6 +21,7 @@ export const CompanyAdminCreateForm = props => {
     admin_id,
     company_id,
     errors,
+    message,
     handleCancelClick,
     onSubmit,
     setFirstname,
@@ -34,11 +43,6 @@ export const CompanyAdminCreateForm = props => {
     f5Loc
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <div className="col-sm-6 m-auto">
@@ -55,11 +59,12 @@ export const CompanyAdminCreateForm = props => {
                     type="decimal"
                     name="admin_id"
                     id="adminId"
-                    className="form-control"
+                    className={`form-control ${errors.admin_id ? "is-invalid" : ""}`}
                     placeholder="Disabled input"
                     value={admin_id}
                     aria-describedby="adminIdInput"
                   />
+                  {admin_idError(errors)}
                 </div>
               </div>
               <hr />
@@ -72,11 +77,14 @@ export const CompanyAdminCreateForm = props => {
                     type="decimal"
                     name="company_id"
                     id="companyId"
-                    className="form-control"
+                    className={`form-control form-control-sm ${
+                      errors.company_id ? "is-invalid" : ""
+                    }`}
                     placeholder="Disabled input"
                     value={company_id}
                     aria-describedby="companyIdInput"
                   />
+                  {company_idError(errors)}
                 </div>
               </div>
             </fieldset>
@@ -89,7 +97,9 @@ export const CompanyAdminCreateForm = props => {
                 <input
                   type="decimal"
                   name="front_office_id"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${
+                    errors.front_office_id ? "is-invalid" : ""
+                  }`}
                   id="frontOfficeId"
                   placeholder="Enter Front-office-id"
                   aria-describedby="frontOfficeIdInput"
@@ -102,6 +112,7 @@ export const CompanyAdminCreateForm = props => {
                     id &apos;s: {f1}-{f1Loc},{f2}-{f2Loc},{f3}-{f3Loc},{f4}-{f4Loc},{f5}-{f5Loc}
                   </i>
                 </span>
+                {front_office_idError(errors)}
               </div>
 
               <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -111,7 +122,7 @@ export const CompanyAdminCreateForm = props => {
                 <input
                   type="text"
                   name="firstname"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${errors.firstname ? "is-invalid" : ""}`}
                   id="firstname"
                   placeholder="Enter Front-admin Firstname"
                   onChange={e => {
@@ -121,6 +132,7 @@ export const CompanyAdminCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {firstnameError(errors)}
               </div>
 
               <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -130,7 +142,7 @@ export const CompanyAdminCreateForm = props => {
                 <input
                   type="text"
                   name="lastname"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${errors.lastname ? "is-invalid" : ""}`}
                   id="lastname"
                   placeholder="Enter Front-admin Lastname"
                   onChange={e => {
@@ -140,6 +152,7 @@ export const CompanyAdminCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {lastnameError(errors)}
               </div>
 
               <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
@@ -149,7 +162,7 @@ export const CompanyAdminCreateForm = props => {
                 <input
                   type="email"
                   name="email"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${errors.email ? "is-invalid" : ""}`}
                   id="email"
                   placeholder="Enter Front-admin Email"
                   onChange={e => {
@@ -159,6 +172,7 @@ export const CompanyAdminCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {emailError(errors)}
               </div>
 
               <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
@@ -179,7 +193,7 @@ export const CompanyAdminCreateForm = props => {
                 <input
                   type="text"
                   name="staff_id"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${errors.staff_id ? "is-invalid" : ""}`}
                   id="staffId"
                   placeholder="Enter Staff Id"
                   onChange={e => {
@@ -189,6 +203,7 @@ export const CompanyAdminCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {staff_idError(errors)}
               </div>
 
               <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
@@ -200,14 +215,14 @@ export const CompanyAdminCreateForm = props => {
                     setLocation(e.target.value);
                   }}
                 />
-                <span style={errors ? dangerStyle : null}>
-                  <Error error={errors || null} />
-                </span>
+                {locationError(errors)}
+                {messageError(message)}
               </div>
             </div>
             <div className="row">
               <CreateBtn handleCancelClick={handleCancelClick} />
             </div>
+            <div />
           </form>
         </main>
       </div>
@@ -216,7 +231,8 @@ export const CompanyAdminCreateForm = props => {
 };
 CompanyAdminCreateForm.propTypes = {
   company: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   admin_id: PropTypes.string.isRequired,

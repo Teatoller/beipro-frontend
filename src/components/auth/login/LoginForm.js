@@ -5,7 +5,7 @@ import { Spinner } from "../../../spinner/Spinner";
 import { LoginExtra } from "./LoginExtra";
 
 export const LoginForm = props => {
-  const { loading, onSubmit, inputs, errors, onChange } = props;
+  const { loading, onSubmit, inputs, errors, onChange, message } = props;
   return (
     <>
       <div className="col-6 p-2">
@@ -20,6 +20,7 @@ export const LoginForm = props => {
               password={inputs}
               onChange={onChange}
               errors={errors}
+              message={message}
               loading={loading}
             />
           </form>
@@ -36,6 +37,7 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default LoginForm;

@@ -11,7 +11,7 @@ import Error from "../../Error";
 
 const Logout = () => {
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState("");
   const [navigate, setNavigate] = useState(false);
 
   const handleLogout = e => {

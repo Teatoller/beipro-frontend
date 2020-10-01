@@ -22,6 +22,7 @@ export const FrontAdminEdit = props => {
   const [lpg, setLpg] = useState("");
   const [latestprices, setLatestPrices] = useState([]);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     // eslint-disable-next-line camelcase
@@ -42,8 +43,9 @@ export const FrontAdminEdit = props => {
         }
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -116,8 +118,9 @@ export const FrontAdminEdit = props => {
         setLpg(priceObj.lpg);
         setLoading(false);
       });
-    } catch (errors) {
-      setErrors(errors.response.request.response);
+    } catch (err) {
+      setErrors(err.response.data.errors || err.response.data.message);
+      setMessage(err.response.data.message);
       setLoading(false);
     }
   };
@@ -164,6 +167,7 @@ export const FrontAdminEdit = props => {
         location={location}
         currentPrice={currentPrice}
         errors={errors}
+        message={message}
         onSubmit={onSubmit}
         front_office_id={front_office_id}
         diesel={diesel}

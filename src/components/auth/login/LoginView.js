@@ -6,7 +6,7 @@ import { LoginForm } from "./LoginForm";
 import { LoginSidebar } from "./LoginSidebar";
 
 function LoginView(props) {
-  const { loading, onSubmit, inputs, onChange, errors } = props;
+  const { loading, onSubmit, inputs, onChange, errors, message } = props;
   return (
     <>
       <LoginNav />
@@ -17,6 +17,7 @@ function LoginView(props) {
             onSubmit={onSubmit}
             inputs={inputs}
             errors={errors}
+            message={message}
             onChange={onChange}
           />
           <LoginSidebar />
@@ -31,6 +32,7 @@ LoginView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default LoginView;

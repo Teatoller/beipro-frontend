@@ -5,7 +5,17 @@ import CommonAuthNav from "../common/CommonAuthNav";
 import { RegisterForm } from "./RegisterForm";
 
 export const RegisterView = props => {
-  const { inputs, onChange, onSubmit, loading, errors, checkbox, handleAlert, setCheckbox } = props;
+  const {
+    inputs,
+    onChange,
+    onSubmit,
+    loading,
+    errors,
+    checkbox,
+    handleAlert,
+    setCheckbox,
+    message
+  } = props;
   return (
     <>
       <CommonAuthNav />
@@ -19,6 +29,7 @@ export const RegisterView = props => {
         password_confirmation={inputs}
         loading={loading}
         errors={errors}
+        message={message}
         checkbox={checkbox}
         handleAlert={handleAlert}
         setCheckbox={setCheckbox}
@@ -32,7 +43,8 @@ RegisterView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   handleAlert: PropTypes.func.isRequired,
   checkbox: PropTypes.bool.isRequired,
   setCheckbox: PropTypes.func.isRequired

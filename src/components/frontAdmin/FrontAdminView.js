@@ -13,6 +13,7 @@ export const FrontAdminView = props => {
     location,
     currentPrice,
     errors,
+    message,
     handleCreateClick,
     loggedStaffLocation
   } = props;
@@ -27,6 +28,7 @@ export const FrontAdminView = props => {
         location={location}
         currentPrice={currentPrice}
         errors={errors}
+        message={message}
         handleCreateClick={handleCreateClick}
         loggedStaffLocation={loggedStaffLocation}
       />
@@ -41,7 +43,8 @@ FrontAdminView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   loggedStaffLocation: PropTypes.string.isRequired
 };
 export default FrontAdminView;
