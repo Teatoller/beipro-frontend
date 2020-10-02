@@ -3,12 +3,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Spinner } from "../../spinner/Spinner";
 import UnAuthorized from "../auth/common/UnAuthorized";
-import Error from "../Error";
 import { NrbGraphs } from "../illustrations/NrbGraphs";
 import { MsaGraphs } from "../illustrations/MsaGraphs";
 import { KsmGraphs } from "../illustrations/KsmGraphs";
 import { NkrGraphs } from "../illustrations/NkrGraphs";
 import { EldGraphs } from "../illustrations/EldGraphs";
+import { messageError } from "../auth/common/messageError";
 
 export const FrontAdminDisplay = props => {
   const {
@@ -17,15 +17,11 @@ export const FrontAdminDisplay = props => {
     company,
     location,
     currentPrice,
-    errors,
+    message,
     handleCreateClick,
     loggedStaffLocation
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
   return (
     <>
       {userRole ? (
@@ -55,9 +51,7 @@ export const FrontAdminDisplay = props => {
                     </thead>
                     <tbody>{currentPrice}</tbody>
                   </table>
-                  <span style={errors ? dangerStyle : null}>
-                    <Error error={errors || null} />
-                  </span>
+                  {messageError(message)}
                 </div>
               </div>
             </div>
@@ -122,7 +116,7 @@ FrontAdminDisplay.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
   loggedStaffLocation: PropTypes.string.isRequired
 };
 export default FrontAdminDisplay;

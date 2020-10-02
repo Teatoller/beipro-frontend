@@ -91,7 +91,7 @@ export const Nav = () => {
           <ul className="navbar-nav text-capitalize ml-auto">
             <li className="nav-item active">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/depots">
-                Home <span className="sr-only">(current)</span>
+                Depots <span className="sr-only">(current)</span>
               </NavLink>
             </li>
             <li className="nav-item">

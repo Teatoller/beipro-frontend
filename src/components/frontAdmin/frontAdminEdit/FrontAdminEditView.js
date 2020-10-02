@@ -16,6 +16,7 @@ export const FrontAdminEditView = props => {
     location,
     currentPrice,
     errors,
+    message,
     onSubmit,
     front_office_id,
     diesel,
@@ -46,6 +47,7 @@ export const FrontAdminEditView = props => {
                 location={location}
                 currentPrice={currentPrice}
                 errors={errors}
+                message={message}
                 onSubmit={onSubmit}
                 front_office_id={front_office_id}
                 diesel={diesel}
@@ -80,7 +82,8 @@ FrontAdminEditView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   front_office_id: PropTypes.string.isRequired,
   diesel: PropTypes.string.isRequired,

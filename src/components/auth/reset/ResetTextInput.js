@@ -2,14 +2,12 @@
 /* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../Error";
+import { emailError } from "../common/emailError";
+import { passwordError } from "../common/passwordError";
+import { tokenError } from "../common/tokenError";
+import { messageError } from "../common/messageError";
 
-export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
+export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) => {
   return (
     <>
       <div className="form-group m-0">
@@ -21,13 +19,14 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
           name="email"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.email ? "is-invalid" : ""}`}
           id="email"
           placeholder="Enter Email"
           aria-describedby="emailInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {emailError(errors)}
       </div>
       <div className="form-group m-0">
         <label className="form-label" htmlFor="password">
@@ -39,12 +38,13 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
           placeholder="Enter Password"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="password"
           aria-describedby="passwordInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {passwordError(errors)}
       </div>
       <div className="form-group mb-0">
         <label className="form-label" htmlFor="passwordConfirmation">
@@ -56,12 +56,13 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
           placeholder="Confirm Password"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="passwordConfirmation"
           aria-describedby="passwordConfirmationInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {passwordError(errors)}
         <div className="form-group m-0">
           <label className="form-label" htmlFor="token">
             Token
@@ -71,16 +72,15 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors }) => {
             name="token"
             value={inputs}
             onChange={onChange}
-            className="form-control"
+            className={`form-control ${errors.token ? "is-invalid" : ""}`}
             id="token"
             placeholder="Enter Token"
             aria-describedby="tokenInput"
             aria-required="true"
             aria-invalid="false"
           />
-          <span style={errors ? dangerStyle : null}>
-            <Error error={errors || null} />
-          </span>
+          {tokenError(errors)}
+          {messageError(message)}
           <span>
             example: <code>fs1VuLX8J1DMgyY1uennbJO1vfpzV4mgS3B5m7DgoFGZ5Xcp0FzoaWAtt0NV</code>
           </span>
@@ -98,6 +98,7 @@ ResetTextInput.propTypes = {
   loading: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default ResetTextInput;

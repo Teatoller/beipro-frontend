@@ -4,7 +4,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Link } from "react-router-dom";
-import Error from "../../Error";
+import { firstnameError } from "../common/firstnameError";
+import { lastnameError } from "../common/lastnameError";
+import { emailError } from "../common/emailError";
+import { passwordError } from "../common/passwordError";
+import { messageError } from "../common/messageError";
 
 export const RegisterTextInput = ({
   inputs,
@@ -13,13 +17,9 @@ export const RegisterTextInput = ({
   handleAlert,
   loading,
   errors,
+  message,
   setCheckbox
 }) => {
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   const toggle_checkbox = () => {
     setCheckbox(!checkbox);
   };
@@ -34,13 +34,14 @@ export const RegisterTextInput = ({
           name="firstname"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.firstname ? "is-invalid" : ""}`}
           id="firstname"
           placeholder="Enter Firstname"
           aria-describedby="firstnameInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {firstnameError(errors)}
       </div>
       <div className="form-group m-0">
         <label className="form-label" htmlFor="lastname">
@@ -51,13 +52,14 @@ export const RegisterTextInput = ({
           name="lastname"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.lastname ? "is-invalid" : ""}`}
           id="lastname"
           placeholder="Enter Lastname"
           aria-describedby="lastnameInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {lastnameError(errors)}
       </div>
       <div className="form-group m-0">
         <label className="form-label" htmlFor="email">
@@ -68,13 +70,14 @@ export const RegisterTextInput = ({
           name="email"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.email ? "is-invalid" : ""}`}
           id="email"
           aria-describedby="emailInput"
           placeholder="Enter Email"
           aria-required="true"
           aria-invalid="false"
         />
+        {emailError(errors)}
       </div>
       <div className="form-group m-0">
         <label className="form-label" htmlFor="password">
@@ -86,12 +89,13 @@ export const RegisterTextInput = ({
           placeholder="Enter Password"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="password"
           aria-describedby="passwordInput"
           aria-required="true"
           aria-invalid="false"
         />
+        {passwordError(errors)}
       </div>
       <div className="form-group m-0">
         <label className="form-label" htmlFor="passwordConfirm">
@@ -103,15 +107,14 @@ export const RegisterTextInput = ({
           placeholder="Confirm Password"
           value={inputs}
           onChange={onChange}
-          className="form-control"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="passwordConfirm"
           aria-describedby="confirmPasswordInput"
           aria-required="true"
           aria-invalid="false"
         />
-        <span style={errors ? dangerStyle : null}>
-          <Error error={errors || null} />
-        </span>
+        {passwordError(errors)}
+        {messageError(message)}
       </div>
       <span>Please indicate:</span>
 
@@ -144,7 +147,8 @@ RegisterTextInput.propTypes = {
   loading: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   handleAlert: PropTypes.func.isRequired,
   checkbox: PropTypes.bool.isRequired,
   setCheckbox: PropTypes.func.isRequired

@@ -114,7 +114,7 @@ export const FrontOfficeCreateForm = props => {
 };
 FrontOfficeCreateForm.propTypes = {
   loading: PropTypes.bool.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

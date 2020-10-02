@@ -134,6 +134,6 @@ FrontOfficeEditForm.propTypes = {
   setName: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired
 };
 export default FrontOfficeEditForm;

@@ -8,7 +8,7 @@ import { DepotView } from "./DepotView";
 export const Depots = () => {
   const [curTime] = useState(new Date().toLocaleString());
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState("");
   const [frontOffices, setFrontOffices] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);

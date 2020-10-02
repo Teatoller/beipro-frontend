@@ -10,7 +10,8 @@ import { ResetRequestView } from "./ResetRequestView";
 const ResetRequest = props => {
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onChange = e => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -31,8 +32,9 @@ const ResetRequest = props => {
           history.push(`/reset`);
         }
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -45,6 +47,7 @@ const ResetRequest = props => {
         onSubmit={onSubmit}
         inputs={inputs}
         errors={errors}
+        message={message}
       />
     </>
   );

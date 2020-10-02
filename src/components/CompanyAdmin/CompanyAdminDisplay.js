@@ -51,10 +51,6 @@ export const CompanyAdminDisplay = props => {
               </div>
             </div>
 
-            {/* <span className="font-italic text-secondary">
-              Click button to add a new Front Office Admin
-            </span> */}
-
             <div className="m-1">
               <button className="btn btn-sm btn-success" type="submit" onClick={handleCreateClick}>
                 Create

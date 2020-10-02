@@ -14,6 +14,7 @@ export const CompanyAdminCreateView = props => {
     admin_id,
     company_id,
     errors,
+    message,
     handleCancelClick,
     onSubmit,
     setFirstname,
@@ -49,6 +50,7 @@ export const CompanyAdminCreateView = props => {
         admin_id={admin_id}
         company_id={company_id}
         errors={errors}
+        message={message}
         handleCancelClick={handleCancelClick}
         onSubmit={onSubmit}
         setFirstname={setFirstname}
@@ -80,7 +82,8 @@ CompanyAdminCreateView.propTypes = {
   loading: PropTypes.bool.isRequired,
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   admin_id: PropTypes.string.isRequired,

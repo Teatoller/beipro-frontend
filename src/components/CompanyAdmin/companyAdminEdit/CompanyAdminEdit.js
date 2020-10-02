@@ -26,7 +26,8 @@ export const CompanyAdminEdit = props => {
   const [fadmins, setFadmins] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(5);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -56,8 +57,9 @@ export const CompanyAdminEdit = props => {
         }
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -156,6 +158,7 @@ export const CompanyAdminEdit = props => {
         staff_id={staff_id}
         location={location}
         errors={errors}
+        message={message}
         handleCancelClick={handleCancelClick}
         firstname={firstname}
         lastname={lastname}
