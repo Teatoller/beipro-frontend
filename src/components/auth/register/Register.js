@@ -10,7 +10,8 @@ import { RegisterView } from "./RegisterView";
 export const Register = props => {
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
   const [checkbox, setCheckbox] = useState(false);
 
   const onChange = e => {
@@ -36,8 +37,9 @@ export const Register = props => {
           history.push(`/`);
         }
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -62,6 +64,7 @@ export const Register = props => {
         password_confirmation={inputs}
         loading={loading}
         errors={errors}
+        message={message}
         checkbox={checkbox}
         handleAlert={handleAlert}
         setCheckbox={setCheckbox}

@@ -20,6 +20,7 @@ export const CompanyAdminEditView = props => {
     staff_id,
     location,
     errors,
+    message,
     handleCancelClick,
     firstname,
     lastname,
@@ -60,6 +61,7 @@ export const CompanyAdminEditView = props => {
                   staff_id={staff_id}
                   location={location}
                   errors={errors}
+                  message={message}
                   onSubmit={onSubmit}
                   handleCancelClick={handleCancelClick}
                   firstname={firstname}
@@ -98,7 +100,8 @@ CompanyAdminEditView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   front_office_id: PropTypes.string.isRequired,
   handleCancelClick: PropTypes.func.isRequired,

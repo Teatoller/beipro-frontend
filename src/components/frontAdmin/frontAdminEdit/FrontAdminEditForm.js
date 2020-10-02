@@ -2,14 +2,22 @@
 /* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../Error";
 import EditBtn from "../../SuperAdmin/common/EditBtn";
+import { dieselError } from "../common/errors/dieselError";
+import { petrolError } from "../common/errors/petrolError";
+import { keroseneError } from "../common/errors/keroseneError";
+import { idoError } from "../common/errors/idoError";
+import { foError } from "../common/errors/foError";
+import { lpgError } from "../common/errors/lpgError";
+import { front_office_idError } from "../common/errors/front_office_id";
+import { messageError } from "../../auth/common/messageError";
 
 export const FrontAdminEditForm = props => {
   const {
     company,
     location,
     errors,
+    message,
     onSubmit,
     front_office_id,
     diesel,
@@ -26,11 +34,6 @@ export const FrontAdminEditForm = props => {
     setKerosene,
     setLpg
   } = props;
-
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -49,13 +52,14 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="diesel"
                 id="diesel"
-                className="form-control"
+                className={`form-control ${errors.diesel ? "is-invalid" : ""}`}
                 placeholder={diesel}
                 onChange={e => {
                   setDiesel(e.target.value);
                 }}
                 aria-describedby="dieselPriceInput"
               />
+              {dieselError(errors)}
             </div>
             <label htmlFor="petrol" className="col-sm-2 col-form-label col-form-label-sm">
               Petrol:
@@ -65,13 +69,14 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="petrol"
                 id="petrol"
-                className="form-control"
+                className={`form-control ${errors.petrol ? "is-invalid" : ""}`}
                 placeholder={petrol}
                 onChange={e => {
                   setPetrol(e.target.value);
                 }}
                 aria-describedby="petrolPriceInput"
               />
+              {petrolError(errors)}
             </div>
 
             <label htmlFor="kerosene" className="col-sm-2 col-form-label col-form-label-sm">
@@ -82,13 +87,14 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="kerosene"
                 id="kerosene"
-                className="form-control"
+                className={`form-control ${errors.kerosene ? "is-invalid" : ""}`}
                 placeholder={kerosene}
                 onChange={e => {
                   setKerosene(e.target.value);
                 }}
                 aria-describedby="kerosenePriceInput"
               />
+              {keroseneError(errors)}
             </div>
 
             <label htmlFor="ido" className="col-sm-2 col-form-label col-form-label-sm">
@@ -99,13 +105,14 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="ido"
                 id="ido"
-                className="form-control"
+                className={`form-control ${errors.ido ? "is-invalid" : ""}`}
                 placeholder={ido}
                 onChange={e => {
                   setIdo(e.target.value);
                 }}
                 aria-describedby="idoPriceInput"
               />
+              {idoError(errors)}
             </div>
 
             <label htmlFor="fuelOil" className="col-sm-2 col-form-label col-form-label-sm">
@@ -116,13 +123,14 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="fo"
                 id="fuelOil"
-                className="form-control"
+                className={`form-control ${errors.fo ? "is-invalid" : ""}`}
                 placeholder={fo}
                 onChange={e => {
                   setFo(e.target.value);
                 }}
                 aria-describedby="fuelOilPriceInput"
               />
+              {foError(errors)}
             </div>
 
             <label htmlFor="lpg" className="col-sm-2 col-form-label col-form-label-sm">
@@ -133,19 +141,17 @@ export const FrontAdminEditForm = props => {
                 type="decimal"
                 name="lpg"
                 id="lpg"
-                className="form-control"
+                className={`form-control ${errors.lpg ? "is-invalid" : ""}`}
                 placeholder={lpg}
                 onChange={e => {
                   setLpg(e.target.value);
                 }}
                 aria-describedby="bulkLpgPriceInput"
               />
-              <span style={errors ? dangerStyle : null}>
-                <Error error={errors || null} />
-              </span>
+              {lpgError(errors)}
+              {messageError(message)}
             </div>
           </div>
-          {/* <span className="font-italic text-secondary">Click button to change price</span> */}
           <div className="row">
             <EditBtn handleCancelClick={handleCancelClick} />
           </div>
@@ -159,11 +165,12 @@ export const FrontAdminEditForm = props => {
                   type="decimal"
                   name="front_office_id"
                   id="frontOfficeId"
-                  className="form-control"
+                  className={`form-control ${errors.front_office_id ? "is-invalid" : ""}`}
                   placeholder="Disabled input"
                   value={front_office_id}
                   aria-describedby="forntOfficeIdInput"
                 />
+                {front_office_idError(errors)}
               </div>
             </div>
           </fieldset>
@@ -175,7 +182,8 @@ export const FrontAdminEditForm = props => {
 FrontAdminEditForm.propTypes = {
   company: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   front_office_id: PropTypes.string.isRequired,
   diesel: PropTypes.string.isRequired,

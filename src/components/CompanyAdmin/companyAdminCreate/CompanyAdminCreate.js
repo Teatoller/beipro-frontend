@@ -35,6 +35,7 @@ export const CompanyAdminCreate = props => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(5);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
   const input = useRef("");
 
   const onSubmit = e => {
@@ -71,8 +72,9 @@ export const CompanyAdminCreate = props => {
         }
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -155,6 +157,7 @@ export const CompanyAdminCreate = props => {
         admin_id={admin_id}
         company_id={company_id}
         errors={errors}
+        message={message}
         handleCancelClick={handleCancelClick}
         onSubmit={onSubmit}
         setFirstname={setFirstname}

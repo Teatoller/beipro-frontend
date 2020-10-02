@@ -4,8 +4,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../Error";
 import EditBtn from "../../SuperAdmin/common/EditBtn";
+import { firstnameError } from "../../auth/common/firstnameError";
+import { emailError } from "../../auth/common/emailError";
+import { front_office_idError } from "../../frontAdmin/common/errors/front_office_id";
+import { lastnameError } from "../../auth/common/lastnameError";
+import { roleError } from "../../frontAdmin/common/errors/roleError";
+import { staff_idError } from "../../frontAdmin/common/errors/staff_id";
+import { locationError } from "../../frontAdmin/common/errors/locationError";
+import { messageError } from "../../auth/common/messageError";
+import { admin_idError } from "../../frontAdmin/common/errors/admin_idError";
+import { company_idError } from "../../frontAdmin/common/errors/company_id";
 
 export const CompanyAdminEditForm = props => {
   const {
@@ -15,6 +24,7 @@ export const CompanyAdminEditForm = props => {
     staff_id,
     location,
     errors,
+    message,
     handleCancelClick,
     onSubmit,
     firstname,
@@ -30,11 +40,6 @@ export const CompanyAdminEditForm = props => {
     setLocation
   } = props;
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <>
       <main>
@@ -48,7 +53,9 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="decimal"
                 name="front_office_id"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${
+                  errors.front_office_id ? "is-invalid" : ""
+                }`}
                 id="frontOfficeId"
                 placeholder={front_office_id}
                 onChange={e => {
@@ -57,6 +64,7 @@ export const CompanyAdminEditForm = props => {
                 aria-describedby="forntOfficeIdInput"
                 readOnly
               />
+              {front_office_idError(errors)}
             </div>
 
             <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -66,7 +74,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="text"
                 name="firstname"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.firstname ? "is-invalid" : ""}`}
                 id="firstname"
                 placeholder={firstname}
                 onChange={e => {
@@ -74,6 +82,7 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="firstnameInput"
               />
+              {firstnameError(errors)}
             </div>
 
             <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -83,7 +92,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="text"
                 name="lastname"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.lastname ? "is-invalid" : ""}`}
                 id="lastname"
                 placeholder={lastname}
                 onChange={e => {
@@ -91,6 +100,7 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="lastnameInput"
               />
+              {lastnameError(errors)}
             </div>
 
             <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
@@ -100,7 +110,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="email"
                 name="email"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.email ? "is-invalid" : ""}`}
                 id="email"
                 placeholder={email}
                 onChange={e => {
@@ -108,6 +118,7 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="emailInput"
               />
+              {emailError(errors)}
             </div>
 
             <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
@@ -117,7 +128,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="text"
                 name="role"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.role ? "is-invalid" : ""}`}
                 id="role"
                 placeholder={role}
                 onChange={e => {
@@ -126,6 +137,7 @@ export const CompanyAdminEditForm = props => {
                 aria-describedby="roleInput"
                 readOnly
               />
+              {roleError(errors)}
             </div>
 
             <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
@@ -135,7 +147,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="text"
                 name="staff_id"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.staff_id ? "is-invalid" : ""}`}
                 id="staffId"
                 placeholder={staff_id}
                 onChange={e => {
@@ -143,6 +155,7 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="staffIdInput"
               />
+              {staff_idError(errors)}
             </div>
 
             <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
@@ -152,7 +165,7 @@ export const CompanyAdminEditForm = props => {
               <input
                 type="text"
                 name="location"
-                className="form-control form-control-sm"
+                className={`form-control form-control-sm ${errors.location ? "is-invalid" : ""}`}
                 id="location"
                 placeholder={location}
                 onChange={e => {
@@ -160,9 +173,8 @@ export const CompanyAdminEditForm = props => {
                 }}
                 aria-describedby="locationInput"
               />
-              <span style={errors ? dangerStyle : null}>
-                <Error error={errors || null} />
-              </span>
+              {locationError(errors)}
+              {messageError(message)}
             </div>
           </div>
           <div className="row">
@@ -178,11 +190,12 @@ export const CompanyAdminEditForm = props => {
                   type="decimal"
                   name="admin_id"
                   id="adminId"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${errors.admin_id ? "is-invalid" : ""}`}
                   placeholder="Disabled input"
                   value={admin_id}
                   aria-describedby="adminIdInput"
                 />
+                {admin_idError(errors)}
               </div>
             </div>
             <hr />
@@ -195,11 +208,14 @@ export const CompanyAdminEditForm = props => {
                   type="decimal"
                   name="company_id"
                   id="companyId"
-                  className="form-control form-control-sm"
+                  className={`form-control form-control-sm ${
+                    errors.company_id ? "is-invalid" : ""
+                  }`}
                   placeholder="Disabled input"
                   value={company_id}
                   aria-describedby="companyIdInput"
                 />
+                {company_idError(errors)}
               </div>
             </div>
           </fieldset>
@@ -210,7 +226,8 @@ export const CompanyAdminEditForm = props => {
 };
 CompanyAdminEditForm.propTypes = {
   location: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   front_office_id: PropTypes.string.isRequired,
   handleCancelClick: PropTypes.func.isRequired,

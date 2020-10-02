@@ -5,7 +5,7 @@ import { ResetExtra } from "./ResetExtra";
 import { ResetTextInput } from "./ResetTextInput";
 
 export const ResetForm = props => {
-  const { loading, onSubmit, onChange, inputs, errors } = props;
+  const { loading, onSubmit, onChange, inputs, errors, message } = props;
   return (
     <>
       <div className="col-6 m-auto">
@@ -22,6 +22,7 @@ export const ResetForm = props => {
               password_confirmation={inputs}
               loading={loading}
               errors={errors}
+              message={message}
               handleAlert={onChange}
             />
           </form>
@@ -38,6 +39,7 @@ ResetForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default ResetForm;

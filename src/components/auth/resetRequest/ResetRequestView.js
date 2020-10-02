@@ -5,7 +5,7 @@ import CommonAuthNav from "../common/CommonAuthNav";
 import { ResetRequestForm } from "./ResetRequestForm";
 
 export const ResetRequestView = props => {
-  const { loading, onChange, onSubmit, inputs, errors } = props;
+  const { loading, onChange, onSubmit, inputs, errors, message } = props;
   return (
     <>
       <CommonAuthNav />
@@ -15,6 +15,7 @@ export const ResetRequestView = props => {
         onSubmit={onSubmit}
         inputs={inputs}
         errors={errors}
+        message={message}
       />
       <Footer />
     </>
@@ -25,6 +26,7 @@ ResetRequestView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default ResetRequestView;

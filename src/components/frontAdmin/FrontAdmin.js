@@ -13,6 +13,7 @@ export const FrontAdmin = props => {
   const [loading, setLoading] = useState(true);
   const [latestprices, setLatestPrices] = useState([]);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
   const [loggedStaffLocation, setLoggedStaffLocation] = useState("");
 
   const getOfficeData = () => {
@@ -45,8 +46,9 @@ export const FrontAdmin = props => {
         localStorage.setItem("front_office_id", lockey);
         setLoggedStaffLocation(fStaffLocation);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -79,8 +81,9 @@ export const FrontAdmin = props => {
         setLatestPrices(latestprices);
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -193,6 +196,7 @@ export const FrontAdmin = props => {
         location={location}
         currentPrice={currentPrice}
         errors={errors}
+        message={message}
         handleCreateClick={handleCreateClick}
         loggedStaffLocation={loggedStaffLocation}
       />

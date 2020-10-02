@@ -166,7 +166,7 @@ export const CompanyEditForm = props => {
   );
 };
 CompanyEditForm.propTypes = {
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

@@ -7,7 +7,7 @@ import { ResetForm } from "./ResetForm";
 import { ResetSidebar } from "./ResetSidebar";
 
 export const ResetView = props => {
-  const { loading, onSubmit, onChange, inputs, errors } = props;
+  const { loading, onSubmit, onChange, inputs, errors, message } = props;
   return (
     <>
       <CommonAuthNav />
@@ -19,6 +19,7 @@ export const ResetView = props => {
             onChange={onChange}
             inputs={inputs}
             errors={errors}
+            message={message}
           />
           <ResetSidebar />
         </div>
@@ -32,6 +33,7 @@ ResetView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default ResetView;

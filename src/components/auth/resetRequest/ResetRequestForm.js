@@ -6,7 +6,7 @@ import { ResetRequestTextInput } from "./ResetRequestTextInput";
 import { ResetRequestSidebar } from "./ResetRequestSidebar";
 
 export const ResetRequestForm = props => {
-  const { loading, onChange, onSubmit, inputs, errors } = props;
+  const { loading, onChange, onSubmit, inputs, errors, message } = props;
   return (
     <>
       <div className="container" aria-label="Password reset request form">
@@ -25,6 +25,7 @@ export const ResetRequestForm = props => {
                   email={inputs}
                   onChange={onChange}
                   errors={errors}
+                  message={message}
                   loading={loading}
                 />
               </form>
@@ -44,6 +45,7 @@ ResetRequestForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.bool.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default ResetRequestForm;
