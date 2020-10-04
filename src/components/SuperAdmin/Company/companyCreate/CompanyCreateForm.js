@@ -1,10 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../../Error";
 import { CoName } from "../common/CoName";
 import { CoLocation } from "../../../CompanyAdmin/common/CoLocation";
 import CreateBtn from "../../common/CreateBtn";
+import { establishedError } from "../../../frontAdmin/common/errors/establishedError";
+import { messageError } from "../../../auth/common/messageError";
+import { countryError } from "../../../frontAdmin/common/errors/countryError";
+import { locationError } from "../../../frontAdmin/common/errors/locationError";
+import { logoError } from "../../../frontAdmin/common/errors/logoError";
+import { descriptionError } from "../../../frontAdmin/common/errors/descriptionError";
+import { nameError } from "../../../frontAdmin/common/errors/nameError";
 
 export const CompanyCreateForm = props => {
   const {
@@ -16,13 +22,9 @@ export const CompanyCreateForm = props => {
     setCountry,
     setEstablished,
     errors,
+    message,
     handleCancelClick
   } = props;
-
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -41,6 +43,7 @@ export const CompanyCreateForm = props => {
                     setName(e.target.value);
                   }}
                 />
+                {nameError(errors)}
               </div>
 
               <label htmlFor="logo" className="col-sm-2 col-form-label col-form-label-sm">
@@ -50,7 +53,7 @@ export const CompanyCreateForm = props => {
                 <input
                   type="icon"
                   name="logo"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${errors.logo ? "is-invalid" : ""}`}
                   id="logo"
                   placeholder="Enter company Icon"
                   onChange={e => {
@@ -60,6 +63,7 @@ export const CompanyCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {logoError(errors)}
               </div>
 
               <label htmlFor="description" className="col-sm-2 col-form-label col-form-label-sm">
@@ -69,7 +73,9 @@ export const CompanyCreateForm = props => {
                 <input
                   type="text"
                   name="description"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${
+                    errors.description ? "is-invalid" : ""
+                  }`}
                   id="description"
                   placeholder="Enter Company Description"
                   onChange={e => {
@@ -79,6 +85,7 @@ export const CompanyCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {descriptionError(errors)}
               </div>
 
               <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
@@ -90,6 +97,7 @@ export const CompanyCreateForm = props => {
                     setLocation(e.target.value);
                   }}
                 />
+                {locationError(errors)}
               </div>
 
               <label htmlFor="country" className="col-sm-2 col-form-label col-form-label-sm">
@@ -99,7 +107,7 @@ export const CompanyCreateForm = props => {
                 <input
                   type="text"
                   name="country"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${errors.country ? "is-invalid" : ""}`}
                   id="country"
                   placeholder="Enter Country"
                   onChange={e => {
@@ -109,6 +117,7 @@ export const CompanyCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {countryError(errors)}
               </div>
               <label htmlFor="established" className="col-sm-2 col-form-label col-form-label-sm">
                 Established:
@@ -117,7 +126,9 @@ export const CompanyCreateForm = props => {
                 <input
                   type="decimal"
                   name="established"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${
+                    errors.established ? "is-invalid" : ""
+                  }`}
                   id="established"
                   placeholder="Enter Year Established"
                   onChange={e => {
@@ -127,9 +138,8 @@ export const CompanyCreateForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
-                <span style={errors ? dangerStyle : null}>
-                  <Error error={errors || null} />
-                </span>
+                {establishedError(errors)}
+                {messageError(message)}
               </div>
             </div>
             <span className="font-italic text-secondary">Click button to add a Company</span>
@@ -144,6 +154,7 @@ export const CompanyCreateForm = props => {
 };
 CompanyCreateForm.propTypes = {
   errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

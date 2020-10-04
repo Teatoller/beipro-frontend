@@ -19,6 +19,7 @@ export const FrontOfficeCreateView = props => {
     setName,
     setLocation,
     errors,
+    message,
     handleCancelClick,
     currentItems,
     setActivePage,
@@ -45,6 +46,7 @@ export const FrontOfficeCreateView = props => {
           setName={setName}
           setLocation={setLocation}
           errors={errors}
+          message={message}
           currentItems={currentItems}
           handleCancelClick={handleCancelClick}
         />
@@ -62,6 +64,7 @@ FrontOfficeCreateView.propTypes = {
   loading: PropTypes.bool.isRequired,
   userRole: PropTypes.bool.isRequired,
   errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

@@ -23,6 +23,7 @@ export const CompanyEditView = props => {
     setCountry,
     setEstablished,
     errors,
+    message,
     handleCancelClick,
     itemCountPerPage,
     currentItems,
@@ -58,6 +59,7 @@ export const CompanyEditView = props => {
                 description={description}
                 location={location}
                 errors={errors}
+                message={message}
                 handleCancelClick={handleCancelClick}
                 setName={setName}
                 setLocation={setLocation}
@@ -87,6 +89,7 @@ CompanyEditView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

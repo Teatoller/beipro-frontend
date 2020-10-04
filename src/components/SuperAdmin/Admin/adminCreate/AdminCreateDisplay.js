@@ -27,6 +27,7 @@ export const AdminCreateDisplay = props => {
     setEmail,
     handleCancelClick,
     errors,
+    message,
     currentItems,
     itemCountPerPage,
     companyAdminStaff
@@ -55,6 +56,7 @@ export const AdminCreateDisplay = props => {
                 setRole={setRole}
                 setStaff_Id={setStaff_Id}
                 errors={errors}
+                message={message}
                 handleCancelClick={handleCancelClick}
               />
               <AdminCreateSidebar currentItems={currentItems} />
@@ -88,6 +90,7 @@ AdminCreateDisplay.propTypes = {
   setStaff_Id: PropTypes.func.isRequired,
   setEmail: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default AdminCreateDisplay;

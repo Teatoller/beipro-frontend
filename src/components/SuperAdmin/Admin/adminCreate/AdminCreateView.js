@@ -21,6 +21,7 @@ export const AdminCreateView = props => {
     setEmail,
     handleCancelClick,
     errors,
+    message,
     currentItems,
     itemCountPerPage,
     companyAdminStaff
@@ -42,6 +43,7 @@ export const AdminCreateView = props => {
         setEmail={setEmail}
         handleCancelClick={handleCancelClick}
         errors={errors}
+        message={message}
         currentItems={currentItems}
         itemCountPerPage={itemCountPerPage}
         companyAdminStaff={companyAdminStaff}
@@ -64,6 +66,7 @@ AdminCreateView.propTypes = {
   setStaff_Id: PropTypes.func.isRequired,
   setEmail: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default AdminCreateView;

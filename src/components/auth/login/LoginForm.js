@@ -8,7 +8,7 @@ export const LoginForm = props => {
   const { loading, onSubmit, inputs, errors, onChange, message } = props;
   return (
     <>
-      <div className="col-6 p-2">
+      <div className="col-8 p-2">
         <span>{loading ? <Spinner /> : null}</span>
         <header className="text-center">
           <p className="text-secondary">Please Sign in</p>
