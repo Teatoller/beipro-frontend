@@ -49,6 +49,12 @@
   width: 100%;
 }
 
+.passEye {
+  position: "absolute";
+  top: 54%;
+  right: 5%;
+}
+
 /* Table */
 
 th.depot,
