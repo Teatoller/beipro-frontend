@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Link } from "react-router-dom";
 import { firstnameError } from "../common/firstnameError";
@@ -9,6 +11,8 @@ import { lastnameError } from "../common/lastnameError";
 import { emailError } from "../common/emailError";
 import { passwordError } from "../common/passwordError";
 import { messageError } from "../common/messageError";
+import { Eye } from "../../statics/Eye";
+import { EyeSlash } from "../../statics/EyeSlash";
 
 export const RegisterTextInput = ({
   inputs,
@@ -20,6 +24,12 @@ export const RegisterTextInput = ({
   message,
   setCheckbox
 }) => {
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   const toggle_checkbox = () => {
     setCheckbox(!checkbox);
   };
@@ -79,12 +89,12 @@ export const RegisterTextInput = ({
         />
         {emailError(errors)}
       </div>
-      <div className="form-group m-0">
+      <div className="form-group m-0 position-relative">
         <label className="form-label" htmlFor="password">
           Password
         </label>
         <input
-          type="password"
+          type={passwordShown ? "text" : "password"}
           name="password"
           placeholder="Enter Password"
           value={inputs}
@@ -95,14 +105,25 @@ export const RegisterTextInput = ({
           aria-required="true"
           aria-invalid="false"
         />
+        <span
+          className="position-absolute"
+          style={{
+            // position: "absolute",
+            top: "54%",
+            right: "5%"
+          }}
+          onClick={togglePasswordVisiblity}
+        >
+          {passwordShown ? <Eye /> : <EyeSlash />}
+        </span>
         {passwordError(errors)}
       </div>
-      <div className="form-group m-0">
+      <div className="form-group m-0 position-relative">
         <label className="form-label" htmlFor="passwordConfirm">
           Confirm password
         </label>
         <input
-          type="password"
+          type={passwordShown ? "text" : "password"}
           name="password_confirmation"
           placeholder="Confirm Password"
           value={inputs}
