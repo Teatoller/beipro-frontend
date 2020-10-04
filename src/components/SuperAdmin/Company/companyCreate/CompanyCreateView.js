@@ -23,6 +23,7 @@ export const CompanyCreateView = props => {
     setCountry,
     setEstablished,
     errors,
+    message,
     handleCancelClick,
     itemCountPerPage,
     currentItems,
@@ -52,6 +53,7 @@ export const CompanyCreateView = props => {
                 setCountry={setCountry}
                 setEstablished={setEstablished}
                 errors={errors}
+                message={message}
                 handleCancelClick={handleCancelClick}
               />
               <CompanyCreateDisplay currentItems={currentItems} />
@@ -76,6 +78,7 @@ CompanyCreateView.propTypes = {
   userRole: PropTypes.bool.isRequired,
   company: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,

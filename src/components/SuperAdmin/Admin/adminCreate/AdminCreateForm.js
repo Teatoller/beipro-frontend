@@ -2,9 +2,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../../Error";
 import { AdminRole } from "../common/AdminRole";
 import CreateBtn from "../../common/CreateBtn";
+import { messageError } from "../../../auth/common/messageError";
+import { emailError } from "../../../auth/common/emailError";
+import { firstnameError } from "../../../auth/common/firstnameError";
+import { lastnameError } from "../../../auth/common/lastnameError";
+import { company_idError } from "../../../frontAdmin/common/errors/company_id";
+import { staff_idError } from "../../../frontAdmin/common/errors/staff_id";
+import { roleError } from "../../../frontAdmin/common/errors/roleError";
 
 export const AdminCreateForm = props => {
   const {
@@ -16,13 +22,9 @@ export const AdminCreateForm = props => {
     setRole,
     setStaff_Id,
     errors,
+    message,
     handleCancelClick
   } = props;
-
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -38,7 +40,9 @@ export const AdminCreateForm = props => {
               <input
                 type="decimal"
                 name="company_id"
-                className="form-control form-control-sm"
+                className={`"form-control form-control-sm" ${
+                  errors.company_id ? "is-invalid" : ""
+                }`}
                 id="companyId"
                 placeholder="Enter Company-id"
                 onChange={e => {
@@ -48,6 +52,7 @@ export const AdminCreateForm = props => {
                 aria-required="true"
                 aria-invalid="false"
               />
+              {company_idError(errors)}
             </div>
 
             <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -57,7 +62,7 @@ export const AdminCreateForm = props => {
               <input
                 type="text"
                 name="firstname"
-                className="form-control form-control-sm"
+                className={`"form-control form-control-sm" ${errors.firstname ? "is-invalid" : ""}`}
                 id="firstname"
                 placeholder="Enter Front-admin Firstname"
                 onChange={e => {
@@ -67,6 +72,7 @@ export const AdminCreateForm = props => {
                 aria-required="true"
                 aria-invalid="false"
               />
+              {firstnameError(errors)}
             </div>
 
             <label htmlFor="lastName" className="col-sm-2 col-form-label col-form-label-sm">
@@ -76,7 +82,7 @@ export const AdminCreateForm = props => {
               <input
                 type="text"
                 name="lastname"
-                className="form-control form-control-sm"
+                className={`"form-control form-control-sm" ${errors.lastname ? "is-invalid" : ""}`}
                 id="lastname"
                 placeholder="Enter Front-admin Lastname"
                 onChange={e => {
@@ -86,6 +92,7 @@ export const AdminCreateForm = props => {
                 aria-required="true"
                 aria-invalid="false"
               />
+              {lastnameError(errors)}
             </div>
 
             <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
@@ -95,7 +102,7 @@ export const AdminCreateForm = props => {
               <input
                 type="email"
                 name="email"
-                className="form-control form-control-sm"
+                className={`"form-control form-control-sm" ${errors.email ? "is-invalid" : ""}`}
                 id="email"
                 placeholder="Enter Front-admin Email"
                 onChange={e => {
@@ -105,6 +112,7 @@ export const AdminCreateForm = props => {
                 aria-required="true"
                 aria-invalid="false"
               />
+              {emailError(errors)}
             </div>
 
             <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
@@ -116,6 +124,7 @@ export const AdminCreateForm = props => {
                   setRole(e.target.value);
                 }}
               />
+              {roleError(errors)}
             </div>
 
             <label htmlFor="staffId" className="col-sm-2 col-form-label col-form-label-sm">
@@ -125,7 +134,7 @@ export const AdminCreateForm = props => {
               <input
                 type="text"
                 name="staff_id"
-                className="form-control form-control-sm"
+                className={`"form-control form-control-sm" ${errors.staff_id ? "is-invalid" : ""}`}
                 id="staffId"
                 placeholder="Enter Staff Id"
                 onChange={e => {
@@ -135,9 +144,8 @@ export const AdminCreateForm = props => {
                 aria-required="true"
                 aria-invalid="false"
               />
-              <span style={errors ? dangerStyle : null}>
-                <Error error={errors || null} />
-              </span>
+              {staff_idError(errors)}
+              {messageError(message)}
             </div>
           </div>
           <div className="row">
@@ -157,6 +165,7 @@ AdminCreateForm.propTypes = {
   setStaff_Id: PropTypes.func.isRequired,
   setEmail: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default AdminCreateForm;

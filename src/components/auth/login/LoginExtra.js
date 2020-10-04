@@ -12,7 +12,7 @@ export const LoginExtra = () => {
       </div>
       <div className="col-6 text-sm-right">
         <p>Do not have an account?</p>
-        <span className="create-account">
+        <span className="create-account mb0">
           <NavLink to="/register">Sign-up</NavLink>
         </span>
       </div>

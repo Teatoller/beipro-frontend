@@ -7,13 +7,19 @@ import PropTypes from "prop-types";
 import axios from "../../../../axios";
 import { Nav } from "../../../Landing/Nav";
 import Footer from "../../../Landing/Footer";
-import Error from "../../../Error";
 import { Spinner } from "../../../../spinner/Spinner";
 import Pagination from "../../../Pagination";
 import UnAuthorized from "../../../auth/common/UnAuthorized";
 import ConstSAdmin from "../../ConstSAdmin";
 import EditBtn from "../../common/EditBtn";
 import BearerToken from "../../../../services/BearerToken";
+import { staff_idError } from "../../../frontAdmin/common/errors/staff_id";
+import { messageError } from "../../../auth/common/messageError";
+import { roleError } from "../../../frontAdmin/common/errors/roleError";
+import { emailError } from "../../../auth/common/emailError";
+import { lastnameError } from "../../../auth/common/lastnameError";
+import { firstnameError } from "../../../auth/common/firstnameError";
+import { company_idError } from "../../../frontAdmin/common/errors/company_id";
 
 export const AdminEdit = props => {
   const [loading, setLoading] = useState(true);
@@ -27,6 +33,7 @@ export const AdminEdit = props => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -51,8 +58,9 @@ export const AdminEdit = props => {
         }
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -127,11 +135,6 @@ export const AdminEdit = props => {
     setActivePage(pageNumber);
   };
 
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
-
   return (
     <div>
       <Nav />
@@ -153,7 +156,9 @@ export const AdminEdit = props => {
                         <input
                           type="decimal"
                           name="company_id"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.company_id ? "is-invalid" : ""
+                          }`}
                           id="companyId"
                           placeholder={company_id}
                           onChange={e => {
@@ -163,6 +168,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
+                        {company_idError(errors)}
                       </div>
 
                       <label
@@ -175,7 +181,9 @@ export const AdminEdit = props => {
                         <input
                           type="text"
                           name="firstname"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.firstname ? "is-invalid" : ""
+                          }`}
                           id="firstname"
                           placeholder={firstname}
                           onChange={e => {
@@ -185,6 +193,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
+                        {firstnameError(errors)}
                       </div>
 
                       <label
@@ -197,7 +206,9 @@ export const AdminEdit = props => {
                         <input
                           type="text"
                           name="lastname"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.lastname ? "is-invalid" : ""
+                          }`}
                           id="lastname"
                           placeholder={lastname}
                           onChange={e => {
@@ -207,6 +218,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
+                        {lastnameError(errors)}
                       </div>
 
                       <label htmlFor="email" className="col-sm-2 col-form-label col-form-label-sm">
@@ -216,7 +228,9 @@ export const AdminEdit = props => {
                         <input
                           type="email"
                           name="email"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.email ? "is-invalid" : ""
+                          }`}
                           id="email"
                           placeholder={email}
                           onChange={e => {
@@ -226,6 +240,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
+                        {emailError(errors)}
                       </div>
 
                       <label htmlFor="role" className="col-sm-2 col-form-label col-form-label-sm">
@@ -235,7 +250,9 @@ export const AdminEdit = props => {
                         <input
                           type="text"
                           name="role"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.role ? "is-invalid" : ""
+                          }`}
                           id="role"
                           placeholder={role}
                           onChange={e => {
@@ -245,6 +262,7 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
+                        {roleError(errors)}
                       </div>
 
                       <label
@@ -257,7 +275,9 @@ export const AdminEdit = props => {
                         <input
                           type="text"
                           name="staff_id"
-                          className="form-control form-control-sm"
+                          className={`"form-control form-control-sm" ${
+                            errors.staff_id ? "is-invalid" : ""
+                          }`}
                           id="staffId"
                           placeholder={staff_id}
                           onChange={e => {
@@ -267,9 +287,8 @@ export const AdminEdit = props => {
                           aria-required="true"
                           aria-invalid="false"
                         />
-                        <span style={errors ? dangerStyle : null}>
-                          <Error error={errors || null} />
-                        </span>
+                        {staff_idError(errors)}
+                        {messageError(message)}
                       </div>
                     </div>
                     <div className="row">

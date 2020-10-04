@@ -18,7 +18,7 @@ export const LoginTextInput = ({ inputs, onChange, loading, errors, message }) =
 
   return (
     <>
-      <div className="form-group">
+      <div className="form-group mb-3">
         <label className="form-label" htmlFor="email">
           Email address
         </label>
@@ -35,7 +35,7 @@ export const LoginTextInput = ({ inputs, onChange, loading, errors, message }) =
         />
       </div>
       {emailError(errors)}
-      <div className="form-group mb-3 position-relative">
+      <div className="form-group-sm mb-3 position-relative">
         <label className="form-label" htmlFor="password">
           Password
         </label>

@@ -21,6 +21,7 @@ export const AdminCreate = props => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -44,8 +45,9 @@ export const AdminCreate = props => {
         }
         setLoading(false);
       })
-      .catch(errors => {
-        setErrors(errors.response.request.response);
+      .catch(err => {
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -110,6 +112,7 @@ export const AdminCreate = props => {
         setEmail={setEmail}
         handleCancelClick={handleCancelClick}
         errors={errors}
+        message={message}
         currentItems={currentItems}
         itemCountPerPage={itemCountPerPage}
         companyAdminStaff={companyAdminStaff}

@@ -5,7 +5,7 @@ import SiteImage from "../common/SiteImage";
 export const LoginSidebar = () => {
   return (
     <>
-      <article className="col-6">
+      <article className="col-4">
         <SiteImage />
         <SiteTheme />
       </article>

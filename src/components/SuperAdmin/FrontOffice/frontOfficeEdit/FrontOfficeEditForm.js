@@ -2,8 +2,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../../Error";
 import EditBtn from "../../common/EditBtn";
+import { locationError } from "../../../frontAdmin/common/errors/locationError";
+import { messageError } from "../../../auth/common/messageError";
+import { codeError } from "../../../frontAdmin/common/errors/codeError";
+import { nameError } from "../../../frontAdmin/common/errors/nameError";
+import { company_idError } from "../../../frontAdmin/common/errors/company_id";
 
 export const FrontOfficeEditForm = props => {
   const {
@@ -17,13 +21,9 @@ export const FrontOfficeEditForm = props => {
     location,
     setLocation,
     errors,
+    message,
     handleCancelClick
   } = props;
-
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -40,7 +40,9 @@ export const FrontOfficeEditForm = props => {
                 <input
                   type="decimal"
                   name="company_id"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${
+                    errors.company_id ? "is-invalid" : ""
+                  }`}
                   id="companyId"
                   placeholder={company_id}
                   onChange={e => {
@@ -50,6 +52,7 @@ export const FrontOfficeEditForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {company_idError(errors)}
               </div>
 
               <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
@@ -59,7 +62,7 @@ export const FrontOfficeEditForm = props => {
                 <input
                   type="text"
                   name="name"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${errors.name ? "is-invalid" : ""}`}
                   id="name"
                   placeholder={name}
                   onChange={e => {
@@ -69,6 +72,7 @@ export const FrontOfficeEditForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {nameError(errors)}
               </div>
 
               <label htmlFor="code" className="col-sm-2 col-form-label col-form-label-sm">
@@ -78,7 +82,7 @@ export const FrontOfficeEditForm = props => {
                 <input
                   type="text"
                   name="code"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${errors.code ? "is-invalid" : ""}`}
                   id="code"
                   placeholder={code}
                   onChange={e => {
@@ -88,6 +92,7 @@ export const FrontOfficeEditForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
+                {codeError(errors)}
               </div>
 
               <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
@@ -97,7 +102,9 @@ export const FrontOfficeEditForm = props => {
                 <input
                   type="text"
                   name="location"
-                  className="form-control form-control-sm"
+                  className={`"form-control form-control-sm" ${
+                    errors.location ? "is-invalid" : ""
+                  }`}
                   id="location"
                   placeholder={location}
                   Location
@@ -108,9 +115,8 @@ export const FrontOfficeEditForm = props => {
                   aria-required="true"
                   aria-invalid="false"
                 />
-                <span style={errors ? dangerStyle : null}>
-                  <Error error={errors || null} />
-                </span>
+                {locationError(errors)}
+                {messageError(message)}
               </div>
             </div>
 
@@ -134,6 +140,7 @@ FrontOfficeEditForm.propTypes = {
   setName: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default FrontOfficeEditForm;

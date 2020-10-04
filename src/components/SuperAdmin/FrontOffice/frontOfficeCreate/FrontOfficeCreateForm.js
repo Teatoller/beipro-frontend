@@ -2,12 +2,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../../../Error";
 import { Spinner } from "../../../../spinner/Spinner";
 import { CoLocation } from "../../../CompanyAdmin/common/CoLocation";
 import { CoName } from "../../Company/common/CoName";
 import CreateBtn from "../../common/CreateBtn";
 import { FrontOfficeCreateSidebar } from "./FrontOfficeCreateSidebar";
+import { locationError } from "../../../frontAdmin/common/errors/locationError";
+import { messageError } from "../../../auth/common/messageError";
+import { codeError } from "../../../frontAdmin/common/errors/codeError";
+import { company_idError } from "../../../frontAdmin/common/errors/company_id";
+import { nameError } from "../../../frontAdmin/common/errors/nameError";
 
 export const FrontOfficeCreateForm = props => {
   const {
@@ -18,14 +22,10 @@ export const FrontOfficeCreateForm = props => {
     setName,
     setLocation,
     errors,
+    message,
     currentItems,
     handleCancelClick
   } = props;
-
-  const dangerStyle = {
-    fontStyle: "italic",
-    color: "red"
-  };
 
   return (
     <>
@@ -44,7 +44,9 @@ export const FrontOfficeCreateForm = props => {
                   <input
                     type="decimal"
                     name="company_id"
-                    className="form-control form-control-sm"
+                    className={`"form-control form-control-sm" ${
+                      errors.company_id ? "is-invalid" : ""
+                    }`}
                     id="companyId"
                     placeholder="Enter Company Id"
                     onChange={e => {
@@ -54,6 +56,7 @@ export const FrontOfficeCreateForm = props => {
                     aria-required="true"
                     aria-invalid="false"
                   />
+                  {company_idError(errors)}
                 </div>
 
                 <label htmlFor="name" className="col-sm-2 col-form-label col-form-label-sm">
@@ -65,6 +68,7 @@ export const FrontOfficeCreateForm = props => {
                       setName(e.target.value);
                     }}
                   />
+                  {nameError(errors)}
                 </div>
 
                 <label htmlFor="code" className="col-sm-2 col-form-label col-form-label-sm">
@@ -74,7 +78,7 @@ export const FrontOfficeCreateForm = props => {
                   <input
                     type="text"
                     name="code"
-                    className="form-control form-control-sm"
+                    className={`"form-control form-control-sm" ${errors.code ? "is-invalid" : ""}`}
                     id="code"
                     placeholder="Enter front Office code"
                     onChange={e => {
@@ -84,6 +88,7 @@ export const FrontOfficeCreateForm = props => {
                     aria-required="true"
                     aria-invalid="false"
                   />
+                  {codeError(errors)}
                 </div>
 
                 <label htmlFor="location" className="col-sm-2 col-form-label col-form-label-sm">
@@ -95,9 +100,8 @@ export const FrontOfficeCreateForm = props => {
                       setLocation(e.target.value);
                     }}
                   />
-                  <span style={errors ? dangerStyle : null}>
-                    <Error error={errors || null} />
-                  </span>
+                  {locationError(errors)}
+                  {messageError(message)}
                 </div>
               </div>
 
@@ -115,6 +119,7 @@ export const FrontOfficeCreateForm = props => {
 FrontOfficeCreateForm.propTypes = {
   loading: PropTypes.bool.isRequired,
   errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
