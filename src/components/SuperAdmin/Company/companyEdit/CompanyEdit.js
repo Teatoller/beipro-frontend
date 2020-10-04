@@ -20,6 +20,7 @@ export const CompanyEdit = props => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -46,7 +47,8 @@ export const CompanyEdit = props => {
         setLoading(false);
       })
       .catch(err => {
-        setErrors(err.response.request.response);
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
         setLoading(false);
       });
   };
@@ -131,6 +133,7 @@ export const CompanyEdit = props => {
         setCountry={setCountry}
         setEstablished={setEstablished}
         errors={errors}
+        message={message}
         handleCancelClick={handleCancelClick}
         itemCountPerPage={itemCountPerPage}
         currentItems={currentItems}

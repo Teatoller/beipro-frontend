@@ -18,6 +18,7 @@ export const FrontOfficeCreate = props => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -40,7 +41,9 @@ export const FrontOfficeCreate = props => {
         setLoading(false);
       })
       .catch(err => {
-        setErrors(err.response.request.response);
+        setErrors(err.response.data.errors || err.response.data.message);
+        setMessage(err.response.data.message);
+        setLoading(false);
       });
   };
 
@@ -98,6 +101,7 @@ export const FrontOfficeCreate = props => {
         setName={setName}
         setLocation={setLocation}
         errors={errors}
+        message={message}
         handleCancelClick={handleCancelClick}
         currentItems={currentItems}
         setActivePage={setActivePage}

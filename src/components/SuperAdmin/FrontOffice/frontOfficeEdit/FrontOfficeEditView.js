@@ -28,6 +28,7 @@ export const FrontOfficeEditView = props => {
     location,
     setLocation,
     errors,
+    message,
     handleCancelClick,
     currentItems,
     frontOffice,
@@ -59,6 +60,7 @@ export const FrontOfficeEditView = props => {
                 location={location}
                 setLocation={setLocation}
                 errors={errors}
+                message={message}
                 handleCancelClick={handleCancelClick}
               />
               <FrontOfficeEditDisplay currentItems={currentItems} />
@@ -95,6 +97,7 @@ FrontOfficeEditView.propTypes = {
   setName: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired
+  errors: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 };
 export default FrontOfficeEditView;
