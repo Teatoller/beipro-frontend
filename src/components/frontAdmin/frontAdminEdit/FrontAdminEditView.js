@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";
@@ -80,8 +81,6 @@ FrontAdminEditView.propTypes = {
   loading: PropTypes.bool.isRequired,
   currentPrice: PropTypes.arrayOf(PropTypes.object).isRequired,
   userRole: PropTypes.bool.isRequired,
-  company: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,

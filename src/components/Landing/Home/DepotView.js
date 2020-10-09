@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import { Nav } from "../Nav";
@@ -19,6 +20,7 @@ export const DepotView = props => {
     selectedLocation,
     selectedLocationItems,
     errors,
+    message,
     itemCountPerPage
   } = props;
 
@@ -34,6 +36,7 @@ export const DepotView = props => {
             <DepotTable
               curTime={curTime}
               errors={errors}
+              message={message}
               activePage={activePage}
               setActivePage={setActivePage}
               selectedLocation={selectedLocation}

@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Error from "../../Error";
+import { messageError } from "../../auth/common/messageError";
 
 export const DepotTable = props => {
   const {
@@ -8,6 +10,7 @@ export const DepotTable = props => {
     curTime,
     selectedLocationItems,
     errors,
+    message,
     activePage,
     itemCountPerPage
   } = props;
@@ -74,6 +77,7 @@ export const DepotTable = props => {
           <span style={errors ? dangerStyle : null}>
             <Error error={errors || null} />
           </span>
+          {messageError(message)}
         </div>
       </main>
     </>

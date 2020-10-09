@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -190,8 +191,6 @@ export const FrontAdminCreateForm = ({
   );
 };
 FrontAdminCreateForm.propTypes = {
-  company: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
