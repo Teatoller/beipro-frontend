@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React from "react";
@@ -180,8 +181,6 @@ export const FrontAdminEditForm = props => {
   );
 };
 FrontAdminEditForm.propTypes = {
-  company: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,

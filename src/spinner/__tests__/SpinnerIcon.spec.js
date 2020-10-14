@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { SpinnerIcon } from "../SpinnerIcon";
+import { SpinnerIcon } from "../../components/statics/SpinnerIcon";
 
 describe("SpinnerIcon", () => {
   it("snapshot renders correctly", () => {

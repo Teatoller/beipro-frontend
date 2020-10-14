@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 import React from "react";
 import PropTypes from "prop-types";
@@ -41,10 +42,7 @@ FrontAdminView.propTypes = {
   handleCreateClick: PropTypes.func.isRequired,
   currentPrice: PropTypes.arrayOf(PropTypes.object).isRequired,
   userRole: PropTypes.bool.isRequired,
-  company: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  loggedStaffLocation: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired
 };
 export default FrontAdminView;
