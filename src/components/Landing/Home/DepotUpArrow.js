@@ -1,5 +1,5 @@
 import React from "react";
-import Chevron from "../Chevron";
+import Chevron from "../../statics/Chevron";
 
 export const DepotUpArrow = () => {
   return (

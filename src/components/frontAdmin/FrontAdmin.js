@@ -53,6 +53,25 @@ export const FrontAdmin = props => {
       });
   };
 
+  // phase 1 Establish the company front offices name and location
+
+  const getFofficeData = () => {
+    const config = BearerToken();
+
+    const frontid = localStorage.getItem("front_office_id");
+    const frontId = parseInt(frontid, 10);
+    axios.get(`/frontoffices/${frontId}`, config).then(response => {
+      const fofficesData = response.data;
+
+      const officesObj = fofficesData[0];
+
+      if (officesObj) {
+        localStorage.setItem("companyName", officesObj.name);
+        localStorage.setItem("location", officesObj.location);
+      }
+    });
+  };
+
   // Display current price as placeholder value
 
   const getCurrentPriceData = () => {
@@ -123,32 +142,13 @@ export const FrontAdmin = props => {
     history.push("/fadmindelete");
   };
 
-  // phase 1 Establish the company front offices name and location
-
-  const getFofficeData = () => {
-    const config = BearerToken();
-
-    const frontid = localStorage.getItem("front_office_id");
-    const frontId = parseInt(frontid, 10);
-    axios.get(`/frontoffices/${frontId}`, config).then(response => {
-      const fofficesData = response.data;
-
-      const officesObj = fofficesData[0];
-
-      if (officesObj) {
-        localStorage.setItem("name1", officesObj.name);
-        localStorage.setItem("location", officesObj.location);
-      }
-    });
-  };
-
   useEffect(() => {
     getOfficeData();
-    setTimeout(() => getCurrentPriceData(), 1800);
     getFofficeData();
+    setTimeout(() => getCurrentPriceData(), 1800);
   }, []);
 
-  const company = localStorage.getItem("name1");
+  const company = localStorage.getItem("companyName");
   const location = localStorage.getItem("location");
   const userRole = ConstFrontAdmin();
 

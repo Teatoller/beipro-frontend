@@ -5,7 +5,7 @@ const Privacy = () => {
   return (
     <div className="size-petit" id="top">
       <h1>Beipro Privacy Policy</h1>
-      <p>Beipro is part of the Sphere Business Africa Limited.</p>
+      <p>Beipro is a product of the Sphere Business Africa Limited.</p>
       <p>
         This privacy policy will explain how our organization uses the personal data we collect from
         you when you use our website.
@@ -224,7 +224,7 @@ const Privacy = () => {
           you would like to exercise one of your data protection rights, please do not hesitate to
           contact us.
         </p>
-        Email us at:beipro1@gmail.com Call us: Or write to us at:1672-00606, Nairobi, Kenya
+        Email us at:beipro002@gmail.com Or write to us at:1672-00606, Nairobi, Kenya
       </section>
       <section>
         <h2>How to contact the appropriate authority</h2>
@@ -234,9 +234,9 @@ const Privacy = () => {
           Office.
         </p>
 
-        <p>Email:</p>
+        <p>Email:beipro002@gmail.com</p>
 
-        <p>Address:</p>
+        <p>Address:1672-00606, Nairobi, Kenya</p>
       </section>
       <p className="size-petit">
         <a href="#top">Back to Top</a>

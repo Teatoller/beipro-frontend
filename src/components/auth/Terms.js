@@ -9,12 +9,12 @@ const Terms = () => {
         Thank you for visiting our website. This website is owned and operated by Beipro Kenya
         Limited. By accessing and/or using this website and related services, you agree to these
         Terms and Conditions, which include our Privacy Policy (available at
-        www.Beipro.com/privacy-policy.pdf) (Terms). You should review our Privacy Policy and these
+        www.Beipro.net/privacy-policy.pdf) (Terms). You should review our Privacy Policy and these
         Terms carefully and immediately cease using our website if you do not agree to these Terms.
       </p>
       <p>
-        In these Terms, &apos;us&apos;, &apos;we&apos; and &apos;our&apos; means Beipro Kenya
-        Limited and our related bodies corporate.
+        In these Terms, &apos;us&apos;, &apos;we&apos; and &apos;our&apos; means Sphere Business
+        Africa Limited.
       </p>
       <section>
         <h3>1. Registration</h3>
@@ -27,7 +27,7 @@ const Terms = () => {
           such as your full name, address, email address, identification and other information
           relating to services. You must ensure that this information is accurate and current. We
           will handle all personal information we collect in accordance with our Privacy Policy
-          (www.Beipro.com/privacypolicy.pdf).
+          (www.Beipro.net/privacypolicy.pdf).
         </p>
         <p>
           When you register and activate your account, you will create a user name and password for
@@ -74,7 +74,7 @@ const Terms = () => {
         <p>
           We collect personal information about you in order to provide our services to you, respond
           to your enquiries and for purposes otherwise set out in our Privacy Policy at
-          (www.Beipro.com/privacy-policy).
+          (www.Beipro.net/privacy-policy).
         </p>
         <p>
           We may disclose that information to third parties that help us deliver our services

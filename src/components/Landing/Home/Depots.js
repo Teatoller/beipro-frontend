@@ -9,6 +9,7 @@ export const Depots = () => {
   const [curTime] = useState(new Date().toLocaleString());
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
+  const [message, setMessage] = useState("");
   const [frontOffices, setFrontOffices] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
@@ -26,8 +27,9 @@ export const Depots = () => {
           setLoading(false);
         }
       });
-    } catch (errors) {
-      setErrors(errors.response.request.response);
+    } catch (err) {
+      setErrors(err.response.data.errors || err.response.data.message);
+      setMessage(err.response.data.message);
       setLoading(false);
     }
   };
@@ -71,6 +73,7 @@ export const Depots = () => {
         curTime={curTime}
         loading={loading}
         errors={errors}
+        message={message}
         activePage={activePage}
         setActivePage={setActivePage}
         itemCountPerPage={itemCountPerPage}

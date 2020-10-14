@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -74,8 +75,6 @@ export const LoginTextInput = ({ inputs, onChange, loading, errors, message }) =
 LoginTextInput.propTypes = {
   loading: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
-  errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired
 };
 export default LoginTextInput;

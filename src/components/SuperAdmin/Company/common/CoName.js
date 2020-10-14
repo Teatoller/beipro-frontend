@@ -31,9 +31,7 @@ export const CoName = props => {
       <option value="Fastnet">Fastnet</option>
       <option value="Fossil Fuel">Fossil Fuel</option>
       <option value="Futures">Futures</option>
-      <option value="Gapco Kenya">Gapco Kenya</option>
       <option value="Galana Oil">Galana Oil</option>
-      <option value="Gulf Energy">Gulf Energy</option>
       <option value="Global Oil">Global Oil</option>
       <option value="Hammex">Hammex</option>
       <option value="Hashi Energy">Hashi Energy</option>
@@ -42,6 +40,7 @@ export const CoName = props => {
       <option value="Kenol Kobil">Kenol Kobil</option>
       <option value="Kencor Petroleum">Kencor Petroleum</option>
       <option value="Lake Oil Gas">Lake Oil Gas</option>
+      <option value="Lexo Kenya">Lexo Kenya</option>
       <option value="Mogas">Mogas</option>
       <option value="NOCK">NOCK</option>
       <option value="One Petroleum">One Petroleum</option>
@@ -55,6 +54,7 @@ export const CoName = props => {
       <option value="Petrocam Kenya">Petrocam Kenya</option>
       <option value="Regnol Oil">Regnol Oil</option>
       <option value="Royal Oilfields">Royal Oilfields</option>
+      <option value="Rubis Energy">Rubis Energy</option>
       <option value="Texas Energy">Texas Energy</option>
       <option value="Tosha Petroleum">Tosha Petroleum</option>
       <option value="Total Kenya">Total Kenya</option>
