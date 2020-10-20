@@ -6,7 +6,7 @@ const SiteTheme = () => {
       <span className="font-weight-bolder">Beipro </span>is a dynamic platform
       <br /> that remotely
       <span className="font-weight-bolder"> connects buyers</span>
-      <br /> to the prevailing
+      <br /> <span className="font-weight-bolder">to</span> the prevailing
       <span className="font-weight-bolder"> sellers</span> bulk petroleum stock prices.
     </p>
   );

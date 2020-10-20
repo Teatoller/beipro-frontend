@@ -141,9 +141,18 @@ export const RegisterTextInput = ({
 
       <div className="text-right">
         <span className="text-danger">&#42;</span>
-        <input type="checkbox" name="checkbox" id="agree" onChange={toggle_checkbox} />{" "}
+        {/* <input type="checkbox" name="checkbox" id="agree" onChange={toggle_checkbox} />{" "} */}
+        <input
+          type="checkbox"
+          name="checkbox"
+          id="checkbox_id"
+          value="value"
+          onChange={toggle_checkbox}
+        />{" "}
+        <label htmlFor="checkbox_id">I agree.</label>
         <span className="">
           <small>
+            {" "}
             I have read and agree to the
             <BrowserRouter>
               <Link to="terms"> Terms & Conditions</Link> and{" "}
