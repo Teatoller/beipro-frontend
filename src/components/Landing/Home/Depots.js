@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+/* eslint-disable max-len */
 /* eslint-disable no-shadow */
 import React, { useState, useEffect } from "react";
 import axios from "../../../axios";
@@ -14,6 +17,12 @@ export const Depots = () => {
   const [activePage, setActivePage] = useState(1);
   const [itemCountPerPage] = useState(10);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [search, setSearch] = useState("");
+
+  const searchSpace = event => {
+    const keyword = event.target.value;
+    setSearch(keyword);
+  };
 
   const getFrontofficeData = () => {
     setLoading(true);
@@ -48,24 +57,31 @@ export const Depots = () => {
     return selectedLocation;
   };
 
-  const selectedLocationItems = getLocationData(selectedLocation).map((item, index) => {
-    const logoUrl = `./img/${item.logo}`;
-    return (
-      <tr key={item.id}>
-        <td className="depot text-center">{index + 1}</td>
-        <td className="depot text-center">
-          <img className="company-logo" src={logoUrl} alt="" />
-        </td>
-        <td className="depot text-center">{item.name}</td>
-        <td className="depot text-center">{item.diesel}</td>
-        <td className="depot text-center">{item.petrol}</td>
-        <td className="depot text-center">{item.kerosene}</td>
-        <td className="depot text-center">{item.ido}</td>
-        <td className="depot text-center">{item.fo}</td>
-        <td className="depot text-center">{item.lpg}</td>
-      </tr>
-    );
-  });
+  const selectedLocationItems = getLocationData(selectedLocation)
+    .filter(data => {
+      if (search == null) return data;
+      if (data.name.toLowerCase().includes(search.toLowerCase())) {
+        return data;
+      }
+    })
+    .map((item, index) => {
+      const logoUrl = `./img/${item.logo}`;
+      return (
+        <tr key={item.id}>
+          <td className="depot text-center">{index + 1}</td>
+          <td className="depot text-center">
+            <img className="company-logo" src={logoUrl} alt="" />
+          </td>
+          <td className="depot text-center">{item.name}</td>
+          <td className="depot text-center">{item.diesel}</td>
+          <td className="depot text-center">{item.petrol}</td>
+          <td className="depot text-center">{item.kerosene}</td>
+          <td className="depot text-center">{item.ido}</td>
+          <td className="depot text-center">{item.fo}</td>
+          <td className="depot text-center">{item.lpg}</td>
+        </tr>
+      );
+    });
 
   return (
     <div>
@@ -80,6 +96,7 @@ export const Depots = () => {
         handleChange={handleChange}
         selectedLocationItems={selectedLocationItems}
         selectedLocation={selectedLocation}
+        searchSpace={searchSpace}
       />
     </div>
   );

@@ -39,6 +39,7 @@ export const DepotTable = props => {
             </small>
           )}
         </span>
+
         <div className="table-responsive">
           <table className="table table-sm table-md table-striped table-hover">
             <thead>
