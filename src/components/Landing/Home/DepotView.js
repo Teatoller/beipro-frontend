@@ -21,7 +21,8 @@ export const DepotView = props => {
     selectedLocationItems,
     errors,
     message,
-    itemCountPerPage
+    itemCountPerPage,
+    searchSpace
   } = props;
 
   return (
@@ -32,7 +33,7 @@ export const DepotView = props => {
         <div className="row" id="top">
           <div className="col-sm">
             <span>{loading ? <Spinner /> : null}</span>
-            <DepotMenu handleChange={handleChange} />
+            <DepotMenu handleChange={handleChange} searchSpace={searchSpace} />
             <DepotTable
               curTime={curTime}
               errors={errors}
@@ -42,6 +43,7 @@ export const DepotView = props => {
               selectedLocation={selectedLocation}
               selectedLocationItems={selectedLocationItems}
               itemCountPerPage={itemCountPerPage}
+              // searchSpace={searchSpace}
             />
           </div>
         </div>
@@ -60,6 +62,7 @@ export const DepotView = props => {
 DepotView.propTypes = {
   curTime: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  searchSpace: PropTypes.func.isRequired,
   errors: PropTypes.objectOf.isRequired,
   loading: PropTypes.bool.isRequired,
   activePage: PropTypes.number.isRequired,
