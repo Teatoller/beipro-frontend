@@ -1,38 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DepotMenu snapshot renders correctly 1`] = `
-<select
-  className="custom-select custom-select-sm w-50 text-muted"
->
-  <option
-    selected={true}
+Array [
+  <select
+    className="custom-select custom-select-sm w-50 text-muted"
   >
-    Select a location
-  </option>
-  <option
-    value="Nairobi"
+    <option
+      selected={true}
+    >
+      Select a location
+    </option>
+    <option
+      value="Nairobi"
+    >
+      Nairobi
+    </option>
+    <option
+      value="Mombasa"
+    >
+      Mombasa
+    </option>
+    <option
+      value="Kisumu"
+    >
+      Kisumu
+    </option>
+    <option
+      value="Nakuru"
+    >
+      Nakuru
+    </option>
+    <option
+      value="Eldoret"
+    >
+      Eldoret
+    </option>
+  </select>,
+  <div
+    className="d-inline p-2 bg-light text-white"
   >
-    Nairobi
-  </option>
-  <option
-    value="Mombasa"
-  >
-    Mombasa
-  </option>
-  <option
-    value="Kisumu"
-  >
-    Kisumu
-  </option>
-  <option
-    value="Nakuru"
-  >
-    Nakuru
-  </option>
-  <option
-    value="Eldoret"
-  >
-    Eldoret
-  </option>
-</select>
+    <input
+      className="border border-info rounded w-25 text-muted text-center"
+      onChange={[Function]}
+      placeholder="Search"
+      type="text"
+    />
+  </div>,
+]
 `;

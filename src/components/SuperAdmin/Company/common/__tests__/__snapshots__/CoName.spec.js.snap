@@ -100,19 +100,9 @@ exports[`CoName snapshot renders correctly 1`] = `
     Futures
   </option>
   <option
-    value="Gapco Kenya"
-  >
-    Gapco Kenya
-  </option>
-  <option
     value="Galana Oil"
   >
     Galana Oil
-  </option>
-  <option
-    value="Gulf Energy"
-  >
-    Gulf Energy
   </option>
   <option
     value="Global Oil"
@@ -153,6 +143,11 @@ exports[`CoName snapshot renders correctly 1`] = `
     value="Lake Oil Gas"
   >
     Lake Oil Gas
+  </option>
+  <option
+    value="Lexo Kenya"
+  >
+    Lexo Kenya
   </option>
   <option
     value="Mogas"
@@ -218,6 +213,11 @@ exports[`CoName snapshot renders correctly 1`] = `
     value="Royal Oilfields"
   >
     Royal Oilfields
+  </option>
+  <option
+    value="Rubis Energy"
+  >
+    Rubis Energy
   </option>
   <option
     value="Texas Energy"
