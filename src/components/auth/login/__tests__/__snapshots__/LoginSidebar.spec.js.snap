@@ -2,7 +2,7 @@
 
 exports[`LoginSidebar snapshot renders correctly 1`] = `
 <article
-  className="col-6"
+  className="col-4"
 >
   <div
     className="m-2"
@@ -23,14 +23,20 @@ exports[`LoginSidebar snapshot renders correctly 1`] = `
     </span>
     is a dynamic platform
     <br />
-     that remotely
+     that conveniently
     <span
       className="font-weight-bolder"
     >
        connects buyers
     </span>
     <br />
-     to the prevailing
+     
+    <span
+      className="font-weight-bolder"
+    >
+      to
+    </span>
+     the prevailing
     <span
       className="font-weight-bolder"
     >
