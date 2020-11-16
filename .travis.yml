@@ -6,4 +6,4 @@ cache:
     - node_modules
 script:
   - yarn test --coverage
-  - yarn run build
+  - yarn build
