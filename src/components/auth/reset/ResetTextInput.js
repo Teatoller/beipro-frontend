@@ -11,7 +11,15 @@ import { messageError } from "../common/messageError";
 import { Eye } from "../../statics/Eye";
 import { EyeSlash } from "../../statics/EyeSlash";
 
-export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) => {
+export const ResetTextInput = ({
+  loading,
+  errors,
+  message,
+  setEmail,
+  setPassword,
+  setPassword_Confirmation,
+  setToken
+}) => {
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordVisiblity = () => {
@@ -26,8 +34,9 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
         <input
           type="email"
           name="email"
-          value={inputs}
-          onChange={onChange}
+          onChange={e => {
+            setEmail(e.target.value.toLowerCase());
+          }}
           className={`form-control ${errors.email ? "is-invalid" : ""}`}
           id="email"
           placeholder="Enter Email"
@@ -45,8 +54,9 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
           type={passwordShown ? "text" : "password"}
           name="password"
           placeholder="Enter Password"
-          value={inputs}
-          onChange={onChange}
+          onChange={e => {
+            setPassword(e.target.value);
+          }}
           className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="password"
           aria-describedby="passwordInput"
@@ -56,7 +66,6 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
         <span
           className="position-absolute"
           style={{
-            // position: "absolute",
             top: "54%",
             right: "5%"
           }}
@@ -74,8 +83,9 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
           type={passwordShown ? "text" : "password"}
           name="password_confirmation"
           placeholder="Confirm Password"
-          value={inputs}
-          onChange={onChange}
+          onChange={e => {
+            setPassword_Confirmation(e.target.value);
+          }}
           className={`form-control ${errors.password ? "is-invalid" : ""}`}
           id="passwordConfirmation"
           aria-describedby="passwordConfirmationInput"
@@ -90,8 +100,9 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
           <input
             type="string"
             name="token"
-            value={inputs}
-            onChange={onChange}
+            onChange={e => {
+              setToken(e.target.value);
+            }}
             className={`form-control ${errors.token ? "is-invalid" : ""}`}
             id="token"
             placeholder="Enter Token"
@@ -116,8 +127,10 @@ export const ResetTextInput = ({ inputs, onChange, loading, errors, message }) =
 };
 ResetTextInput.propTypes = {
   loading: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
+  setEmail: PropTypes.func.isRequired,
+  setPassword: PropTypes.func.isRequired,
+  setPassword_Confirmation: PropTypes.func.isRequired,
+  setToken: PropTypes.func.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired
 };

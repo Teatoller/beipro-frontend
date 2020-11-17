@@ -37,10 +37,6 @@ class ContactUs extends Component {
     });
   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
 
@@ -84,6 +80,10 @@ class ContactUs extends Component {
           }
         });
       });
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
