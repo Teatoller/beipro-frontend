@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -8,17 +9,22 @@ import axios from "../../../axios";
 import { ResetView } from "./ResetView";
 
 const Reset = props => {
-  const [inputs, setInputs] = useState({});
+  const [email, setEmail] = useState({});
+  const [password, setPassword] = useState({});
+  const [password_confirmation, setPassword_Confirmation] = useState({});
+  const [token, setToken] = useState({});
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
   const [message, setMessage] = useState("");
 
-  const onChange = e => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
-
   const onSubmit = e => {
     e.preventDefault();
+    const inputs = {
+      email,
+      password,
+      password_confirmation,
+      token
+    };
 
     const { history } = props;
 
@@ -51,8 +57,10 @@ const Reset = props => {
       <ResetView
         loading={loading}
         onSubmit={onSubmit}
-        onChange={onChange}
-        inputs={inputs}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        setPassword_Confirmation={setPassword_Confirmation}
+        setToken={setToken}
         errors={errors}
         message={message}
       />

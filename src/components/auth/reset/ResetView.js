@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Footer from "../../Landing/Footer";
@@ -7,7 +9,16 @@ import { ResetForm } from "./ResetForm";
 import { ResetSidebar } from "./ResetSidebar";
 
 export const ResetView = props => {
-  const { loading, onSubmit, onChange, inputs, errors, message } = props;
+  const {
+    loading,
+    onSubmit,
+    errors,
+    message,
+    setEmail,
+    setPassword,
+    setPassword_Confirmation,
+    setToken
+  } = props;
   return (
     <>
       <CommonAuthNav />
@@ -16,8 +27,10 @@ export const ResetView = props => {
           <ResetForm
             loading={loading}
             onSubmit={onSubmit}
-            onChange={onChange}
-            inputs={inputs}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            setPassword_Confirmation={setPassword_Confirmation}
+            setToken={setToken}
             errors={errors}
             message={message}
           />
@@ -31,8 +44,6 @@ export const ResetView = props => {
 ResetView.propTypes = {
   loading: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  inputs: PropTypes.objectOf(PropTypes.object).isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired
 };

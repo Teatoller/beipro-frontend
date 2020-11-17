@@ -14,7 +14,7 @@ const ResetRequest = props => {
   const [message, setMessage] = useState("");
 
   const onChange = e => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    setInputs({ ...inputs, [e.target.name]: e.target.value.toLowerCase() });
   };
 
   const onSubmit = e => {
