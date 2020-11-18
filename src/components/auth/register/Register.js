@@ -1,6 +1,4 @@
 /* eslint-disable no-shadow */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -34,7 +32,7 @@ export const Register = props => {
           toast.success(
             "Success, check for an email with confirmation link to complete the activation process."
           );
-          history.push(`/`);
+          history.push("/");
         }
       })
       .catch(err => {

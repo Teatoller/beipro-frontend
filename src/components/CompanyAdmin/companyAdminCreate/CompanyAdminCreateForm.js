@@ -1,5 +1,5 @@
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";
 import { CoLocation } from "../common/CoLocation";

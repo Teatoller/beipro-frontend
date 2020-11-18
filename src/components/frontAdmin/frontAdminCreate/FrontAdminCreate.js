@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable camelcase */
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -32,11 +31,11 @@ export const FrontAdminCreate = props => {
     const config = BearerToken();
 
     axios
-      .post(`/currentprices`, data, config)
+      .post("/currentprices", data, config)
       .then(response => {
         if (response) {
           toast.success("Price created successfully");
-          setTimeout(() => history.push(`/fadmin`), 50);
+          setTimeout(() => history.push("/fadmin"), 50);
         }
         setLoading(false);
       })
@@ -50,7 +49,7 @@ export const FrontAdminCreate = props => {
   const getOfficeData = () => {
     const config = BearerToken();
 
-    axios.get(`/frontadmins`, config).then(response => {
+    axios.get("/frontadmins", config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -84,7 +83,7 @@ export const FrontAdminCreate = props => {
     const config = BearerToken();
 
     try {
-      axios.get(`/currentprices`, config).then(response => {
+      axios.get("/currentprices", config).then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 

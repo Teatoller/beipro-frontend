@@ -1,7 +1,5 @@
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -77,7 +75,7 @@ export const CompanyAdminEdit = props => {
   const getFrontAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/cofadmins`, config).then(response => {
+    axios.get("/cofadmins", config).then(response => {
       const adminsArray = response.data;
 
       setFadmins(adminsArray);

@@ -1,8 +1,6 @@
 /* eslint-disable no-shadow */
 // @flow
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
@@ -25,7 +23,7 @@ export const Login = props => {
     setLoading(true);
 
     axios
-      .post(`/login`, inputs)
+      .post("/login", inputs)
       .then(res => {
         if (res) {
           localStorage.setItem("token", res.data.access_token);

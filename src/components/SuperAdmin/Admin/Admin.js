@@ -16,7 +16,7 @@ export const Admin = props => {
   const getAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/admins`, config).then(response => {
+    axios.get("/admins", config).then(response => {
       const adminData = response.data;
       setAdmins(adminData);
       setLoading(false);

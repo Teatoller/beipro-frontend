@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from "react";
 import PropTypes from "prop-types";

@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import PropTypes from "prop-types";
 import CreateBtn from "../../SuperAdmin/common/CreateBtn";
@@ -207,6 +206,8 @@ FrontAdminCreateForm.propTypes = {
   setFo: PropTypes.func.isRequired,
   setIdo: PropTypes.func.isRequired,
   setKerosene: PropTypes.func.isRequired,
-  setLpg: PropTypes.func.isRequired
+  setLpg: PropTypes.func.isRequired,
+  company: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired
 };
 export default FrontAdminCreateForm;

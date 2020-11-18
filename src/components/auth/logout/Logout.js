@@ -23,7 +23,7 @@ const Logout = () => {
       }
     };
     axios
-      .get(`/logout`, config)
+      .get("/logout", config)
       .then(res => {
         if (res) {
           localStorage.clear();

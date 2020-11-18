@@ -1,6 +1,4 @@
 /* eslint-disable no-shadow */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -29,7 +27,7 @@ const ResetRequest = props => {
       .then(res => {
         if (res) {
           toast.success("We have e-mailed you a link with password reset token");
-          history.push(`/reset`);
+          history.push("/reset");
         }
       })
       .catch(err => {

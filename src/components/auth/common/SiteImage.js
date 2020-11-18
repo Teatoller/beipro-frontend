@@ -1,7 +1,7 @@
 import React from "react";
 
 const SiteImage = () => {
-  const beiprostorage = `./img/beiprostorage.svg`;
+  const beiprostorage = "./img/beiprostorage.svg";
   return (
     <div className="m-2">
       <img

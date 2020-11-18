@@ -1,7 +1,5 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-shadow */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -42,7 +40,7 @@ const Reset = props => {
         if (response) {
           setLoading(true);
           toast.success("Password reset succesful");
-          history.push(`/`);
+          history.push("/");
         }
       })
       .catch(err => {

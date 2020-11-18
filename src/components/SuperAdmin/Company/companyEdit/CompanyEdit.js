@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -42,7 +41,7 @@ export const CompanyEdit = props => {
       .patch(`/companies/${companyId}`, data, config)
       .then(response => {
         if (response) {
-          setTimeout(() => history.push(`/company`), 50);
+          setTimeout(() => history.push("/company"), 50);
         }
         setLoading(false);
       })
@@ -56,7 +55,7 @@ export const CompanyEdit = props => {
   const getCompaniesData = () => {
     const config = BearerToken();
 
-    axios.get(`/companies`, config).then(response => {
+    axios.get("/companies", config).then(response => {
       const companiesData = response.data;
 
       setCompanies(companiesData);

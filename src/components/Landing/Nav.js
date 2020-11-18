@@ -16,7 +16,7 @@ export const Nav = () => {
 
   const getRole = () => {
     const config = BearerToken();
-    axios.get(`/roles`, config).then(response => {
+    axios.get("/roles", config).then(response => {
       const roleData = response.data;
 
       setRole(roleData);
@@ -31,7 +31,7 @@ export const Nav = () => {
   const getImageUrl = () => {
     const config = BearerToken();
     axios
-      .get(`/profile`, config)
+      .get("/profile", config)
       .then(res => {
         // eslint-disable-next-line prefer-destructuring
         const data = res.data;
@@ -60,7 +60,7 @@ export const Nav = () => {
   }, []);
 
   const activeStyle = { color: "#f0a243" };
-  const logoUrl = `./img/beipro.svg`;
+  const logoUrl = "./img/beipro.svg";
   return (
     <nav className="navbar navbar-expand-sm navbar-expand-lg navbar-light bg-light">
       <div className="container">
