@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React from "react";
 import PropTypes from "prop-types";

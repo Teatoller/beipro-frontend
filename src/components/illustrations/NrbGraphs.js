@@ -23,7 +23,7 @@ export const NrbGraphs = () => {
     const config = BearerToken();
 
     try {
-      axios.get(`/depotprices`, config).then(response => {
+      axios.get("/depotprices", config).then(response => {
         if (response) {
           const { data } = response;
           setFrontOffices(data);

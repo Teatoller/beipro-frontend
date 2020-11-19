@@ -1,5 +1,5 @@
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable camelcase */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -59,14 +59,14 @@ class ContactUs extends Component {
     };
 
     axios
-      .post(`/contact-us`, data, config)
+      .post("/contact-us", data, config)
       .then(response => {
         this.setState({
           loading: true
         });
         if (response) {
           toast.success("Submitted Successfully");
-          history.push(`/depots`);
+          history.push("/depots");
         }
       })
       .catch(err => {

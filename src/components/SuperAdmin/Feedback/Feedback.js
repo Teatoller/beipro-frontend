@@ -15,7 +15,7 @@ export const Feedback = props => {
   const getFeedbackData = () => {
     const config = BearerToken();
 
-    axios.get(`/contact-us`, config).then(response => {
+    axios.get("/contact-us", config).then(response => {
       const feedData = response.data;
 
       setFeeds(feedData);

@@ -15,7 +15,7 @@ export const CompanyAdmin = props => {
   const getOfficeData = () => {
     const config = BearerToken();
 
-    axios.get(`/combineadmins`, config).then(response => {
+    axios.get("/combineadmins", config).then(response => {
       const adminsdata = response.data;
 
       const adminId = adminsdata.id;
@@ -34,7 +34,7 @@ export const CompanyAdmin = props => {
   const getFrontAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/cofadmins`, config).then(response => {
+    axios.get("/cofadmins", config).then(response => {
       const adminsArray = response.data;
 
       setFadmins(adminsArray);
@@ -73,7 +73,7 @@ export const CompanyAdmin = props => {
   const getFofficeData = () => {
     const config = BearerToken();
 
-    axios.get(`/frontshores`, config).then(response => {
+    axios.get("/frontshores", config).then(response => {
       const officesArray = response.data;
 
       if (officesArray[0]) {

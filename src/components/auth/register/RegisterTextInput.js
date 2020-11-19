@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable max-len */
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable camelcase */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Link } from "react-router-dom";

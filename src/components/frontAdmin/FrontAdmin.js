@@ -20,7 +20,7 @@ export const FrontAdmin = props => {
     const config = BearerToken();
 
     axios
-      .get(`/frontadmins`, config)
+      .get("/frontadmins", config)
       .then(response => {
         const frontadminsdata = response.data;
         const loggedUserEmail = localStorage.getItem("email");
@@ -78,7 +78,7 @@ export const FrontAdmin = props => {
     const config = BearerToken();
 
     axios
-      .get(`/currentprices`, config)
+      .get("/currentprices", config)
       .then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);

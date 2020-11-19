@@ -15,7 +15,7 @@ export const FrontOffice = props => {
   const getFrontOfficesData = () => {
     const config = BearerToken();
 
-    axios.get(`/frontoffices`, config).then(response => {
+    axios.get("/frontoffices", config).then(response => {
       const frontofficeData = response.data;
 
       setFrontOffices(frontofficeData);

@@ -7,8 +7,9 @@ const Terms = () => {
       <h1>Beipro – Website Terms and Conditions</h1>
       <p>Last updated March 2020</p>
       <p>
-        Thank you for visiting our website. This website is owned and operated by Sphere Business Africa Limited. By accessing and/or using this website and related services, you agree to these
-        Terms and Conditions, which include our Privacy Policy (available at
+        Thank you for visiting our website. This website is owned and operated by Sphere Business
+        Africa Limited. By accessing and/or using this website and related services, you agree to
+        these Terms and Conditions, which include our Privacy Policy (available at
         www.Beipro.com/privacy-policy.pdf) (Terms). You should review our Privacy Policy and these
         Terms carefully and immediately cease using our website if you do not agree to these Terms.
       </p>

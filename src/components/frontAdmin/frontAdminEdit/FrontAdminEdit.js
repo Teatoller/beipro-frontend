@@ -1,8 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -53,7 +51,7 @@ export const FrontAdminEdit = props => {
   const getOfficeData = () => {
     const config = BearerToken();
 
-    axios.get(`/frontadmins`, config).then(response => {
+    axios.get("/frontadmins", config).then(response => {
       const frontadminsdata = response.data;
       const loggedUserEmail = localStorage.getItem("email");
 
@@ -88,7 +86,7 @@ export const FrontAdminEdit = props => {
     const config = BearerToken();
 
     try {
-      axios.get(`/currentprices`, config).then(response => {
+      axios.get("/currentprices", config).then(response => {
         const currentPriceData = response.data;
         const frontOfficeId = parseInt(localStorage.getItem("front_office_id"), 10);
 

@@ -15,7 +15,7 @@ export const Audit = props => {
   const getAuditsData = () => {
     const config = BearerToken();
 
-    axios.get(`/audits`, config).then(response => {
+    axios.get("/audits", config).then(response => {
       const auditData = response.data;
 
       setAudits(auditData);

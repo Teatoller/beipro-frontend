@@ -15,7 +15,7 @@ export const Company = props => {
   const getCompaniesData = () => {
     const config = BearerToken();
 
-    axios.get(`/companies`, config).then(response => {
+    axios.get("/companies", config).then(response => {
       const companyData = response.data;
       setCompanies(companyData);
       setLoading(false);

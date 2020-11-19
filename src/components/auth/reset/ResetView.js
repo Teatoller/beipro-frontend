@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Footer from "../../Landing/Footer";
@@ -44,6 +43,10 @@ export const ResetView = props => {
 ResetView.propTypes = {
   loading: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  setEmail: PropTypes.func.isRequired,
+  setPassword: PropTypes.func.isRequired,
+  setPassword_Confirmation: PropTypes.func.isRequired,
+  setToken: PropTypes.func.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired
 };

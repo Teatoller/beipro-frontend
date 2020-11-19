@@ -7,7 +7,6 @@ export const setLogin = user => {
   };
 };
 
-
 export const setLogout = () => {
   return {
     type: AuthActionTypes.SET_LOGOUT,

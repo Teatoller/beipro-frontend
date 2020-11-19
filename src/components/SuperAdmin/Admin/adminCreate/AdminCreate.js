@@ -1,6 +1,5 @@
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -38,10 +37,10 @@ export const AdminCreate = props => {
     const config = BearerToken();
 
     axios
-      .post(`/admins`, data, config)
+      .post("/admins", data, config)
       .then(response => {
         if (response) {
-          setTimeout(() => history.push(`/sadmin`), 50);
+          setTimeout(() => history.push("/sadmin"), 50);
         }
         setLoading(false);
       })
@@ -55,7 +54,7 @@ export const AdminCreate = props => {
   const getAdminsData = () => {
     const config = BearerToken();
 
-    axios.get(`/admins`, config).then(response => {
+    axios.get("/admins", config).then(response => {
       const adminData = response.data;
 
       setAdmins(adminData);

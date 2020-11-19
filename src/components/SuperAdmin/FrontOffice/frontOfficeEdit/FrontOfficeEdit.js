@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -37,7 +36,7 @@ export const FrontOfficeEdit = props => {
       .patch(`/frontoffices/${frontofficeId}`, data, config)
       .then(response => {
         if (response) {
-          setTimeout(() => history.push(`/frontoffice`), 50);
+          setTimeout(() => history.push("/frontoffice"), 50);
         }
         setLoading(false);
       })
@@ -51,7 +50,7 @@ export const FrontOfficeEdit = props => {
   const getFrontOfficesData = () => {
     const config = BearerToken();
 
-    axios.get(`/frontoffices`, config).then(response => {
+    axios.get("/frontoffices", config).then(response => {
       const frontOfficesData = response.data;
 
       setFrontOffices(frontOfficesData);

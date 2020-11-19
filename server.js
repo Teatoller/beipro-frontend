@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 // server.js
 
-const compression = require('compression');
+const compression = require("compression");
 const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
@@ -9,12 +9,12 @@ const path = require("path");
 const port = process.env.PORT || 8080;
 const app = express();
 
-function shouldCompress (req, res) {
-  if (req.headers['x-no-compression']) {
+function shouldCompress(req, res) {
+  if (req.headers["x-no-compression"]) {
     // don't compress responses with this request header
     return false;
   }
- 
+
   // fallback to standard filter function
   return compression.filter(req, res);
 }
