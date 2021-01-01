@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
@@ -40,6 +41,9 @@ import { Feedback } from "./components/SuperAdmin/Feedback/Feedback";
 import { FeedbkDelete } from "./components/SuperAdmin/Feedback/FeedbackDelete/FeedbkDelete";
 import LandingPage from "./components/Landing/LandingPage";
 import { Illustration } from "./components/illustrations/Illustration";
+import { MpesaPay } from "./components/mpesa/MpesaPay";
+import { Subscribed } from "./components/mpesa/Subscribed";
+import Home from "./components/mpesa/Home";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -70,6 +74,43 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   );
 };
 
+const checkTimeBalance = () => {
+  const timeBal = localStorage.getItem("timeBal");
+
+  if (timeBal > 0) {
+    return true;
+  }
+  return false;
+};
+
+// eslint-disable-next-line react/prop-types
+const GuardedRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        checkAuth() ? (
+          checkTimeBalance() ? (
+            <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/subscribe"
+              }}
+            />
+          )
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/"
+            }}
+          />
+        )
+      }
+    />
+  );
+};
+
 const BeiproRouter = () => {
   return (
     <div>
@@ -82,12 +123,12 @@ const BeiproRouter = () => {
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/resetrequest" component={ResetRequest} />
           <Route exact path="/reset" component={Reset} />
-          <AuthRoute exact path="/graphs" component={Illustration} />
           <AuthRoute exact path="/profile" component={Profile} />
           <AuthRoute exact path="/profileedit" component={ProfileEdit} />
           <AuthRoute exact path="/profileimg" component={ProfileImg} />
           <AuthRoute exact path="/contactus" component={ContactUs} />
           <AuthRoute path="/welcome" component={Welcome} />
+          <AuthRoute path="/home" component={Home} />
           <AuthRoute exact path="/admin" component={CompanyAdmin} />
           <AuthRoute exact path="/adminedit" component={CompanyAdminEdit} />
           <AuthRoute exact path="/admincreate" component={CompanyAdminCreate} />
@@ -108,11 +149,14 @@ const BeiproRouter = () => {
           <AuthRoute exact path="/frontofficecreate" component={FrontOfficeCreate} />
           <AuthRoute exact path="/frontofficeedit" component={FrontOfficeEdit} />
           <AuthRoute exact path="/frontofficedelete" component={FrontOfficeDelete} />
-          <AuthRoute exact path="/depots" component={Depots} />
           <AuthRoute exact path="/audit" component={Audit} />
           <AuthRoute exact path="/auditview" component={AuditView} />
           <AuthRoute exact path="/feedback" component={Feedback} />
           <AuthRoute exact path="/feedbkdelete" component={FeedbkDelete} />
+          <AuthRoute exact path="/pay" component={MpesaPay} />
+          <AuthRoute exact path="/subscribe" component={Subscribed} />
+          <GuardedRoute exact path="/depots" component={Depots} />
+          <GuardedRoute exact path="/graphs" component={Illustration} />
         </Switch>
       </BrowserRouter>
     </div>
