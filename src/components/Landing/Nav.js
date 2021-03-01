@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable consistent-return */
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
@@ -13,6 +14,7 @@ export const Nav = () => {
   const [roleSadmin, setRoleSAdmin] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [firstname, setFirstname] = useState("");
+  const [timeBalance, setTimeBalance] = useState(0);
 
   const getRole = () => {
     const config = BearerToken();
@@ -54,9 +56,27 @@ export const Nav = () => {
       });
   };
 
+  const getDurationBalance = () => {
+    const config = BearerToken();
+    axios.get(`/client-dur-trxns`, config).then(response => {
+      const durationData = response.data;
+      const timeLoc = durationData.timeRemaining;
+      const timeRemaining = parseInt(timeLoc, 10);
+      const message = durationData.message;
+
+      if (timeRemaining > 0) {
+        setTimeBalance(timeRemaining);
+      }
+
+      localStorage.setItem("timeBal", timeRemaining);
+      localStorage.setItem("validity", message);
+    });
+  };
+
   useEffect(() => {
     getRole();
     getImageUrl();
+    getDurationBalance();
   }, []);
 
   const activeStyle = { color: "#f0a243" };
@@ -90,13 +110,19 @@ export const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav text-capitalize ml-auto">
             <li className="nav-item active">
+              <NavLink className="nav-link" activeStyle={activeStyle} to="/home">
+                Home
+                <span className="sr-only">(current)</span>
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/depots">
-                Depots <span className="sr-only">(current)</span>
+                {timeBalance > 0 ? "Depots" : <s>Depots</s>}
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/graphs">
-                Stats
+                {timeBalance > 0 ? "Stats" : <s>Stats</s>}
               </NavLink>
             </li>
             <li className="nav-item">

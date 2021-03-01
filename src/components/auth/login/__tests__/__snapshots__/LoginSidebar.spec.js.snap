@@ -40,9 +40,9 @@ exports[`LoginSidebar snapshot renders correctly 1`] = `
     <span
       className="font-weight-bolder"
     >
-       sellers
+       bulk
     </span>
-     bulk petroleum stock prices.
+     petroleum stock prices.
   </p>
 </article>
 `;
