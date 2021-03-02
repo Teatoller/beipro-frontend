@@ -2,6 +2,8 @@
 /* eslint-disable consistent-return */
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../../axios";
 import Can from "../Can";
 import "../css/site.css";
@@ -82,7 +84,7 @@ export const Nav = () => {
   const activeStyle = { color: "#f0a243" };
   const logoUrl = `./img/beipro.svg`;
   return (
-    <nav className="navbar navbar-expand-sm navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-sm navbar-expand-lg navbar-light navshade">
       <div className="container">
         <NavLink className="navbar-brand" to="/welcome">
           <img
@@ -111,6 +113,7 @@ export const Nav = () => {
           <ul className="navbar-nav text-capitalize ml-auto">
             <li className="nav-item active">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/home">
+                <FontAwesomeIcon icon={faHome} />
                 Home
                 <span className="sr-only">(current)</span>
               </NavLink>
@@ -122,7 +125,7 @@ export const Nav = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/graphs">
-                {timeBalance > 0 ? "Stats" : <s>Stats</s>}
+                {timeBalance > 0 ? "<FontAwesomeIcon icon={faChartLine} /> Stats" : <s>Stats</s>}
               </NavLink>
             </li>
             <li className="nav-item">
