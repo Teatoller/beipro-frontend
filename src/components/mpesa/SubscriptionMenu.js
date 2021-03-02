@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { faChartLine } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "../../spinner/Spinner";
 
 export const SubscriptionMenu = () => {
@@ -30,9 +28,7 @@ export const SubscriptionMenu = () => {
               <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
             </ul>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faChartLine} /> Price chart
-          </li>
+          <li>Price chart</li>
           <li className="locationfont">Expires same day Midnight</li>
           <li className="grey">@ Ksh 15/day</li>
           <li>
@@ -57,9 +53,7 @@ export const SubscriptionMenu = () => {
               <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
             </ul>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faChartLine} /> Price chart
-          </li>
+          <li>Price chart</li>
           <li className="locationfont">Expires 7th day Midnight</li>
           <li className="grey">@ Ksh 65/week</li>
           <li>
@@ -84,9 +78,7 @@ export const SubscriptionMenu = () => {
               <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
             </ul>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faChartLine} /> Price chart
-          </li>
+          <li>Price chart</li>
           <li className="locationfont">Expires 4th week Midnight</li>
           <li className="grey">@ Ksh 240/month</li>
           <li>

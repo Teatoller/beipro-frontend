@@ -2,8 +2,6 @@
 /* eslint-disable consistent-return */
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../../axios";
 import Can from "../Can";
 import "../css/site.css";
@@ -113,7 +111,6 @@ export const Nav = () => {
           <ul className="navbar-nav text-capitalize ml-auto">
             <li className="nav-item active">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/home">
-                <FontAwesomeIcon icon={faHome} />
                 Home
                 <span className="sr-only">(current)</span>
               </NavLink>
