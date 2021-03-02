@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const LoginNav = () => {
   const logoUrl = `./img/beipro.svg`;
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-light navshade">
       <NavLink className="navbar-brand" to="/">
         <img
           src={logoUrl}

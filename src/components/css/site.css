@@ -1,3 +1,8 @@
+.navshade {
+  background-color: #e2e2e3;
+  /* background-color: #d5d5d7; */
+}
+
 .profile-img {
   border: #aaa solid 0.5px;
   height: 180px;
@@ -54,6 +59,59 @@
   position: "absolute";
   top: 54%;
   right: 5%;
+}
+
+.columns {
+  float: left;
+  width: auto;
+  padding: 65px;
+}
+
+.price {
+  list-style-type: none;
+  border: 1p solid #eee;
+  margin: 0px;
+  padding: 0px;
+  -webkit-transition: .3s;
+  transition: 0.3s;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.price .header {
+  /* background-color: #111; */
+  color: white;
+  font-size: 25px;
+}
+
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.price .bronze {
+  background-color: #cd7f32;
+}
+
+.price .silver {
+  background-color: #C0C0C0;
+}
+
+.price .gold {
+  background-color: #FFD700;
+}
+
+.price .grey {
+  background-color: #eee;
+  ;
+  font-size: 20px;
+}
+
+.locationfont {
+  font-size: 11px;
 }
 
 /* Table */
@@ -118,6 +176,11 @@ td.feed {
 }
 
 @media screen and (max-width: 575.98px) {
+  /* Subscrition pricing table*/
+
+  .columns {
+    width: 100%;
+  }
   /* Force table to not be like tables anymore */
 
   table,
