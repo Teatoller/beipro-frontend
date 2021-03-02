@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { faChartLine } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "../../spinner/Spinner";
 
 export const SubscriptionMenu = () => {
@@ -18,53 +20,86 @@ export const SubscriptionMenu = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="card-body col-12 align-self-end font-italic">Subscribe</div>
-          <span>{loading ? <Spinner /> : null}</span>
-          <div className="col-12 align-self-end">
-            <div className="col-sm-12">
-              <h3>Daily</h3>
-              <p>Ksh 15/=</p>
-              <button
-                className="btn btn-success"
-                type="button"
-                payamount="15"
-                onClick={handlePayClick}
-              >
-                Pay Now
-              </button>
-            </div>
-          </div>
-          <div className="card-body col-12 align-self-end">
-            <div className="col-sm-12">
-              <h3>Weekly</h3>
-              <p>Ksh 65/=</p>
-              <button
-                className="btn btn-success"
-                type="button"
-                payamount="65"
-                onClick={handlePayClick}
-              >
-                Pay Now
-              </button>
-            </div>
-          </div>
-          <div className="card-body col-12 align-self-end">
-            <div className="col-sm-12">
-              <h3>Monthly</h3>
-              <p>Ksh 240/=</p>
-              <button
-                className="btn btn-success"
-                type="button"
-                payamount="240"
-                onClick={handlePayClick}
-              >
-                Pay Now
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="columns">
+        <span>{loading ? <Spinner /> : null}</span>
+        <ul className="price">
+          <li className="header bronze">Bronze</li>
+          <li>
+            Depot Prices
+            <ul className="price">
+              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            </ul>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faChartLine} /> Price chart
+          </li>
+          <li className="locationfont">Expires same day Midnight</li>
+          <li className="grey">@ Ksh 15/day</li>
+          <li>
+            <button
+              className="btn btn-success"
+              type="button"
+              payamount="15"
+              onClick={handlePayClick}
+            >
+              Pay Now
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div className="columns">
+        <ul className="price">
+          <li className="header silver">Silver</li>
+          <li>
+            Depot Prices
+            <ul className="price">
+              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            </ul>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faChartLine} /> Price chart
+          </li>
+          <li className="locationfont">Expires 7th day Midnight</li>
+          <li className="grey">@ Ksh 65/week</li>
+          <li>
+            <button
+              className="btn btn-success"
+              type="button"
+              payamount="65"
+              onClick={handlePayClick}
+            >
+              Pay Now
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div className="columns">
+        <ul className="price">
+          <li className="header gold">Gold</li>
+          <li>
+            Depot Prices
+            <ul className="price">
+              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            </ul>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faChartLine} /> Price chart
+          </li>
+          <li className="locationfont">Expires 4th week Midnight</li>
+          <li className="grey">@ Ksh 240/month</li>
+          <li>
+            <button
+              className="btn btn-success"
+              type="button"
+              payamount="240"
+              onClick={handlePayClick}
+            >
+              Pay Now
+            </button>
+          </li>
+        </ul>
       </div>
     </>
   );

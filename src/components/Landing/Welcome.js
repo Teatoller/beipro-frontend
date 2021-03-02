@@ -5,12 +5,11 @@ import Footer from "./Footer";
 const Welcome = () => {
   return (
     <>
+      <Nav />
       <div className="container">
-        <Nav />
         <section className="jumbotron jumbotron-fluid">
           <div className="container">
-            <h1 className="display-4 text-muted">Beipro</h1>
-            <p className="lead text-secondary">Reseller bureau</p>
+            <p className="lead text-secondary font-italic">Reseller bureau</p>
           </div>
         </section>
         <Footer />
