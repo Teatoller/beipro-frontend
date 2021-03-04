@@ -33,6 +33,7 @@ const rules = {
     static: [
       "bei-front-admin:list",
       "bei-front-admin-create:create",
+      "bei-front-admin-edit:edit",
       "profile:getSelf",
       "welcome:visit",
       "depots:visit"

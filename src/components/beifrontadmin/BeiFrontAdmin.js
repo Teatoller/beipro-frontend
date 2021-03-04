@@ -76,6 +76,10 @@ export const BeiFrontAdmin = props => {
     const attribute = e.currentTarget;
     const priceid = attribute.getAttribute("priceid");
     localStorage.setItem("priceid", priceid);
+    const coName = attribute.getAttribute("coName");
+    const coLocation = attribute.getAttribute("coLocation");
+    localStorage.setItem("coName", coName);
+    localStorage.setItem("coLocation", coLocation);
 
     history.push("/beiadminedit");
     setLoading(false);
@@ -143,6 +147,8 @@ export const BeiFrontAdmin = props => {
             className="btn btn-sm btn-primary"
             type="button"
             priceid={item.id}
+            coName={item.name}
+            coLocation={item.location}
             onClick={handleEditClick}
           >
             Edit
