@@ -34,6 +34,7 @@ const rules = {
       "bei-front-admin:list",
       "bei-front-admin-create:create",
       "bei-front-admin-edit:edit",
+      "bei-front-admin-delete:delete",
       "profile:getSelf",
       "welcome:visit",
       "depots:visit"
