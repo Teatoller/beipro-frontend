@@ -19,7 +19,6 @@ export const BeiFrontAdminDisplay = props => {
     location,
     currentPrice,
     message,
-    handleCreateClick,
     loggedStaffLocation
   } = props;
 
@@ -47,6 +46,7 @@ export const BeiFrontAdminDisplay = props => {
                         <th scope="col">Fo</th>
                         <th scope="col">Lpg</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Edit</th>
                         <th scope="col">Remove</th>
                       </tr>
                     </thead>
@@ -56,11 +56,11 @@ export const BeiFrontAdminDisplay = props => {
                 </div>
               </div>
             </div>
-            <div className="col-1-sm">
+            {/* <div className="col-1-sm">
               <button className="btn btn-sm btn-success" type="submit" onClick={handleCreateClick}>
                 Create
               </button>
-            </div>
+            </div> */}
             <div>
               <div className="container">
                 <div className="row">
@@ -112,7 +112,6 @@ export const BeiFrontAdminDisplay = props => {
 };
 BeiFrontAdminDisplay.propTypes = {
   loading: PropTypes.bool.isRequired,
-  handleCreateClick: PropTypes.func.isRequired,
   currentPrice: PropTypes.arrayOf(PropTypes.object).isRequired,
   userRole: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired

@@ -45,6 +45,7 @@ export const BeiFrontAdmin = props => {
 
         localStorage.setItem("location", lockey);
         setLoggedStaffLocation(fStaffLocation);
+        setLoading(false);
       })
       .catch(err => {
         setErrors(err.response.data.errors || err.response.data.message);
@@ -84,6 +85,11 @@ export const BeiFrontAdmin = props => {
     const { history } = props;
 
     e.preventDefault();
+    const attribute = e.currentTarget;
+    const coName = attribute.getAttribute("coName");
+    const coLocation = attribute.getAttribute("coLocation");
+    localStorage.setItem("coName", coName);
+    localStorage.setItem("coLocation", coLocation);
 
     history.push("/beiadmincreate");
     setLoading(false);
@@ -121,6 +127,17 @@ export const BeiFrontAdmin = props => {
         <td className="fadmindepotdata text-center">{item.ido}</td>
         <td className="fadmindepotdata text-center">{item.fo}</td>
         <td className="fadmindepotdata text-center">{item.lpg}</td>
+        <td className="fadmindepotdata text-center">
+          <button
+            className="btn btn-sm btn-success"
+            type="button"
+            coName={item.name}
+            coLocation={item.location}
+            onClick={handleCreateClick}
+          >
+            Create
+          </button>
+        </td>
         <td className="fadmindepotdata text-center">
           <button
             className="btn btn-sm btn-primary"
