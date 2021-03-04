@@ -44,6 +44,7 @@ import { Illustration } from "./components/illustrations/Illustration";
 import { MpesaPay } from "./components/mpesa/MpesaPay";
 import { Subscribed } from "./components/mpesa/Subscribed";
 import Home from "./components/mpesa/Home";
+import { BeiFrontAdmin } from "./components/beifrontadmin/BeiFrontAdmin";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -155,6 +156,7 @@ const BeiproRouter = () => {
           <AuthRoute exact path="/feedbkdelete" component={FeedbkDelete} />
           <AuthRoute exact path="/pay" component={MpesaPay} />
           <AuthRoute exact path="/subscribe" component={Subscribed} />
+          <AuthRoute exact path="/bfadmin" component={BeiFrontAdmin} />
           <GuardedRoute exact path="/depots" component={Depots} />
           <GuardedRoute exact path="/graphs" component={Illustration} />
         </Switch>
