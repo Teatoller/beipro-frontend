@@ -48,6 +48,7 @@ import { BeiFrontAdmin } from "./components/beifrontadmin/BeiFrontAdmin";
 import { BeiFrontAdminCreate } from "./components/beifrontadmin/beiFrontAdminCreate/BeiFrontAdminCreate";
 import { BeiFrontAdminEdit } from "./components/beifrontadmin/beiFrontAdminEdit/BeiFrontAdminEdit";
 import { BeiFrontAdminDelete } from "./components/beifrontadmin/BeiFrontAdminDelete/BeiFrontAdminDelete";
+import { BeiAdmin } from "./components/SuperAdmin/BeiAdmin/BeiAdmin";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -163,6 +164,7 @@ const BeiproRouter = () => {
           <AuthRoute exact path="/beiadmincreate" component={BeiFrontAdminCreate} />
           <AuthRoute exact path="/beiadminedit" component={BeiFrontAdminEdit} />
           <AuthRoute exact path="/beiadmindelete" component={BeiFrontAdminDelete} />
+          <AuthRoute exact path="/beistaff" component={BeiAdmin} />
           <GuardedRoute exact path="/depots" component={Depots} />
           <GuardedRoute exact path="/graphs" component={Illustration} />
         </Switch>

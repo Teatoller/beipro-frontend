@@ -189,7 +189,18 @@ export const Nav = () => {
                 perform="bei-front-admin:list"
                 yes={() => (
                   <NavLink className="nav-link" activeStyle={activeStyle} to="/bfadmin">
-                    BeiStaff
+                    Bei-Admins
+                  </NavLink>
+                )}
+              />
+            </li>
+            <li className="nav-item">
+              <Can
+                role={roleSadmin}
+                perform="bei-admin:list"
+                yes={() => (
+                  <NavLink className="nav-link" activeStyle={activeStyle} to="/beistaff">
+                    Bei-Staff
                   </NavLink>
                 )}
               />
