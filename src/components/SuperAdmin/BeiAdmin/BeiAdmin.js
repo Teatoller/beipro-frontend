@@ -35,7 +35,7 @@ export const BeiAdmin = props => {
     const sbeiadminid = attribute.getAttribute("sbeiadminid");
     localStorage.setItem("sbeiadminid", sbeiadminid);
 
-    history.push("/bstaffedit");
+    history.push("/beistaffedit");
   };
 
   const handleCreateClick = e => {
@@ -43,7 +43,7 @@ export const BeiAdmin = props => {
 
     e.preventDefault();
 
-    history.push("/bstaffcreate");
+    history.push("/beistaffcreate");
   };
 
   // Select front admin record to delete
@@ -54,7 +54,7 @@ export const BeiAdmin = props => {
     const attribute = e.currentTarget;
     const sbeiadminid = attribute.getAttribute("sbeiadminid");
     localStorage.setItem("sbeiadminid", sbeiadminid);
-    history.push("/bstaffdelete");
+    history.push("/beistaffdelete");
   };
 
   // eslint-disable-next-line camelcase

@@ -189,7 +189,7 @@ export const Nav = () => {
                 perform="bei-front-admin:list"
                 yes={() => (
                   <NavLink className="nav-link" activeStyle={activeStyle} to="/bfadmin">
-                    Bei-Admins
+                    Bei-Admin
                   </NavLink>
                 )}
               />

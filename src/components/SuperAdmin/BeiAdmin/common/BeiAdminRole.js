@@ -14,7 +14,7 @@ export const BeiAdminRole = props => {
       aria-invalid="false"
     >
       <option value=" ">Select role</option>
-      <option value="beistaff">beistaff</option>
+      <option value="beistaff">Beipro staff</option>
     </select>
   );
 };

@@ -24,13 +24,26 @@ export const SubscriptionMenu = () => {
           <li className="header bronze">Bronze</li>
           <li>
             Depot Prices
-            <ul className="price">
-              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            <ul className="local">
+              <li className="locationfont">
+                <span className="successlocalfont">&#10004;</span> Nairobi
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Kisumu
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Eldoret
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Nakuru
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont shiftmarg">&#10006;</span> Mombasa
+              </li>
             </ul>
           </li>
-          <li>Price chart</li>
-          <li className="locationfont">Expires same day Midnight</li>
-          <li className="grey">@ Ksh 15/day</li>
+          <li className="locationfont">Expires Midnight same day</li>
+          <li className="grey text-muted">@ Ksh 15/day</li>
           <li>
             <button
               className="btn btn-success"
@@ -49,13 +62,26 @@ export const SubscriptionMenu = () => {
           <li className="header silver">Silver</li>
           <li>
             Depot Prices
-            <ul className="price">
-              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            <ul className="local">
+              <li className="locationfont">
+                <span className="successlocalfont">&#10004;</span> Nairobi
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Kisumu
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Eldoret
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Nakuru
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont shiftmarg">&#10006;</span> Mombasa
+              </li>
             </ul>
           </li>
-          <li>Price chart</li>
-          <li className="locationfont">Expires 7th day Midnight</li>
-          <li className="grey">@ Ksh 65/week</li>
+          <li className="locationfont">Expires Midnight 7th day</li>
+          <li className="grey text-muted">@ Ksh 65/week</li>
           <li>
             <button
               className="btn btn-success"
@@ -74,13 +100,26 @@ export const SubscriptionMenu = () => {
           <li className="header gold">Gold</li>
           <li>
             Depot Prices
-            <ul className="price">
-              <li className="locationfont">Nairobi, Kisumu, Mombasa</li>
+            <ul className="local">
+              <li className="locationfont">
+                <span className="successlocalfont">&#10004;</span> Nairobi
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Kisumu
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Eldoret
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont">&#10006;</span> Nakuru
+              </li>
+              <li className="locationfont">
+                <span className="dangerlocalfont shiftmarg">&#10006;</span> Mombasa
+              </li>
             </ul>
           </li>
-          <li>Price chart</li>
-          <li className="locationfont">Expires 4th week Midnight</li>
-          <li className="grey">@ Ksh 240/month</li>
+          <li className="locationfont">Expires Midnight 4th week</li>
+          <li className="grey text-muted">@ Ksh 240/month</li>
           <li>
             <button
               className="btn btn-success"
