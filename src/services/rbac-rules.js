@@ -29,6 +29,23 @@ const rules = {
       "depots:visit"
     ]
   },
+  beistaff: {
+    static: [
+      "bei-front-admin:list",
+      "bei-front-admin-create:create",
+      "bei-front-admin-edit:edit",
+      "bei-front-admin-delete:delete",
+      "profile:getSelf",
+      "welcome:visit",
+      "depots:visit"
+    ],
+    dynamic: {
+      "bei-front-admin:edit": ({ beistaff }) => {
+        if (!beistaff) return false;
+        return beistaff;
+      }
+    }
+  },
   superadmin: {
     static: [
       "company:list",
@@ -46,11 +63,16 @@ const rules = {
       "admin:edit",
       "admin:delete",
       "admin:get",
+      "bei-admin:list",
+      "bei-admin:create",
+      "bei-admin:edit",
+      "bei-admin:delete",
+      "bei-admin:get",
       "profile:getSelf",
       "welcome:visit",
       "depots:visit",
       "audit:list",
-      "feedback:list",
+      "feedback:list"
     ]
   }
 };

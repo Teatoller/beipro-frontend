@@ -44,6 +44,14 @@ import { Illustration } from "./components/illustrations/Illustration";
 import { MpesaPay } from "./components/mpesa/MpesaPay";
 import { Subscribed } from "./components/mpesa/Subscribed";
 import Home from "./components/mpesa/Home";
+import { BeiFrontAdmin } from "./components/beifrontadmin/BeiFrontAdmin";
+import { BeiFrontAdminCreate } from "./components/beifrontadmin/beiFrontAdminCreate/BeiFrontAdminCreate";
+import { BeiFrontAdminEdit } from "./components/beifrontadmin/beiFrontAdminEdit/BeiFrontAdminEdit";
+import { BeiFrontAdminDelete } from "./components/beifrontadmin/BeiFrontAdminDelete/BeiFrontAdminDelete";
+import { BeiAdmin } from "./components/SuperAdmin/BeiAdmin/BeiAdmin";
+import { BeiAdminCreate } from "./components/SuperAdmin/BeiAdmin/BeiAdminCreate/BeiAdminCreate";
+import { BeiAdminEdit } from "./components/SuperAdmin/BeiAdmin/BeiAdminEdit/BeiAdminEdit";
+import { BeiAdminDelete } from "./components/SuperAdmin/BeiAdmin/BeiAdminDelete/BeiAdminDelete";
 
 const checkAuth = () => {
   const token = localStorage.getItem("token");
@@ -155,6 +163,14 @@ const BeiproRouter = () => {
           <AuthRoute exact path="/feedbkdelete" component={FeedbkDelete} />
           <AuthRoute exact path="/pay" component={MpesaPay} />
           <AuthRoute exact path="/subscribe" component={Subscribed} />
+          <AuthRoute exact path="/bfadmin" component={BeiFrontAdmin} />
+          <AuthRoute exact path="/beiadmincreate" component={BeiFrontAdminCreate} />
+          <AuthRoute exact path="/beiadminedit" component={BeiFrontAdminEdit} />
+          <AuthRoute exact path="/beiadmindelete" component={BeiFrontAdminDelete} />
+          <AuthRoute exact path="/beistaff" component={BeiAdmin} />
+          <AuthRoute exact path="/beistaffcreate" component={BeiAdminCreate} />
+          <AuthRoute exact path="/beistaffedit" component={BeiAdminEdit} />
+          <AuthRoute exact path="/beistaffdelete" component={BeiAdminDelete} />
           <GuardedRoute exact path="/depots" component={Depots} />
           <GuardedRoute exact path="/graphs" component={Illustration} />
         </Switch>
