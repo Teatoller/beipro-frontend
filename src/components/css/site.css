@@ -1,6 +1,7 @@
 .navshade {
-  background-color: #e2e2e3;
-  /* background-color: #d5d5d7; */
+  background-color: #f0f0f0;
+  /* background-color: #F4F4F4; */
+  /* background-color: #F8F8F8; */
 }
 
 .profile-img {
@@ -63,8 +64,8 @@
 
 .columns {
   float: left;
-  width: auto;
-  padding: 65px;
+  width: 33%;
+  padding: 50px;
 }
 
 .price {
@@ -72,7 +73,7 @@
   border: 1p solid #eee;
   margin: 0px;
   padding: 0px;
-  -webkit-transition: .3s;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -92,22 +93,54 @@
   text-align: center;
 }
 
+.local {
+  list-style-type: none;
+  border: 1p solid #eee;
+  margin: 0px;
+  padding: 0px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.local li {
+  border-bottom: 1px solid #eee;
+  padding: 4px;
+}
+
+.successlocalfont {
+  font-size: 6px;
+  border-radius: 25px;
+  background-color: greenyellow;
+  padding: 4px;
+  margin: 0px;
+}
+
+.dangerlocalfont {
+  font-size: 6px;
+  border-radius: 25px;
+  background-color: palevioletred;
+  padding: 4px;
+  margin: 0px;
+}
+
+.shiftmarg {
+  margin-left: 12px;
+}
+
 .price .bronze {
   background-color: #cd7f32;
 }
 
 .price .silver {
-  background-color: #C0C0C0;
+  background-color: #c0c0c0;
 }
 
 .price .gold {
-  background-color: #FFD700;
+  background-color: #ffd700;
 }
 
 .price .grey {
-  background-color: #eee;
-  ;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .locationfont {

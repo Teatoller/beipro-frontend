@@ -11,6 +11,7 @@ import BearerToken from "../../services/BearerToken";
 export const Nav = () => {
   const [role, setRole] = useState("");
   const [roleAdmin, setRoleAdmin] = useState("");
+  const [roleBeiAdmin, setRoleBeiAdmin] = useState("");
   const [roleSadmin, setRoleSAdmin] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -23,9 +24,11 @@ export const Nav = () => {
 
       setRole(roleData);
       setRoleAdmin(roleData);
+      setRoleBeiAdmin(roleData);
       setRoleSAdmin(roleData);
       localStorage.setItem("roleAdmin", roleData);
       localStorage.setItem("role", roleData);
+      localStorage.setItem("roleBeiAdmin", roleData);
       localStorage.setItem("roleSadmin", roleData);
     });
   };
@@ -122,7 +125,7 @@ export const Nav = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" activeStyle={activeStyle} to="/graphs">
-                {timeBalance > 0 ? "<FontAwesomeIcon icon={faChartLine} /> Stats" : <s>Stats</s>}
+                {timeBalance > 0 ? "Stats" : <s>Stats</s>}
               </NavLink>
             </li>
             <li className="nav-item">
@@ -176,6 +179,28 @@ export const Nav = () => {
                 yes={() => (
                   <NavLink className="nav-link" activeStyle={activeStyle} to="/frontoffice">
                     Front-offices
+                  </NavLink>
+                )}
+              />
+            </li>
+            <li className="nav-item">
+              <Can
+                role={roleBeiAdmin}
+                perform="bei-front-admin:list"
+                yes={() => (
+                  <NavLink className="nav-link" activeStyle={activeStyle} to="/bfadmin">
+                    Bei-Admin
+                  </NavLink>
+                )}
+              />
+            </li>
+            <li className="nav-item">
+              <Can
+                role={roleSadmin}
+                perform="bei-admin:list"
+                yes={() => (
+                  <NavLink className="nav-link" activeStyle={activeStyle} to="/beistaff">
+                    Bei-Staff
                   </NavLink>
                 )}
               />
