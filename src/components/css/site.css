@@ -1,7 +1,5 @@
 .navshade {
   background-color: #f0f0f0;
-  /* background-color: #F4F4F4; */
-  /* background-color: #F8F8F8; */
 }
 
 .profile-img {
@@ -82,7 +80,6 @@
 }
 
 .price .header {
-  /* background-color: #111; */
   color: white;
   font-size: 25px;
 }
@@ -145,6 +142,19 @@
 
 .locationfont {
   font-size: 11px;
+}
+
+.priImg {
+  filter: grayscale(100%);
+}
+
+.pay-logo {
+  height: 40px;
+  width: 50px;
+}
+
+.bg-subscribe {
+  background-color: #f0f0f0;
 }
 
 /* Table */
