@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -10,6 +11,8 @@ import { phoneNumberError } from "./phoneNumberError";
 import { Nav } from "../Landing/Nav";
 import { Spinner } from "../../spinner/Spinner";
 import { messageError } from "../auth/common/messageError";
+import Footer from "../Landing/Footer";
+import Mpesa from "../auth/common/Mpesa";
 
 export const MpesaPay = props => {
   const [loading, setLoading] = useState(true);
@@ -49,7 +52,7 @@ export const MpesaPay = props => {
 
     e.preventDefault();
 
-    history.push("/welcome");
+    history.push("/home");
     setLoading(false);
   };
 
@@ -67,83 +70,79 @@ export const MpesaPay = props => {
 
   return (
     <>
-      <div className="container">
-        <Nav />
-        <div className="row justify-content-center mx-auto mt-4">
-          <div className="col-md-8">
-            <div className="card">
-              <div className="card-header">Subscription Form</div>
-              <span>{loading ? <Spinner /> : null}</span>
-              <div className="card-body">
-                <form noValidate onSubmit={onSubmit}>
-                  <fieldset>
-                    <h6>Payment Detail&apos;s</h6>
-                    <div className="form-group row">
-                      <label htmlFor="amount" className="col-sm-2 col-form-label col-form-label-sm">
-                        Amount: Ksh
-                      </label>
-                      <div className="col-sm-10 mb-1 hide">
-                        <input
-                          type="decimal"
-                          name="amount"
-                          className={`"form-control border-0 text-muted form-control-sm" ${
-                            errors.amount ? "is-invalid" : ""
-                          }`}
-                          id="companyId"
-                          placeholder="Disabled input"
-                          value={amount}
-                          aria-describedby="companyIdInput"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                        {amountError(errors)}
-                      </div>
+      <Nav />
+      <div className="container mt-5 w-75">
+        <span>{loading ? <Spinner /> : null}</span>
+        <form noValidate onSubmit={onSubmit}>
+          <div className="row text-muted text-center mt-1 p-2 border">
+            {" "}
+            <h4 className="font-italic text-center mt-1">Subscription Form</h4>
+          </div>
 
-                      <label
-                        htmlFor="phoneNumber"
-                        className="col-sm-2 col-form-label col-form-label-sm"
-                      >
-                        Phone Number:
-                      </label>
-                      <div className="col-sm-10 mb-1">
-                        <input
-                          type="text"
-                          name="phoneNumber"
-                          className={`"form-control form-control-sm" ${
-                            errors.code ? "is-invalid" : ""
-                          }`}
-                          id="code"
-                          placeholder="Enter mobile phone number"
-                          onChange={e => {
-                            setPhoneNumber(e.target.value);
-                          }}
-                          aria-describedby="phoneNumber"
-                          aria-required="true"
-                          aria-invalid="false"
-                        />
-                        {phoneNumberError(errors)}
-                        {messageError(message)}
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <PayButton handleCancelClick={handleCancelClick} />
-                    </div>
-                  </fieldset>
-                </form>
-                <br />
-                <div className="d-flex mt-3 justify-content-between">
-                  <p className="text-center">
-                    You will receive a popup message on your phone once you click on the{" "}
-                    <b>Pay Now </b>
-                    <i>button. Enter your Mpesa pin to complete transaction.</i>
-                  </p>
-                </div>
-              </div>
+          <div className="row bg-subscribe text-muted text-center mt-1 p-2 border">
+            <Mpesa />
+          </div>
+          <div className="form-group row text-muted mt-1 p-2 border bg-subscribe">
+            <label
+              htmlFor="phoneNumber"
+              className="col-sm-4 col-form-label col-form-label-sm font-weight-bold"
+            >
+              Phone Number
+            </label>
+            <div className="col-sm-8 mb-1">
+              <input
+                type="text"
+                name="phoneNumber"
+                className={`"form-control bg-white w-75 border-0 form-control-sm" ${
+                  errors.code ? "is-invalid" : ""
+                }`}
+                id="code"
+                placeholder="Enter phone number"
+                onChange={e => {
+                  setPhoneNumber(e.target.value);
+                }}
+                aria-describedby="phoneNumber"
+                aria-required="true"
+                aria-invalid="false"
+              />
+              {phoneNumberError(errors)}
+              {messageError(message)}
+            </div>
+            <label
+              htmlFor="amount"
+              className="col-sm-4 col-form-label col-form-label-sm font-weight-bold"
+            >
+              Subscribed amount: Ksh
+            </label>
+            <div className="col-sm-8 mb-1 hide">
+              <input
+                type="decimal"
+                name="amount"
+                className={`"form-control w-25 bg-info text-white font-weight-bold text-center border-0 form-control-sm" ${
+                  errors.amount ? "is-invalid" : ""
+                }`}
+                id="companyId"
+                placeholder="Disabled input"
+                value={amount}
+                aria-describedby="companyIdInput"
+                aria-required="true"
+                aria-invalid="false"
+              />
+              {amountError(errors)}
             </div>
           </div>
-        </div>
+          <div className="row bg-subscribe text-muted text-center mt-1 p-2 border">
+            <PayButton handleCancelClick={handleCancelClick} />
+          </div>
+          <div className="row text-muted text-center mt-1 p-2 border">
+            <p className="text-center font-italic text-muted mt-1">
+              You will receive an Mpesa popup message on your phone. Enter your Mpesa pin to
+              complete the transaction.
+            </p>
+          </div>
+        </form>
       </div>
+      <Footer />
     </>
   );
 };
