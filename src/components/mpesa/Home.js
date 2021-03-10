@@ -9,6 +9,7 @@ const Home = () => {
     <>
       <Nav />
       <div className="container">
+        <h5 className="font-italic text-center mt-1 text-muted">Choose a Subscription</h5>
         <div className="row">
           <SubscriptionMenu />
         </div>
