@@ -92,11 +92,11 @@ export const Nav = () => {
             src={logoUrl}
             width="30"
             height="30"
-            className="d-inline-block align-top p-1"
+            className="d-inline-block align-top p-1 tint"
             alt=""
             loading="lazy"
           />
-          <span className="font-weight-bold text-secondary">Beipro</span>
+          <span className="font-weight-bold text-secondary p-1">Beipro</span>
         </NavLink>
         <button
           className="navbar-toggler navbar-toggler-right"

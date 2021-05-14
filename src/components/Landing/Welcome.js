@@ -6,7 +6,7 @@ const Welcome = () => {
   return (
     <>
       <Nav />
-      <div className="container">
+      <div>
         <section className="jumbotron jumbotron-fluid">
           <div className="container">
             <p className="lead text-secondary font-italic">Reseller bureau</p>

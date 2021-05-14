@@ -5,7 +5,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.5
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.10
   - export PATH="$HOME/.yarn/bin:$PATH"
 install:
   - yarn
@@ -14,5 +14,7 @@ cache:
   directories:
     - node_modules
 script:
-  - yarn test --coverage
+  - yarn run coverage
   - yarn run build
+notifications:
+  email:false
